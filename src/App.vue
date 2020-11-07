@@ -1,14 +1,15 @@
 <template>
-	<div id="app">
+	<div class="">
+		<Navbar />
 		<LoginForm />
 	</div>
 </template>
 
 <script>
 import LoginForm from './components/LoginForm'
-
+import Navbar from './components/Navbar'
 export default {
-	components: { LoginForm },
+	components: { LoginForm, Navbar },
 }
 </script>
 
