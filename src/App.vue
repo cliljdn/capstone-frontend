@@ -1,11 +1,15 @@
 <template>
 	<div id="app">
-		<button class="button is-ghost">Text</button>
+		<LoginForm />
 	</div>
 </template>
 
 <script>
-export default {}
+import LoginForm from './components/LoginForm'
+
+export default {
+	components: { LoginForm },
+}
 </script>
 
 <style lang="scss"></style>
