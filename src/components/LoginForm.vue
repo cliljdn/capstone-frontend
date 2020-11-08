@@ -1,23 +1,61 @@
 <template>
-	<div class="card m-5">
-		<header class="card-header">
-			<p class="card-header-title">
-				Component
+	<div class="card is-rounded">
+		<header class="card-header columns is-mobile level">
+			<p class="card-header-title mt-3 level-item has-text-centered">
+				Scan Olongapo
 			</p>
-			<a href="#" class="card-header-icon" aria-label="more options">
-				<span class="icon">
-					<i class="fas fa-angle-down" aria-hidden="true">hahah</i>
-				</span>
-			</a>
 		</header>
+		<section>
+			<h3
+				class="has-text-centered has-text-weight-semibold is-capitalized ml-5 mr-5"
+			>
+				Providing Security for your information
+			</h3>
+			<p
+				class="has-text-centered has-text-weight-semibold is-capitalized ml-5 mr-5"
+			>
+				Join us in stopping the spread of COVID-19
+			</p>
+			<p class="has-text-centered has-text-weight-semibold ml-5 mr-5">
+				through this community-driven monitoring, <br />
+				<a href="">Download our android application</a>
+			</p>
+		</section>
+
 		<div class="card-content">
 			<div class="content">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-				iaculis mauris.
-				<a href="#">@bulmaio</a>. <a href="#">#css</a>
-				<a href="#">#responsive</a>
-				<br />
-				<time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+				<form action="" method="POST" @submit.prevent>
+					<label class="" for=""><strong>Email:</strong></label>
+					<div class="field">
+						<div class="control has-icons-left mt-2">
+							<input
+								class="input input-shadow is-hovered"
+								type="email"
+								placeholder="Enter E-mail"
+							/>
+							<span class="icon is-small is-left">
+								<i class="fas fa-envelope"></i>
+							</span>
+						</div>
+					</div>
+
+					<label class="" for=""><strong>Password:</strong></label>
+					<div class="field">
+						<div class="control has-icons-left mt-2">
+							<input
+								class="input is-hovered"
+								type="password"
+								placeholder="Enter Password"
+							/>
+							<span class="icon is-small is-left">
+								<i class="fas fa-key"></i>
+							</span>
+						</div>
+					</div>
+					<button class="button is-success is-fullwidth is-link is-rounded">
+						Login
+					</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -27,8 +65,4 @@
 export default {}
 </script>
 
-<style>
-* {
-	padding: 0%;
-}
-</style>
+<style></style>

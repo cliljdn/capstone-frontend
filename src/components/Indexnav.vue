@@ -22,7 +22,7 @@
 
 		<div
 			id="navbarBasicExample"
-			class="navbar-menu"
+			class="navbar-menu ml-6 p-5"
 			:class="{ 'is-active': isActive }"
 		>
 			<div class="navbar-start">

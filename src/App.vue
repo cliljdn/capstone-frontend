@@ -1,16 +1,26 @@
 <template>
-	<div class="">
-		<Navbar />
-		<LoginForm />
+	<div class="columns is-desktop">
+		<div class="column"></div>
+		<div class="column column-login is-one-third m-6">
+			<LoginForm />
+		</div>
 	</div>
 </template>
 
 <script>
 import LoginForm from './components/LoginForm'
-import Navbar from './components/Navbar'
+
 export default {
-	components: { LoginForm, Navbar },
+	components: { LoginForm },
 }
 </script>
 
-<style lang="scss"></style>
+<style>
+* {
+	margin: 0;
+}
+
+.page-divider {
+	border-right: transparent, solid red;
+}
+</style>
