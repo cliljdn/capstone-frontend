@@ -1,12 +1,12 @@
 <template>
-	<section>
-		<div class="columns is-desktop is-fullheight">
-			<div class="column column-login-image is-half is-hidden-mobile"></div>
-			<div class="column column-login is-half ">
-				<LoginForm />
-			</div>
+	<div class="columns columns-parent is-gapless is-full">
+		<div class="column img-left is-hidden-mobile">
+			<h1 class="has-text-white">dito nakalgay yung fucking logo</h1>
 		</div>
-	</section>
+		<div class="column is-4 is-offset-8 is-full-mobile">
+			<LoginForm class="login-form" />
+		</div>
+	</div>
 </template>
 
 <script>
@@ -17,12 +17,17 @@ export default {
 }
 </script>
 
-<style scoped>
-section {
+<style>
+html,
+body {
 	height: 100%;
 }
-.column-login-image {
-	background-color: aquamarine;
+.columns-parent {
+	height: 100%;
+}
+
+.img-left {
+	background-color: grey;
 	background-image: url('');
 	background-repeat: no-repeat;
 	background-size: cover;

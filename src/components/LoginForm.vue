@@ -1,14 +1,12 @@
 <template>
 	<div class="card">
 		<header class="card-header columns level is-mobile">
-			<p class="card-header-title mt-3 level-item has-text-centered">
+			<p class="card-header-title  level-item has-text-centered">
 				Scan Olongapo
 			</p>
 		</header>
-		<section>
-			<h3
-				class="has-text-centered has-text-weight-semibold is-capitalized ml-5 mr-5"
-			>
+		<section class="mt-6">
+			<h3 class="has-text-centered has-text-weight-semibold is-capitalized ">
 				Providing Security for your information
 			</h3>
 			<p
@@ -52,8 +50,16 @@
 							</span>
 						</div>
 					</div>
-					<button class="button is-success is-fullwidth is-link is-rounded">
+					<button
+						class="button is-success is-fullwidth is-link is-rounded mt-6"
+					>
 						Login
+					</button>
+
+					<button
+						class="button is-primary is-fullwidth is-link is-rounded mt-6"
+					>
+						Register
 					</button>
 				</form>
 			</div>
@@ -66,6 +72,14 @@ export default {}
 </script>
 
 <style>
+* {
+	margin: 0 !important;
+}
+html,
+body {
+	height: 100%;
+}
+
 .card {
 	height: 100%;
 }
