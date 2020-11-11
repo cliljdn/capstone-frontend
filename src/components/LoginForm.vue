@@ -1,7 +1,7 @@
 <template>
 	<div class="card-form columns">
-		<div class="card column  is-offset-one-quarter">
-			<header class="level is-mobile">
+		<div class="card column is-8 is-centered is-offset-one-quarter">
+			<header class="level ">
 				<p class="card-header-title  level-item has-text-centered">
 					Scan Olongapo
 				</p>
@@ -80,9 +80,9 @@ body {
 
 .card-form {
 	height: 100%;
-	width: 500px;
-	position: absolute;
-	right: 75px;
+	width: auto;
+	display: flex;
+	justify-content: center;
 }
 
 .card-body {

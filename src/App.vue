@@ -1,9 +1,9 @@
 <template>
-	<div class="columns columns-parent is-gapless is-full">
+	<div class="columns columns-parent is-gapless ">
 		<div class="column img-left is-half-fullhd is-hidden-mobile">
 			<h1 class="has-text-white">dito nakalgay yung fucking logo</h1>
 		</div>
-		<div class="column login-form is-half-fullhd is-full-mobile">
+		<div class="column login-form is-mobile">
 			<LoginForm />
 		</div>
 	</div>
@@ -24,8 +24,6 @@ body {
 }
 .columns-parent {
 	height: 100%;
-	/* margin-left: 50px;
-	margin-right: 50px; */
 }
 
 .login-form {
