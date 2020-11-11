@@ -78,9 +78,12 @@ export default {}
 html,
 body {
 	height: 100%;
+	background-color: #dadbdf;
 }
 
 .card {
 	height: 100%;
+	padding-left: 50px !important;
+	padding-right: 50px !important;
 }
 </style>

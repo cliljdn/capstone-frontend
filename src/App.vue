@@ -1,10 +1,10 @@
 <template>
 	<div class="columns columns-parent is-gapless is-full">
-		<div class="column img-left is-hidden-mobile">
+		<div class="column img-left is-half is-hidden-mobile">
 			<h1 class="has-text-white">dito nakalgay yung fucking logo</h1>
 		</div>
-		<div class="column is-4 is-offset-8 is-full-mobile">
-			<LoginForm class="login-form" />
+		<div class="column login-form is-half is-4 is-full-mobile">
+			<LoginForm />
 		</div>
 	</div>
 </template>
@@ -24,10 +24,12 @@ body {
 }
 .columns-parent {
 	height: 100%;
+	margin-left: 50px;
+	margin-right: 50px;
 }
 
 .img-left {
-	background-color: grey;
+	background-color: #f7f7f7;
 	background-image: url('');
 	background-repeat: no-repeat;
 	background-size: cover;
