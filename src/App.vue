@@ -1,10 +1,12 @@
 <template>
-	<div class="columns is-desktop">
-		<div class="column"></div>
-		<div class="column column-login is-one-third m-6">
-			<LoginForm />
+	<section>
+		<div class="columns is-desktop is-fullheight">
+			<div class="column column-login-image is-half is-hidden-mobile"></div>
+			<div class="column column-login is-half ">
+				<LoginForm />
+			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>
@@ -15,12 +17,14 @@ export default {
 }
 </script>
 
-<style>
-* {
-	margin: 0;
+<style scoped>
+section {
+	height: 100%;
 }
-
-.page-divider {
-	border-right: transparent, solid red;
+.column-login-image {
+	background-color: aquamarine;
+	background-image: url('');
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 </style>

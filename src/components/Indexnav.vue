@@ -31,7 +31,7 @@
 				</a>
 
 				<a class="navbar-item">
-					<strong>Profile</strong>
+					<strong>Download our app</strong>
 				</a>
 			</div>
 		</div>

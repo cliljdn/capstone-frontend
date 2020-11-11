@@ -1,6 +1,6 @@
 <template>
-	<div class="card is-rounded">
-		<header class="card-header columns is-mobile level">
+	<div class="card">
+		<header class="card-header columns level is-mobile">
 			<p class="card-header-title mt-3 level-item has-text-centered">
 				Scan Olongapo
 			</p>
@@ -65,4 +65,8 @@
 export default {}
 </script>
 
-<style></style>
+<style>
+.card {
+	height: 100%;
+}
+</style>
