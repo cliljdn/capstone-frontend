@@ -4,16 +4,16 @@
 			<h1 class="has-text-white">dito nakalgay yung fucking logo</h1>
 		</div>
 		<div class="column login-form is-mobile">
-			<RegisterFormAdmin />
+			<LoginForm />
 		</div>
 	</div>
 </template>
 
 <script>
-import RegisterFormAdmin from './components/RegisterFormAdmin'
+import LoginForm from './components/Admin/LoginForm'
 
 export default {
-	components: { RegisterFormAdmin },
+	components: { LoginForm },
 }
 </script>
 

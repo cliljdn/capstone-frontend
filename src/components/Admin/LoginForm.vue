@@ -3,7 +3,7 @@
 		<div class="card column is-8 is-centered is-offset-one-quarter">
 			<header class="level ">
 				<p class="card-header-title  level-item has-text-centered">
-					SCAN OLONGAPO
+					Admin Login
 				</p>
 			</header>
 			<section class="mt-3">
@@ -29,6 +29,7 @@
 									<input
 										class="input input-username is-hovered"
 										type="email"
+										:value="inpUsername"
 										placeholder="Enter E-mail"
 									/>
 									<span class="icon is-small is-left">
@@ -43,6 +44,7 @@
 									<input
 										class="input input-password is-hovered"
 										type="password"
+										:value="inpPassword"
 										placeholder="Enter Password"
 									/>
 									<span class="icon is-small is-left">
@@ -50,8 +52,10 @@
 									</span>
 								</div>
 							</div>
+							<span>{{ printError }}</span>
 							<button
 								class="button btn-login is-success is-fullwidth is-link is-rounded mt-6"
+								@click="authUser"
 							>
 								Login
 							</button>
@@ -70,7 +74,36 @@
 </template>
 
 <script>
-export default {}
+export default {
+	data() {
+		return {
+			inpUsername: '',
+			inpPassword: '',
+			printError: '',
+		}
+	},
+
+	methods: {
+		authUser: async function() {
+			try {
+				console.log(this.store.state.$BASE_URL)
+				const url = `${this.state.$BASE_URL}/api/v1/admin/login`
+				const res = await this.$http.post(
+					url,
+					{ headers: { 'Content-Type': 'application/json' } },
+					{
+						email: this.inpUsername,
+						password: this.inpPassword,
+					}
+				)
+				const info = res
+				console.log(info)
+			} catch (error) {
+				this.printError = error.message
+			}
+		},
+	},
+}
 </script>
 
 <style>

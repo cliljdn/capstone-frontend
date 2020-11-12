@@ -1,0 +1,15 @@
+Components
+/ = incomplete
+x = finished
+
+[x] Login Component
+[/] Register Component (Users) Kulang ng account type
+[x] Register Component (Admin)
+[] Fillup form personal information (Users)
+[] Fillup form personal information (Admin)
+[] Verification page
+[] Viewing Users (sorting, search)
+[] Viewing Drivers (sorting, search)
+[] Viewing Drivers Passengers (sorting, search)
+[] People who Entered Establishment (sorting, search)
+[] Create info for establishment enpoint (for data gathering)
