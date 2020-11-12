@@ -29,12 +29,15 @@
 									<input
 										class="input input-username is-hovered"
 										type="email"
-										:value="inpUsername"
+										v-model="inpUsername"
 										placeholder="Enter E-mail"
 									/>
 									<span class="icon is-small is-left">
 										<i class="fas fa-envelope"></i>
 									</span>
+									<div>
+										<span> {{ emailError }}</span>
+									</div>
 								</div>
 							</div>
 
@@ -44,7 +47,7 @@
 									<input
 										class="input input-password is-hovered"
 										type="password"
-										:value="inpPassword"
+										v-model="inpPassword"
 										placeholder="Enter Password"
 									/>
 									<span class="icon is-small is-left">
@@ -74,32 +77,30 @@
 </template>
 
 <script>
+import store from '../../store/index'
+import axios from 'axios'
 export default {
 	data() {
 		return {
 			inpUsername: '',
 			inpPassword: '',
 			printError: '',
+			emailError: '',
 		}
 	},
 
 	methods: {
 		authUser: async function() {
 			try {
-				console.log(this.store.state.$BASE_URL)
-				const url = `${this.state.$BASE_URL}/api/v1/admin/login`
-				const res = await this.$http.post(
-					url,
-					{ headers: { 'Content-Type': 'application/json' } },
-					{
-						email: this.inpUsername,
-						password: this.inpPassword,
-					}
-				)
-				const info = res
-				console.log(info)
-			} catch (error) {
-				this.printError = error.message
+				const url = `${store.state.BASE_URL}/api/v1/admin/login`
+				const res = await axios.post(url, {
+					email: this.inpUsername,
+					password: this.inpPassword,
+				})
+				console.log(res)
+			} catch (err) {
+				this.emailError = err.response.data.message
+				console.log(err.response.data.stack)
 			}
 		},
 	},

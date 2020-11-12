@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		url: { BASE_URL: 'http://localhost:6060' },
+		BASE_URL: 'http://localhost:6060',
 	},
 	mutations: {},
 	actions: {},
