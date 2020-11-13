@@ -32,8 +32,8 @@ body {
 
 .img-left {
 	background-color: #f7f7f7;
-	background-image: url('');
+	/* background-image: url('');
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover; */
 }
 </style>

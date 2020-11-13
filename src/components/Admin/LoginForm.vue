@@ -28,15 +28,19 @@
 								<div class="control has-icons-left mt-2">
 									<input
 										class="input input-username is-hovered"
+										@click="emailError = []"
+										@change="emailError = []"
 										type="email"
 										v-model="inpUsername"
 										placeholder="Enter E-mail"
+										required
 									/>
 									<span class="icon is-small is-left">
 										<i class="fas fa-envelope"></i>
 									</span>
-									<div>
-										<span> {{ emailError }}</span>
+
+									<div v-for="(err, index) in emailError" :key="index">
+										<span> {{ err }}</span>
 									</div>
 								</div>
 							</div>
@@ -48,14 +52,19 @@
 										class="input input-password is-hovered"
 										type="password"
 										v-model="inpPassword"
+										@click="passwordError = []"
+										@change="passwordError = []"
 										placeholder="Enter Password"
+										required
 									/>
 									<span class="icon is-small is-left">
 										<i class="fas fa-key"></i>
 									</span>
 								</div>
 							</div>
-							<span>{{ printError }}</span>
+							<div v-for="(err, index) in passwordError" :key="index">
+								<span> {{ err }}</span>
+							</div>
 							<button
 								class="button btn-login is-success is-fullwidth is-link is-rounded mt-6"
 								@click="authUser"
@@ -84,8 +93,9 @@ export default {
 		return {
 			inpUsername: '',
 			inpPassword: '',
-			printError: '',
-			emailError: '',
+			emailError: [],
+			passwordError: [],
+			showErr: false,
 		}
 	},
 
@@ -99,8 +109,23 @@ export default {
 				})
 				console.log(res)
 			} catch (err) {
-				this.emailError = err.response.data.message
-				console.log(err.response.data.stack)
+				if (
+					!err.response.data.inner &&
+					err.response.data.message === 'Email is not registered'
+				) {
+					this.emailError.push(err.response.data.message)
+				} else {
+					for (const err of err.response.data.inner) {
+						if (err.path === 'email') {
+							if (this.emailError.length > 2) {
+								this.emailError = []
+							}
+							this.emailError.push(err.message)
+						} else {
+							this.passwordError.push(err.message)
+						}
+					}
+				}
 			}
 		},
 	},
