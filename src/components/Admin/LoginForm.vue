@@ -107,13 +107,20 @@ export default {
 					email: this.inpUsername,
 					password: this.inpPassword,
 				})
-				console.log(res)
+				console.log(res.data)
 			} catch (err) {
 				if (
-					!err.response.data.inner &&
-					err.response.data.message === 'Email is not registered'
+					(!err.response.data.inner &&
+						err.response.data.message === 'Email is not registered') ||
+					(!err.response.data.inner &&
+						err.response.data.message === 'Account is not yet activated')
 				) {
 					this.emailError.push(err.response.data.message)
+				} else if (
+					!err.response.data.inner &&
+					err.response.data.message === 'Wrong password'
+				) {
+					this.passwordError.push(err.response.data.message)
 				} else {
 					for (const err of err.response.data.inner) {
 						if (err.path === 'email') {
@@ -121,7 +128,12 @@ export default {
 								this.emailError = []
 							}
 							this.emailError.push(err.message)
-						} else {
+						}
+
+						if (err.path === 'password') {
+							if (this.passwordError.length > 2) {
+								this.passwordError = []
+							}
 							this.passwordError.push(err.message)
 						}
 					}
