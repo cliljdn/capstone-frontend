@@ -102,12 +102,12 @@ export default {
 	methods: {
 		authUser: async function() {
 			try {
-				const url = `${store.state.BASE_URL}/api/v1/admin/login`
+				const url = `${store.state.BASE_URL}/admin/login`
 				const res = await axios.post(url, {
 					email: this.inpUsername,
 					password: this.inpPassword,
 				})
-				console.log(res.data)
+				console.log(res)
 			} catch (err) {
 				if (
 					(!err.response.data.inner &&
