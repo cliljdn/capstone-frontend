@@ -39,9 +39,11 @@
 									</span>
 
 									<div v-if="inpUsername === ''">
-										<span> {{ emailError[1] }}</span>
+										<span class="has-text-danger"> {{ emailError[1] }}</span>
 									</div>
-									<span v-else> {{ emailError[0] }}</span>
+									<span v-else class="has-text-danger">
+										{{ emailError[0] }}</span
+									>
 								</div>
 							</div>
 
@@ -62,13 +64,15 @@
 								</div>
 							</div>
 							<div v-if="inpPassword === ''">
-								<span> {{ passwordError[1] }}</span>
+								<span class="has-text-danger"> {{ passwordError[1] }}</span>
 							</div>
-							<span v-else> {{ passwordError[0] }}</span>
+							<span class="has-text-danger" v-else>
+								{{ passwordError[0] }}</span
+							>
 
 							<button
 								class="button btn-login is-success is-fullwidth is-link is-rounded mt-6"
-								@click="authUser"
+								@click="authUser()"
 							>
 								Login
 							</button>
@@ -88,6 +92,7 @@
 
 <script>
 import axios from 'axios'
+import { isLoggedIn } from '../../assets/cookies/cookies'
 export default {
 	data() {
 		return {
@@ -100,45 +105,37 @@ export default {
 	},
 
 	methods: {
-		authUser: async function() {
+		authUser: async () => {
 			try {
-				const url = `${this.$store.state.BASE_URL}/admin/login`
+				let url = `${this.$store.state.BASE_URL}/admin/login`
 				const res = await axios.post(url, {
 					email: this.inpUsername,
 					password: this.inpPassword,
 				})
 
 				if (res) {
-					this.$cookies.set('Token', res.data.token, '1d')
-					this.$store.state.ACCESS_TOKEN = this.$cookies.get('Token')
+					await isLoggedIn(res.data.token)
+					// this.$store.state.ACCESS_TOKEN = this.$cookies.get('Token')
 				}
 			} catch (err) {
+				console.log(err.response.data)
+				let inner = err.response.data.inner
+				let message = err.response.data.message
+
 				if (
-					(!err.response.data.inner &&
-						err.response.data.message === 'Email is not registered') ||
-					(!err.response.data.inner &&
-						err.response.data.message === 'Account is not yet activated')
+					(!inner && message === 'Email is not registered') ||
+					(!inner && message === 'Account is not yet activated')
 				) {
 					this.emailError.push(err.response.data.message)
-				} else if (
-					!err.response.data.inner &&
-					err.response.data.message === 'Wrong password'
-				) {
+				} else if (!inner && message === 'Wrong password') {
 					this.passwordError.push(err.response.data.message)
 				} else {
 					for (const error of err.response.data.inner) {
 						if (error.path === 'email') {
-							if (this.emailError.length > 1) {
-								this.emailError = []
-							}
-
 							this.emailError.push(error.message)
 						}
 
 						if (error.path === 'password') {
-							if (this.passwordError.length > 2) {
-								this.passwordError = []
-							}
 							this.passwordError.push(error.message)
 						}
 					}
