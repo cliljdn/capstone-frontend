@@ -33,15 +33,15 @@
 										type="email"
 										v-model="inpUsername"
 										placeholder="Enter E-mail"
-										required
 									/>
 									<span class="icon is-small is-left">
 										<i class="fas fa-envelope"></i>
 									</span>
 
-									<div v-for="(err, index) in emailError" :key="index">
-										<span> {{ err }}</span>
+									<div v-if="inpUsername === ''">
+										<span> {{ emailError[1] }}</span>
 									</div>
+									<span v-else> {{ emailError[0] }}</span>
 								</div>
 							</div>
 
@@ -55,16 +55,17 @@
 										@click="passwordError = []"
 										@change="passwordError = []"
 										placeholder="Enter Password"
-										required
 									/>
 									<span class="icon is-small is-left">
 										<i class="fas fa-key"></i>
 									</span>
 								</div>
 							</div>
-							<div v-for="(err, index) in passwordError" :key="index">
-								<span> {{ err }}</span>
+							<div v-if="inpPassword === ''">
+								<span> {{ passwordError[1] }}</span>
 							</div>
+							<span v-else> {{ passwordError[0] }}</span>
+
 							<button
 								class="button btn-login is-success is-fullwidth is-link is-rounded mt-6"
 								@click="authUser"
@@ -86,6 +87,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
 	data() {
 		return {
@@ -100,8 +102,48 @@ export default {
 	methods: {
 		authUser: async function() {
 			try {
-				this.Login.authAdmin(this.inpUsername, this.inpPassword)
-			} catch (err) {}
+				const url = `${this.$store.state.BASE_URL}/admin/login`
+				const res = await axios.post(url, {
+					email: this.inpUsername,
+					password: this.inpPassword,
+				})
+
+				if (res) {
+					this.$cookies.set('Token', res.data.token, '1d')
+					this.$store.state.ACCESS_TOKEN = this.$cookies.get('Token')
+				}
+			} catch (err) {
+				if (
+					(!err.response.data.inner &&
+						err.response.data.message === 'Email is not registered') ||
+					(!err.response.data.inner &&
+						err.response.data.message === 'Account is not yet activated')
+				) {
+					this.emailError.push(err.response.data.message)
+				} else if (
+					!err.response.data.inner &&
+					err.response.data.message === 'Wrong password'
+				) {
+					this.passwordError.push(err.response.data.message)
+				} else {
+					for (const error of err.response.data.inner) {
+						if (error.path === 'email') {
+							if (this.emailError.length > 1) {
+								this.emailError = []
+							}
+
+							this.emailError.push(error.message)
+						}
+
+						if (error.path === 'password') {
+							if (this.passwordError.length > 2) {
+								this.passwordError = []
+							}
+							this.passwordError.push(error.message)
+						}
+					}
+				}
+			}
 		},
 	},
 }

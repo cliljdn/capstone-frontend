@@ -13,8 +13,8 @@ Vue.prototype.$http = axios
 // initialize vue-cookies globally
 import './plugins/cookies.plugins'
 
-// Initialize global Class
-import './components/Admin/LoginClass'
+// Initialize store
+Vue.prototype.$store = store
 
 new Vue({
 	router,
