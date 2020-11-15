@@ -3,17 +3,16 @@
 		<div class="column img-left is-half-fullhd is-hidden-mobile">
 			<h1 class="has-text-white">dito nakalgay yung fucking logo</h1>
 		</div>
+
 		<div class="column login-form is-mobile">
-			<LoginForm />
+			<router-view />
 		</div>
 	</div>
 </template>
 
 <script>
-import LoginForm from './components/Admin/LoginForm'
-
 export default {
-	components: { LoginForm },
+	components: {},
 }
 </script>
 

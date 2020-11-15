@@ -16,6 +16,8 @@ import './plugins/cookies.plugins'
 // Initialize store
 Vue.prototype.$store = store
 
+//initialize router
+// Vue.prototype.$router = router
 new Vue({
 	router,
 	store,

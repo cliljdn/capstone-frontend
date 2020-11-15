@@ -52,7 +52,7 @@
 								<div class="control has-icons-left mt-2">
 									<input
 										class="input input-password is-hovered"
-										type="password"
+										type="text	"
 										v-model="inpPassword"
 										@click="passwordError = []"
 										@change="passwordError = []"
@@ -69,14 +69,12 @@
 							<span class="has-text-danger" v-else>
 								{{ passwordError[0] }}</span
 							>
-
 							<button
 								class="button btn-login is-success is-fullwidth is-link is-rounded mt-6"
-								@click="authUser()"
+								@click="authUser"
 							>
 								Login
 							</button>
-
 							<button
 								class="button btn-register is-primary is-fullwidth is-link is-rounded mt-6"
 							>
@@ -92,7 +90,8 @@
 
 <script>
 import axios from 'axios'
-import { isLoggedIn } from '../../assets/cookies/cookies'
+import router from '../../router/index'
+// import cookies from '../../assets/cookies/cookies'
 export default {
 	data() {
 		return {
@@ -105,36 +104,33 @@ export default {
 	},
 
 	methods: {
-		authUser: async () => {
+		async authUser() {
 			try {
 				let url = `${this.$store.state.BASE_URL}/admin/login`
 				const res = await axios.post(url, {
 					email: this.inpUsername,
 					password: this.inpPassword,
 				})
+				let { token } = res.data
 
-				if (res) {
-					await isLoggedIn(res.data.token)
-					// this.$store.state.ACCESS_TOKEN = this.$cookies.get('Token')
-				}
+				this.$cookies.set('Token', token, '1D')
+				router.push({ path: '/about' })
+				// this.$store.state.ACCESS_TOKEN = this.$cookies.get('Token')
 			} catch (err) {
-				console.log(err.response.data)
 				let inner = err.response.data.inner
 				let message = err.response.data.message
-
 				if (
 					(!inner && message === 'Email is not registered') ||
 					(!inner && message === 'Account is not yet activated')
 				) {
 					this.emailError.push(err.response.data.message)
-				} else if (!inner && message === 'Wrong password') {
+				} else if (!inner || message === 'Wrong password') {
 					this.passwordError.push(err.response.data.message)
 				} else {
-					for (const error of err.response.data.inner) {
+					for (let error of err.response.data.inner) {
 						if (error.path === 'email') {
 							this.emailError.push(error.message)
 						}
-
 						if (error.path === 'password') {
 							this.passwordError.push(error.message)
 						}

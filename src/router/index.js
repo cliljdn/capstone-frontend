@@ -1,17 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import RegisterForm from '../components/Admin/RegisterFormAdmin.vue'
+import RegisterForm from '@/components/Admin/RegisterFormAdmin.vue'
+import Login from '@/components/Admin/LoginForm.vue'
 Vue.use(VueRouter)
 
 const routes = [
-	// {
-	//   path: '/',
-	//   name: 'Home',
-	//   component: Home
-	// },
+	{
+		path: '/',
+		name: 'Login',
+		component: Login,
+	},
 	{
 		path: '/about',
-		name: 'About',
+		name: 'RegisterFormAdmin',
 		component: RegisterForm,
 		// route level code-splitting
 		// this generates a separate chunk (about.[hash].js) for this route
