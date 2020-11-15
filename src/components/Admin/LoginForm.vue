@@ -86,8 +86,6 @@
 </template>
 
 <script>
-import store from '../../store/index'
-import axios from 'axios'
 export default {
 	data() {
 		return {
@@ -102,43 +100,8 @@ export default {
 	methods: {
 		authUser: async function() {
 			try {
-				const url = `${store.state.BASE_URL}/admin/login`
-				const res = await axios.post(url, {
-					email: this.inpUsername,
-					password: this.inpPassword,
-				})
-				console.log(res)
-			} catch (err) {
-				if (
-					(!err.response.data.inner &&
-						err.response.data.message === 'Email is not registered') ||
-					(!err.response.data.inner &&
-						err.response.data.message === 'Account is not yet activated')
-				) {
-					this.emailError.push(err.response.data.message)
-				} else if (
-					!err.response.data.inner &&
-					err.response.data.message === 'Wrong password'
-				) {
-					this.passwordError.push(err.response.data.message)
-				} else {
-					for (const err of err.response.data.inner) {
-						if (err.path === 'email') {
-							if (this.emailError.length > 2) {
-								this.emailError = []
-							}
-							this.emailError.push(err.message)
-						}
-
-						if (err.path === 'password') {
-							if (this.passwordError.length > 2) {
-								this.passwordError = []
-							}
-							this.passwordError.push(err.message)
-						}
-					}
-				}
-			}
+				this.Login.authAdmin(this.inpUsername, this.inpPassword)
+			} catch (err) {}
 		},
 	},
 }

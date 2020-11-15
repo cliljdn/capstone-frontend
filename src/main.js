@@ -3,11 +3,18 @@ import App from './App.vue'
 import router from './router'
 import store from './store/index'
 import './assets/sass/main.scss'
-import axios from 'axios'
 
 Vue.config.productionTip = false
 
+//initialize global for axios
+import axios from 'axios'
 Vue.prototype.$http = axios
+
+// initialize vue-cookies globally
+import './plugins/cookies.plugins'
+
+// Initialize global Class
+import './components/Admin/LoginClass'
 
 new Vue({
 	router,
