@@ -1,18 +1,20 @@
 <template>
-	<div class="columns columns-parent is-gapless ">
-		<div class="column img-left is-half-fullhd is-hidden-mobile">
-			<h1 class="has-text-white">dito nakalgay yung fucking logo</h1>
+	<router-view>
+		<div class="main-section">
+			<indexNav />
+			<div class="columns columns-parent  is-mobile">
+				<div class="column">
+					<h1 class="has-text-white"></h1>
+				</div>
+			</div>
 		</div>
-
-		<div class="column login-form is-mobile">
-			<router-view />
-		</div>
-	</div>
+	</router-view>
 </template>
 
 <script>
+import indexNav from './components/Navbars/Indexnav'
 export default {
-	components: {},
+	components: { indexNav },
 }
 </script>
 
@@ -23,16 +25,5 @@ body {
 }
 .columns-parent {
 	height: 100%;
-}
-
-.login-form {
-	background-color: #dadbdf;
-}
-
-.img-left {
-	background-color: #f7f7f7;
-	/* background-image: url('');
-	background-repeat: no-repeat;
-	background-size: cover; */
 }
 </style>
