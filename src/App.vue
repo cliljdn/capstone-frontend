@@ -1,20 +1,10 @@
 <template>
-	<router-view>
-		<div class="main-section">
-			<indexNav />
-			<div class="columns columns-parent  is-mobile">
-				<div class="column">
-					<h1 class="has-text-white"></h1>
-				</div>
-			</div>
-		</div>
-	</router-view>
+	<router-view />
 </template>
 
 <script>
-import indexNav from './components/Navbars/Indexnav'
 export default {
-	components: { indexNav },
+	components: {},
 }
 </script>
 

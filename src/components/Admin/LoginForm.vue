@@ -75,11 +75,13 @@
 							>
 								Login
 							</button>
-							<button
-								class="button btn-register is-primary is-fullwidth is-link is-rounded mt-6"
-							>
-								Register
-							</button>
+							<router-link to="/admin/register">
+								<button
+									class="button btn-register is-primary is-fullwidth is-link is-rounded mt-6"
+								>
+									Register
+								</button>
+							</router-link>
 						</form>
 					</div>
 				</div>
@@ -90,7 +92,7 @@
 
 <script>
 import axios from 'axios'
-import router from '../../router/index'
+
 // import cookies from '../../assets/cookies/cookies'
 export default {
 	data() {
@@ -114,8 +116,7 @@ export default {
 				let { token } = res.data
 
 				this.$cookies.set('Token', token, '1D')
-				router.push({ path: '/about' })
-				// this.$store.state.ACCESS_TOKEN = this.$cookies.get('Token')
+				this.$store.state.ACCESS_TOKEN = this.$cookies.get('Token')
 			} catch (err) {
 				let inner = err.response.data.inner
 				let message = err.response.data.message
