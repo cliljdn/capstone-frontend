@@ -9,7 +9,7 @@
 			404
 		</h1>
 		<div class="is-inline-block is-align-content-center">
-			<h2 class="f textlead" id="desc">
+			<h2 class="f text	lead" id="desc">
 				The page you requested was not found.
 			</h2>
 		</div>
