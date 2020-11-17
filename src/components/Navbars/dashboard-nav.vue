@@ -1,7 +1,11 @@
 <template>
 	<div class="">
-		<div class="container mt-1">
-			<nav class="navbar" role="navigation" aria-label="main navigation">
+		<nav
+			class="navbar is-transparent"
+			role="navigation"
+			aria-label="main navigation"
+		>
+			<div class="container">
 				<div class="navbar-brand">
 					<a class="navbar-item" href="https://bulma.io">
 						<img
@@ -30,8 +34,24 @@
 						<a href="" class="navbar-item">Drivers</a>
 						<a href="" class="navbar-item">Establishment</a>
 					</div>
+
+					<div class="navbar-end">
+						<a href="" class="navbar-item">Profile</a>
+					</div>
 				</div>
-			</nav>
-		</div>
+			</div>
+		</nav>
+		<section class="hero is-success is-fullheight is-overlay">
+			<div class="hero-body">
+				<div class="container">
+					<h1 class="title">
+						Fullheight title
+					</h1>
+					<h2 class="subtitle">
+						Fullheight subtitle
+					</h2>
+				</div>
+			</div>
+		</section>
 	</div>
 </template>
