@@ -1,12 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import PageNotFound from '@/components/Notfound/NotFound'
+import PageNotFound from '@/components/Notfound/not-found.vue'
 
 //Admin
 
 Vue.use(VueRouter)
 
 const routes = [
+	{
+		path: '/',
+		name: 'AdminView',
+		component: () => import('@/views/Admin/Admin-view.vue'),
+	},
 	{ path: '/404', component: PageNotFound },
 	{ path: '*', redirect: '/404' },
 ]

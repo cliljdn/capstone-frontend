@@ -8,12 +8,4 @@ export default {
 }
 </script>
 
-<style>
-html,
-body {
-	height: 100%;
-}
-.columns-parent {
-	height: 100%;
-}
-</style>
+<style></style>
