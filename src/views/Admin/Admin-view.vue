@@ -1,7 +1,6 @@
 <template>
 	<div class="">
 		<dashboard-nav />
-		<div class="main"></div>
 	</div>
 </template>
 
@@ -12,8 +11,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-* {
-	@import './admin-dashboard.scss';
-}
-</style>
+<style lang="scss"></style>

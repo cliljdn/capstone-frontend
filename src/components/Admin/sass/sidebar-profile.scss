@@ -1,30 +1,56 @@
-body {
-	background-color: white;
+.profile-sidebar {
+	border-left: 1px solid grey;
+	width: 30%;
+	.inner-content {
+		margin: 1%;
+	}
 }
+
 // Small devices (landscape phones, 576px and up)
-@media screen and (max-width: 576px) {
-	body {
-		background-color: black;
+@media screen and (max-width: 480px) {
+	.profile-sidebar {
+		width: 90%;
+		.inner-content {
+			margin: 5%;
+		}
 	}
 }
 
 // Medium devices (tablets, 768px and up)
 @media screen and (max-width: 768px) {
-	body {
-		background-color: black;
+	.profile-sidebar {
+		background-color: lightblue;
+		width: 90%;
+		.inner-content {
+			margin: 5%;
+		}
 	}
 }
 
 // Large devices (desktops, 992px and up)
 @media screen and (max-width: 992px) {
-	body {
-		background-color: black;
+	.profile-sidebar {
+		width: 90%;
+		.inner-content {
+			margin: 5%;
+		}
 	}
 }
 
-// Extra large devices (large desktops, 1200px and up)
-@media (max-width: 1200px) {
-	body {
-		background-color: black;
+// Small screen laptops(small screen laptp, 1024px and up)
+@media screen and (max-width: 1024px) {
+	.profile-sidebar {
+		width: 90%;
+		.inner-content {
+			margin: 5%;
+		}
 	}
 }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media screen and (max-width: 1200px) {
+// 	.profile-sidebar {
+// 		background-color: lightblue;
+// 		width: 400px;
+// 	}
+// }
