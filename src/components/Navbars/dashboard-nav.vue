@@ -1,7 +1,7 @@
 <template>
 	<div class="">
 		<nav
-			class="navbar is-transparent"
+			class="navbar is-spaced"
 			role="navigation"
 			aria-label="main navigation"
 		>
@@ -40,18 +40,15 @@
 					</div>
 				</div>
 			</div>
+			<right-menu />
 		</nav>
-		<section class="hero is-success is-fullheight is-overlay">
-			<div class="hero-body">
-				<div class="container">
-					<h1 class="title">
-						Fullheight title
-					</h1>
-					<h2 class="subtitle">
-						Fullheight subtitle
-					</h2>
-				</div>
-			</div>
-		</section>
 	</div>
 </template>
+
+<script>
+import rightMenu from '../Admin/right-menu.vue'
+
+export default {
+	components: { rightMenu },
+}
+</script>

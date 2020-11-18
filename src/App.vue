@@ -8,4 +8,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+@import './src/components/Admin/sass/sidebar-profile.scss';
+</style>
