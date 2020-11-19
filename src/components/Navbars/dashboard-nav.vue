@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div id="nav-bar">
 		<nav
 			class="navbar is-spaced"
 			role="navigation"
@@ -18,6 +18,7 @@
 					<a
 						role="button"
 						class="navbar-burger burger"
+						@click="isActive = !isActive"
 						aria-label="menu"
 						aria-expanded="false"
 						data-target="navbarBasicExample"
@@ -28,7 +29,11 @@
 					</a>
 				</div>
 
-				<div class="navbar-menu">
+				<div
+					id="navbarBasicExample"
+					class="navbar-menu"
+					:class="{ 'is-active': isActive }"
+				>
 					<div class="navbar-start">
 						<a href="" class="navbar-item">Users</a>
 						<a href="" class="navbar-item">Drivers</a>
@@ -36,19 +41,24 @@
 					</div>
 
 					<div class="navbar-end">
-						<a href="" class="navbar-item">Profile</a>
+						<a @click="sidebarSeen = !sidebarSeen" class="navbar-item"
+							>Profile</a
+						>
 					</div>
 				</div>
 			</div>
-			<right-menu />
+			<transition name="show" v-if="sidebarSeen">
+				<sidebar :sidebarSeen="sidebarSeen" />
+			</transition>
 		</nav>
 	</div>
 </template>
 
 <script>
-import rightMenu from '../Admin/right-menu.vue'
-
-export default {
-	components: { rightMenu },
-}
+import app from './nav-model/nav-bar.model.js'
+export default app
 </script>
+
+<style lang="scss">
+@import './sass/dashboard-nav.scss';
+</style>

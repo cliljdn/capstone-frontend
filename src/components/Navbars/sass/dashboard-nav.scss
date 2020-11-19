@@ -1,0 +1,17 @@
+// .show-enter-active,
+// .show-leave-enter {
+// 	transform: translateX(0);
+// 	transition: all 0.3s linear;
+// }
+// .show-enter,
+// .show-leave-to {
+// 	transform: translateX(100%);
+// }
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	opacity: 0;
+}
