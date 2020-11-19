@@ -8,7 +8,9 @@
 					<strong>Admin Profile</strong>
 					<a>
 						<span class="icon has-text-info is-pulled-right">
-							<button @click="closeSidebar">{{ sidebarSeen }}</button>
+							<router-link to="/">
+								<button>hide</button>
+							</router-link>
 							<i class="fas fa-info-circle"></i>
 						</span>
 					</a>

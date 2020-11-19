@@ -6,7 +6,19 @@ export default {
 	data() {
 		return {
 			sidebarSeen: false,
-			isActive: true,
+			show: false,
+			isActive: false,
 		}
+	},
+
+	methods: {
+		showProfile: function() {
+			if (!this.sidebarSeen) {
+				this.show = true
+			} else {
+				this.show = true
+			}
+			console.log(this.show)
+		},
 	},
 }

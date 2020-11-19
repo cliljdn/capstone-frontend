@@ -11,7 +11,15 @@ const routes = [
 		path: '/',
 		name: 'AdminView',
 		component: () => import('@/views/Admin/Admin-view.vue'),
+		children: [
+			{
+				path: 'profile',
+				name: 'admin-profile',
+				component: () => import('@/components/Admin/sidebar-profile.vue'),
+			},
+		],
 	},
+
 	{ path: '/404', component: PageNotFound },
 	{ path: '*', redirect: '/404' },
 ]

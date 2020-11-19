@@ -41,15 +41,16 @@
 					</div>
 
 					<div class="navbar-end">
-						<a @click="sidebarSeen = !sidebarSeen" class="navbar-item"
-							>Profile</a
-						>
+						<router-link to="profile">
+							<a class="navbar-item">Profile</a>
+						</router-link>
 					</div>
 				</div>
 			</div>
-			<transition name="show" v-if="sidebarSeen">
-				<sidebar :sidebarSeen="sidebarSeen" />
-			</transition>
+
+			<!-- <transition name="show">
+				<sidebar />
+			</transition> -->
 		</nav>
 	</div>
 </template>
