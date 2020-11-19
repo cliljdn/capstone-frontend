@@ -1,6 +1,12 @@
-import dashnav from '../../Navbars/dashboard-nav'
 export default {
-	components: { 'dashboard-nav': dashnav },
+	props: {
+		sidebarSeen: Boolean,
+	},
+	methods: {
+		closeSidebar: function() {
+			return this.sidebarSeen ? false : true
+		},
+	},
 	data() {
 		return {
 			hideCompo: false,
