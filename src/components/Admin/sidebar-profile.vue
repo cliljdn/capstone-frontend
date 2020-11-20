@@ -3,17 +3,12 @@
 		<section
 			class="hero is-fullheight profile-sidebar  is-pulled-right has-background-white"
 		>
-			<div class="columns inner-content">
-				<div class="column m-5">
+			<div class="columns m-5">
+				<div class="column">
 					<strong>Admin Profile</strong>
-					<a>
-						<span class="icon has-text-info is-pulled-right">
-							<router-link to="/">
-								<button>hide</button>
-							</router-link>
-							<i class="fas fa-info-circle"></i>
-						</span>
-					</a>
+					<span class="icon  is-pulled-right">
+						<a @click="toggleSideBar"><i class="fas fa-times"></i></a>
+					</span>
 				</div>
 			</div>
 		</section>

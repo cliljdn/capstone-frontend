@@ -1,18 +1,12 @@
 .profile-sidebar {
 	border-left: 1px solid grey;
 	width: 30%;
-	.inner-content {
-		margin: 1%;
-	}
 }
 
 // Small devices (landscape phones, 576px and up)
 @media screen and (max-width: 480px) {
 	.profile-sidebar {
 		width: 90%;
-		.inner-content {
-			margin: 5%;
-		}
 	}
 }
 
@@ -21,9 +15,6 @@
 	.profile-sidebar {
 		background-color: lightblue;
 		width: 90%;
-		.inner-content {
-			margin: 5%;
-		}
 	}
 }
 
@@ -31,9 +22,6 @@
 @media screen and (max-width: 992px) {
 	.profile-sidebar {
 		width: 90%;
-		.inner-content {
-			margin: 5%;
-		}
 	}
 }
 
@@ -41,9 +29,6 @@
 @media screen and (max-width: 1024px) {
 	.profile-sidebar {
 		width: 90%;
-		.inner-content {
-			margin: 5%;
-		}
 	}
 }
 

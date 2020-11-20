@@ -1,6 +1,6 @@
 <template>
 	<div class="">
-		<DashboardNav to="profile" />
+		<DashboardNav />
 	</div>
 </template>
 

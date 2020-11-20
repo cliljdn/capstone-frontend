@@ -5,20 +5,14 @@ export default {
 	},
 	data() {
 		return {
-			sidebarSeen: false,
-			show: false,
 			isActive: false,
 		}
 	},
 
 	methods: {
-		showProfile: function() {
-			if (!this.sidebarSeen) {
-				this.show = true
-			} else {
-				this.show = true
-			}
-			console.log(this.show)
+		// hide and show the sidebar profile
+		toggleSideBar() {
+			return this.$store.commit('toggleSideBar')
 		},
 	},
 }

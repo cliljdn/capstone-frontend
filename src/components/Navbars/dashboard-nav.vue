@@ -41,16 +41,15 @@
 					</div>
 
 					<div class="navbar-end">
-						<router-link to="profile">
-							<a class="navbar-item">Profile</a>
-						</router-link>
+						<a @click="toggleSideBar" class="navbar-item">Profile</a>
 					</div>
 				</div>
 			</div>
-
-			<!-- <transition name="show">
-				<sidebar />
-			</transition> -->
+			<transition name="fade">
+				<div v-if="this.$store.state.sideBarOpen">
+					<sidebar />
+				</div>
+			</transition>
 		</nav>
 	</div>
 </template>
