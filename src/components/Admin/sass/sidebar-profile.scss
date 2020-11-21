@@ -2,17 +2,38 @@
 	border-left: 1px solid grey;
 	position: relative;
 	width: 30%;
-}
-.container {
-	display: flex;
+
+	.container {
+		display: flex;
+		flex-direction: row;
+		.admin-email {
+			white-space: nowrap;
+		}
+	}
+	.main-container {
+		margin: 30px;
+	}
 }
 
 // Small devices (landscape phones, 576px and up)
 @media screen and (max-width: 480px) {
 	.profile-sidebar {
-		width: 90%;
-		.admin-info {
-			display: block;
+		width: 100%;
+		min-width: 100%;
+
+		.container {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.main-container {
+			position: absolute;
+			padding-right: 100px !important;
+
+			.close-sidebar {
+				position: relative;
+				right: 1000px;
+			}
 		}
 	}
 }
@@ -20,21 +41,63 @@
 // Medium devices (tablets, 768px and up)
 @media screen and (max-width: 768px) {
 	.profile-sidebar {
-		background-color: lightblue;
-		width: 90%;
+		width: 100%;
+		min-width: 100%;
+
+		.container {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.main-container {
+			position: absolute;
+			padding-right: 100px !important;
+
+			.close-sidebar {
+				position: relative;
+				right: 1000px;
+			}
+		}
 	}
 }
 
 // Large devices (desktops, 992px and up)
 @media screen and (max-width: 992px) {
 	.profile-sidebar {
-		width: 90%;
+		width: 100%;
+		min-width: 100%;
+
+		.container {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.main-container {
+			position: absolute;
+			padding-right: 100px !important;
+
+			.close-sidebar {
+				position: relative;
+				right: 1000px;
+			}
+		}
 	}
 }
 
 // Small screen laptops(small screen laptp, 1024px and up)
 @media screen and (max-width: 1024px) {
 	.profile-sidebar {
-		width: 90%;
+		width: 100%;
+		min-width: 100%;
+
+		.main-container {
+			position: relative;
+			padding-right: 100px !important;
+
+			.close-sidebar {
+				position: relative;
+				right: -100px;
+			}
+		}
 	}
 }
