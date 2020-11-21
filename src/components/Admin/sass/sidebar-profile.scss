@@ -1,12 +1,19 @@
 .profile-sidebar {
 	border-left: 1px solid grey;
+	position: relative;
 	width: 30%;
+}
+.container {
+	display: flex;
 }
 
 // Small devices (landscape phones, 576px and up)
 @media screen and (max-width: 480px) {
 	.profile-sidebar {
 		width: 90%;
+		.admin-info {
+			display: block;
+		}
 	}
 }
 
@@ -31,11 +38,3 @@
 		width: 90%;
 	}
 }
-
-// // Extra large devices (large desktops, 1200px and up)
-// @media screen and (max-width: 1200px) {
-// 	.profile-sidebar {
-// 		background-color: lightblue;
-// 		width: 400px;
-// 	}
-// }
