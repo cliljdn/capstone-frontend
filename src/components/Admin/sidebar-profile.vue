@@ -4,14 +4,14 @@
 			class="hero is-fullheight profile-sidebar is-pulled-right  has-background-white"
 		>
 			<div class="main-container is-mobile">
-				<div class="has-text-weight-bold is-flex-direction-row mb-5">
+				<div class="has-text-weight-bold  mb-5">
 					Admin Profile
 					<span class="icon is-pulled-right close-sidebar is-0-mobile">
 						<a @click="toggleSideBar"><i class="fas fa-times"></i></a>
 					</span>
 					<div class="is-clearfix"></div>
 				</div>
-				<div class="container admin-info">
+				<div class="container admin-name">
 					<div class="item-1">
 						<img
 							src="https://i.imgur.com/bCOd9N0.jpg"
@@ -33,11 +33,13 @@
 							<span class="ml-2 pr-10">caliljaudiannn@gmail.com</span>
 						</span>
 
-						<button class="btn-signout button is-success is-rounded">
+						<button class="btn-signout pd-5   button is-ghost ">
 							Sign out
 						</button>
 					</div>
 				</div>
+				<!-- Admin Additional info -->
+				<div class="container admin-address"></div>
 			</div>
 		</main>
 		<div class="prevent-overflow">&nbsp;</div>
