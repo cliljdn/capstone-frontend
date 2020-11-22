@@ -3,109 +3,130 @@
 	position: relative;
 	width: 30%;
 
-	.container {
-		display: flex;
-		flex-direction: row;
-		align-content: center;
+	.main-container {
+		margin: 30px;
 
-		.admin-email {
+		.container {
+			margin: 5px;
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+
+			.admin-email {
+				white-space: nowrap;
+			}
+
+			.btn-signout {
+				bottom: 10%;
+				margin-left: 40%;
+				width: 140%;
+				max-width: 150%;
+			}
+		}
+
+		.personal-info-text {
+			margin: 5px !important;
 			white-space: nowrap;
 		}
 
-		.btn-signout {
-			bottom: 10%;
-			margin-left: 40%;
-			width: 140%;
-			max-width: 150%;
+		.container-info {
+			border-top: 1px solid grey;
+			border-bottom: 1px solid grey;
+			display: flex;
+			flex-direction: column;
 		}
-	}
-	.main-container {
-		margin: 30px;
 	}
 }
 
 // Small devices (landscape phones, 576px and up)
-@media screen and (max-width: 480px) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
 	.profile-sidebar {
+		position: fixed;
 		width: 100%;
-		min-width: 100%;
-
-		.container {
-			display: flex;
-			flex-direction: row;
-		}
 
 		.main-container {
 			position: absolute;
 			padding-right: 100px !important;
+			width: 100%;
+
+			.container {
+				display: flex;
+				flex-direction: row;
+			}
+
+			.container-info {
+				width: 110%;
+				border-top: 1px solid grey;
+				border-bottom: 1px grey;
+				border-bottom-style: dotted !important;
+				border-top-style: dotted !important;
+			}
 
 			.close-sidebar {
-				position: relative;
-				right: 1000px;
+				position: absolute;
+				right: 60px;
 			}
 		}
 	}
 }
 
 // Medium devices (tablets, 768px and up)
-@media screen and (max-width: 768px) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
 	.profile-sidebar {
 		width: 100%;
 		min-width: 100%;
 
-		.container {
-			display: flex;
-			flex-direction: row;
-		}
-
 		.main-container {
 			position: absolute;
 			padding-right: 100px !important;
+			width: 100%;
+
+			.container {
+				display: flex;
+				flex-direction: row;
+			}
+			.container-info {
+				width: 105%;
+				border-top: 1px solid grey;
+				border-bottom: 1px grey;
+				border-bottom-style: dotted !important;
+				border-top-style: dotted !important;
+			}
 
 			.close-sidebar {
 				position: relative;
-				right: 1000px;
+				right: 100px;
 			}
 		}
 	}
 }
 
-// Large devices (desktops, 992px and up)
-@media screen and (max-width: 992px) {
+// Small screen laptops non retina screens (small screen laptp, 1024px and up)
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
 	.profile-sidebar {
-		width: 100%;
-		min-width: 100%;
-
-		.container {
-			display: flex;
-			flex-direction: row;
-		}
-
-		.main-container {
-			position: absolute;
-			padding-right: 100px !important;
-
-			.close-sidebar {
-				position: relative;
-				right: 1000px;
-			}
-		}
-	}
-}
-
-// Small screen laptops(small screen laptp, 1024px and up)
-@media screen and (max-width: 1024px) {
-	.profile-sidebar {
-		width: 100%;
-		min-width: 100%;
+		width: 30%;
+		min-width: 30%;
 
 		.main-container {
 			position: relative;
 			padding-right: 100px !important;
+			width: 100%;
+
+			.container {
+				display: flex;
+				flex-direction: row;
+			}
+			.container-info {
+				width: 110%;
+				border-top: 1px solid grey;
+				border-bottom: 1px grey;
+				border-bottom-style: dotted !important;
+				border-top-style: dotted !important;
+			}
 
 			.close-sidebar {
-				position: relative;
-				right: -100px;
+				position: absolute;
+				right: 60px;
 			}
 		}
 	}
