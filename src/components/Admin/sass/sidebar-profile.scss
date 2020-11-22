@@ -8,6 +8,7 @@
 
 		.container {
 			margin: 5px;
+			padding-bottom: 20px;
 			display: flex;
 			flex-direction: row;
 			align-content: center;
@@ -22,18 +23,55 @@
 				width: 140%;
 				max-width: 150%;
 			}
+
+			.btn-signout:hover {
+				background-color: #5cb85c;
+				color: white;
+			}
 		}
 
-		.personal-info-text {
-			margin: 5px !important;
-			white-space: nowrap;
+		.info-header {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+
+			.personal-icon-text {
+				margin: 5px !important;
+				white-space: nowrap;
+			}
+
+			.btn-edit-profile {
+				position: absolute;
+				min-width: 130px;
+				font-size: 16px;
+				padding: 0;
+				bottom: 10%;
+				left: 60%;
+				height: 40px;
+				border-radius: 15px;
+			}
+
+			.btn-edit-profile:hover {
+				background: #5cb85c;
+				color: white;
+			}
 		}
 
 		.container-info {
+			margin: 5px;
+			padding: 20px;
 			border-top: 1px solid grey;
 			border-bottom: 1px solid grey;
 			display: flex;
 			flex-direction: column;
+
+			.icon {
+				font-weight: bold;
+			}
+
+			.contact-icon {
+				white-space: nowrap;
+			}
 		}
 	}
 }
@@ -41,30 +79,38 @@
 // Small devices (landscape phones, 576px and up)
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
 	.profile-sidebar {
-		position: fixed;
+		position: relative;
 		width: 100%;
+		height: auto;
 
 		.main-container {
 			position: absolute;
 			padding-right: 100px !important;
 			width: 100%;
 
+			.close-sidebar {
+				position: absolute;
+				right: 60px;
+			}
+
 			.container {
 				display: flex;
 				flex-direction: row;
 			}
 
+			.info-header {
+				.btn-edit-profile {
+					left: 70%;
+				}
+			}
+
 			.container-info {
 				width: 110%;
+				height: auto;
 				border-top: 1px solid grey;
 				border-bottom: 1px grey;
 				border-bottom-style: dotted !important;
 				border-top-style: dotted !important;
-			}
-
-			.close-sidebar {
-				position: absolute;
-				right: 60px;
 			}
 		}
 	}
@@ -73,11 +119,11 @@
 // Medium devices (tablets, 768px and up)
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
 	.profile-sidebar {
+		position: relative;
 		width: 100%;
-		min-width: 100%;
 
 		.main-container {
-			position: absolute;
+			position: relative;
 			padding-right: 100px !important;
 			width: 100%;
 
@@ -96,37 +142,6 @@
 			.close-sidebar {
 				position: relative;
 				right: 100px;
-			}
-		}
-	}
-}
-
-// Small screen laptops non retina screens (small screen laptp, 1024px and up)
-@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
-	.profile-sidebar {
-		width: 30%;
-		min-width: 30%;
-
-		.main-container {
-			position: relative;
-			padding-right: 100px !important;
-			width: 100%;
-
-			.container {
-				display: flex;
-				flex-direction: row;
-			}
-			.container-info {
-				width: 110%;
-				border-top: 1px solid grey;
-				border-bottom: 1px grey;
-				border-bottom-style: dotted !important;
-				border-top-style: dotted !important;
-			}
-
-			.close-sidebar {
-				position: absolute;
-				right: 60px;
 			}
 		}
 	}
