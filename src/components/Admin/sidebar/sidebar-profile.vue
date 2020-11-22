@@ -1,7 +1,7 @@
 <template>
 	<div class="is-overlay">
 		<main
-			class="hero is-fullheight profile-sidebar  is-pulled-right has-background-white"
+			class="hero  is-fullheight profile-sidebar  is-pulled-right has-background-white"
 		>
 			<div class="main-container">
 				<div class="has-text-weight-bold mb-5">
@@ -11,7 +11,7 @@
 					</span>
 					<div class="is-clearfix"></div>
 				</div>
-				<div class="container admin-name">
+				<div class="container-header admin-name">
 					<div class="item-1">
 						<img
 							src="https://i.imgur.com/bCOd9N0.jpg"
@@ -53,6 +53,7 @@
 					<span class="icon is-small address-icon is-left level">
 						<i class="fas fa-home"></i>
 						<span class="ml-2">Address: </span>
+						<p class="ml-1">Blk 7 Lot 16 Sta.monica Subdivision</p>
 					</span>
 					<span class="icon is-small barangay-icon is-left level">
 						<i class="fas fa-home"></i>

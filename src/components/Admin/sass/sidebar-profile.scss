@@ -4,9 +4,9 @@
 	width: 30%;
 
 	.main-container {
+		position: relative;
 		margin: 30px;
-
-		.container {
+		.container-header {
 			margin: 5px;
 			padding-bottom: 20px;
 			display: flex;
@@ -67,10 +67,7 @@
 
 			.icon {
 				font-weight: bold;
-			}
-
-			.contact-icon {
-				white-space: nowrap;
+				word-wrap: break-word !important;
 			}
 		}
 	}
@@ -84,7 +81,8 @@
 		height: auto;
 
 		.main-container {
-			position: absolute;
+			margin: 30px;
+			position: fixed;
 			padding-right: 100px !important;
 			width: 100%;
 
@@ -93,7 +91,7 @@
 				right: 60px;
 			}
 
-			.container {
+			.container-header {
 				display: flex;
 				flex-direction: row;
 			}
@@ -105,7 +103,7 @@
 			}
 
 			.container-info {
-				width: 110%;
+				width: 100%;
 				height: auto;
 				border-top: 1px solid grey;
 				border-bottom: 1px grey;
@@ -127,12 +125,11 @@
 			padding-right: 100px !important;
 			width: 100%;
 
-			.container {
+			.container-header {
 				display: flex;
 				flex-direction: row;
 			}
 			.container-info {
-				width: 105%;
 				border-top: 1px solid grey;
 				border-bottom: 1px grey;
 				border-bottom-style: dotted !important;
