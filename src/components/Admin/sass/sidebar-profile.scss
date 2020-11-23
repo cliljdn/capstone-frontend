@@ -73,16 +73,16 @@
 			white-space: nowrap;
 
 			.address-icon {
-				width: auto;
+				width: 100%;
+				height: auto;
 				border: 1px solid grey;
 				padding: 5px;
 				margin-bottom: 10px;
 
-				.address-label span {
-					box-sizing: border-box;
-					display: block;
-					width: auto;
-					border: 1px solid yellow;
+				p span {
+					display: block !important;
+					max-width: 65%;
+					border: 1px solid green;
 				}
 			}
 

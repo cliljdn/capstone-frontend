@@ -56,8 +56,9 @@
 						<span class="icon is-small  is-left level">
 							<i class="fas fa-home"></i>
 							<span class="ml-2">Address: </span>
-							<p class="ml-1 field-info address-label">
-								<span class=""> Blk 7 Lot lot 16 stamonica hahahahaha</span>
+
+							<p class="ml-1 field-info-address">
+								<span>Blk 7 Lot lot 16 hahahahaha hahahahahahahaah</span>
 							</p>
 						</span>
 					</div>
