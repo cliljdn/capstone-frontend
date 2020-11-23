@@ -1,4 +1,4 @@
-import sidebar from '../../Admin/sidebar-profile'
+import sidebar from '../../Admin/sidebar/sidebar-profile'
 export default {
 	components: {
 		sidebar,

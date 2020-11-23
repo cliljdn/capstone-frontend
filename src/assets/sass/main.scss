@@ -8,4 +8,8 @@ $font-stack: 'Raleway', sans-serif;
 body {
 	margin: 0;
 	font: 100% $font-stack;
+
+	button {
+		font: 100% $font-stack;
+	}
 }
