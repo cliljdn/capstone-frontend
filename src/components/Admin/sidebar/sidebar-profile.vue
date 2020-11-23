@@ -42,7 +42,9 @@
 				<div class="info-header">
 					<span class="icon is-small personal-icon-text is-left level">
 						<i class="fas fa-info"></i>
-						<span class=" ml-2">Personal Information</span>
+						<span class=" ml-2 is-success has-text-weight-bold personal-header"
+							>Personal Information</span
+						>
 					</span>
 					<button class="btn-edit-profile is-medium  button is-ghost">
 						Edit Profile
@@ -50,39 +52,71 @@
 				</div>
 
 				<div class="container-info admin-personal-info">
-					<span class="icon is-small address-icon is-left level">
-						<i class="fas fa-home"></i>
-						<span class="ml-2">Address: </span>
-						<p class="ml-1">Blk 7 Lot 16 Sta.monica Subdivision</p>
-					</span>
-					<span class="icon is-small barangay-icon is-left level">
-						<i class="fas fa-home"></i>
-						<span class="ml-2">Barangay: </span>
-					</span>
-					<span class="icon is-small city-icon is-left level">
-						<i class="fas fa-home"></i>
-						<span class="ml-2">City: </span>
-					</span>
-					<span class="icon is-small firstname-icon is-left level">
-						<i class="fas fa-home"></i>
-						<span class="ml-2">Firstname: </span>
-					</span>
-					<span class="icon is-small lastname-icon is-left level">
-						<i class="fas fa-home"></i>
-						<span class="ml-2">Lastname: </span>
-					</span>
-					<span class="icon is-small mname-icon is-left level">
-						<i class="fas fa-home"></i>
-						<span class="ml-2">Middlename: </span>
-					</span>
-					<span class="icon is-small age-icon is-left level">
-						<i class="fas fa-home"></i>
-						<span class="ml-2">Age: </span>
-					</span>
-					<span class="icon is-small contact-icon is-left level">
-						<i class="fas fa-phone"></i>
-						<span class="ml-2">Contact Number: </span>
-					</span>
+					<div class="address-icon">
+						<span class="icon is-small  is-left level">
+							<i class="fas fa-home"></i>
+							<span class="ml-2">Address: </span>
+							<p class="ml-1 field-info address-label">
+								<span class=""> Blk 7 Lot lot 16 stamonica hahahahaha</span>
+							</p>
+						</span>
+					</div>
+
+					<div class="barangay-icon">
+						<span class="icon is-small is-left level">
+							<i class="fas fa-home"></i>
+							<span class="ml-2">Barangay: </span>
+							<p class="ml-1 field-info"><span>Sto.thomas</span></p>
+						</span>
+					</div>
+
+					<div class="city-icon">
+						<span class="icon is-small is-left level">
+							<i class="fas fa-home"></i>
+							<span class="ml-2">City: </span>
+							<p class="ml-1 field-info"><span>Olongapo City</span></p>
+						</span>
+					</div>
+
+					<div class="firstname-icon">
+						<span class="icon is-small is-left level">
+							<i class="fas fa-home"></i>
+							<span class="ml-2">Firstname: </span>
+							<p class="ml-1 field-info"><span>Calil</span></p>
+						</span>
+					</div>
+
+					<div class="lastname-icon">
+						<span class="icon is-small is-left level">
+							<i class="fas fa-home"></i>
+							<span class="ml-2">Lastname: </span>
+							<p class="ml-1 field-info"><span>Jaudian</span></p>
+						</span>
+					</div>
+
+					<div class="mname-icon">
+						<span class="icon is-small is-left level">
+							<i class="fas fa-home"></i>
+							<span class="ml-2">Middlename: </span>
+							<p class="ml-1 field-info"><span>Christopher</span></p>
+						</span>
+					</div>
+
+					<div class="age-icon">
+						<span class="icon is-small is-left level">
+							<i class="fas fa-home"></i>
+							<span class="ml-2">Age: </span>
+							<p class="ml-1 field-info"><span>23</span></p>
+						</span>
+					</div>
+
+					<div class="contact-icon">
+						<span class="icon is-small  is-left level">
+							<i class="fas fa-phone"></i>
+							<span class="ml-2">Contact Number: </span>
+							<p class="ml-1 field-info"><span>09955591932</span></p>
+						</span>
+					</div>
 				</div>
 			</div>
 		</main>

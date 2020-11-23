@@ -5,16 +5,14 @@
 		<link rel="icon" href="<%= BASE_URL %>favicon.ico" />
 		<title><%= htmlWebpackPlugin.options.title %></title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, maximum-scale=1" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"
+		/>
 		<script
 			defer
 			src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"
 		></script>
-		<style>
-			@-ms-viewport {
-				width: device-width;
-			}
-		</style>
 	</head>
 	<body>
 		<noscript>
@@ -24,6 +22,7 @@
 				continue.</strong
 			>
 		</noscript>
+
 		<div id="app"></div>
 		<!-- built files will be auto injected -->
 	</body>

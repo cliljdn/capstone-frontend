@@ -1,3 +1,5 @@
+@import '../../../assets/sass/mixins.scss';
+// for laptops
 .profile-sidebar {
 	border-left: 1px solid grey;
 	position: relative;
@@ -6,6 +8,7 @@
 	.main-container {
 		position: relative;
 		margin: 30px;
+
 		.container-header {
 			margin: 5px;
 			padding-bottom: 20px;
@@ -59,25 +62,208 @@
 
 		.container-info {
 			margin: 5px;
-			padding: 20px;
+			padding-top: 20px;
+			padding-bottom: 20px;
 			border-top: 1px solid grey;
 			border-bottom: 1px solid grey;
 			display: flex;
 			flex-direction: column;
+			width: 100%;
+			font-weight: bold;
+			white-space: nowrap;
 
-			.icon {
-				font-weight: bold;
-				word-wrap: break-word !important;
+			.address-icon {
+				width: auto;
+				border: 1px solid grey;
+				padding: 5px;
+				margin-bottom: 10px;
+
+				.address-label span {
+					box-sizing: border-box;
+					display: block;
+					width: auto;
+					border: 1px solid yellow;
+				}
+			}
+
+			.barangay-icon {
+				width: 100%;
+				border: 1px solid grey;
+				padding: 5px;
+				margin-bottom: 10px;
+				.address-label span {
+					position: relative;
+					display: block;
+					width: auto;
+					border: 1px solid black;
+				}
+			}
+
+			.city-icon {
+				width: 100%;
+				border: 1px solid grey;
+				padding: 5px;
+				margin-bottom: 10px;
+				.address-label span {
+					position: relative;
+					display: block;
+					width: auto;
+					border: 1px solid black;
+				}
+			}
+
+			.firstname-icon {
+				width: 100%;
+				border: 1px solid grey;
+				padding: 5px;
+				margin-bottom: 10px;
+				.address-label span {
+					position: relative;
+					display: block;
+					width: auto;
+					border: 1px solid black;
+				}
+			}
+
+			.lastname-icon {
+				width: 100%;
+				border: 1px solid grey;
+				padding: 5px;
+				margin-bottom: 10px;
+				.address-label span {
+					position: relative;
+					display: block;
+					width: auto;
+					border: 1px solid black;
+				}
+			}
+
+			.mname-icon {
+				width: 100%;
+				border: 1px solid grey;
+				padding: 5px;
+				margin-bottom: 10px;
+				.address-label span {
+					position: relative;
+					display: block;
+					width: auto;
+					border: 1px solid black;
+				}
+			}
+
+			.age-icon {
+				width: 100%;
+				border: 1px solid grey;
+				padding: 5px;
+				margin-bottom: 10px;
+				.address-label span {
+					position: relative;
+					display: block;
+					width: auto;
+					border: 1px solid black;
+				}
+			}
+
+			.contact-icon {
+				width: 100%;
+				border: 1px solid grey;
+				padding: 5px;
+				margin-bottom: 10px;
+				.address-label span {
+					position: relative;
+					display: block;
+					width: auto;
+					border: 1px solid black;
+				}
+			}
+		}
+	}
+}
+
+/* Portrait and Landscape */
+@include xsm {
+	.profile-sidebar {
+		border-left: 1px solid grey;
+		position: relative;
+		width: 105%;
+
+		.main-container {
+			position: relative;
+			margin: 30px;
+			.container-header {
+				margin: 5px;
+				padding-bottom: 20px;
+				display: flex;
+				flex-direction: row;
+				align-content: center;
+
+				.admin-email {
+					white-space: nowrap;
+				}
+
+				.btn-signout {
+					bottom: 10%;
+					margin-left: 20%;
+					width: 140%;
+					max-width: 150%;
+				}
+
+				.btn-signout:hover {
+					background-color: #5cb85c;
+					color: white;
+				}
+			}
+
+			.info-header {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+
+				.personal-icon-text {
+					margin: 5px !important;
+					white-space: nowrap;
+				}
+
+				.btn-edit-profile {
+					position: absolute;
+					min-width: 10px;
+					font-size: 16px;
+					padding: 0;
+					bottom: 10%;
+					left: 75%;
+					height: 40px;
+					border-radius: 15px;
+				}
+
+				.btn-edit-profile:hover {
+					background: #5cb85c;
+					color: white;
+				}
+			}
+
+			.container-info {
+				margin: 5px;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				border-top: 1px solid grey;
+				border-bottom: 1px solid grey;
+				display: flex;
+				flex-direction: column;
+
+				.icon {
+					font-weight: bold;
+					word-wrap: break-word !important;
+				}
 			}
 		}
 	}
 }
 
 // Small devices (landscape phones, 576px and up)
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+@include sm {
 	.profile-sidebar {
 		position: relative;
-		width: 100%;
+		width: 100% !important;
 		height: auto;
 
 		.main-container {
@@ -103,8 +289,9 @@
 			}
 
 			.container-info {
-				width: 100%;
-				height: auto;
+				margin: 5px;
+				padding-top: 20px;
+				padding-bottom: 20px;
 				border-top: 1px solid grey;
 				border-bottom: 1px grey;
 				border-bottom-style: dotted !important;
@@ -115,11 +302,47 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+@include md {
 	.profile-sidebar {
 		position: relative;
 		width: 100%;
 
+		.main-container {
+			position: relative;
+			padding-right: 100px !important;
+			width: 100%;
+			margin-top: 100px;
+			margin-left: 60px;
+
+			.container-header {
+				display: flex;
+				flex-direction: row;
+			}
+			.container-info {
+				margin: 5px;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				border-top: 1px solid grey;
+				border-bottom: 1px grey;
+				border-bottom-style: dotted !important;
+				border-top-style: dotted !important;
+			}
+
+			.close-sidebar {
+				position: relative;
+				right: 15px;
+			}
+		}
+	}
+}
+
+@include lg {
+	.profile-sidebar {
+		position: relative;
+		width: 100%;
+		min-height: 100px !important;
+		height: 10% !important;
+		padding: 0;
 		.main-container {
 			position: relative;
 			padding-right: 100px !important;
@@ -130,15 +353,22 @@
 				flex-direction: row;
 			}
 			.container-info {
+				margin: 5px;
+				padding-top: 20px;
+				padding-bottom: 20px;
 				border-top: 1px solid grey;
 				border-bottom: 1px grey;
 				border-bottom-style: dotted !important;
 				border-top-style: dotted !important;
+
+				.icon {
+					margin-bottom: 50px;
+				}
 			}
 
 			.close-sidebar {
 				position: relative;
-				right: 100px;
+				right: 15px;
 			}
 		}
 	}

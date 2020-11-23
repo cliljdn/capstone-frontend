@@ -13,3 +13,19 @@ body {
 		font: 100% $font-stack;
 	}
 }
+
+// responsive
+// Small tablets and small smartphones (landscape view)
+$screen-xsm-min: 280px;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 1024px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
