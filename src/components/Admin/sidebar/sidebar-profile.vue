@@ -52,70 +52,73 @@
 				</div>
 
 				<div class="container-info admin-personal-info">
-					<div class="address-icon">
-						<span class="icon is-small  is-left level">
+					<div class="address-container">
+						<span class="icon address-icon is-small  is-left level">
 							<i class="fas fa-home"></i>
 							<span class="ml-2">Address: </span>
 
-							<p class="ml-1 field-info-address">
-								<span>Blk 7 Lot lot 16 hahahahaha hahahahahahahaah</span>
+							<p class="ml-1 address-label">
+								<span>Blk 7 Lot lot 16 Sta.monica subdivision</span>
 							</p>
 						</span>
 					</div>
 
-					<div class="barangay-icon">
-						<span class="icon is-small is-left level">
+					<div class="barangay-container">
+						<span class="icon barangay-icon is-small is-left level">
 							<i class="fas fa-home"></i>
 							<span class="ml-2">Barangay: </span>
-							<p class="ml-1 field-info"><span>Sto.thomas</span></p>
+
+							<p class="ml-1 barangay-label"><span>Sto.thomas</span></p>
 						</span>
 					</div>
 
-					<div class="city-icon">
-						<span class="icon is-small is-left level">
+					<div class="city-container">
+						<span class="icon is-small city-icon is-left level">
 							<i class="fas fa-home"></i>
 							<span class="ml-2">City: </span>
-							<p class="ml-1 field-info"><span>Olongapo City</span></p>
+							<p class="ml-1 city-label"><span>Olongapo City</span></p>
 						</span>
 					</div>
 
-					<div class="firstname-icon">
-						<span class="icon is-small is-left level">
+					<div class="firstname-container">
+						<span class="icon is-small firstname-icon is-left level">
 							<i class="fas fa-home"></i>
 							<span class="ml-2">Firstname: </span>
-							<p class="ml-1 field-info"><span>Calil</span></p>
+							<p class="ml-1 firstname-label"><span>Calil</span></p>
 						</span>
 					</div>
 
-					<div class="lastname-icon">
-						<span class="icon is-small is-left level">
+					<div class="lastname-container">
+						<span class="icon is-small lastname-icon is-left level">
 							<i class="fas fa-home"></i>
 							<span class="ml-2">Lastname: </span>
-							<p class="ml-1 field-info"><span>Jaudian</span></p>
+							<p class="ml-1 lastname-label"><span>Jaudian</span></p>
 						</span>
 					</div>
 
-					<div class="mname-icon">
-						<span class="icon is-small is-left level">
+					<div class="mname-container">
+						<span class="icon is-small mname-icon is-left level">
 							<i class="fas fa-home"></i>
 							<span class="ml-2">Middlename: </span>
-							<p class="ml-1 field-info"><span>Christopher</span></p>
+							<p class="ml-1 mname-label"><span>Christopher</span></p>
 						</span>
 					</div>
 
-					<div class="age-icon">
-						<span class="icon is-small is-left level">
+					<div class="age-container">
+						<span class="icon is-small age-icon is-left level">
 							<i class="fas fa-home"></i>
 							<span class="ml-2">Age: </span>
-							<p class="ml-1 field-info"><span>23</span></p>
+							<p class="ml-1 age-label"><span>23</span></p>
 						</span>
 					</div>
 
-					<div class="contact-icon">
-						<span class="icon is-small  is-left level">
+					<div class="contact-container">
+						<span class="icon contact-icon is-small is-left level">
 							<i class="fas fa-phone"></i>
-							<span class="ml-2">Contact Number: </span>
-							<p class="ml-1 field-info"><span>09955591932</span></p>
+							<span class="ml-2" style="white-space: nowrap;"
+								>Contact Number:
+							</span>
+							<p class="ml-1 contact-label"><span>09955591932</span></p>
 						</span>
 					</div>
 				</div>

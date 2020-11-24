@@ -7,7 +7,7 @@
 
 	.main-container {
 		position: relative;
-		margin: 30px;
+		margin: 50px 50px 50px 50px;
 
 		.container-header {
 			margin: 5px;
@@ -70,117 +70,130 @@
 			flex-direction: column;
 			width: 100%;
 			font-weight: bold;
-			white-space: nowrap;
 
-			.address-icon {
+			.address-container {
 				width: 100%;
 				height: auto;
-				border: 1px solid grey;
 				padding: 5px;
 				margin-bottom: 10px;
 
-				p span {
-					display: block !important;
-					max-width: 65%;
-					border: 1px solid green;
+				.address-icon {
+					width: 100%;
+
+					.address-label {
+						width: 100%;
+					}
 				}
 			}
 
-			.barangay-icon {
+			.barangay-container {
 				width: 100%;
-				border: 1px solid grey;
+				height: auto;
 				padding: 5px;
 				margin-bottom: 10px;
-				.address-label span {
-					position: relative;
-					display: block;
-					width: auto;
-					border: 1px solid black;
+
+				.barangay-icon {
+					width: 100%;
+
+					.barangay-label {
+						width: 100%;
+					}
 				}
 			}
 
-			.city-icon {
+			.city-container {
 				width: 100%;
-				border: 1px solid grey;
+
 				padding: 5px;
 				margin-bottom: 10px;
-				.address-label span {
-					position: relative;
-					display: block;
-					width: auto;
-					border: 1px solid black;
+
+				.city-icon {
+					width: 100%;
+
+					.city-label {
+						width: 100%;
+					}
 				}
 			}
 
-			.firstname-icon {
+			.firstname-container {
 				width: 100%;
-				border: 1px solid grey;
+
 				padding: 5px;
 				margin-bottom: 10px;
-				.address-label span {
-					position: relative;
-					display: block;
-					width: auto;
-					border: 1px solid black;
+
+				.firstname-icon {
+					width: 100%;
+
+					.firstname-label {
+						width: 100%;
+					}
 				}
 			}
 
-			.lastname-icon {
+			.lastname-container {
 				width: 100%;
-				border: 1px solid grey;
+
 				padding: 5px;
 				margin-bottom: 10px;
-				.address-label span {
-					position: relative;
-					display: block;
-					width: auto;
-					border: 1px solid black;
+
+				.lastname-icon {
+					width: 100%;
+
+					.lastname-label {
+						width: 100%;
+					}
 				}
 			}
 
-			.mname-icon {
+			.mname-container {
 				width: 100%;
-				border: 1px solid grey;
+
 				padding: 5px;
 				margin-bottom: 10px;
-				.address-label span {
-					position: relative;
-					display: block;
-					width: auto;
-					border: 1px solid black;
+
+				.mname-icon {
+					width: 100%;
+
+					.mname-label {
+						width: 100%;
+					}
 				}
 			}
 
-			.age-icon {
+			.age-container {
 				width: 100%;
-				border: 1px solid grey;
+
 				padding: 5px;
 				margin-bottom: 10px;
-				.address-label span {
-					position: relative;
-					display: block;
-					width: auto;
-					border: 1px solid black;
+
+				.age-icon {
+					width: 100%;
+
+					.age-label {
+						width: 100%;
+					}
 				}
 			}
 
-			.contact-icon {
+			.contact-container {
 				width: 100%;
-				border: 1px solid grey;
 				padding: 5px;
 				margin-bottom: 10px;
-				.address-label span {
-					position: relative;
-					display: block;
-					width: auto;
-					border: 1px solid black;
+
+				.contact-icon {
+					width: 100%;
+
+					.contact-label {
+						width: 100%;
+					}
 				}
 			}
 		}
 	}
 }
 
-/* Portrait and Landscape */
+/* Portrait and Landscape extra small */
 @include xsm {
 	.profile-sidebar {
 		border-left: 1px solid grey;
