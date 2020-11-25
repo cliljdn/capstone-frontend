@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div class="show-edit">
 		<section
 			class="hero sidebar-edit is-fullheight is-pulled-right has-background-white"
 		>

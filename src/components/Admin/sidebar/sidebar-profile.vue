@@ -144,6 +144,6 @@ import app from '../admin-model/sidebar-profile.model.js'
 export default app
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../sass/sidebar-profile.scss';
 </style>

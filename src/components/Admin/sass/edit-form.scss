@@ -3,7 +3,8 @@
 .sidebar-edit {
 	border-left: 1px solid grey;
 	position: relative;
-	width: 30%;
+	width: 40%;
+	height: 200px !important;
 
 	.edit-container {
 		position: relative;
@@ -13,10 +14,7 @@
 
 @include xsm {
 	.sidebar-edit {
-		border-left: 1px solid grey;
-		position: relative;
 		width: 100%;
-
 		.edit-container {
 			position: relative;
 			margin: 40px;
@@ -26,10 +24,7 @@
 
 @include sm {
 	.sidebar-edit {
-		border-left: 1px solid grey;
-		position: relative;
 		width: 100%;
-
 		.edit-container {
 			position: relative;
 			margin: 40px;
@@ -39,10 +34,7 @@
 
 @include md {
 	.sidebar-edit {
-		border-left: 1px solid grey;
-		position: relative;
 		width: 100%;
-
 		.edit-container {
 			position: relative;
 			margin: 40px;
@@ -52,9 +44,17 @@
 
 @include lg {
 	.sidebar-edit {
-		position: relative;
-		min-width: 50%;
+		width: 57%;
+		.edit-container {
+			position: relative;
+			margin: 40px;
+		}
+	}
+}
 
+@include xl {
+	.sidebar-edit {
+		width: 58%;
 		.edit-container {
 			position: relative;
 			margin: 40px;
