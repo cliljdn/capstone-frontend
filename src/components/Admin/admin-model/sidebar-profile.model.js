@@ -1,4 +1,8 @@
+import edit from '../sidebar/edit-profile.vue'
+
 export default {
+	components: edit,
+
 	data() {
 		return {
 			hideCompo: false,

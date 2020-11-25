@@ -1,5 +1,6 @@
 <template>
 	<div class="is-overlay">
+		<div></div>
 		<main
 			class="hero  is-fullheight profile-sidebar  is-pulled-right has-background-white"
 		>
