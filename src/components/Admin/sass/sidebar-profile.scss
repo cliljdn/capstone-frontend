@@ -1,4 +1,25 @@
 @import '../../../assets/sass/mixins.scss';
+.slide-enter-active,
+.slide-leave-active {
+	transition: transform 0.2s ease;
+}
+
+.slide-enter,
+.slide-leave-to {
+	transform: translateX(100%);
+	transition: all 150ms ease-in 0s;
+}
+
+.edit-form-panel {
+	overflow-x: auto;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 100;
+	z-index: 500;
+	width: 100%;
+}
 
 // for laptops
 .profile-sidebar {
@@ -6,27 +27,9 @@
 	position: relative;
 	width: 30%;
 
-	.slide-enter-active,
-	.slide-leave-active {
-		transition: transform 0.2s ease;
-	}
-
-	.slide-enter,
-	.slide-leave-to {
-		transform: translateX(100%);
-		transition: all 150ms ease-in 0s;
-	}
-
-	.sidebar-panel {
-		overflow-x: auto;
-		position: absolute;
-		right: 100;
-		z-index: 999;
-	}
-
 	.main-container {
 		position: relative;
-		margin: 50px 50px 50px 50px;
+		margin: 40px 40px 40px 40px;
 
 		.container-header {
 			margin: 5px;
@@ -81,8 +84,8 @@
 
 		.container-info {
 			margin: 5px;
-			padding-top: 20px;
-			padding-bottom: 20px;
+			padding-top: 15px;
+			padding-bottom: 15px;
 			border-top: 1px solid grey;
 			border-bottom: 1px solid grey;
 			display: flex;
@@ -217,7 +220,7 @@
 	.profile-sidebar {
 		border-left: 1px solid grey;
 		position: relative;
-		width: 105%;
+		width: 100%;
 
 		.main-container {
 			position: relative;
@@ -370,13 +373,13 @@
 
 @include lg {
 	.profile-sidebar {
-		position: absolute;
-		width: 120%;
+		width: auto !important;
 
 		.main-container {
 			position: relative;
 			padding-right: 100px !important;
-
+			width: 100%;
+			margin-bottom: 150px !important;
 			.container-header {
 				display: flex;
 				flex-direction: row;
@@ -391,7 +394,7 @@
 				border-top-style: dotted !important;
 
 				.icon {
-					margin-bottom: 50px;
+					margin-bottom: 30px;
 				}
 			}
 

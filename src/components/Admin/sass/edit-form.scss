@@ -1,22 +1,63 @@
 @import '../../../assets/sass/mixins.scss';
 
-.edit-form {
+.sidebar-edit {
+	border-left: 1px solid grey;
 	position: relative;
-	width: 100%;
+	width: 30%;
 
 	.edit-container {
+		position: relative;
+		margin: 40px;
+	}
+}
+
+@include xsm {
+	.sidebar-edit {
+		border-left: 1px solid grey;
+		position: relative;
 		width: 100%;
-		position: absolute;
-		margin: 50px 50px 50px 50px;
 
-		.close-edit {
-			position: absolute;
-			left: 300px;
+		.edit-container {
+			position: relative;
+			margin: 40px;
 		}
+	}
+}
 
-		.form-edit {
-			position: absolute;
-			width: 100%;
+@include sm {
+	.sidebar-edit {
+		border-left: 1px solid grey;
+		position: relative;
+		width: 100%;
+
+		.edit-container {
+			position: relative;
+			margin: 40px;
+		}
+	}
+}
+
+@include md {
+	.sidebar-edit {
+		border-left: 1px solid grey;
+		position: relative;
+		width: 100%;
+
+		.edit-container {
+			position: relative;
+			margin: 40px;
+		}
+	}
+}
+
+@include lg {
+	.sidebar-edit {
+		position: relative;
+		min-width: 50%;
+
+		.edit-container {
+			position: relative;
+			margin: 40px;
 		}
 	}
 }
