@@ -1,21 +1,19 @@
 <template>
 	<main
-		class="hero is-fullheight edit-form is-pulled-right has-background-white"
+		class="hero is-fullheight edit-form is-fullwidth is-pulled-right has-background-white"
 	>
-		<div class="main-container">
-			<div class="container-header">
-				<div class="has-text-weight-bold mb-5">
-					Edit Profile
-					<span class="icon is-pulled-right close-sidebar">
-						<a @click="toggleEditForm"><i class="fas fa-times"></i></a>
-					</span>
-					<div class="is-clearfix"></div>
-				</div>
+		<div class="edit-container">
+			<div class="has-text-weight-bold mb-5">
+				Edit Profile
+				<span class="icon is-pulled-right close-edit">
+					<a @click="toggleEditForm"><i class="fas fa-times"></i></a>
+				</span>
+				<div class="is-clearfix"></div>
 			</div>
 
-			<form action="PATCH">
+			<form action="PATCH" class="form-edit">
 				<div class="field">
-					<p class="control has-icons-left has-icons-right">
+					<p class="control is-medium has-icons-left has-icons-right">
 						<input class="input" type="email" placeholder="Email" />
 						<span class="icon is-small is-left">
 							<i class="fas fa-envelope"></i>

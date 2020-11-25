@@ -45,8 +45,8 @@
 					</div>
 				</div>
 			</div>
-			<transition name="fade">
-				<div v-if="this.$store.state.sideBarOpen">
+			<transition name="slide">
+				<div v-if="this.$store.state.sideBarOpen" class="sidebar-panel">
 					<sidebar />
 				</div>
 			</transition>

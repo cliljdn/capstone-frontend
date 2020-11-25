@@ -1,9 +1,28 @@
 @import '../../../assets/sass/mixins.scss';
+
 // for laptops
 .profile-sidebar {
 	border-left: 1px solid grey;
 	position: relative;
 	width: 30%;
+
+	.slide-enter-active,
+	.slide-leave-active {
+		transition: transform 0.2s ease;
+	}
+
+	.slide-enter,
+	.slide-leave-to {
+		transform: translateX(100%);
+		transition: all 150ms ease-in 0s;
+	}
+
+	.sidebar-panel {
+		overflow-x: auto;
+		position: absolute;
+		right: 100;
+		z-index: 999;
+	}
 
 	.main-container {
 		position: relative;
@@ -45,11 +64,11 @@
 
 			.btn-edit-profile {
 				position: absolute;
-				min-width: 130px;
+				min-width: 100px;
 				font-size: 16px;
 				padding: 0;
 				bottom: 10%;
-				left: 60%;
+				left: 70%;
 				height: 40px;
 				border-radius: 15px;
 			}
@@ -202,7 +221,7 @@
 
 		.main-container {
 			position: relative;
-			margin: 30px;
+			margin: 50px;
 			.container-header {
 				margin: 5px;
 				padding-bottom: 20px;
@@ -276,7 +295,7 @@
 @include sm {
 	.profile-sidebar {
 		position: relative;
-		width: 100% !important;
+		width: 100%;
 		height: auto;
 
 		.main-container {
@@ -351,15 +370,12 @@
 
 @include lg {
 	.profile-sidebar {
-		position: relative;
-		width: 100%;
-		min-height: 100px !important;
-		height: 10% !important;
-		padding: 0;
+		position: absolute;
+		width: 120%;
+
 		.main-container {
 			position: relative;
 			padding-right: 100px !important;
-			width: 100%;
 
 			.container-header {
 				display: flex;

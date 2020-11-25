@@ -1,9 +1,22 @@
 @import '../../../assets/sass/mixins.scss';
 
 .edit-form {
+	position: relative;
 	width: 100%;
 
-	.main-container {
-		margin: 50px;
+	.edit-container {
+		width: 100%;
+		position: absolute;
+		margin: 50px 50px 50px 50px;
+
+		.close-edit {
+			position: absolute;
+			left: 300px;
+		}
+
+		.form-edit {
+			position: absolute;
+			width: 100%;
+		}
 	}
 }

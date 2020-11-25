@@ -4,9 +4,7 @@ export default {
 	components: { 'edit-profile': edit },
 
 	data() {
-		return {
-			hideCompo: false,
-		}
+		return {}
 	},
 
 	methods: {

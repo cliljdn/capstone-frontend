@@ -1,11 +1,13 @@
 <template>
 	<div class="is-overlay">
 		<main
-			class="hero  is-fullheight profile-sidebar  is-pulled-right has-background-white"
+			class="hero is-fullheight profile-sidebar  is-pulled-right has-background-white"
 		>
-			<div v-if="this.$store.state.editProfileOpen">
-				<edit-profile />
-			</div>
+			<transition name="slide">
+				<div v-if="this.$store.state.editProfileOpen" class="sidebar-panel">
+					<edit-profile />
+				</div>
+			</transition>
 			<div class="main-container">
 				<div class="has-text-weight-bold mb-5">
 					Admin Profile
@@ -14,6 +16,7 @@
 					</span>
 					<div class="is-clearfix"></div>
 				</div>
+
 				<div class="container-header admin-name">
 					<div class="item-1">
 						<img
@@ -138,6 +141,6 @@ import app from '../admin-model/sidebar-profile.model.js'
 export default app
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../sass/sidebar-profile.scss';
 </style>
