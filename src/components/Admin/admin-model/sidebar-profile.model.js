@@ -1,7 +1,7 @@
 import edit from '../sidebar/edit-profile.vue'
 
 export default {
-	components: edit,
+	components: { 'edit-profile': edit },
 
 	data() {
 		return {
@@ -13,6 +13,10 @@ export default {
 		// hide and show the sidebar profile
 		toggleSideBar() {
 			return this.$store.commit('toggleSideBar')
+		},
+
+		toggleEditForm() {
+			return this.$store.commit('toggleEditForm')
 		},
 	},
 }

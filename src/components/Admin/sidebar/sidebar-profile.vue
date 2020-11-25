@@ -1,9 +1,11 @@
 <template>
 	<div class="is-overlay">
-		<div></div>
 		<main
 			class="hero  is-fullheight profile-sidebar  is-pulled-right has-background-white"
 		>
+			<div v-if="this.$store.state.editProfileOpen">
+				<edit-profile />
+			</div>
 			<div class="main-container">
 				<div class="has-text-weight-bold mb-5">
 					Admin Profile
@@ -47,7 +49,10 @@
 							>Personal Information</span
 						>
 					</span>
-					<button class="btn-edit-profile is-medium  button is-ghost">
+					<button
+						@click="toggleEditForm"
+						class="btn-edit-profile is-medium  button is-ghost"
+					>
 						Edit Profile
 					</button>
 				</div>
@@ -133,6 +138,6 @@ import app from '../admin-model/sidebar-profile.model.js'
 export default app
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../sass/sidebar-profile.scss';
 </style>
