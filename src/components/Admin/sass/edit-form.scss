@@ -3,8 +3,8 @@
 .sidebar-edit {
 	border-left: 1px solid grey;
 	position: relative;
-	width: 40%;
 	height: 200px !important;
+	overflow-y: auto;
 
 	.edit-container {
 		position: relative;

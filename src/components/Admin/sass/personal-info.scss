@@ -1,0 +1,22 @@
+@import '../../../assets/sass/mixins.scss';
+
+.personal-info-container {
+	font-weight: bold;
+	border: 1px solid black;
+	padding: 50px;
+
+	input {
+		padding: 0;
+		border-top-style: hidden;
+		border-right-style: hidden;
+		border-left-style: hidden;
+		border-bottom-style: solid;
+		border-bottom: 1px solid black;
+		box-shadow: none;
+	}
+
+	input:focus {
+		outline: none !important;
+		box-shadow: none;
+	}
+}
