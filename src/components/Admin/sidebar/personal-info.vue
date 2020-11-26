@@ -1,6 +1,8 @@
 <template>
 	<div class="box personal-info-container">
-		<p class="box-header mb-3">Personal Information</p>
+		<p class="box-header is-pulled-left is-fixed-top">
+			Personal Information
+		</p>
 		<article class="media">
 			<div class="media-left">
 				<figure class="image is-96x96">
@@ -55,7 +57,7 @@
 							<p class="control has-icons-left has-icons-right">
 								<input class="input" type="email" placeholder="Contact #" />
 								<span class="icon is-small is-left">
-									<i class="fas fa-address-card"></i>
+									<i class="fas fa-telephone"></i>
 								</span>
 							</p>
 						</div>

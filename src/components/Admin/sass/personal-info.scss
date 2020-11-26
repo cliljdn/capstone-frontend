@@ -1,9 +1,17 @@
 @import '../../../assets/sass/mixins.scss';
 
 .personal-info-container {
+	width: auto;
 	font-weight: bold;
 	border: 1px solid black;
-	padding: 50px;
+
+	display: flex;
+	flex-direction: column !important;
+
+	.box-header {
+		margin-top: 0px;
+		padding-bottom: 50px;
+	}
 
 	input {
 		padding: 0;
@@ -24,23 +32,27 @@
 @include xsm {
 	.personal-info-container {
 		width: auto;
+		height: auto;
 	}
 }
 
 @include sm {
 	.personal-info-container {
 		width: auto;
+		height: auto;
 	}
 }
 
 @include md {
 	.personal-info-container {
 		width: auto;
+		height: auto;
 	}
 }
 
 @include lg {
 	.personal-info-container {
 		width: auto;
+		height: auto;
 	}
 }

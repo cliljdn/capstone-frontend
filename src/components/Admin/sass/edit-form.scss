@@ -1,43 +1,60 @@
 @import '../../../assets/sass/mixins.scss';
 
 .sidebar-edit {
+	width: auto;
 	border-left: 1px solid grey;
 	position: relative;
 	height: 200px !important;
 	overflow-y: auto;
+	display: flex;
+	flex-direction: row;
 
 	.edit-container {
 		position: relative;
 		margin: 40px;
+
+		.edit-icon {
+			height: 1em !important;
+		}
 	}
 }
 
 @include xsm {
 	.sidebar-edit {
 		width: auto;
+		height: auto;
+		overflow-y: auto;
 	}
 }
 
 @include sm {
 	.sidebar-edit {
 		width: auto;
+		height: auto;
+		overflow-y: auto;
 	}
 }
 
 @include md {
 	.sidebar-edit {
 		width: auto;
+		height: auto;
+		overflow-y: auto;
 	}
 }
 
 @include lg {
 	.sidebar-edit {
 		width: auto;
+		height: auto;
+		overflow-y: auto;
 	}
 }
 
 @include xl {
 	.sidebar-edit {
 		width: auto;
+		height: auto;
+		overflow-y: auto;
 	}
 }
