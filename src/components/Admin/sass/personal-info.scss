@@ -20,3 +20,27 @@
 		box-shadow: none;
 	}
 }
+
+@include xsm {
+	.personal-info-container {
+		width: auto;
+	}
+}
+
+@include sm {
+	.personal-info-container {
+		width: auto;
+	}
+}
+
+@include md {
+	.personal-info-container {
+		width: auto;
+	}
+}
+
+@include lg {
+	.personal-info-container {
+		width: auto;
+	}
+}

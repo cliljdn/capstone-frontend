@@ -10,7 +10,7 @@
 				class="hero is-fullheight profile-sidebar  is-pulled-right has-background-white"
 			>
 				<div class="main-container">
-					<div class="has-text-weight-bold mb-5">
+					<div class="has-text-weight-bold mb-5 profile-header">
 						Admin Profile
 						<span class="icon is-pulled-right close-sidebar">
 							<a @click="toggleSideBar"><i class="fas fa-times"></i></a>
@@ -19,8 +19,9 @@
 					</div>
 
 					<div class="container-header admin-name">
-						<div class="item-1">
+						<div class="item-1 image is-96x96">
 							<img
+								class="is-rounded"
 								src="https://i.imgur.com/bCOd9N0.jpg"
 								height="102"
 								width="102"

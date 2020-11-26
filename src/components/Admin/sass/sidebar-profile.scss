@@ -25,7 +25,7 @@
 .profile-sidebar {
 	border-left: 1px solid grey;
 	position: relative;
-	width: 30%;
+	width: auto;
 
 	.main-container {
 		position: relative;
@@ -224,8 +224,9 @@
 	.profile-sidebar {
 		border-left: 1px solid grey;
 		position: relative;
-		width: 100%;
+		width: auto;
 		overflow-y: auto;
+
 		.main-container {
 			position: relative;
 			font-size: 12px;
@@ -298,7 +299,7 @@
 @include sm {
 	.profile-sidebar {
 		position: relative;
-		width: 100%;
+		width: auto;
 		overflow-y: auto;
 
 		.main-container {
@@ -340,7 +341,7 @@
 @include md {
 	.profile-sidebar {
 		position: relative;
-		width: 100%;
+		width: auto;
 		overflow-y: auto;
 
 		.main-container {
@@ -380,7 +381,7 @@
 
 @include lg {
 	.profile-sidebar {
-		width: 60%;
+		width: auto;
 		overflow-y: auto;
 
 		.main-container {

@@ -11,6 +11,8 @@
 					</span>
 					<div class="is-clearfix"></div>
 				</div>
+
+				<personal-info />
 			</div>
 		</section>
 	</div>

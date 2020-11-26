@@ -14,50 +14,30 @@
 
 @include xsm {
 	.sidebar-edit {
-		width: 100%;
-		.edit-container {
-			position: relative;
-			margin: 40px;
-		}
+		width: auto;
 	}
 }
 
 @include sm {
 	.sidebar-edit {
-		width: 100%;
-		.edit-container {
-			position: relative;
-			margin: 40px;
-		}
+		width: auto;
 	}
 }
 
 @include md {
 	.sidebar-edit {
-		width: 100%;
-		.edit-container {
-			position: relative;
-			margin: 40px;
-		}
+		width: auto;
 	}
 }
 
 @include lg {
 	.sidebar-edit {
-		width: 57%;
-		.edit-container {
-			position: relative;
-			margin: 40px;
-		}
+		width: auto;
 	}
 }
 
 @include xl {
 	.sidebar-edit {
-		width: 58%;
-		.edit-container {
-			position: relative;
-			margin: 40px;
-		}
+		width: auto;
 	}
 }
