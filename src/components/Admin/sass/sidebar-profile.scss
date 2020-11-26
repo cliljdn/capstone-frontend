@@ -94,12 +94,12 @@
 			border-bottom: 1px solid grey;
 			display: flex;
 			flex-direction: column;
-			width: 100%;
+			width: auto;
 			font-weight: bold;
 
 			.address-container {
 				width: 100%;
-				height: auto;
+
 				padding: 5px;
 				margin-bottom: 10px;
 
@@ -114,7 +114,6 @@
 
 			.barangay-container {
 				width: 100%;
-				height: auto;
 				padding: 5px;
 				margin-bottom: 10px;
 
@@ -304,9 +303,8 @@
 
 		.main-container {
 			margin: 30px;
-			position: fixed;
 			padding-right: 100px !important;
-			width: 100%;
+			width: auto;
 
 			.close-sidebar {
 				position: absolute;
