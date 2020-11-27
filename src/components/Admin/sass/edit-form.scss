@@ -1,17 +1,22 @@
 @import '../../../assets/sass/mixins.scss';
 
 .sidebar-edit {
-	width: auto;
-	border-left: 1px solid grey;
 	position: relative;
-	height: 200px !important;
-	overflow-y: auto;
+	width: auto;
+	height: auto;
+	min-height: 623px;
+	max-height: 1000px;
+	border-left: 1px solid grey;
 	display: flex;
 	flex-direction: row;
+	overflow-y: auto;
 
 	.edit-container {
 		position: relative;
 		margin: 40px;
+		height: auto;
+		min-height: 623px;
+		overflow-y: auto;
 
 		.edit-icon {
 			height: 1em !important;

@@ -14,7 +14,8 @@
 	position: fixed;
 	overflow-x: auto;
 	top: 0 !important;
-	height: 100%;
+	height: auto;
+	min-height: 100%;
 	z-index: 1000 !important;
 	width: 100% !important;
 }
@@ -23,12 +24,49 @@ nav {
 	border-bottom: 1px solid whitesmoke;
 }
 
+@include xsm {
+	.sidebar-panel {
+		position: fixed;
+		overflow-x: auto;
+		top: 0 !important;
+		height: auto;
+		min-height: 100%;
+		z-index: 999 !important;
+		width: 100% !important;
+	}
+}
+
+@include sm {
+	.sidebar-panel {
+		position: fixed;
+		overflow-x: auto;
+		top: 0 !important;
+		height: auto;
+		min-height: 100%;
+		z-index: 999 !important;
+		width: 100% !important;
+	}
+}
+
 @include md {
 	.sidebar-panel {
 		position: fixed;
 		overflow-x: auto;
 		top: 0 !important;
-		height: 100%;
+		height: auto;
+		min-height: 100%;
+		z-index: 999 !important;
+		width: 100% !important;
+	}
+}
+
+@include lg {
+	.sidebar-panel {
+		position: fixed;
+		overflow-y: auto;
+		top: 0 !important;
+		height: auto;
+		min-height: 100%;
 		z-index: 999 !important;
 		width: 100% !important;
 	}

@@ -1,14 +1,7 @@
 <template>
 	<div class="">
-		<transition name="slide">
-			<div v-if="this.$store.state.editProfileOpen" class="edit-form-panel">
-				<edit-profile />
-			</div>
-		</transition>
 		<div class="is-overlay">
-			<main
-				class="hero is-fullheight profile-sidebar  is-pulled-right has-background-white"
-			>
+			<main class="hero  profile-sidebar  is-pulled-right has-background-white">
 				<div class="main-container">
 					<div class="has-text-weight-bold mb-5 profile-header">
 						Admin Profile
@@ -137,6 +130,14 @@
 				</div>
 			</main>
 		</div>
+		<transition name="slide">
+			<div
+				v-if="this.$store.state.editProfileOpen"
+				class="edit-form-panel is-overlay"
+			>
+				<edit-profile />
+			</div>
+		</transition>
 	</div>
 </template>
 

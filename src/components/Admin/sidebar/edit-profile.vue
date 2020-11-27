@@ -1,8 +1,6 @@
 <template>
 	<div class="show-edit">
-		<section
-			class="hero sidebar-edit is-fullheight is-pulled-right has-background-white"
-		>
+		<section class="hero  sidebar-edit is-pulled-right has-background-white">
 			<div class="edit-container">
 				<div class="has-text-weight-bold mb-5">
 					Edit Profile

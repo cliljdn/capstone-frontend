@@ -4,9 +4,10 @@
 	width: auto;
 	font-weight: bold;
 	border: 1px solid black;
-
+	height: auto;
 	display: flex;
 	flex-direction: column !important;
+	overflow-y: auto;
 
 	.box-header {
 		margin-top: 0px;
@@ -33,6 +34,7 @@
 	.personal-info-container {
 		width: auto;
 		height: auto;
+		overflow-y: auto;
 	}
 }
 
@@ -40,6 +42,7 @@
 	.personal-info-container {
 		width: auto;
 		height: auto;
+		overflow-y: auto;
 	}
 }
 
@@ -47,6 +50,7 @@
 	.personal-info-container {
 		width: auto;
 		height: auto;
+		overflow-y: auto;
 	}
 }
 
@@ -54,5 +58,6 @@
 	.personal-info-container {
 		width: auto;
 		height: auto;
+		overflow-y: auto;
 	}
 }
