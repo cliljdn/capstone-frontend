@@ -11,8 +11,8 @@
 }
 
 .edit-form-panel {
-	overflow-y: auto;
-	position: relative;
+	overflow-x: hidden;
+	position: fixed;
 	height: auto;
 	min-height: 100%;
 	left: 0;
@@ -27,6 +27,7 @@
 	border-left: 1px solid grey;
 	position: relative;
 	width: auto;
+	overflow-y: auto;
 
 	.main-container {
 		position: relative;
@@ -221,6 +222,9 @@
 
 /* Portrait and Landscape extra small */
 @include xsm {
+	.edit-form-panel {
+		overflow-y: auto !important;
+	}
 	.profile-sidebar {
 		border-left: 1px solid grey;
 		position: relative;
@@ -231,6 +235,7 @@
 		.main-container {
 			position: relative;
 			font-size: 12px;
+
 			.container-header {
 				display: flex;
 				flex-direction: row;
@@ -298,6 +303,9 @@
 
 // Small devices (landscape phones, 576px and up)
 @include sm {
+	.edit-form-panel {
+		overflow-y: auto !important;
+	}
 	.profile-sidebar {
 		position: relative;
 		width: auto;
@@ -305,12 +313,13 @@
 		overflow-y: auto;
 		.main-container {
 			margin: 30px;
-			padding-right: 100px !important;
+
 			width: auto;
 
 			.close-sidebar {
 				position: absolute;
-				right: 60px;
+				right: 0 !important;
+				height: 1.5em;
 			}
 
 			.container-header {
@@ -339,17 +348,19 @@
 
 // Medium devices (tablets, 768px and up)
 @include md {
+	.edit-form-panel {
+		overflow-y: auto !important;
+	}
 	.profile-sidebar {
 		position: relative;
 		width: auto;
 		height: auto;
 		overflow-y: auto;
+
 		.main-container {
 			position: relative;
-			padding-right: 100px !important;
-			width: 100%;
 
-			margin-left: 60px;
+			width: 100%;
 
 			.container-header {
 				display: flex;
@@ -366,8 +377,9 @@
 			}
 
 			.close-sidebar {
-				position: relative;
-				right: 15px;
+				position: absolute;
+
+				right: 60px;
 			}
 
 			.info-header {
@@ -380,6 +392,9 @@
 }
 
 @include lg {
+	.edit-form-panel {
+		overflow-y: auto !important;
+	}
 	.profile-sidebar {
 		width: auto;
 		height: auto;

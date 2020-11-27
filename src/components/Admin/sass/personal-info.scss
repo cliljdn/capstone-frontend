@@ -3,24 +3,22 @@
 .personal-info-container {
 	width: auto;
 	font-weight: bold;
-	border: 1px solid black;
 	height: auto;
 	display: flex;
 	flex-direction: column !important;
-	overflow-y: auto;
+	overflow-y: auto !important;
+	overflow-x: hidden !important;
 
-	.box-header {
+	.box-title {
 		margin-top: 0px;
 		padding-bottom: 50px;
 	}
 
-	input {
-		padding: 0;
+	.field .control input {
 		border-top-style: hidden;
 		border-right-style: hidden;
 		border-left-style: hidden;
-		border-bottom-style: solid;
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid black !important;
 		box-shadow: none;
 	}
 
@@ -35,6 +33,7 @@
 		width: auto;
 		height: auto;
 		overflow-y: auto;
+		overflow-x: hidden;
 	}
 }
 
@@ -43,6 +42,7 @@
 		width: auto;
 		height: auto;
 		overflow-y: auto;
+		overflow-x: hidden;
 	}
 }
 
@@ -50,7 +50,8 @@
 	.personal-info-container {
 		width: auto;
 		height: auto;
-		overflow-y: auto;
+		overflow-y: auto !important;
+		overflow-x: hidden;
 	}
 }
 
@@ -58,6 +59,7 @@
 	.personal-info-container {
 		width: auto;
 		height: auto;
-		overflow-y: auto;
+		overflow-y: auto !important;
+		overflow-x: hidden;
 	}
 }

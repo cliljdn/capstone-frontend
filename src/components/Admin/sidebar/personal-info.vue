@@ -1,6 +1,6 @@
 <template>
 	<div class="box personal-info-container">
-		<p class="box-header is-pulled-left is-fixed-top">
+		<p class="box-title is-pulled-left is-fixed-top">
 			Personal Information
 		</p>
 		<article class="media">
@@ -19,7 +19,7 @@
 						<p class="mb-2">Firstname:</p>
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="email" placeholder="Firstname" />
+								<input class="input" type="text" placeholder="Firstname" />
 								<span class="icon is-small is-left">
 									<i class="fas fa-address-card"></i>
 								</span>
@@ -30,7 +30,7 @@
 						<p class="mb-2">Middlename:</p>
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="email" placeholder="Middle name" />
+								<input class="input" type="text" placeholder="Middle name" />
 								<span class="icon is-small is-left">
 									<i class="fas fa-address-card"></i>
 								</span>
@@ -41,7 +41,7 @@
 						<p class="mb-2">Lastname:</p>
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="email" placeholder="Lastname" />
+								<input class="input" type="text" placeholder="Lastname" />
 								<span class="icon is-small is-left">
 									<i class="fas fa-address-card"></i>
 								</span>
@@ -55,7 +55,7 @@
 						<p class="mb-2">Contact Number :</p>
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="email" placeholder="Contact #" />
+								<input class="input" type="text" placeholder="Contact #" />
 								<span class="icon is-small is-left">
 									<i class="fas fa-telephone"></i>
 								</span>
@@ -69,7 +69,7 @@
 						<p class="mb-2">Home Address:</p>
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="email" placeholder="Contact #" />
+								<input class="input" type="text" placeholder="Contact #" />
 								<span class="icon is-small is-left">
 									<i class="fas fa-address-card"></i>
 								</span>
@@ -81,7 +81,7 @@
 						<p class="mb-2">Barangay:</p>
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="email" placeholder="Contact #" />
+								<input class="input" type="text" placeholder="Contact #" />
 								<span class="icon is-small is-left">
 									<i class="fas fa-address-card"></i>
 								</span>
@@ -93,7 +93,7 @@
 						<p class="mb-2">City:</p>
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="email" placeholder="Contact #" />
+								<input class="input" type="text" placeholder="Contact #" />
 								<span class="icon is-small is-left">
 									<i class="fas fa-address-card"></i>
 								</span>
