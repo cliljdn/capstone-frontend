@@ -4,7 +4,7 @@
 	position: relative;
 	width: auto;
 	height: auto;
-	min-height: 675px;
+	min-height: calc(100vh);
 	border-left: 1px solid grey;
 	display: flex;
 	flex-direction: column;
@@ -12,8 +12,11 @@
 	padding: 30px;
 
 	.edit-container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
 		width: auto;
-		left: auto !important;
+
 		.edit-header {
 			left: 0 !important;
 		}
@@ -37,7 +40,10 @@
 		font-size: 10px;
 
 		.edit-container {
+			width: auto;
 			height: auto;
+			left: auto;
+			zoom: 0.9;
 
 			.edit-header {
 				position: relative;
@@ -83,7 +89,8 @@
 			width: auto;
 			margin: 0;
 			padding: 0;
-
+			zoom: normal;
+			min-height: 700px;
 			.edit-header {
 				position: relative;
 				left: auto;

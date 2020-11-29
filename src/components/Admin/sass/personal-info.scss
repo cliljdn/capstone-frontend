@@ -32,44 +32,36 @@
 @include xsm {
 	.personal-info-container {
 		position: relative;
-		margin: 0 !important;
+
 		width: auto;
 		font-size: 10px;
 		height: auto;
 		overflow-y: auto;
-		overflow-x: hidden;
 	}
 }
 
 @include sm {
 	.personal-info-container {
 		position: relative;
-		margin: 0 !important;
-
 		width: auto;
 		height: auto;
 		overflow-y: auto;
-		overflow-x: hidden;
 	}
 }
 
 @include md {
 	.personal-info-container {
 		width: auto;
-		margin: 0 !important;
+
 		height: auto;
 		overflow-y: auto;
-		overflow-x: hidden;
 	}
 }
 
 @include lg {
 	.personal-info-container {
-		left: 0;
 		width: auto;
-		margin: 0 !important;
 		height: auto;
 		overflow-y: auto !important;
-		overflow-x: hidden;
 	}
 }
