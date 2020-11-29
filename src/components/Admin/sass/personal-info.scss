@@ -1,6 +1,7 @@
 @import '../../../assets/sass/mixins.scss';
 
 .personal-info-container {
+	position: relative;
 	width: auto;
 	font-weight: bold;
 	height: auto;
@@ -30,7 +31,9 @@
 
 @include xsm {
 	.personal-info-container {
+		left: 50px;
 		width: auto;
+		font-size: 10px;
 		height: auto;
 		overflow-y: auto;
 		overflow-x: hidden;
@@ -39,6 +42,7 @@
 
 @include sm {
 	.personal-info-container {
+		left: 0;
 		width: auto;
 		height: auto;
 		overflow-y: auto;
@@ -48,6 +52,7 @@
 
 @include md {
 	.personal-info-container {
+		left: 0 !important;
 		width: auto;
 		height: auto;
 		overflow-y: auto !important;
@@ -57,6 +62,7 @@
 
 @include lg {
 	.personal-info-container {
+		left: 0;
 		width: auto;
 		height: auto;
 		overflow-y: auto !important;
