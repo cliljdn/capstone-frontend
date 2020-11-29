@@ -31,7 +31,8 @@
 
 @include xsm {
 	.personal-info-container {
-		left: 50px;
+		position: relative;
+		margin: 0 !important;
 		width: auto;
 		font-size: 10px;
 		height: auto;
@@ -42,7 +43,9 @@
 
 @include sm {
 	.personal-info-container {
-		left: 0;
+		position: relative;
+		margin: 0 !important;
+
 		width: auto;
 		height: auto;
 		overflow-y: auto;
@@ -52,10 +55,10 @@
 
 @include md {
 	.personal-info-container {
-		left: 0 !important;
 		width: auto;
+		margin: 0 !important;
 		height: auto;
-		overflow-y: auto !important;
+		overflow-y: auto;
 		overflow-x: hidden;
 	}
 }
@@ -64,6 +67,7 @@
 	.personal-info-container {
 		left: 0;
 		width: auto;
+		margin: 0 !important;
 		height: auto;
 		overflow-y: auto !important;
 		overflow-x: hidden;

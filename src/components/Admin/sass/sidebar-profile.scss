@@ -11,13 +11,10 @@
 }
 
 .edit-form-panel {
-	overflow-x: hidden;
 	position: fixed;
 	height: auto;
 	min-height: 100%;
-	left: 0;
 	top: 0;
-	right: 100;
 	z-index: 999 !important;
 	width: auto;
 }

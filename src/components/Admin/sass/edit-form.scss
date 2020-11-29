@@ -4,25 +4,27 @@
 	position: relative;
 	width: auto;
 	height: auto;
-	min-height: 623px;
+	min-height: 675px;
 	border-left: 1px solid grey;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	overflow-x: hidden;
+	padding: 30px;
 
 	.edit-container {
-		position: relative;
-		margin: 40px;
-		height: auto;
+		width: auto;
+		left: auto !important;
+		.edit-header {
+			left: 0 !important;
+		}
 
 		.edit-icon {
 			height: 1em !important;
 		}
 
 		.edit-tabs {
-			position: relative;
-			width: auto;
-			height: auto;
+			margin: 0;
+			padding: 0;
 		}
 	}
 }
@@ -33,22 +35,17 @@
 		height: auto;
 		overflow-y: auto;
 		font-size: 10px;
+
 		.edit-container {
-			width: auto;
 			height: auto;
 
 			.edit-header {
 				position: relative;
-				left: 43px;
+				left: auto;
 			}
 
 			.edit-icon {
 				height: 1em !important;
-			}
-
-			.edit-tabs {
-				position: relative;
-				left: 40px;
 			}
 		}
 	}
@@ -59,22 +56,18 @@
 		width: auto;
 		height: auto;
 		overflow-y: auto;
-		font-size: 10px;
+
 		.edit-container {
-			position: relative;
+			width: auto;
+			margin: 0;
+			padding: 0;
 
 			.edit-header {
 				position: relative;
-				left: 40px;
+				left: auto;
 			}
 			.edit-icon {
 				height: 1em !important;
-			}
-
-			.edit-tabs {
-				left: 0;
-
-				position: relative;
 			}
 		}
 	}
@@ -87,9 +80,9 @@
 		overflow-y: auto;
 
 		.edit-container {
-			position: relative;
-			margin: 40px;
-			height: auto;
+			width: auto;
+			margin: 0;
+			padding: 0;
 
 			.edit-header {
 				position: relative;
@@ -99,10 +92,6 @@
 			.edit-icon {
 				height: 1em !important;
 			}
-
-			.edit-tabs {
-				position: relative;
-			}
 		}
 	}
 }
@@ -111,25 +100,20 @@
 	.sidebar-edit {
 		width: auto;
 		height: auto;
-		min-height: 1000px !important;
 		overflow-y: auto;
 
 		.edit-container {
-			position: relative;
-			margin: 40px;
-			height: auto;
+			width: auto;
+			margin: 0;
+			padding: 0;
 
 			.edit-header {
 				position: relative;
-				left: 40px;
+				left: auto;
 			}
 
 			.edit-icon {
 				height: 1em !important;
-			}
-
-			.edit-tabs {
-				position: relative;
 			}
 		}
 	}
@@ -143,18 +127,15 @@
 
 		.edit-container {
 			width: auto;
+			height: auto;
 
 			.edit-header {
 				position: relative;
-				left: 40px;
+				left: auto;
 			}
 
 			.edit-icon {
 				height: 1em !important;
-			}
-
-			.edit-tabs {
-				position: relative;
 			}
 		}
 	}

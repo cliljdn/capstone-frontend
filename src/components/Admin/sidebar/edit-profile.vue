@@ -12,7 +12,7 @@
 						<a @click="toggleEditForm"><i class="fas fa-times"></i></a>
 					</span>
 				</div>
-				<div class="tabs edit-tabs">
+				<div class="tabs edit-tabs is-centered mb-3">
 					<ul>
 						<li class="is-active"><a>Personal Information</a></li>
 						<li><a>Account information</a></li>
