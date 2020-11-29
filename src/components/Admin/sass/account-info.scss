@@ -1,0 +1,60 @@
+@import '../../../assets/sass/mixins.scss';
+
+.account-sidebar {
+	position: relative;
+	width: auto !important;
+	font-weight: bold;
+	height: auto;
+	display: flex;
+	min-width: auto;
+	max-width: 1000px;
+	flex-direction: column;
+	border: 1px solid grey;
+	overflow-y: auto;
+	height: auto;
+
+	.box-title {
+		margin-top: 0px;
+		padding-bottom: 50px;
+	}
+
+	.field .control input {
+		border-top-style: hidden;
+		border-right-style: hidden;
+		border-left-style: hidden;
+		border-bottom: 1px solid black !important;
+		box-shadow: none;
+	}
+
+	input:focus {
+		outline: none !important;
+		box-shadow: none;
+	}
+}
+
+@include xsm {
+	.account-sidebar {
+		width: auto;
+		min-width: auto !important;
+	}
+}
+@include sm {
+	.account-sidebar {
+		width: auto;
+		min-width: auto !important;
+	}
+}
+
+@include md {
+	.account-sidebar {
+		width: auto;
+		min-width: auto !important;
+	}
+}
+
+@include lg {
+	.account-sidebar {
+		width: auto;
+		min-width: auto !important;
+	}
+}

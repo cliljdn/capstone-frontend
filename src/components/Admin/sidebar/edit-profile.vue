@@ -1,6 +1,6 @@
 <template>
 	<div class="show-edit">
-		<section class="hero  sidebar-edit is-pulled-right has-background-white">
+		<section class="hero   sidebar-edit is-fullwidth  has-background-white">
 			<div class="edit-container">
 				<div class="edit-header has-text-weight-bold mb-5">
 					Edit Profile
@@ -14,11 +14,25 @@
 				</div>
 				<div class="tabs edit-tabs is-centered mb-3">
 					<ul>
-						<li class="is-active"><a>Personal Information</a></li>
-						<li><a>Account information</a></li>
+						<li class="is-active personal-divider">
+							<a @click="showPersonal">Personal Information</a>
+						</li>
+						<li>
+							<a @click="showAccount">Account information</a>
+						</li>
 					</ul>
 				</div>
-				<personal-info />
+				<transition name="slide">
+					<div class="" v-if="showPersonalInfo">
+						<personal-info />
+					</div>
+				</transition>
+
+				<transition name="slide">
+					<div class="account-form-panel" v-if="showAccountInfo">
+						<account-info />
+					</div>
+				</transition>
 			</div>
 		</section>
 	</div>

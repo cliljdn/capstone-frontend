@@ -1,73 +1,26 @@
 @import '../../../assets/sass/mixins.scss';
-.slide-enter-active,
-.slide-leave-active {
-	transition: transform 0.2s ease;
-}
-
-.slide-enter,
-.slide-leave-to {
-	transform: translateX(100%);
-	transition: all 150ms ease-in 0s;
-}
-
-.sidebar-panel {
-	position: fixed;
-	overflow-x: auto;
-	top: 0 !important;
-	height: auto;
-	min-height: 100%;
-	z-index: 1000 !important;
-	width: 100% !important;
-}
 
 nav {
+	position: relative;
 	border-bottom: 1px solid whitesmoke;
-}
 
-@include xsm {
-	.sidebar-panel {
-		position: fixed;
-		overflow-x: auto;
-		top: 0 !important;
-		height: auto;
-		min-height: 100%;
-		z-index: 999 !important;
-		width: 100% !important;
+	.slide-enter-active,
+	.slide-leave-active {
+		transition: transform 0.2s ease;
 	}
-}
 
-@include sm {
-	.sidebar-panel {
-		position: fixed;
-		overflow-x: auto;
-		top: 0 !important;
-		height: auto;
-		min-height: 100%;
-		z-index: 999 !important;
-		width: 100% !important;
+	.slide-enter,
+	.slide-leave-to {
+		transform: translateX(100%);
+		transition: all 150ms ease-in 0s;
 	}
-}
 
-@include md {
 	.sidebar-panel {
-		position: fixed;
-		overflow-x: auto;
-		top: 0 !important;
-		height: auto;
-		min-height: 100%;
-		z-index: 999 !important;
-		width: 100% !important;
-	}
-}
-
-@include lg {
-	.sidebar-panel {
-		position: fixed;
-		overflow-y: auto;
-		top: 0 !important;
-		height: auto;
-		min-height: 100%;
-		z-index: 999 !important;
-		width: 100% !important;
+		position: absolute;
+		left: auto;
+		top: 0;
+		right: 0;
+		z-index: auto;
+		width: 100%;
 	}
 }

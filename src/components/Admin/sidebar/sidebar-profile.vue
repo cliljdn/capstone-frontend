@@ -131,10 +131,7 @@
 			</main>
 		</div>
 		<transition name="slide">
-			<div
-				v-if="this.$store.state.editProfileOpen"
-				class="edit-form-panel is-overlay"
-			>
+			<div v-if="this.$store.state.editProfileOpen" class="edit-form-panel">
 				<edit-profile />
 			</div>
 		</transition>

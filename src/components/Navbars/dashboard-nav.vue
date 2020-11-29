@@ -46,7 +46,10 @@
 				</div>
 			</div>
 			<transition name="slide">
-				<div v-if="this.$store.state.sideBarOpen" class="sidebar-panel">
+				<div
+					v-if="this.$store.state.sideBarOpen"
+					class="sidebar-panel is-overlay"
+				>
 					<sidebar />
 				</div>
 			</transition>

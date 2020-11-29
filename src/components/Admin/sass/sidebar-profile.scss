@@ -7,15 +7,16 @@
 .slide-enter,
 .slide-leave-to {
 	transform: translateX(100%);
-	transition: all 150ms ease-in 0s;
+	transition: all 50ms ease-in 0s;
 }
 
 .edit-form-panel {
 	position: fixed;
+	overflow-y: auto;
 	height: auto;
-	min-height: 100%;
 	top: 0;
-	z-index: 999 !important;
+	right: 0;
+	z-index: auto;
 	width: auto;
 }
 
