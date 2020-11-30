@@ -1,6 +1,6 @@
 <template>
 	<div class="show-edit">
-		<main class="hero sidebar-edit  has-background-white">
+		<main class="hero sidebar-edit is-clearfix has-background-white">
 			<div class="edit-container">
 				<div class="edit-header has-text-weight-bold m-5">
 					Edit Profile

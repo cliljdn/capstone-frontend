@@ -20,9 +20,11 @@
 	right: 0;
 	width: auto;
 	min-width: 83%;
+	overflow-y: auto !important;
 }
 
 // for laptops
+
 .profile-sidebar {
 	border-left: 1px solid grey;
 	position: relative;
@@ -223,10 +225,9 @@
 /* Portrait and Landscape extra small */
 @include xsm {
 	.profile-sidebar {
-		border-left: 1px solid grey;
-		position: relative;
 		width: auto;
 		height: auto;
+		overflow-y: auto !important;
 
 		.main-container {
 			position: relative;
@@ -300,9 +301,9 @@
 // Small devices (landscape phones, 576px and up)
 @include sm {
 	.profile-sidebar {
-		position: relative;
 		width: auto;
 		height: auto;
+		overflow-y: auto !important;
 
 		.main-container {
 			margin: 30px;
@@ -342,9 +343,9 @@
 // Medium devices (tablets, 768px and up)
 @include md {
 	.profile-sidebar {
-		position: relative;
 		width: auto;
 		height: auto;
+		overflow-y: auto !important;
 
 		.main-container {
 			position: relative;
@@ -384,8 +385,8 @@
 	.profile-sidebar {
 		width: auto;
 		height: auto;
-
 		min-height: 1500px;
+		overflow-y: auto !important;
 
 		.main-container {
 			position: relative;
@@ -414,6 +415,7 @@
 	.profile-sidebar {
 		width: auto;
 		height: auto;
+		overflow-y: auto !important;
 
 		.main-container {
 			position: relative;

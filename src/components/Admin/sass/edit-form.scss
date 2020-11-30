@@ -20,7 +20,9 @@
 	z-index: auto;
 	width: auto;
 }
-
+.show-edit {
+	overflow-y: auto;
+}
 .sidebar-edit {
 	min-height: calc(100vh);
 	border-left: 1px solid grey;
@@ -57,7 +59,7 @@
 		height: auto;
 
 		font-size: 10px;
-
+		overflow-y: auto !important;
 		.edit-container {
 			position: relative;
 
@@ -77,7 +79,7 @@
 	.sidebar-edit {
 		width: auto;
 		height: auto;
-
+		overflow-y: auto !important;
 		.edit-container {
 			.edit-header {
 				position: relative;
@@ -94,7 +96,7 @@
 	.sidebar-edit {
 		width: auto;
 		height: auto;
-
+		overflow-y: auto !important;
 		.edit-container {
 			margin: 0;
 			padding: 0;
@@ -116,7 +118,7 @@
 	.sidebar-edit {
 		width: auto;
 		height: auto;
-
+		overflow-y: auto !important;
 		.edit-container {
 			margin: 0;
 			padding: 0;
@@ -137,7 +139,7 @@
 	.sidebar-edit {
 		width: auto;
 		height: auto;
-
+		overflow-y: auto !important;
 		.edit-container {
 			.edit-header {
 				position: relative;

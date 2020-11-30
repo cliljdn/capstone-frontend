@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div class="main-class">
 		<div class="is-overlay">
 			<main class="hero profile-sidebar is-pulled-right has-background-white">
 				<div class="main-container">
@@ -131,7 +131,10 @@
 			</main>
 		</div>
 		<transition name="slide">
-			<div v-if="this.$store.state.editProfileOpen" class="edit-form-panel">
+			<div
+				v-if="this.$store.state.editProfileOpen"
+				class="edit-form-panel is-overlay"
+			>
 				<edit-profile />
 			</div>
 		</transition>
