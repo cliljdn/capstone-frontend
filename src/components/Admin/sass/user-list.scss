@@ -1,0 +1,16 @@
+@import '../../../assets/sass/mixins.scss';
+
+.hero-container {
+	width: auto;
+	height: auto;
+
+	.main-body {
+		display: flex;
+		flex-wrap: wrap;
+
+		.account-container {
+			flex-grow: 1;
+			margin-right: 30px;
+		}
+	}
+}

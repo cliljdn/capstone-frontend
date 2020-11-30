@@ -1,5 +1,5 @@
 <template>
-	<div class="box personal-info-container">
+	<div class="box personal-info-container m-5">
 		<p class="box-title is-pulled-left is-fixed-top">
 			Personal Information
 		</p>

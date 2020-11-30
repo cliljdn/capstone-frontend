@@ -3,11 +3,10 @@
 .personal-info-container {
 	position: relative;
 	width: auto;
-	font-weight: bold;
 	height: auto;
+	font-weight: bold;
 	display: flex;
 	flex-direction: column !important;
-	overflow-y: auto !important;
 
 	.box-title {
 		margin-top: 0px;
@@ -31,11 +30,9 @@
 @include xsm {
 	.personal-info-container {
 		position: relative;
-
 		width: auto;
 		font-size: 10px;
 		height: auto;
-		overflow-y: auto;
 	}
 }
 
@@ -44,16 +41,13 @@
 		position: relative;
 		width: auto;
 		height: auto;
-		overflow-y: auto;
 	}
 }
 
 @include md {
 	.personal-info-container {
 		width: auto;
-
 		height: auto;
-		overflow-y: auto;
 	}
 }
 
@@ -61,6 +55,5 @@
 	.personal-info-container {
 		width: auto;
 		height: auto;
-		overflow-y: auto !important;
 	}
 }

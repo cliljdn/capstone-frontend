@@ -1,7 +1,7 @@
 <template>
 	<div class="">
 		<div class="is-overlay">
-			<main class="hero  profile-sidebar  is-pulled-right has-background-white">
+			<main class="hero profile-sidebar is-pulled-right has-background-white">
 				<div class="main-container">
 					<div class="has-text-weight-bold mb-5 profile-header">
 						Admin Profile

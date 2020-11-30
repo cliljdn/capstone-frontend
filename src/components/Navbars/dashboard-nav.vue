@@ -1,5 +1,5 @@
 <template>
-	<div id="nav-bar">
+	<div id="nav-bar is-overlay">
 		<nav
 			class="navbar is-spaced"
 			role="navigation"

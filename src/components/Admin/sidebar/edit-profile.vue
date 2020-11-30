@@ -1,8 +1,8 @@
 <template>
 	<div class="show-edit">
-		<section class="hero   sidebar-edit is-fullwidth  has-background-white">
+		<main class="hero sidebar-edit  has-background-white">
 			<div class="edit-container">
-				<div class="edit-header has-text-weight-bold mb-5">
+				<div class="edit-header has-text-weight-bold m-5">
 					Edit Profile
 					<span class="edit-icon icon is-pulled-left p-0">
 						<i class="fas fa-edit"></i>
@@ -34,7 +34,7 @@
 					</div>
 				</transition>
 			</div>
-		</section>
+		</main>
 	</div>
 </template>
 <script>

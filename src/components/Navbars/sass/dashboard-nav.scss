@@ -1,7 +1,6 @@
 @import '../../../assets/sass/mixins.scss';
 
 nav {
-	position: relative;
 	border-bottom: 1px solid whitesmoke;
 
 	.slide-enter-active,
@@ -16,11 +15,13 @@ nav {
 	}
 
 	.sidebar-panel {
-		position: absolute;
+		position: fixed;
 		left: auto;
 		top: 0;
 		right: 0;
+		height: auto;
 		z-index: auto;
+		min-width: auto;
 		width: 100%;
 	}
 }

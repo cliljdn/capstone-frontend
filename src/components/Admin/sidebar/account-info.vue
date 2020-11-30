@@ -1,5 +1,5 @@
 <template>
-	<div class="box account-sidebar">
+	<div class="box account-sidebar m-5">
 		<p class="box-title is-pulled-left is-fixed-top">
 			Account Information
 		</p>
