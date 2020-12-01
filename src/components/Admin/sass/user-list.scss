@@ -70,9 +70,10 @@
 			display: block;
 			width: auto;
 			margin-bottom: 20px;
+			margin-left: 0;
 			.field {
 				width: auto;
-				margin: 10px;
+
 				select {
 					width: auto;
 				}
@@ -107,13 +108,12 @@
 		.top-options {
 			display: inline;
 			width: auto;
-
+			margin-left: 0;
 			.field {
 				width: auto;
-				margin: 10px;
+
 				select {
 					width: auto;
-					min-width: 500px;
 				}
 			}
 

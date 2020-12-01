@@ -1,15 +1,15 @@
 <template>
 	<div class="">
 		<DashboardNav />
-		<establishment-list />
+		<users-list />
 	</div>
 </template>
 
 <script>
 import DashboardNav from '../../components/Navbars/dashboard-nav.vue'
-import EstablishmentList from '../../components/Admin/main/establishment-list.vue'
+import UsersList from '../../components/Admin/main/users-list.vue'
 export default {
-	components: { DashboardNav, EstablishmentList },
+	components: { DashboardNav, UsersList },
 }
 </script>
 

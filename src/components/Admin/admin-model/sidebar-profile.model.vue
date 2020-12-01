@@ -1,3 +1,4 @@
+<script>
 import edit from '../sidebar/edit-profile.vue'
 
 export default {
@@ -18,3 +19,4 @@ export default {
 		},
 	},
 }
+</script>

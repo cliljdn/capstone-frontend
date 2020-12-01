@@ -39,7 +39,7 @@
 
 		<div class="columns ">
 			<div class="column m-3">
-				<div class="box is-medium">
+				<div class="box is-medium" @click="clickMe">
 					<article class="media">
 						<div class="media-left">
 							<figure class="image is-128x128">
@@ -303,6 +303,11 @@
 		</div>
 	</div>
 </template>
+
+<script>
+import app from '../admin-model/users-list.model'
+export default app
+</script>
 
 <style lang="scss">
 @import '../sass/user-list.scss';

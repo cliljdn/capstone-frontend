@@ -2,7 +2,7 @@
 	<div class="main-list">
 		<div class="top-options mb-3">
 			<div class="columns">
-				<div class="column is-3">
+				<div class="column is-3-desktop is-6-mobile">
 					<span class="sort-text ml-5 mr-3">Search: </span>
 					<div class="field">
 						<p class="control has-icons-left">
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 
-				<div class="column is-6">
+				<div class="column is-6-desktop is-5-mobile">
 					<nobr><span class="sort-text ml-5 mr-3">Sort by: </span></nobr>
 					<div class="field">
 						<div class="control has-icons-left">
