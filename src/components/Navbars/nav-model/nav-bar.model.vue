@@ -1,3 +1,4 @@
+<script>
 import sidebar from '../../Admin/sidebar/sidebar-profile'
 export default {
 	components: {
@@ -16,3 +17,4 @@ export default {
 		},
 	},
 }
+</script>

@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import app from '../admin-model/sidebar-profile.model.js'
+import app from '../admin-model/sidebar-profile.model'
 export default app
 </script>
 

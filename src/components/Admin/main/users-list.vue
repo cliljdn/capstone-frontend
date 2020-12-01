@@ -39,7 +39,7 @@
 
 		<div class="columns ">
 			<div class="column m-3">
-				<div class="box is-medium" @click="clickMe">
+				<div class="box is-medium" @click="openModal">
 					<article class="media">
 						<div class="media-left">
 							<figure class="image is-128x128">
@@ -300,6 +300,14 @@
 					<li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
 				</ul>
 			</nav>
+		</div>
+
+		<div
+			class=""
+			v-if="this.$store.state.openModal"
+			:class="{ 'is-active': this.$store.state.openModal }"
+		>
+			<user-profile />
 		</div>
 	</div>
 </template>

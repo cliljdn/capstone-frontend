@@ -9,6 +9,7 @@ export default new Vuex.Store({
 		ACCESS_TOKEN: '',
 		sideBarOpen: false,
 		editProfileOpen: false,
+		openModal: false,
 	},
 
 	mutations: {
@@ -20,6 +21,11 @@ export default new Vuex.Store({
 		//hide and show the edit profile form
 		toggleEditForm(state) {
 			state.editProfileOpen = !state.editProfileOpen
+		},
+
+		//hide and show the modal profile
+		toggleModal(state) {
+			state.openModal = !state.openModal
 		},
 	},
 	actions: {},

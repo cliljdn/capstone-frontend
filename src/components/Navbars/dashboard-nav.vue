@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import app from './nav-model/nav-bar.model.js'
+import app from './nav-model/nav-bar.model'
 export default app
 </script>
 

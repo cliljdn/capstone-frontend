@@ -1,8 +1,11 @@
 <script>
+import UserProfile from '../profile/user-profile'
 export default {
+	components: { 'user-profile': UserProfile },
+
 	methods: {
-		clickMe() {
-			alert(1)
+		openModal() {
+			return this.$store.commit('toggleModal')
 		},
 	},
 }
