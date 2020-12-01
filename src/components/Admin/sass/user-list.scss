@@ -1,31 +1,31 @@
 @import '../../../assets/sass/mixins.scss';
 
-.main-body {
-	margin-top: 30px;
-	.dashboard-body {
-		.row {
-			margin-left: 55px;
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			width: 100%;
+.main-list {
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	font-weight: bold;
+	.top-options {
+		display: flex;
+		flex-direction: row;
+		position: relative;
 
-			.column-item {
-				display: flex;
-				flex-direction: column;
-				flex-basis: 100%;
-				flex: 1;
+		.sort-text {
+			display: inline-block;
+			margin-top: 10px;
+		}
+	}
 
-				.card {
-					border-top-right-radius: 70px;
-					border-top-left-radius: 70px;
-					width: 70%;
+	.box {
+		border-top-left-radius: 50px;
+		border-top-right-radius: 50px;
+		border-bottom-left-radius: 50px;
+		border-bottom-right-radius: 50px;
 
-					.card-content {
-						width: auto;
-					}
-				}
-			}
+		.user-content {
+			display: block;
+			width: auto;
+			white-space: nowrap;
 		}
 	}
 }

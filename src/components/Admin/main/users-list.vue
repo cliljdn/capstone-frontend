@@ -1,255 +1,89 @@
 <template>
-	<div class="main-body">
-		<div class="dashboard-body">
-			<div class="row mb-5">
-				<div class="column-item">
-					<div class="card account-container">
-						<div class="card-image">
-							<figure class="image is-5by3">
-								<img
-									src="https://versions.bulma.io/0.7.1/images/placeholders/1280x960.png"
-									alt="Placeholder image"
-								/>
-							</figure>
-						</div>
-						<div class="card-content">
-							<div class="fname-container mb-3">
-								<span class="icon is-small mname-icon is-left level">
-									<i class="fas fa-address-card"></i>
-									<span class="ml-2">Firstname: </span>
-									<p class="ml-1 mname-label">
-										<span>Christopher</span>
-									</p>
-								</span>
-							</div>
-
-							<div class="lname-container mb-3">
-								<span class="icon is-small mname-icon is-left level">
-									<i class="fas fa-address-card"></i>
-									<span class="ml-2">Lastname: </span>
-									<p class="ml-1 mname-label"><span>Jaudian</span></p>
-								</span>
-							</div>
-
-							<div class="account-container">
-								<span class="icon is-small mname-icon is-left level">
-									<i class="fas fa-cog"></i>
-									<nobr><span class="ml-2">Account Type: </span></nobr>
-									<p class="ml-1 mname-label"><span>User</span></p>
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="column-item">
-					<div class="card account-container">
-						<div class="card-image">
-							<figure class="image is-5by3">
-								<img
-									src="https://versions.bulma.io/0.7.1/images/placeholders/1280x960.png"
-									alt="Placeholder image"
-								/>
-							</figure>
-						</div>
-						<div class="card-content">
-							<div class="fname-container mb-3">
-								<span class="icon is-small mname-icon is-left level">
-									<i class="fas fa-address-card"></i>
-									<span class="ml-2">Firstname: </span>
-									<p class="ml-1 mname-label">
-										<span>Christopher</span>
-									</p>
-								</span>
-							</div>
-							<div class="lname-container mb-3">
-								<span class="icon is-small mname-icon is-left level">
-									<i class="fas fa-address-card"></i>
-									<span class="ml-2">Lastname: </span>
-									<p class="ml-1 mname-label"><span>Jaudian</span></p>
-								</span>
-							</div>
-							<div class="account-container">
-								<span class="icon is-small mname-icon is-left level">
-									<i class="fas fa-cog"></i>
-									<nobr><span class="ml-2">Account Type: </span></nobr>
-									<p class="ml-1 mname-label"><span>User</span></p>
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="column-item">
-					<div class="card account-container">
-						<div class="card-image">
-							<figure class="image is-5by3">
-								<img
-									src="https://versions.bulma.io/0.7.1/images/placeholders/1280x960.png"
-									alt="Placeholder image"
-								/>
-							</figure>
-						</div>
-
-						<div class="card-content">
-							<div class="fname-container mb-3">
-								<span class="icon is-small mname-icon is-left level">
-									<i class="fas fa-address-card"></i>
-									<span class="ml-2">Firstname: </span>
-									<p class="ml-1 mname-label">
-										<span>Christopher</span>
-									</p>
-								</span>
-							</div>
-
-							<div class="lname-container mb-3">
-								<span class="icon is-small mname-icon is-left level">
-									<i class="fas fa-address-card"></i>
-									<span class="ml-2">Lastname: </span>
-									<p class="ml-1 mname-label"><span>Jaudian</span></p>
-								</span>
-							</div>
-
-							<div class="account-container">
-								<span class="icon is-small mname-icon is-left level">
-									<i class="fas fa-cog"></i>
-									<nobr><span class="ml-2">Account Type: </span></nobr>
-									<p class="ml-1 mname-label"><span>User</span></p>
-								</span>
-							</div>
-						</div>
+	<div class="main-list">
+		<div class="top-options p-3 is-pulled-right">
+			<div class="field">
+				<div class="control">
+					<span class="sort-text mr-3">Sort by: </span>
+					<div class="select is-primary">
+						<select>
+							<option>Select</option>
+							<option>With options</option>
+						</select>
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<div class="row">
-				<div class="column-item">
-					<div class="card account-container">
-						<div class="card-image">
-							<figure class="image is-5by3">
+		<div class="columns">
+			<div class="column">
+				<div class="box">
+					<article class="media">
+						<div class="media-left">
+							<figure class="image is-128x128">
 								<img
-									src="https://versions.bulma.io/0.7.1/images/placeholders/1280x960.png"
-									alt="Placeholder image"
+									class="is-rounded"
+									src="https://bulma.io/images/placeholders/128x128.png"
+									alt="Image"
 								/>
 							</figure>
 						</div>
-
-						<div class="card-content">
-							<div class="content">
-								<div class="fname-container mb-3">
-									<span class="icon is-small mname-icon is-left level">
-										<i class="fas fa-address-card"></i>
-										<span class="ml-2">Firstname: </span>
-										<p class="ml-1 mname-label">
-											<span>Christopher</span>
-										</p>
-									</span>
-								</div>
-
-								<div class="lname-container mb-3">
-									<span class="icon is-small mname-icon is-left level">
-										<i class="fas fa-address-card"></i>
-										<span class="ml-2">Lastname: </span>
-										<p class="ml-1 mname-label"><span>Jaudian</span></p>
-									</span>
-								</div>
-
-								<div class="account-container">
-									<span class="icon is-small mname-icon is-left level">
-										<i class="fas fa-cog"></i>
-										<nobr><span class="ml-2">Account Type: </span></nobr>
-										<p class="ml-1 mname-label"><span>User</span></p>
-									</span>
-								</div>
+						<div class="media-content">
+							<div class="content user-content p-3">
+								<span class="icon is-small is-left level">
+									<i class="fas fa-user"></i>
+									<span class="admin-email ml-2">Calil Jaudian</span>
+								</span>
 							</div>
 						</div>
-					</div>
+					</article>
 				</div>
+			</div>
 
-				<div class="column-item">
-					<div class="card account-container">
-						<div class="card-image">
-							<figure class="image is-5by3">
+			<div class="column">
+				<div class="box">
+					<article class="media">
+						<div class="media-left">
+							<figure class="image is-128x128">
 								<img
-									src="https://versions.bulma.io/0.7.1/images/placeholders/1280x960.png"
-									alt="Placeholder image"
+									class="is-rounded"
+									src="https://bulma.io/images/placeholders/128x128.png"
+									alt="Image"
 								/>
 							</figure>
 						</div>
-
-						<div class="card-content">
-							<div class="content">
-								<div class="fname-container mb-3">
-									<span class="icon is-small mname-icon is-left level">
-										<i class="fas fa-address-card"></i>
-										<span class="ml-2">Firstname: </span>
-										<p class="ml-1 mname-label">
-											<span>Christopher</span>
-										</p>
-									</span>
-								</div>
-
-								<div class="lname-container mb-3">
-									<span class="icon is-small mname-icon is-left level">
-										<i class="fas fa-address-card"></i>
-										<span class="ml-2">Lastname: </span>
-										<p class="ml-1 mname-label"><span>Jaudian</span></p>
-									</span>
-								</div>
-
-								<div class="account-container">
-									<span class="icon is-small mname-icon is-left level">
-										<i class="fas fa-cog"></i>
-										<nobr><span class="ml-2">Account Type: </span></nobr>
-										<p class="ml-1 mname-label"><span>User</span></p>
-									</span>
-								</div>
+						<div class="media-content">
+							<div class="content user-content p-3">
+								<span class="icon is-small is-left level">
+									<i class="fas fa-user"></i>
+									<span class="admin-email ml-2">Calil Jaudian</span>
+								</span>
 							</div>
 						</div>
-					</div>
+					</article>
 				</div>
+			</div>
 
-				<div class="column-item">
-					<div class="card account-container">
-						<div class="card-image">
-							<figure class="image is-5by3">
+			<div class="column">
+				<div class="box">
+					<article class="media">
+						<div class="media-left">
+							<figure class="image is-128x128">
 								<img
-									src="https://versions.bulma.io/0.7.1/images/placeholders/1280x960.png"
-									alt="Placeholder image"
+									class="is-rounded"
+									src="https://bulma.io/images/placeholders/128x128.png"
+									alt="Image"
 								/>
 							</figure>
 						</div>
-
-						<div class="card-content">
-							<div class="content">
-								<div class="fname-container mb-3">
-									<span class="icon is-small mname-icon is-left level">
-										<i class="fas fa-address-card"></i>
-										<span class="ml-2">Firstname: </span>
-										<p class="ml-1 mname-label">
-											<span>Christopher</span>
-										</p>
-									</span>
-								</div>
-
-								<div class="lname-container mb-3">
-									<span class="icon is-small mname-icon is-left level">
-										<i class="fas fa-address-card"></i>
-										<span class="ml-2">Lastname: </span>
-										<p class="ml-1 mname-label"><span>Jaudian</span></p>
-									</span>
-								</div>
-
-								<div class="account-container">
-									<span class="icon is-small mname-icon is-left level">
-										<i class="fas fa-cog"></i>
-										<nobr><span class="ml-2">Account Type: </span></nobr>
-										<p class="ml-1 mname-label"><span>User</span></p>
-									</span>
-								</div>
+						<div class="media-content">
+							<div class="content user-content p-3">
+								<span class="icon is-small is-left level">
+									<i class="fas fa-user"></i>
+									<span class="admin-email ml-2">Calil Jaudian</span>
+								</span>
 							</div>
 						</div>
-					</div>
+					</article>
 				</div>
 			</div>
 		</div>
