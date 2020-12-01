@@ -62,7 +62,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin ml-2">User</span>
+									<span class="admin ml-2">Driver</span>
 								</span>
 							</div>
 						</div>
@@ -101,7 +101,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">User</span>
+									<span class="admin- ml-2">Driver</span>
 								</span>
 							</div>
 						</div>
@@ -140,7 +140,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">User</span>
+									<span class="admin- ml-2">Driver</span>
 								</span>
 							</div>
 						</div>
@@ -181,7 +181,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">User</span>
+									<span class="admin- ml-2">Driver</span>
 								</span>
 							</div>
 						</div>
@@ -220,7 +220,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">User</span>
+									<span class="admin- ml-2">Driver</span>
 								</span>
 							</div>
 						</div>
@@ -259,7 +259,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">User</span>
+									<span class="admin- ml-2">Driver</span>
 								</span>
 							</div>
 						</div>

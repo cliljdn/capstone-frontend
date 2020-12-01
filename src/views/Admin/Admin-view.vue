@@ -1,15 +1,15 @@
 <template>
 	<div class="">
 		<DashboardNav />
-		<users-list />
+		<driver-list />
 	</div>
 </template>
 
 <script>
 import DashboardNav from '../../components/Navbars/dashboard-nav.vue'
-import UsersList from '../../components/Admin/main/users-list.vue'
+import DriverList from '../../components/Admin/main/driver-list.vue'
 export default {
-	components: { DashboardNav, UsersList },
+	components: { DashboardNav, DriverList },
 }
 </script>
 
