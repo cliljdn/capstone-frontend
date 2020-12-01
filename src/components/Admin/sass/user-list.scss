@@ -32,21 +32,12 @@
 		border-bottom-right-radius: 50px;
 		border: 1px solid $primary;
 		width: auto;
-
+		flex: 3;
 		.user-content {
 			display: block;
 			width: auto;
-
-			margin-top: 1em;
-			padding: 0px;
-
-			span {
-				margin-bottom: 3px;
-			}
-
-			.account-type {
-				display: block;
-			}
+			white-space: nowrap;
+			padding: 10px;
 		}
 	}
 
@@ -62,10 +53,11 @@
 	.main-list {
 		margin: 0;
 		padding: 0;
+		zoom: 0.7;
 		.top-options {
-			display: inline;
+			display: block;
 			width: auto;
-
+			margin-bottom: 20px;
 			.field {
 				width: auto;
 				margin: 10px;
@@ -81,7 +73,6 @@
 
 		.box {
 			.user-content {
-				padding: 100px;
 				margin-top: 1em;
 				padding: 0px;
 			}
@@ -100,6 +91,7 @@
 	.main-list {
 		margin: 0;
 		padding: 0;
+		zoom: 0.7;
 		.top-options {
 			display: inline;
 			width: auto;
@@ -139,6 +131,7 @@
 	.main-list {
 		margin: 0;
 		padding: 0;
+		width: auto;
 		.top-options {
 			display: inline;
 			width: auto;
@@ -157,9 +150,15 @@
 		}
 
 		.box {
+			min-width: 400px;
+			min-height: 300px;
+			.image {
+				margin-bottom: 50px;
+				width: 250px !important;
+			}
 			.user-content {
-				margin-top: 1em;
-				padding: 0px;
+				justify-content: center;
+				margin-top: 50px;
 			}
 		}
 	}
@@ -168,6 +167,8 @@
 	.main-list {
 		margin: 0;
 		padding: 0;
+		display: flex;
+		overflow: auto;
 		.top-options {
 			display: inline;
 			width: auto;
@@ -186,9 +187,56 @@
 		}
 
 		.box {
+			min-width: 500px;
+			min-height: 300px;
+			.image {
+				margin-bottom: 50px;
+				width: 250px !important;
+			}
 			.user-content {
-				margin-top: 1em;
-				padding: 0px;
+				justify-content: center;
+				margin-top: 50px;
+			}
+		}
+	}
+
+	.page-numbers {
+		margin-bottom: 50px;
+	}
+}
+
+@include xl {
+	.main-list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		.top-options {
+			display: inline;
+			width: auto;
+
+			.field {
+				width: auto;
+				margin: 10px;
+				select {
+					width: auto;
+				}
+			}
+
+			.sort-text {
+				margin-left: 20px;
+			}
+		}
+
+		.box {
+			min-width: 400px;
+			min-height: 300px;
+			.image {
+				margin-bottom: 50px;
+				width: 250px !important;
+			}
+			.user-content {
+				justify-content: center;
+				margin-top: 50px;
 			}
 		}
 	}
