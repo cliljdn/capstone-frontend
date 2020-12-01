@@ -1,15 +1,31 @@
 <template>
 	<div class="main-list">
-		<div class="top-options p-3 is-pulled-right">
+		<div class="top-options">
+			<span class="sort-text ml-5 mr-3">Search: </span>
 			<div class="field">
-				<div class="control">
-					<span class="sort-text mr-3">Sort by: </span>
-					<div class="select is-primary">
+				<p class="control has-icons-left">
+					<input
+						class="input inp-search is-primary is-rounded"
+						type="text"
+						placeholder="Password"
+					/>
+					<span class="icon is-small is-left">
+						<i class="fas fa-search"></i>
+					</span>
+				</p>
+			</div>
+			<nobr><span class="sort-text ml-5 mr-3">Sort by: </span></nobr>
+			<div class="field">
+				<div class="control has-icons-left">
+					<div class="select is-primary is-rounded">
 						<select>
 							<option>Select</option>
 							<option>With options</option>
 						</select>
 					</div>
+					<span class="icon is-small is-left">
+						<i class="fas fa-address-card"></i>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -28,10 +44,25 @@
 							</figure>
 						</div>
 						<div class="media-content">
-							<div class="content user-content p-3">
+							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin-email ml-2">Calil Jaudian</span>
+									<span class="admin- ml-2">Firstname: </span>
+									<span class="admin- ml-2">Calil</span>
+								</span>
+							</div>
+							<div class="content user-content">
+								<span class="icon is-small is-left level">
+									<i class="fas fa-user"></i>
+									<span class="admin- ml-2">Lastname: </span>
+									<span class="admin- ml-2">Jaudian</span>
+								</span>
+							</div>
+							<div class="content user-content">
+								<span class="icon is-small is-left level">
+									<i class="fas fa-user"></i>
+									<span class="admin- ml-2">Account Type: </span>
+									<span class="admin- ml-2">User</span>
 								</span>
 							</div>
 						</div>
@@ -52,10 +83,25 @@
 							</figure>
 						</div>
 						<div class="media-content">
-							<div class="content user-content p-3">
+							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin-email ml-2">Calil Jaudian</span>
+									<span class="admin- ml-2">Firstname: </span>
+									<span class="admin- ml-2">Calil</span>
+								</span>
+							</div>
+							<div class="content user-content">
+								<span class="icon is-small is-left level">
+									<i class="fas fa-user"></i>
+									<span class="admin- ml-2">Lastname: </span>
+									<span class="admin- ml-2">Jaudian</span>
+								</span>
+							</div>
+							<div class="content user-content">
+								<span class="icon is-small is-left level">
+									<i class="fas fa-user"></i>
+									<span class="admin- ml-2">Account Type: </span>
+									<span class="admin- ml-2">User</span>
 								</span>
 							</div>
 						</div>
@@ -76,10 +122,25 @@
 							</figure>
 						</div>
 						<div class="media-content">
-							<div class="content user-content p-3">
+							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin-email ml-2">Calil Jaudian</span>
+									<span class="admin- ml-2">Firstname: </span>
+									<span class="admin- ml-2">Calil</span>
+								</span>
+							</div>
+							<div class="content user-content">
+								<span class="icon is-small is-left level">
+									<i class="fas fa-user"></i>
+									<span class="admin- ml-2">Lastname: </span>
+									<span class="admin- ml-2">Jaudian</span>
+								</span>
+							</div>
+							<div class="content user-content">
+								<span class="icon is-small is-left level">
+									<i class="fas fa-user"></i>
+									<span class="admin- ml-2">Account Type: </span>
+									<span class="admin- ml-2">User</span>
 								</span>
 							</div>
 						</div>
