@@ -25,7 +25,9 @@
 }
 .sidebar-edit {
 	min-height: calc(100vh);
-	border-left: 1px solid grey;
+	border-left: 1px solid $primary;
+	border-top: 1px solid $primary;
+	border-bottom: 1px solid $primary;
 	display: flex;
 	flex-direction: column;
 
@@ -47,7 +49,7 @@
 			padding: 0;
 
 			.personal-divider {
-				border-right: 1px solid grey;
+				border-right: 1px solid $primary;
 			}
 		}
 	}

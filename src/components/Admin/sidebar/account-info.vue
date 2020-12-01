@@ -4,15 +4,6 @@
 			Account Information
 		</p>
 		<article class="media">
-			<div class="media-left">
-				<figure class="image is-96x96">
-					<img
-						class="is-rounded"
-						src="https://i.imgur.com/bCOd9N0.jpg"
-						alt="Image"
-					/>
-				</figure>
-			</div>
 			<div class="media-content">
 				<form action="PATCH">
 					<div class="columns">

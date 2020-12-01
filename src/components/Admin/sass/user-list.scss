@@ -30,18 +30,31 @@
 		border-top-right-radius: 50px;
 		border-bottom-left-radius: 50px;
 		border-bottom-right-radius: 50px;
+		border: 1px solid $primary;
+		width: auto;
 
 		.user-content {
 			display: block;
 			width: auto;
-			white-space: nowrap;
+
 			margin-top: 1em;
 			padding: 0px;
 
 			span {
 				margin-bottom: 3px;
 			}
+
+			.account-type {
+				display: block;
+			}
 		}
+	}
+
+	.page-numbers {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
 	}
 }
 
@@ -68,10 +81,18 @@
 
 		.box {
 			.user-content {
+				padding: 100px;
 				margin-top: 1em;
 				padding: 0px;
 			}
 		}
+	}
+
+	.page-numbers {
+		margin-top: 10px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
 	}
 }
 
@@ -98,11 +119,19 @@
 
 		.box {
 			margin: 30px;
+
 			.user-content {
 				margin-top: 1em;
 				padding: 0px;
 			}
 		}
+	}
+
+	.page-numbers {
+		margin-top: 30px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
 	}
 }
 

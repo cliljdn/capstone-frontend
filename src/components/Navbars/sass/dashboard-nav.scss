@@ -1,7 +1,8 @@
 @import '../../../assets/sass/mixins.scss';
 
 nav {
-	border-bottom: 1px solid whitesmoke;
+	border-bottom: 1px solid $primary;
+	position: relative;
 
 	.slide-enter-active,
 	.slide-leave-active {

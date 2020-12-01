@@ -26,11 +26,13 @@
 // for laptops
 
 .profile-sidebar {
-	border-left: 1px solid grey;
+	border-left: 1px solid $primary;
+	border-top: 1px solid $primary;
+	border-bottom: 1px solid $primary;
 	position: relative;
 	width: auto;
 	height: auto;
-
+	min-height: 700px;
 	.main-container {
 		position: relative;
 		margin: 40px 40px 40px 40px;

@@ -9,7 +9,6 @@
 	min-width: auto;
 	max-width: 1000px;
 	flex-direction: column;
-	border: 1px solid grey;
 
 	height: auto;
 
@@ -22,7 +21,7 @@
 		border-top-style: hidden;
 		border-right-style: hidden;
 		border-left-style: hidden;
-		border-bottom: 1px solid black !important;
+		border-bottom: 1px solid $primary !important;
 		box-shadow: none;
 	}
 
