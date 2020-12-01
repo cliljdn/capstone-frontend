@@ -1,16 +1,16 @@
 <template>
 	<div class="">
 		<DashboardNav />
-		<driver-list />
+		<establishment-list />
 	</div>
 </template>
 
 <script>
 import DashboardNav from '../../components/Navbars/dashboard-nav.vue'
-import DriverList from '../../components/Admin/main/driver-list.vue'
+import EstablishmentList from '../../components/Admin/main/establishment-list.vue'
 export default {
-	components: { DashboardNav, DriverList },
+	components: { DashboardNav, EstablishmentList },
 }
 </script>
 
-<style lang="scss"></style>
+, EstablishmentList<style lang="scss"></style>

@@ -1,31 +1,38 @@
 <template>
 	<div class="main-list">
 		<div class="top-options">
-			<span class="sort-text ml-5 mr-3">Search: </span>
-			<div class="field">
-				<p class="control has-icons-left">
-					<input
-						class="input inp-search is-primary is-rounded"
-						type="text"
-						placeholder="Password"
-					/>
-					<span class="icon is-small is-left">
-						<i class="fas fa-search"></i>
-					</span>
-				</p>
-			</div>
-			<nobr><span class="sort-text ml-5 mr-3">Sort by: </span></nobr>
-			<div class="field">
-				<div class="control has-icons-left">
-					<div class="select is-primary is-rounded">
-						<select>
-							<option>Select</option>
-							<option>With options</option>
-						</select>
+			<div class="columns">
+				<div class="column">
+					<span class="sort-text ml-5 mr-3">Search: </span>
+					<div class="field">
+						<p class="control has-icons-left">
+							<input
+								class="input inp-search is-primary is-rounded"
+								type="text"
+								placeholder="Password"
+							/>
+							<span class="icon is-small is-left">
+								<i class="fas fa-search"></i>
+							</span>
+						</p>
 					</div>
-					<span class="icon is-small is-left">
-						<i class="fas fa-address-card"></i>
-					</span>
+				</div>
+
+				<div class="column mb-3">
+					<nobr><span class="sort-text ml-5 mr-3">Sort by: </span></nobr>
+					<div class="field">
+						<div class="control has-icons-left">
+							<div class="select is-primary is-rounded">
+								<select>
+									<option>Select</option>
+									<option>With options</option>
+								</select>
+							</div>
+							<span class="icon is-small is-left">
+								<i class="fas fa-address-card"></i>
+							</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -62,7 +69,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin ml-2">User</span>
+									<span class="admin ml-2">Driver</span>
 								</span>
 							</div>
 						</div>
@@ -101,7 +108,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">User</span>
+									<span class="admin- ml-2">Driver</span>
 								</span>
 							</div>
 						</div>
@@ -140,7 +147,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">User</span>
+									<span class="admin- ml-2">Driver</span>
 								</span>
 							</div>
 						</div>
@@ -181,7 +188,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">User</span>
+									<span class="admin- ml-2">Driver</span>
 								</span>
 							</div>
 						</div>
@@ -220,7 +227,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">User</span>
+									<span class="admin- ml-2">Driver</span>
 								</span>
 							</div>
 						</div>
@@ -259,7 +266,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">User</span>
+									<span class="admin- ml-2">Driver</span>
 								</span>
 							</div>
 						</div>

@@ -1,15 +1,15 @@
 <template>
 	<div class="main-list">
-		<div class="top-options">
+		<div class="top-options mb-3">
 			<div class="columns">
-				<div class="column">
+				<div class="column is-3">
 					<span class="sort-text ml-5 mr-3">Search: </span>
 					<div class="field">
 						<p class="control has-icons-left">
 							<input
 								class="input inp-search is-primary is-rounded"
 								type="text"
-								placeholder="Password"
+								placeholder="Enter Search"
 							/>
 							<span class="icon is-small is-left">
 								<i class="fas fa-search"></i>
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 
-				<div class="column mb-3">
+				<div class="column is-6">
 					<nobr><span class="sort-text ml-5 mr-3">Sort by: </span></nobr>
 					<div class="field">
 						<div class="control has-icons-left">
@@ -37,8 +37,8 @@
 			</div>
 		</div>
 
-		<div class="columns m-3">
-			<div class="column">
+		<div class="columns ">
+			<div class="column m-3">
 				<div class="box is-medium">
 					<article class="media">
 						<div class="media-left">
@@ -54,22 +54,22 @@
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
+									<span class="admin- ml-2">Name: </span>
+									<span class="admin- ml-2">McDonalds</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
+									<span class="admin- ml-2">owner: </span>
+									<span class="admin- ml-2">Christanto Macapagal</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin ml-2">Driver</span>
+									<span class="account-type ml-2">Address: </span>
+									<span class="admin ml-2">Blk 7 Blvd Nationwide</span>
 								</span>
 							</div>
 						</div>
@@ -78,7 +78,7 @@
 			</div>
 
 			<div class="column m-3">
-				<div class="box">
+				<div class="box is-medium">
 					<article class="media">
 						<div class="media-left">
 							<figure class="image is-128x128">
@@ -93,22 +93,22 @@
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
+									<span class="admin- ml-2">Name: </span>
+									<span class="admin- ml-2">McDonalds</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
+									<span class="admin- ml-2">owner: </span>
+									<span class="admin- ml-2">Christanto Macapagal</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">Driver</span>
+									<span class="account-type ml-2">Address: </span>
+									<span class="admin ml-2">Blk 7 Blvd Nationwide</span>
 								</span>
 							</div>
 						</div>
@@ -117,7 +117,7 @@
 			</div>
 
 			<div class="column m-3">
-				<div class="box">
+				<div class="box is-medium">
 					<article class="media">
 						<div class="media-left">
 							<figure class="image is-128x128">
@@ -132,22 +132,22 @@
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
+									<span class="admin- ml-2">Name: </span>
+									<span class="admin- ml-2">McDonalds</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
+									<span class="admin- ml-2">owner: </span>
+									<span class="admin- ml-2">Christanto Macapagal</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">Driver</span>
+									<span class="account-type ml-2">Address: </span>
+									<span class="admin ml-2">Blk 7 Blvd Nationwide</span>
 								</span>
 							</div>
 						</div>
@@ -156,9 +156,9 @@
 			</div>
 		</div>
 
-		<div class="columns m-3">
-			<div class="column">
-				<div class="box">
+		<div class="columns">
+			<div class="column m-3">
+				<div class="box is-medium">
 					<article class="media">
 						<div class="media-left">
 							<figure class="image is-128x128">
@@ -173,22 +173,22 @@
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
+									<span class="admin- ml-2">Name: </span>
+									<span class="admin- ml-2">McDonalds</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
+									<span class="admin- ml-2">owner: </span>
+									<span class="admin- ml-2">Christanto Macapagal</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">Driver</span>
+									<span class="account-type ml-2">Address: </span>
+									<span class="admin ml-2">Blk 7 Blvd Nationwide</span>
 								</span>
 							</div>
 						</div>
@@ -197,7 +197,7 @@
 			</div>
 
 			<div class="column m-3">
-				<div class="box">
+				<div class="box is-medium">
 					<article class="media">
 						<div class="media-left">
 							<figure class="image is-128x128">
@@ -212,22 +212,22 @@
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
+									<span class="admin- ml-2">Name: </span>
+									<span class="admin- ml-2">McDonalds</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
+									<span class="admin- ml-2">owner: </span>
+									<span class="admin- ml-2">Christanto Macapagal</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">Driver</span>
+									<span class="account-type ml-2">Address: </span>
+									<span class="admin ml-2">Blk 7 Blvd Nationwide</span>
 								</span>
 							</div>
 						</div>
@@ -236,7 +236,7 @@
 			</div>
 
 			<div class="column m-3">
-				<div class="box">
+				<div class="box is-medium">
 					<article class="media">
 						<div class="media-left">
 							<figure class="image is-128x128">
@@ -251,22 +251,22 @@
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
+									<span class="admin- ml-2">Name: </span>
+									<span class="admin- ml-2">McDonalds</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
 									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
+									<span class="admin- ml-2">owner: </span>
+									<span class="admin- ml-2">Christanto Macapagal</span>
 								</span>
 							</div>
 							<div class="content user-content">
 								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin- ml-2">Driver</span>
+									<i class="fas fa-cog"></i>
+									<span class="account-type ml-2">Address: </span>
+									<span class="admin ml-2">Blk 7 Blvd Nationwide</span>
 								</span>
 							</div>
 						</div>
@@ -275,9 +275,9 @@
 			</div>
 		</div>
 
-		<div class="page-numbers">
+		<div class="page-numbers ">
 			<nav
-				class="pagination is-centered is-small"
+				class="pagination is-centered is-small is-mobile is-0-tablet"
 				role="navigation"
 				aria-label="pagination"
 			>
