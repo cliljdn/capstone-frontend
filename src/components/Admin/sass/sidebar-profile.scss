@@ -105,7 +105,6 @@
 
 			.address-container {
 				width: 100%;
-
 				padding: 5px;
 				margin-bottom: 10px;
 
@@ -229,6 +228,7 @@
 	.profile-sidebar {
 		width: auto;
 		height: auto;
+		min-height: 830px !important;
 		overflow-y: auto !important;
 
 		.main-container {
@@ -387,7 +387,6 @@
 	.profile-sidebar {
 		width: auto;
 		height: auto;
-		min-height: 1500px;
 		overflow-y: auto !important;
 
 		.main-container {

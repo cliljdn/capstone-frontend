@@ -2,7 +2,7 @@
 
 // Small devices
 @mixin xsm {
-	@media only screen and (min-width: #{$screen-xsm-min}) and (-webkit-min-device-pixel-ratio: 6) {
+	@media only screen and (min-width: #{$screen-xsm-min}) and (-webkit-min-device-pixel-ratio: 3) {
 		@content;
 	}
 }
