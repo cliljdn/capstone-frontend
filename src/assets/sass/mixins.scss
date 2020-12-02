@@ -2,14 +2,14 @@
 
 // Small devices
 @mixin xsm {
-	@media only screen and (min-width: #{$screen-xsm-min}) and (-webkit-min-device-pixel-ratio: 2) {
+	@media only screen and (min-width: #{$screen-xsm-min}) and (-webkit-min-device-pixel-ratio: 6) {
 		@content;
 	}
 }
 
 // Small devices
 @mixin sm {
-	@media only screen and (min-width: #{$screen-sm-min}) and (-webkit-min-device-pixel-ratio: 2) {
+	@media only screen and (min-width: #{$screen-sm-min}) and (-webkit-min-device-pixel-ratio: 3) {
 		@content;
 	}
 }
@@ -30,7 +30,7 @@
 
 // Extra large devices
 @mixin xl {
-	@media (min-width: #{$screen-xl-min}) {
+	@media only screen and (min-width: #{$screen-xl-min}) and (-webkit-min-device-pixel-ratio: 2) {
 		@content;
 	}
 }

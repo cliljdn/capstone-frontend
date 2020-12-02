@@ -104,7 +104,7 @@
 	.main-list {
 		margin: 0;
 		padding: 0;
-		zoom: 0.7;
+
 		.top-options {
 			display: inline;
 			width: auto;
@@ -149,6 +149,7 @@
 		margin: 0;
 		padding: 0;
 		width: auto;
+		zoom: 0.7 !important;
 		.top-options {
 			display: inline;
 			width: auto;
@@ -186,6 +187,8 @@
 		padding: 0;
 		display: flex;
 		overflow: auto;
+		width: auto;
+
 		.top-options {
 			display: inline;
 			width: auto;
@@ -205,11 +208,12 @@
 
 		.box {
 			margin: 0%;
-			min-width: 500px;
-
+			min-width: 600px;
+			width: auto;
 			.image {
 				margin-bottom: 50px;
-				width: 250px !important;
+				width: auto;
+				min-width: 250px !important;
 			}
 			.user-content {
 				padding: 0%;
@@ -229,6 +233,8 @@
 		margin: 0;
 		padding: 0;
 		display: flex;
+		width: auto;
+
 		.top-options {
 			display: inline;
 			width: auto;

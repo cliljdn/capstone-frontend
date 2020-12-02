@@ -18,7 +18,7 @@
 					</div>
 				</div>
 
-				<div class="column is-6-desktop is-5-mobile">
+				<div class="column is-6-desktop is-3-mobile">
 					<nobr><span class="sort-text ml-5 mr-3">Sort by: </span></nobr>
 					<div class="field">
 						<div class="control has-icons-left">
@@ -37,7 +37,7 @@
 			</div>
 		</div>
 
-		<div class="columns ">
+		<div class="columns">
 			<div class="column m-3">
 				<div class="box is-medium">
 					<article class="media">
