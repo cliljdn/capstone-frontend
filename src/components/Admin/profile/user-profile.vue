@@ -130,13 +130,7 @@
 					</div>
 
 					<div class="columns">
-						<div class="column is-full profile-travel">
-							<div class="travel-dropdown">
-								<div class="travel-content">
-									<h1>gago ka</h1>
-								</div>
-							</div>
-						</div>
+						<div class="column is-full profile-travel"></div>
 					</div>
 				</section>
 
