@@ -1,7 +1,11 @@
 <script>
 export default {
+	components: {},
+
 	data() {
-		return {}
+		return {
+			items: [{ message: 'Foo' }, { message: 'Bar' }],
+		}
 	},
 
 	methods: {

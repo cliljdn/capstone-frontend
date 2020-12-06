@@ -129,16 +129,15 @@
 						</div>
 					</div>
 
-					<div class="columns">
-						<div class="column is-full profile-travel">
-							<button class="collapsible">Open Collapsible</button>
-							<div class="content">
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-									do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam, quis nostrud exercitation ullamco
-									laboris nisi ut aliquip ex ea commodo consequat.
-								</p>
+					<div class="" v-for="(item, index) in items" :key="index">
+						<div class="columns">
+							<div class="column is-full profile-travel">
+								<details class="list-travel-history">
+									<summary>{{ item.message }}</summary>
+									<div class="content-travel-history">
+										gago
+									</div>
+								</details>
 							</div>
 						</div>
 					</div>

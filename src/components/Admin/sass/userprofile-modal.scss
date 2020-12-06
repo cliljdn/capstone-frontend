@@ -6,7 +6,7 @@
 
 	.modal-card {
 		height: 100vh !important;
-
+		min-width: 1000px !important;
 		.user-info {
 			overflow-x: auto;
 			width: auto;
@@ -25,29 +25,25 @@
 			}
 		}
 
-		.collapsible {
-			background-color: #777;
-			color: white;
-			cursor: pointer;
-			padding: 18px;
-			width: 100%;
-			border: none;
-			text-align: left;
-			outline: none;
-			font-size: 15px;
+		details {
+			border: 1px solid #aaa;
+			border-radius: 4px;
+			padding: 0.5em 0.5em 0;
 		}
 
-		.active,
-		.collapsible:hover {
-			background-color: #555;
+		summary {
+			font-weight: bold;
+			margin: -0.5em -0.5em 0;
+			padding: 0.5em;
 		}
 
-		.content {
-			padding: 0 18px;
-			max-height: 0;
-			overflow: hidden;
-			transition: max-height 0.2s ease-out;
-			background-color: #f1f1f1;
+		details[open] {
+			padding: 0.5em;
+		}
+
+		details[open] summary {
+			border-bottom: 1px solid #aaa;
+			margin-bottom: 0.5em;
 		}
 	}
 }
