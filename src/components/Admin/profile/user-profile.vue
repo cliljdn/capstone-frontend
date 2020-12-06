@@ -134,9 +134,8 @@
 					</div>
 				</section>
 
-				<footer class="modal-card-foot">
-					<button class="button is-success">Save changes</button>
-					<button class="button">Cancel</button>
+				<footer class="modal-card-foot ">
+					<strong>User Profile Monitor</strong>
 				</footer>
 			</div>
 		</div>
