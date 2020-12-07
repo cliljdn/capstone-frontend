@@ -127,9 +127,28 @@
 											<span>Est. Entered</span>
 										</a>
 									</li>
+
+									<li :class="{ 'is-active': isTabActivePassenger }">
+										<a @click="showPassenger">
+											<span class="icon is-small"
+												><i class="fas fa-building" aria-hidden="true"></i
+											></span>
+											<span>Passengers</span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</div>
+					</div>
+					<div class="" v-if="isTravelActive">
+						<TravelDriver />
+					</div>
+					<div class="" v-if="isEstFormActive">
+						<EstDriver />
+					</div>
+
+					<div class="" v-if="isPassengerFormActive">
+						<PassengerDriver />
 					</div>
 				</section>
 
