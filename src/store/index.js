@@ -9,7 +9,8 @@ export default new Vuex.Store({
 		ACCESS_TOKEN: '',
 		sideBarOpen: false,
 		editProfileOpen: false,
-		openModal: false,
+		openModalUser: false,
+		openModalDriver: false,
 	},
 
 	mutations: {
@@ -24,8 +25,12 @@ export default new Vuex.Store({
 		},
 
 		//hide and show the modal profile
-		toggleModal(state) {
-			state.openModal = !state.openModal
+		toggleModalUser(state) {
+			state.openModalUser = !state.openModalUser
+		},
+
+		toggleModalDriver(state) {
+			state.openModalDriver = !state.openModalDriver
 		},
 	},
 	actions: {},

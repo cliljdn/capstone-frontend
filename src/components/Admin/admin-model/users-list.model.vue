@@ -5,7 +5,7 @@ export default {
 
 	methods: {
 		openModal() {
-			return this.$store.commit('toggleModal')
+			return this.$store.commit('toggleModalUser')
 		},
 	},
 }

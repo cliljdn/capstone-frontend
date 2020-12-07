@@ -76,165 +76,9 @@
 					</article>
 				</div>
 			</div>
-
-			<div class="column m-3">
-				<div class="box is-medium">
-					<article class="media">
-						<div class="media-left">
-							<figure class="image is-128x128">
-								<img
-									class="is-rounded"
-									src="https://bulma.io/images/placeholders/128x128.png"
-									alt="Image"
-								/>
-							</figure>
-						</div>
-						<div class="media-content">
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
-								</span>
-							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
-								</span>
-							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin ml-2">User</span>
-								</span>
-							</div>
-						</div>
-					</article>
-				</div>
-			</div>
-
-			<div class="column m-3">
-				<div class="box is-medium">
-					<article class="media">
-						<div class="media-left">
-							<figure class="image is-128x128">
-								<img
-									class="is-rounded"
-									src="https://bulma.io/images/placeholders/128x128.png"
-									alt="Image"
-								/>
-							</figure>
-						</div>
-						<div class="media-content">
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
-								</span>
-							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
-								</span>
-							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin ml-2">User</span>
-								</span>
-							</div>
-						</div>
-					</article>
-				</div>
-			</div>
 		</div>
 
 		<div class="columns">
-			<div class="column m-3">
-				<div class="box is-medium">
-					<article class="media">
-						<div class="media-left">
-							<figure class="image is-128x128">
-								<img
-									class="is-rounded"
-									src="https://bulma.io/images/placeholders/128x128.png"
-									alt="Image"
-								/>
-							</figure>
-						</div>
-						<div class="media-content">
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
-								</span>
-							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
-								</span>
-							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin ml-2">User</span>
-								</span>
-							</div>
-						</div>
-					</article>
-				</div>
-			</div>
-
-			<div class="column m-3">
-				<div class="box is-medium">
-					<article class="media">
-						<div class="media-left">
-							<figure class="image is-128x128">
-								<img
-									class="is-rounded"
-									src="https://bulma.io/images/placeholders/128x128.png"
-									alt="Image"
-								/>
-							</figure>
-						</div>
-						<div class="media-content">
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
-								</span>
-							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
-								</span>
-							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin ml-2">User</span>
-								</span>
-							</div>
-						</div>
-					</article>
-				</div>
-			</div>
-
 			<div class="column m-3">
 				<div class="box is-medium">
 					<article class="media">
@@ -305,9 +149,9 @@
 		<div
 			class=""
 			v-if="this.$store.state.openModal"
-			:class="{ 'is-active': this.$store.state.openModal }"
+			:class="{ 'is-active': this.$store.state.openModalUser }"
 		>
-			<user-profile />
+			<driver-profile />
 		</div>
 	</div>
 </template>
