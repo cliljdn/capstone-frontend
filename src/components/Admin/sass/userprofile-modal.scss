@@ -6,7 +6,8 @@
 
 	.modal-card {
 		height: 100vh !important;
-		min-width: 1000px !important;
+		min-width: 100% !important;
+		width: auto;
 		.user-info {
 			overflow-x: auto;
 			width: auto;
@@ -29,8 +30,10 @@
 			border: 1px solid #aaa;
 			border-radius: 4px;
 			padding: 0.5em 0.5em 0;
+			width: auto;
+			.content-travel-history {
+			}
 		}
-
 		summary {
 			font-weight: bold;
 			margin: -0.5em -0.5em 0;
