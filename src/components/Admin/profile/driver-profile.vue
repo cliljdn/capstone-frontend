@@ -1,6 +1,9 @@
 <template>
 	<div class="">
-		<div class="modal" :class="{ 'is-active': this.$store.state.openModal }">
+		<div
+			class="modal"
+			:class="{ 'is-active': this.$store.state.openModalDriver }"
+		>
 			<div class="modal-background"></div>
 			<div class="modal-card">
 				<header class="modal-card-head">
@@ -15,7 +18,7 @@
 					<button
 						class="delete"
 						aria-label="close"
-						@click="closeModal"
+						@click="closeModalDriver"
 					></button>
 				</header>
 				<section class="modal-card-body">
@@ -48,7 +51,7 @@
 													<span class="icon is-small is-left level">
 														<i class="fas fa-address-card"></i>
 														<span class="admin ml-2">Middlename: </span>
-														<span class="admin ml-2">Christopher</span>
+														<span class="admin ml-2">Driver</span>
 													</span>
 												</div>
 											</div>
@@ -108,16 +111,16 @@
 						<div class="column">
 							<div class="tabs is-centered">
 								<ul>
-									<li class="is-active">
-										<a>
+									<li :class="{ 'is-active': isTabActiveTravel }">
+										<a @click="showTravelFrm">
 											<span class="icon is-small"
 												><i class="fas fa-car" aria-hidden="true"></i
 											></span>
 											<span>Travel History</span>
 										</a>
 									</li>
-									<li>
-										<a>
+									<li :class="{ 'is-active': isTabActiveEst }">
+										<a @click="showEstFrm">
 											<span class="icon is-small"
 												><i class="fas fa-building" aria-hidden="true"></i
 											></span>
@@ -129,181 +132,16 @@
 						</div>
 					</div>
 
-					<div class="">
-						<div class="columns">
-							<div class="column is-full profile-travel">
-								<details>
-									<summary></summary>
-									<div class="content-travel-history">
-										<div class="columns">
-											<div class="column">
-												<div class="card">
-													<div class="card-content">
-														<div class="media">
-															<div class="media-left">
-																<figure class="image is-128x128">
-																	<img
-																		class="is-rounded"
-																		src="https://bulma.io/images/placeholders/96x96.png"
-																		alt="Placeholder image"
-																	/>
-																</figure>
-															</div>
-															<div class="media-content">
-																<div class="columns is-multiline">
-																	<div class="column is-full">
-																		<span class="icon is-small is-left level">
-																			<i class="fas fa-user"></i>
-																			<span class="admin- ml-2"
-																				>Firstname:
-																			</span>
-																			<span class="admin- ml-2">Calil</span>
-																		</span>
-																	</div>
-
-																	<div class="column is-full">
-																		<span class="icon is-small is-left level">
-																			<i class="fas fa-user"></i>
-																			<span class="admin- ml-2"
-																				>Middlename:
-																			</span>
-																			<span class="admin- ml-2"
-																				>Christopher</span
-																			>
-																		</span>
-																	</div>
-
-																	<div class="column is-full">
-																		<span class="icon is-small is-left level">
-																			<i class="fas fa-user"></i>
-																			<span class="admin- ml-2"
-																				>Lastname:
-																			</span>
-																			<span class="admin- ml-2">Jaudian</span>
-																		</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="column">
-												<div class="card">
-													<div class="card-content">
-														<div class="media">
-															<div class="media-left">
-																<figure class="image is-128x128">
-																	<img
-																		class="is-rounded"
-																		src="https://bulma.io/images/placeholders/96x96.png"
-																		alt="Placeholder image"
-																	/>
-																</figure>
-															</div>
-															<div class="media-content">
-																<div class="columns is-multiline">
-																	<div class="column is-full">
-																		<span class="icon is-small is-left level">
-																			<i class="fas fa-user"></i>
-																			<span class="admin- ml-2"
-																				>Firstname:
-																			</span>
-																			<span class="admin- ml-2">Calil</span>
-																		</span>
-																	</div>
-
-																	<div class="column is-full">
-																		<span class="icon is-small is-left level">
-																			<i class="fas fa-user"></i>
-																			<span class="admin- ml-2"
-																				>Middlename:
-																			</span>
-																			<span class="admin- ml-2"
-																				>Christopher</span
-																			>
-																		</span>
-																	</div>
-
-																	<div class="column is-full">
-																		<span class="icon is-small is-left level">
-																			<i class="fas fa-user"></i>
-																			<span class="admin- ml-2"
-																				>Lastname:
-																			</span>
-																			<span class="admin- ml-2">Jaudian</span>
-																		</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="column">
-												<div class="card">
-													<div class="card-content">
-														<div class="media">
-															<div class="media-left">
-																<figure class="image is-128x128">
-																	<img
-																		class="is-rounded"
-																		src="https://bulma.io/images/placeholders/96x96.png"
-																		alt="Placeholder image"
-																	/>
-																</figure>
-															</div>
-															<div class="media-content">
-																<div class="columns is-multiline">
-																	<div class="column is-full">
-																		<span class="icon is-small is-left level">
-																			<i class="fas fa-user"></i>
-																			<span class="admin- ml-2"
-																				>Firstname:
-																			</span>
-																			<span class="admin- ml-2">Calil</span>
-																		</span>
-																	</div>
-
-																	<div class="column is-full">
-																		<span class="icon is-small is-left level">
-																			<i class="fas fa-user"></i>
-																			<span class="admin- ml-2"
-																				>Middlename:
-																			</span>
-																			<span class="admin- ml-2"
-																				>Christopher</span
-																			>
-																		</span>
-																	</div>
-
-																	<div class="column is-full">
-																		<span class="icon is-small is-left level">
-																			<i class="fas fa-user"></i>
-																			<span class="admin- ml-2"
-																				>Lastname:
-																			</span>
-																			<span class="admin- ml-2">Jaudian</span>
-																		</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</details>
-							</div>
-						</div>
+					<div class="" v-if="isTravelActive">
+						<TravelUser />
+					</div>
+					<div class="" v-if="isEstFormActive">
+						<EstUser />
 					</div>
 				</section>
 
 				<footer class="modal-card-foot has-text-centered">
-					<strong>User Profile Monitor</strong>
+					<strong>Driver Profile Monitor</strong>
 				</footer>
 			</div>
 		</div>

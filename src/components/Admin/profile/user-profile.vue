@@ -1,6 +1,9 @@
 <template>
 	<div class="">
-		<div class="modal" :class="{ 'is-active': this.$store.state.openModal }">
+		<div
+			class="modal"
+			:class="{ 'is-active': this.$store.state.openModalUser }"
+		>
 			<div class="modal-background"></div>
 			<div class="modal-card">
 				<header class="modal-card-head">

@@ -39,7 +39,7 @@
 
 		<div class="columns is-0-tablet is-0-mobile is-0-desktop">
 			<div class="column m-3">
-				<div class="box is-medium" @click="openModal">
+				<div class="box is-medium" @click="openModalDriver">
 					<article class="media">
 						<div class="media-left">
 							<figure class="image is-128x128">
@@ -148,10 +148,10 @@
 
 		<div
 			class=""
-			v-if="this.$store.state.openModal"
+			v-if="this.$store.state.openModalDriver"
 			:class="{ 'is-active': this.$store.state.openModalDriver }"
 		>
-			<user-profile />
+			<driver-profile />
 		</div>
 	</div>
 </template>

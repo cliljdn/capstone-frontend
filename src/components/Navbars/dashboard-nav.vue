@@ -35,9 +35,17 @@
 					:class="{ 'is-active': isActive }"
 				>
 					<div class="navbar-start">
-						<a href="" class="navbar-item">Users</a>
-						<a href="" class="navbar-item">Drivers</a>
-						<a href="" class="navbar-item">Establishment</a>
+						<router-link to="users">
+							<a href="" class="navbar-item">Users</a>
+						</router-link>
+
+						<router-link to="drivers">
+							<a href="" class="navbar-item">Drivers</a>
+						</router-link>
+
+						<router-link to="establishments">
+							<a href="" class="navbar-item">Establishments</a>
+						</router-link>
 					</div>
 
 					<div class="navbar-end">

@@ -1,8 +1,8 @@
 <script>
-import TravelUser from '../profile/travel-user'
-import EstUser from '../profile/est-user'
+import TravelDriver from '../profile/travel-driver'
+import EstDriver from '../profile/est-driver'
 export default {
-	components: { TravelUser, EstUser },
+	components: { TravelDriver, EstDriver },
 
 	data() {
 		return {
@@ -14,18 +14,18 @@ export default {
 	},
 
 	methods: {
-		closeModal() {
-			return this.$store.commit('toggleModalUser')
+		closeModalDriver() {
+			return this.$store.commit('toggleModalDriver')
 		},
 
-		showTravelFrm() {
+		showTravelFrmDriver() {
 			this.isTabActiveTravel = true
 			this.isTabActiveEst = false
 			this.isTravelActive = true
 			this.isEstFormActive = false
 		},
 
-		showEstFrm() {
+		showEstFrmDriver() {
 			this.isTabActiveEst = true
 			this.isTabActiveTravel = false
 			this.isTravelActive = false

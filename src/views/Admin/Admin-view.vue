@@ -1,16 +1,15 @@
 <template>
 	<div class="">
 		<DashboardNav />
-		<users-list />
+		<router-view />
 	</div>
 </template>
 
 <script>
 import DashboardNav from '../../components/Navbars/dashboard-nav.vue'
-import UsersList from '../../components/Admin/main/users-list.vue'
 
 export default {
-	components: { DashboardNav, UsersList },
+	components: { DashboardNav },
 }
 </script>
 <style lang="scss"></style>

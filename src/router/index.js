@@ -11,6 +11,26 @@ const routes = [
 		path: '/',
 		name: 'AdminView',
 		component: () => import('@/views/Admin/Admin-view.vue'),
+		children: [
+			{
+				path: 'users',
+				name: 'users-list',
+				component: () => import('../components/Admin/main/users-list.vue'),
+			},
+
+			{
+				path: 'drivers',
+				name: 'driver-list',
+				component: () => import('../components/Admin/main/driver-list.vue'),
+			},
+
+			{
+				path: 'establishments',
+				name: 'establishment-list',
+				component: () =>
+					import('../components/Admin/main/establishment-list.vue'),
+			},
+		],
 	},
 
 	{ path: '/404', component: PageNotFound },

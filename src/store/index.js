@@ -12,7 +12,6 @@ export default new Vuex.Store({
 		openModalUser: false,
 		openModalDriver: false,
 	},
-
 	mutations: {
 		// hide and show the sidebar profile
 		toggleSideBar(state) {

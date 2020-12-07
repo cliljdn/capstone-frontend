@@ -148,10 +148,10 @@
 
 		<div
 			class=""
-			v-if="this.$store.state.openModal"
+			v-if="this.$store.state.openModalUser"
 			:class="{ 'is-active': this.$store.state.openModalUser }"
 		>
-			<driver-profile />
+			<user-profile />
 		</div>
 	</div>
 </template>

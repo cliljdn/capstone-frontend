@@ -69,7 +69,7 @@
 								<span class="icon is-small is-left level">
 									<i class="fas fa-cog"></i>
 									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin ml-2">User</span>
+									<span class="admin ml-2">Establishment</span>
 								</span>
 							</div>
 						</div>
@@ -144,14 +144,6 @@
 					<li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
 				</ul>
 			</nav>
-		</div>
-
-		<div
-			class=""
-			v-if="this.$store.state.openModal"
-			:class="{ 'is-active': this.$store.state.openModal }"
-		>
-			<user-profile />
 		</div>
 	</div>
 </template>
