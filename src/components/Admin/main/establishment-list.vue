@@ -148,11 +148,6 @@
 	</div>
 </template>
 
-<script>
-import app from '../admin-model/driver-list.model'
-export default app
-</script>
-
 <style lang="scss">
 @import '../sass/user-list.scss';
 </style>

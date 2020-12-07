@@ -14,7 +14,7 @@ export default {
 	},
 
 	methods: {
-		closeModalDriver() {
+		closeModalDriver: function() {
 			return this.$store.commit('toggleModalDriver')
 		},
 

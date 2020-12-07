@@ -112,7 +112,7 @@
 							<div class="tabs is-centered">
 								<ul>
 									<li :class="{ 'is-active': isTabActiveTravel }">
-										<a @click="showTravelFrm">
+										<a @click="showTravelFrmDriver">
 											<span class="icon is-small"
 												><i class="fas fa-car" aria-hidden="true"></i
 											></span>
@@ -120,7 +120,7 @@
 										</a>
 									</li>
 									<li :class="{ 'is-active': isTabActiveEst }">
-										<a @click="showEstFrm">
+										<a @click="showEstFrmDriver">
 											<span class="icon is-small"
 												><i class="fas fa-building" aria-hidden="true"></i
 											></span>
@@ -130,13 +130,6 @@
 								</ul>
 							</div>
 						</div>
-					</div>
-
-					<div class="" v-if="isTravelActive">
-						<TravelUser />
-					</div>
-					<div class="" v-if="isEstFormActive">
-						<EstUser />
 					</div>
 				</section>
 
@@ -149,7 +142,7 @@
 </template>
 
 <script>
-import app from '../admin-model/user-profile.model'
+import app from '../admin-model/driver-profile.model'
 export default app
 </script>
 
