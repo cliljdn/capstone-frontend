@@ -1,5 +1,5 @@
 <script>
-import UserProfile from '../../profile/user-profile'
+import UserProfile from '../../profile/users/user-profile'
 export default {
 	components: { 'user-profile': UserProfile },
 

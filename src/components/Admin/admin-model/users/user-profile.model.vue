@@ -1,14 +1,12 @@
 <script>
-import TravelUser from '../../profile/travel-user'
-import EstUser from '../../profile/est-user'
+import TravelUser from '../../profile/users/travel-user'
+import EstUser from '../../profile/users/est-user'
 export default {
 	components: { TravelUser, EstUser },
 
 	data() {
 		return {
-			isTravelActive: true,
-			isEstFormActive: false,
-			isTabActiveTravel: false,
+			isTabActiveTravel: true,
 			isTabActiveEst: false,
 		}
 	},
@@ -21,15 +19,11 @@ export default {
 		showTravelFrm() {
 			this.isTabActiveTravel = true
 			this.isTabActiveEst = false
-			this.isTravelActive = true
-			this.isEstFormActive = false
 		},
 
 		showEstFrm() {
 			this.isTabActiveEst = true
 			this.isTabActiveTravel = false
-			this.isTravelActive = false
-			this.isEstFormActive = true
 		},
 	},
 }

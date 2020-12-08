@@ -146,10 +146,10 @@
 </template>
 
 <script>
-import app from '../admin-model/est/est-profile.model'
+import app from '../../admin-model/est/est-profile.model'
 export default app
 </script>
 
 <style lang="scss">
-@import '../sass/userprofile-modal.scss';
+@import '../../sass/userprofile-modal.scss';
 </style>

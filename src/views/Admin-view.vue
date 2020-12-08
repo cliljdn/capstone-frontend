@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import DashboardNav from '../../components/Navbars/dashboard-nav.vue'
+import DashboardNav from '../components/Navbars/dashboard-nav.vue'
 
 export default {
 	components: { DashboardNav },

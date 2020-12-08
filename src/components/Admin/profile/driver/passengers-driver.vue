@@ -3,7 +3,7 @@
 		<div class="columns is-vcentered">
 			<span class="ml-3">Start Time: </span>
 
-			<div class="column is-2">
+			<div class="column is-2 is-mobile">
 				<div class="field ">
 					<div class="control has-icons-left">
 						<div class="select">

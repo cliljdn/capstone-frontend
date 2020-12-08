@@ -2,7 +2,7 @@
 	<div class="">
 		<div
 			class="modal"
-			:class="{ 'is-active': this.$store.state.openModalDriver }"
+			:class="{ 'is-active': this.$store.state.openModalUser }"
 		>
 			<div class="modal-background"></div>
 			<div class="modal-card">
@@ -11,14 +11,14 @@
 						<span class="icon is-small is-left level">
 							<i class="fas fa-user-circle"></i>
 							<span style="white-space: nowrap;" class="admin ml-2"
-								>Driver Profile</span
+								>User Profile</span
 							>
 						</span>
 					</p>
 					<button
 						class="delete"
 						aria-label="close"
-						@click="closeModalDriver"
+						@click="closeModal"
 					></button>
 				</header>
 				<section class="modal-card-body">
@@ -51,7 +51,7 @@
 													<span class="icon is-small is-left level">
 														<i class="fas fa-address-card"></i>
 														<span class="admin ml-2">Middlename: </span>
-														<span class="admin ml-2">Driver</span>
+														<span class="admin ml-2">Christopher</span>
 													</span>
 												</div>
 											</div>
@@ -112,7 +112,7 @@
 							<div class="tabs is-centered">
 								<ul>
 									<li :class="{ 'is-active': isTabActiveTravel }">
-										<a @click="showTravelFrmDriver">
+										<a @click="showTravelFrm">
 											<span class="icon is-small"
 												><i class="fas fa-car" aria-hidden="true"></i
 											></span>
@@ -120,40 +120,28 @@
 										</a>
 									</li>
 									<li :class="{ 'is-active': isTabActiveEst }">
-										<a @click="showEstFrmDriver">
+										<a @click="showEstFrm">
 											<span class="icon is-small"
 												><i class="fas fa-building" aria-hidden="true"></i
 											></span>
 											<span>Est. Entered</span>
 										</a>
 									</li>
-
-									<li :class="{ 'is-active': isTabActivePassenger }">
-										<a @click="showPassenger">
-											<span class="icon is-small"
-												><i class="fas fa-building" aria-hidden="true"></i
-											></span>
-											<span>Passengers</span>
-										</a>
-									</li>
 								</ul>
 							</div>
 						</div>
 					</div>
-					<div class="" v-if="isTravelActive">
-						<TravelDriver />
-					</div>
-					<div class="" v-if="isEstFormActive">
-						<EstDriver />
-					</div>
 
-					<div class="" v-if="isPassengerFormActive">
-						<PassengerDriver />
+					<div class="" v-if="isTabActiveTravel">
+						<TravelUser />
+					</div>
+					<div class="" v-if="isTabActiveEst">
+						<EstUser />
 					</div>
 				</section>
 
 				<footer class="modal-card-foot has-text-centered">
-					<strong>Driver Profile Monitor</strong>
+					<strong>User Profile Monitor</strong>
 				</footer>
 			</div>
 		</div>
@@ -161,10 +149,10 @@
 </template>
 
 <script>
-import app from '../admin-model/driver/driver-profile.model'
+import app from '../../admin-model/users/user-profile.model'
 export default app
 </script>
 
 <style lang="scss">
-@import '../sass/userprofile-modal.scss';
+@import '../../sass/userprofile-modal.scss';
 </style>

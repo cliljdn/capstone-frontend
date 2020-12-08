@@ -10,7 +10,7 @@ const routes = [
 	{
 		path: '/',
 		name: 'AdminView',
-		component: () => import('@/views/Admin/Admin-view.vue'),
+		component: () => import('@/views/Admin-view.vue'),
 		children: [
 			{
 				path: 'users',

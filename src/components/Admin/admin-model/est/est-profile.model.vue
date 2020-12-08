@@ -1,15 +1,13 @@
 <script>
-import EnteredEst from '../../profile/entered-est'
-import EstEmployees from '../../profile/est-employees'
+import EnteredEst from '../../profile/est/entered-est'
+import EstEmployees from '../../profile/est/est-employees'
 export default {
 	components: { EstEmployees, EnteredEst },
 
 	data() {
 		return {
-			isPersonFormActive: false,
-			isTabActivePerson: false,
+			isTabActivePerson: true,
 			isTabActiveEmp: false,
-			isEmpFormActive: false,
 		}
 	},
 
@@ -19,17 +17,13 @@ export default {
 		},
 
 		showCitizenEntered() {
-			this.isPersonFormActive = true
 			this.isTabActivePerson = true
 			this.isTabActiveEmp = false
-			this.isEmpFormActive = false
 		},
 
 		showEmpForm() {
-			this.isPersonFormActive = false
 			this.isTabActivePerson = false
 			this.isTabActiveEmp = true
-			this.isEmpFormActive = true
 		},
 	},
 }

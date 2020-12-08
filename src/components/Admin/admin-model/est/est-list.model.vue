@@ -1,5 +1,5 @@
 <script>
-import EstProfile from '../../profile/establishment-profile'
+import EstProfile from '../../profile/est/establishment-profile'
 export default {
 	components: { 'establishment-profile': EstProfile },
 
