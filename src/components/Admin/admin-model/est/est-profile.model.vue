@@ -1,6 +1,6 @@
 <script>
-import EnteredEst from '../profile/entered-est'
-import EstEmployees from '../profile/est-employees'
+import EnteredEst from '../../profile/entered-est'
+import EstEmployees from '../../profile/est-employees'
 export default {
 	components: { EstEmployees, EnteredEst },
 

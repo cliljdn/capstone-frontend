@@ -1,5 +1,5 @@
 <script>
-import DriverProfile from '../profile/driver-profile'
+import DriverProfile from '../../profile/driver-profile'
 export default {
 	components: { 'driver-profile': DriverProfile },
 

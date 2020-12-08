@@ -1,7 +1,7 @@
 <script>
-import TravelDriver from '../profile/travel-driver'
-import EstDriver from '../profile/est-driver'
-import PassengerDriver from '../profile/passengers-driver'
+import TravelDriver from '../../profile/travel-driver'
+import EstDriver from '../../profile/est-driver'
+import PassengerDriver from '../../profile/passengers-driver'
 export default {
 	components: { TravelDriver, EstDriver, PassengerDriver },
 

@@ -161,7 +161,7 @@
 </template>
 
 <script>
-import app from '../admin-model/driver-profile.model'
+import app from '../admin-model/driver/driver-profile.model'
 export default app
 </script>
 

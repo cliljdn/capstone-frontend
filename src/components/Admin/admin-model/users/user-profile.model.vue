@@ -1,6 +1,6 @@
 <script>
-import TravelUser from '../profile/travel-user'
-import EstUser from '../profile/est-user'
+import TravelUser from '../../profile/travel-user'
+import EstUser from '../../profile/est-user'
 export default {
 	components: { TravelUser, EstUser },
 

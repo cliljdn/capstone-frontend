@@ -152,7 +152,7 @@
 </template>
 
 <script>
-import app from '../admin-model/est-list.model'
+import app from '../admin-model/est/est-list.model'
 export default app
 </script>
 

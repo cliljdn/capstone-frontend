@@ -1,6 +1,6 @@
 <script>
-import personal from '../sidebar/personal-info.vue'
-import account from '../sidebar/account-info.vue'
+import personal from '../../sidebar/personal-info.vue'
+import account from '../../sidebar/account-info.vue'
 export default {
 	components: {
 		'personal-info': personal,

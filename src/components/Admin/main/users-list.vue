@@ -157,7 +157,7 @@
 </template>
 
 <script>
-import app from '../admin-model/users-list.model'
+import app from '../admin-model/users/users-list.model'
 export default app
 </script>
 

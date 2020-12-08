@@ -146,7 +146,7 @@
 </template>
 
 <script>
-import app from '../admin-model/est-profile.model'
+import app from '../admin-model/est/est-profile.model'
 export default app
 </script>
 

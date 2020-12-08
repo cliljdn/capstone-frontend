@@ -149,7 +149,7 @@
 </template>
 
 <script>
-import app from '../admin-model/user-profile.model'
+import app from '../admin-model/users/user-profile.model'
 export default app
 </script>
 

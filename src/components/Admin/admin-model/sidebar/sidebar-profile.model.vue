@@ -1,5 +1,5 @@
 <script>
-import edit from '../sidebar/edit-profile.vue'
+import edit from '../../sidebar/edit-profile.vue'
 
 export default {
 	components: { 'edit-profile': edit },

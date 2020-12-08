@@ -38,7 +38,7 @@
 	</div>
 </template>
 <script>
-import app from '../admin-model/edit-profile.model'
+import app from '../admin-model/sidebar/edit-profile.model'
 export default app
 </script>
 
