@@ -1,5 +1,42 @@
 <template>
 	<div class="">
+		<div class="columns is-vcentered">
+			<span class="ml-3">Start time: </span>
+
+			<div class="column is-2">
+				<div class="field ">
+					<div class="control has-icons-left">
+						<div class="select">
+							<select>
+								<option selected>Select</option>
+								<option>Select dropdown</option>
+								<option>With options</option>
+							</select>
+						</div>
+						<div class="icon is-small is-left">
+							<i class="fas fa-globe"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<span class="ml-3">End time: </span>
+			<div class="column">
+				<div class="field ">
+					<div class="control has-icons-left">
+						<div class="select">
+							<select>
+								<option selected>Select</option>
+								<option>Select dropdown</option>
+								<option>With options</option>
+							</select>
+						</div>
+						<div class="icon is-small is-left">
+							<i class="fas fa-globe"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="columns">
 			<div class="column is-full profile-travel">
 				<details>

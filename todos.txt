@@ -5,9 +5,9 @@ x = finished
 [] Login Component
 [] Admin dashboard 
 [x] sidebar profile
-[/] edit profile
-    [/] account information
-    [] personal information
+[x] edit profile
+    [x] account information
+    [x] personal information
 [] register form
 [] personal information form
 [] list of users

@@ -39,7 +39,7 @@
 
 		<div class="columns is-0-tablet is-0-mobile is-0-desktop">
 			<div class="column m-3">
-				<div class="box is-medium">
+				<div class="box is-medium" @click="openModal">
 					<article class="media">
 						<div class="media-left">
 							<figure class="image is-128x128">
@@ -145,8 +145,16 @@
 				</ul>
 			</nav>
 		</div>
+		<div class="" v-if="this.$store.state.openModalEst">
+			<establishment-profile />
+		</div>
 	</div>
 </template>
+
+<script>
+import app from '../admin-model/est-list.model'
+export default app
+</script>
 
 <style lang="scss">
 @import '../sass/user-list.scss';

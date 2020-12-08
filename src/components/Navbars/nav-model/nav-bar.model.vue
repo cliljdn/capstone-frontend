@@ -16,5 +16,9 @@ export default {
 			return this.$store.commit('toggleSideBar')
 		},
 	},
+
+	mounted() {
+		return this.$router.push({ name: 'users-list' }).catch(() => {})
+	},
 }
 </script>

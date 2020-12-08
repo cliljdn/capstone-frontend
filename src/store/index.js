@@ -11,6 +11,7 @@ export default new Vuex.Store({
 		editProfileOpen: false,
 		openModalUser: false,
 		openModalDriver: false,
+		openModalEst: false,
 	},
 	mutations: {
 		// hide and show the sidebar profile
@@ -30,6 +31,10 @@ export default new Vuex.Store({
 
 		toggleModalDriver(state) {
 			state.openModalDriver = !state.openModalDriver
+		},
+
+		toggleModalEst(state) {
+			state.openModalEst = !state.openModalEst
 		},
 	},
 	actions: {},
