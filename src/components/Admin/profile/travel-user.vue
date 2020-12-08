@@ -1,7 +1,7 @@
 <template>
 	<div class="">
 		<div class="columns is-vcentered">
-			<span class="ml-3">Start time: </span>
+			<span class="ml-3">Sort by: </span>
 
 			<div class="column">
 				<div class="field ">
