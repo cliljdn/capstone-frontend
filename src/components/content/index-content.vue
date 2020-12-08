@@ -23,15 +23,15 @@
 			</section>
 		</div>
 		<div class="column column-card">
-			<form-fillup />
+			<admin-login />
 		</div>
 	</div>
 </template>
 
 <script>
-import FormFillup from './mobile/form-fillup'
+import AdminLogin from './web/admin-login'
 export default {
-	components: { 'form-fillup': FormFillup },
+	components: { 'admin-login': AdminLogin },
 }
 </script>
 
