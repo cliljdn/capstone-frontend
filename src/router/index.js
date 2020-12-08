@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
-		path: '/',
+		path: '/admin',
 		name: 'AdminView',
 		component: () => import('@/views/Admin-view.vue'),
 		children: [
@@ -31,6 +31,12 @@ const routes = [
 					import('../components/Admin/main/establishment-list.vue'),
 			},
 		],
+	},
+
+	{
+		path: '/',
+		name: 'IndexView',
+		component: () => import('@/views/index-view.vue'),
 	},
 
 	{ path: '/404', component: PageNotFound },

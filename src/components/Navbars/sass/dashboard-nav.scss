@@ -4,6 +4,14 @@ nav {
 	border-bottom: 1px solid $primary;
 	position: relative;
 
+	a :hover {
+		border-bottom: 1px solid lightgreen;
+	}
+
+	.text-underline {
+		border-bottom: 1px solid lightgreen;
+	}
+
 	.slide-enter-active,
 	.slide-leave-active {
 		transition: transform 0.2s ease;

@@ -9,7 +9,9 @@
 					</span>
 
 					<span class="icon is-pulled-right close-form">
-						<a @click="toggleEditForm"><i class="fas fa-times"></i></a>
+						<a @click="toggleEditForm"
+							><button class="delete" aria-label="close"></button
+						></a>
 					</span>
 				</div>
 				<div class="tabs edit-tabs is-centered mb-3">

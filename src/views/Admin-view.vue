@@ -1,15 +1,15 @@
 <template>
 	<div class="">
-		<DashboardNav />
+		<dashboard-nav />
 		<router-view />
 	</div>
 </template>
 
 <script>
-import DashboardNav from '../components/Navbars/dashboard-nav.vue'
+import DashboardNav from '../components/Navbars/dashboard-nav'
 
 export default {
-	components: { DashboardNav },
+	components: { 'dashboard-nav': DashboardNav },
 }
 </script>
 <style lang="scss"></style>

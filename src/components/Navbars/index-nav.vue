@@ -35,59 +35,24 @@
 					:class="{ 'is-active': isActive }"
 				>
 					<div class="navbar-start">
-						<router-link to="users">
-							<a
-								@click="activeUser"
-								:class="{ 'text-underline': isUserActive }"
-								href=""
-								class="navbar-item "
-								>Users</a
-							>
-						</router-link>
-
-						<router-link to="drivers">
-							<a
-								href=""
-								@click="activeDriver"
-								:class="{ 'text-underline': isDriverActive }"
-								class="navbar-item"
-								>Drivers</a
-							>
-						</router-link>
-
-						<router-link to="establishments">
-							<a
-								href=""
-								@click="activeEst"
-								:class="{ 'text-underline': isEstActive }"
-								class="navbar-item"
-								>Establishments</a
-							>
-						</router-link>
+						<a href="" class="navbar-item ">Home</a>
+						<a href="" class="navbar-item ">Download Our App</a>
 					</div>
 
 					<div class="navbar-end">
-						<a @click="toggleSideBar" class="navbar-item">Profile</a>
+						<a class="navbar-item">Register</a>
 					</div>
 				</div>
 			</div>
-			<transition name="slide">
-				<div
-					v-if="this.$store.state.sideBarOpen"
-					class="sidebar-panel is-overlay"
-				>
-					<sidebar />
-				</div>
-			</transition>
 		</nav>
 	</div>
 </template>
 
 <script>
-import app from './nav-model/nav-bar.model'
+import app from './nav-model/index-nav.model'
 export default app
 </script>
 
 <style lang="scss">
-@import './sass/dashboard-nav.scss';
+@import './sass/index-nav.scss';
 </style>

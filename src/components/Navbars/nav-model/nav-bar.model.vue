@@ -7,6 +7,9 @@ export default {
 	data() {
 		return {
 			isActive: false,
+			isUserActive: true,
+			isDriverActive: false,
+			isEstActive: false,
 		}
 	},
 
@@ -14,6 +17,24 @@ export default {
 		// hide and show the sidebar profile
 		toggleSideBar() {
 			return this.$store.commit('toggleSideBar')
+		},
+
+		activeUser() {
+			this.isUserActive = true
+			this.isDriverActive = false
+			this.isEstActive = false
+		},
+
+		activeDriver() {
+			this.isUserActive = false
+			this.isDriverActive = true
+			this.isEstActive = false
+		},
+
+		activeEst() {
+			this.isUserActive = false
+			this.isDriverActive = false
+			this.isEstActive = true
 		},
 	},
 

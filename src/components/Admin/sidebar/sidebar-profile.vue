@@ -6,7 +6,9 @@
 					<div class="has-text-weight-bold mb-5 profile-header">
 						Admin Profile
 						<span class="icon is-pulled-right close-sidebar">
-							<a @click="toggleSideBar"><i class="fas fa-times"></i></a>
+							<a @click="toggleSideBar"
+								><button class="delete" aria-label="close"></button
+							></a>
 						</span>
 						<div class="is-clearfix"></div>
 					</div>
