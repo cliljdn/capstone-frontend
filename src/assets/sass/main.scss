@@ -7,6 +7,8 @@
 $font-stack: 'Raleway', sans-serif;
 $primary: hsl(120, 30%, 41%);
 
+// section const
+$section-padding-large: 17rem 1.5rem;
 body {
 	margin: 0;
 	font: 100% $font-stack;
