@@ -8,6 +8,32 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
+		path: '/',
+		name: 'index',
+		component: () => import('@/views/index-view.vue'),
+		children: [
+			{
+				path: '',
+				name: 'registerCitizen',
+				component: () =>
+					import('@/components/content/mobile/accounts-register.vue'),
+			},
+
+			{
+				path: 'admin/olongapo/cityhall/mis/register',
+				name: 'registerAdmin',
+				component: () => import('@/components/content/web/admin-register.vue'),
+			},
+
+			{
+				path: 'admin/olongapo/cityhall/mis/login',
+				name: 'loginAdmin',
+				component: () => import('@/components/content/web/admin-login.vue'),
+			},
+		],
+	},
+
+	{
 		path: '/admin',
 		name: 'AdminView',
 		component: () => import('@/views/Admin-view.vue'),

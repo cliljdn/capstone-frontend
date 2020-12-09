@@ -7,9 +7,7 @@
 						<h1 class="title">
 							SCAN GAPO
 						</h1>
-						<h2 class="subtitle">
-							Fullheight subtitle
-						</h2>
+						<h2 class="subtitle"></h2>
 					</div>
 				</div>
 				<div class="hero-body">
@@ -23,16 +21,14 @@
 			</section>
 		</div>
 		<div class="column column-card">
-			<admin-login />
+			<router-view />
 		</div>
 	</div>
 </template>
 
 <script>
-import AdminLogin from './web/admin-login'
-export default {
-	components: { 'admin-login': AdminLogin },
-}
+import app from './model/form-acc.model'
+export default app
 </script>
 
 <style lang="scss">

@@ -7,7 +7,7 @@
 						<span>Welcome to Scan Gapo</span>
 					</div>
 				</div>
-				<span>This is a registration for a citizen Monitoring </span>
+				<span>This is a Login for Admin Dashboard</span>
 
 				<div class="columns mt-3">
 					<div class="column">
