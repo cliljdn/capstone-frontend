@@ -2,7 +2,7 @@
 	<div class="card is-fullheight has-equal-height">
 		<div class="card-content">
 			<div class="content">
-				<div class="columns mt-4">
+				<div class="columns">
 					<div class="column text-welcome">
 						<span>Welcome to Scan Gapo</span>
 					</div>
@@ -16,7 +16,9 @@
 							<p class="control has-icons-left has-icons-right">
 								<input
 									v-model="values.email"
-									class="input is-medium"
+									@focus="errors.email = ''"
+									@blur="validate(values)"
+									class="input"
 									type="email"
 									placeholder="Email"
 									required
@@ -25,6 +27,7 @@
 									<i class="fas fa-envelope"></i>
 								</span>
 							</p>
+							<span class="has-text-danger">{{ errors.email }}</span>
 						</div>
 
 						<span class="">Password:</span>
@@ -32,7 +35,8 @@
 							<p class="control has-icons-left">
 								<input
 									v-model="values.password"
-									class="input is-medium"
+									@focus="errors.password = ''"
+									class="input"
 									type="password"
 									placeholder="Password"
 									minlength="8"
@@ -43,13 +47,16 @@
 									<i class="fas fa-key"></i>
 								</span>
 							</p>
+							<span class="has-text-danger">{{ errors.password }}</span>
 						</div>
 
 						<span class="">Confirm Password:</span>
 						<div class="field mt-3">
 							<p class="control has-icons-left">
 								<input
-									class="input is-medium"
+									v-model="values.confirm"
+									@focus="errors.confirm = ''"
+									class="input "
 									type="password"
 									placeholder="Confirm Password"
 									required
@@ -58,12 +65,16 @@
 									<i class="fas fa-lock"></i>
 								</span>
 							</p>
+							<span class="has-text-danger">{{ errors.confirm }}</span>
 						</div>
 
 						<span class="">Account Type:</span>
 						<div class="control has-icons-left mt-3">
-							<div class="select is-medium">
-								<select v-model="values.account_type">
+							<div class="select">
+								<select
+									v-model="values.account_type"
+									@click="errors.account_type = ''"
+								>
 									<option selected>SELECT</option>
 									<option>User</option>
 									<option>Driver</option>
@@ -74,8 +85,9 @@
 								<i class="fas fa-globe"></i>
 							</span>
 						</div>
+						<span class="has-text-danger">{{ errors.account_type }}</span>
 
-						<button class="button is-success is-medium is-center mt-3">
+						<button class="button is-success is-pulled-right is-medium  mt-5">
 							Register
 						</button>
 					</div>

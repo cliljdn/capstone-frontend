@@ -2,12 +2,13 @@
 import * as yup from 'yup'
 const errors = {
 	email: 'Please enter a valid email',
-	password: `Password must contain Minimum eight characters,
+	password: `password must contain Minimum eight characters,
     at least one uppercase letter,
     one lowercase letter and one number`,
 }
+
 export default {
-	registerValidation: yup.object().shape({
+	registerIsValid: yup.object().shape({
 		email: yup
 			.string()
 			.trim()
@@ -27,6 +28,12 @@ export default {
 			)
 			.required(),
 
+		confirm: yup
+			.string()
+			.trim()
+			.oneOf([yup.ref('password'), null], 'password, must be matched')
+			.required('confirm field is a required field'),
+
 		account_type: yup
 			.string()
 			.trim()
@@ -34,14 +41,6 @@ export default {
 				/^(User|Driver|Employee)$/,
 				'User, Driver, Employee account types are only allowed'
 			)
-			.required(),
+			.required('account type is a required field'),
 	}),
-
-	validate: async function(values) {
-		try {
-			this.registerValidation.validate(values, { abortEarly: false })
-		} catch (error) {
-			return error
-		}
-	},
 }
