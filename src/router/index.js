@@ -9,26 +9,34 @@ Vue.use(VueRouter)
 const routes = [
 	{
 		path: '/',
-		name: 'index',
-		component: () => import('@/views/index-view.vue'),
+		component: () =>
+			import(/* webpackChunkName: "components" */ '@/views/index-view.vue'),
 		children: [
 			{
 				path: '',
-				name: 'registerCitizen',
+				name: 'registerCitizens',
 				component: () =>
-					import('@/components/content/mobile/accounts-register.vue'),
+					import(
+						/* webpackChunkName: "components" */ '@/components/content/mobile/accounts-register.vue'
+					),
 			},
 
 			{
 				path: 'admin/olongapo/cityhall/mis/register',
 				name: 'registerAdmin',
-				component: () => import('@/components/content/web/admin-register.vue'),
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '@/components/content/web/admin-register.vue'
+					),
 			},
 
 			{
 				path: 'admin/olongapo/cityhall/mis/login',
 				name: 'loginAdmin',
-				component: () => import('@/components/content/web/admin-login.vue'),
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '@/components/content/web/admin-login.vue'
+					),
 			},
 		],
 	},
@@ -36,25 +44,34 @@ const routes = [
 	{
 		path: '/admin',
 		name: 'AdminView',
-		component: () => import('@/views/Admin-view.vue'),
+		component: () =>
+			import(/* webpackChunkName: "components" */ '@/views/Admin-view.vue'),
 		children: [
 			{
 				path: 'users',
 				name: 'users-list',
-				component: () => import('../components/Admin/main/users-list.vue'),
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/Admin/main/users-list.vue'
+					),
 			},
 
 			{
 				path: 'drivers',
 				name: 'driver-list',
-				component: () => import('../components/Admin/main/driver-list.vue'),
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/Admin/main/driver-list.vue'
+					),
 			},
 
 			{
 				path: 'establishments',
 				name: 'establishment-list',
 				component: () =>
-					import('../components/Admin/main/establishment-list.vue'),
+					import(
+						/* webpackChunkName: "components" */ '../components/Admin/main/establishment-list.vue'
+					),
 			},
 		],
 	},
@@ -62,7 +79,8 @@ const routes = [
 	{
 		path: '/',
 		name: 'IndexView',
-		component: () => import('@/views/index-view.vue'),
+		component: () =>
+			import(/* webpackChunkName: "components" */ '@/views/index-view.vue'),
 	},
 
 	{ path: '/404', component: PageNotFound },
