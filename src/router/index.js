@@ -2,8 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PageNotFound from '@/components/Notfound/not-found.vue'
 
-//Admin
-
 Vue.use(VueRouter)
 
 const routes = [
