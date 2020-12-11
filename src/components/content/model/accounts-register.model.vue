@@ -58,7 +58,8 @@ export default {
 					delete this.values.confirm
 					const res = await this.$axios.post(
 						`${state.BASE_URL}/accounts/register`,
-						this.values
+						this.values,
+						state.axiosOptions
 					)
 
 					if (res.status === 200) {

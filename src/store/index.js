@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		BASE_URL: 'http://localhost:6060/api/v1',
+		BASE_URL: 'http://192.168.1.11:6060/api/v1',
 		ACCESS_TOKEN: '',
 		sideBarOpen: false,
 		editProfileOpen: false,
@@ -13,6 +13,9 @@ export default new Vuex.Store({
 		openModalDriver: false,
 		openModalEst: false,
 		openPopOut: false,
+		axiosOptions: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
 	},
 	mutations: {
 		// hide and show the sidebar profile
