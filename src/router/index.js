@@ -8,9 +8,9 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
+		//index page
 		path: '/',
-		component: () =>
-			import(/* webpackChunkName: "components" */ '@/views/index-view.vue'),
+		component: view('index-view'),
 		children: [
 			{
 				path: '',
@@ -42,10 +42,10 @@ const routes = [
 	},
 
 	{
+		//admin dashboard
 		path: '/admin',
 		name: 'AdminView',
-		component: () =>
-			import(/* webpackChunkName: "components" */ '@/views/Admin-view.vue'),
+		component: view('Admin-view'),
 		children: [
 			{
 				path: 'users',
@@ -77,15 +77,25 @@ const routes = [
 	},
 
 	{
-		path: '/',
-		name: 'IndexView',
-		component: () =>
-			import(/* webpackChunkName: "components" */ '@/views/index-view.vue'),
+		path: '/accounts/verify/:token',
+		name: 'verify-accounts',
+		component: view('verify-accounts-view'),
 	},
 
 	{ path: '/404', component: PageNotFound },
 	{ path: '*', redirect: '/404' },
 ]
+
+/**
+ * Asynchronously load view (Webpack Lazy loading compatible)
+ * @param  {string}   name     the filename (basename) of the view to load.
+ */
+
+function view(name) {
+	return function(resolve) {
+		require(['../views/' + name + '.vue'], resolve)
+	}
+}
 
 const router = new VueRouter({
 	mode: 'history',

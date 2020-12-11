@@ -53,7 +53,7 @@ export default {
 				)
 
 				if (!this.isAuth) {
-					console.log(false)
+					return false
 				} else {
 					delete this.values.confirm
 					const res = await this.$axios.post(
