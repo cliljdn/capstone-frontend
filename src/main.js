@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 
 //initialize global for axios
 import axios from 'axios'
-Vue.prototype.$http = axios
+Vue.prototype.$axios = axios
 
 // initialize vue-cookies globally
 import './plugins/cookies.plugins'

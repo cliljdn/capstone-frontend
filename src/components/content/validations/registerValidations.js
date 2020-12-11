@@ -17,6 +17,8 @@ export default {
 
 				errors.email
 			)
+			.strict(true)
+			.nullable(true)
 			.required(),
 
 		password: yup
@@ -26,12 +28,21 @@ export default {
 				/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
 				errors.password
 			)
+			.strict(true)
+			.nullable(true)
 			.required(),
 
 		confirm: yup
 			.string()
 			.trim()
-			.oneOf([yup.ref('password'), null], 'password, must be matched')
+			.when('password', {
+				is: (password) => (password && password.length > 0 ? true : false),
+				then: yup
+					.string()
+					.oneOf([yup.ref('password')], "Password doesn't match"),
+			})
+			.strict(true)
+			.nullable(true)
 			.required('confirm field is a required field'),
 
 		account_type: yup
@@ -41,6 +52,8 @@ export default {
 				/^(User|Driver|Employee)$/,
 				'User, Driver, Employee account types are only allowed'
 			)
+			.strict(true)
+			.nullable(true)
 			.required('account type is a required field'),
 	}),
 }

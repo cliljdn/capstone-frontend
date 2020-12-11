@@ -3,6 +3,7 @@ import registerIsValid from '../validations/registerValidations'
 export default {
 	data() {
 		return {
+			// input fields
 			values: {
 				email: '',
 				password: '',
@@ -10,6 +11,7 @@ export default {
 				confirm: '',
 			},
 
+			//validation error
 			errors: {
 				email: '',
 				password: '',
@@ -17,30 +19,32 @@ export default {
 				confirm: '',
 			},
 
+			//options for validation
+			yupOptions: { abortEarly: false, strict: false },
 			validateInfo: registerIsValid,
+
+			isAuth: '',
 		}
 	},
 
 	methods: {
-		validate: async function(values) {
+		validate: async function(field) {
 			let { registerIsValid } = this.validateInfo
 			try {
-				await registerIsValid.validate(values, { abortEarly: false })
+				this.isAuth = await registerIsValid.validateAt(
+					field,
+					this.values,
+					this.yupOptions
+				)
 			} catch (err) {
-				for (const item of err.errors) {
-					console.log(item)
-					if (item.includes('email')) {
-						this.errors.email = item
-					} else if (item.includes('confirm')) {
-						this.errors.confirm = item
-					} else if (item.includes('password')) {
-						this.errors.password = item
-					} else {
-						this.errors.account_type = item
-					}
-				}
+				err.inner.forEach((error) => {
+					console.log(error.path, error.message)
+					this.errors[error.path] = error.message
+				})
 			}
 		},
+
+		registerBtn() {},
 	},
 }
 </script>

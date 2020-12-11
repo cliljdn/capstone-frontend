@@ -17,7 +17,8 @@
 								<input
 									v-model="values.email"
 									@focus="errors.email = ''"
-									@blur="validate(values)"
+									@blur="validate('email')"
+									@input="validate('email')"
 									class="input"
 									type="email"
 									placeholder="Email"
@@ -38,6 +39,8 @@
 									@focus="errors.password = ''"
 									class="input"
 									type="password"
+									@blur="validate('password')"
+									@input="validate('password')"
 									placeholder="Password"
 									minlength="8"
 									maxlength="12"
@@ -56,6 +59,8 @@
 								<input
 									v-model="values.confirm"
 									@focus="errors.confirm = ''"
+									@blur="validate('confirm')"
+									@input="validate('confirm')"
 									class="input "
 									type="password"
 									placeholder="Confirm Password"
@@ -74,6 +79,8 @@
 								<select
 									v-model="values.account_type"
 									@click="errors.account_type = ''"
+									@blur="validate('account_type')"
+									@input="validate('account_type')"
 								>
 									<option selected>SELECT</option>
 									<option>User</option>
@@ -87,7 +94,10 @@
 						</div>
 						<span class="has-text-danger">{{ errors.account_type }}</span>
 
-						<button class="button is-success is-pulled-right is-medium  mt-5">
+						<button
+							@click="registerBtn"
+							class="button is-success is-pulled-right is-medium  mt-5"
+						>
 							Register
 						</button>
 					</div>
