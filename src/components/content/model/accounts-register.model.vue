@@ -1,8 +1,8 @@
 <script>
 import registerIsValid from '../validations/registerValidations'
-// import axios from 'axios'
+import PopModal from '../../msgmodal/pop-modal'
 export default {
-	mounted() {},
+	components: { 'pop-modal': PopModal },
 	data() {
 		return {
 			// input fields
@@ -44,7 +44,7 @@ export default {
 		},
 
 		registerBtn: async function() {
-			let { state } = this.$store
+			let { state, commit } = this.$store
 			let { registerIsValid } = this.getValidations
 			try {
 				this.isAuth = await registerIsValid.validate(
@@ -62,14 +62,20 @@ export default {
 					)
 
 					if (res.status === 200) {
-						console.log(res)
+						this.values.email = ''
+						this.values.password = ''
+						this.values.accountType = 'SELECT'
+						return commit('showPopOut')
 					}
 				}
 			} catch (err) {
-				this.errors.email = err.response.data.message
-				err.inner.forEach((error) => {
-					this.errors[error.path] = error.message
-				})
+				if (err.response !== undefined) {
+					this.errors.email = err.response.data.message
+				} else {
+					err.inner.forEach((error) => {
+						this.errors[error.path] = error.message
+					})
+				}
 			}
 		},
 	},

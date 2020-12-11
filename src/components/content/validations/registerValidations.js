@@ -39,10 +39,8 @@ export default {
 				is: (password) => ('password' && password.length > 0 ? true : false),
 				then: yup
 					.string()
-					.oneOf([yup.ref('password')], "Password doesn't match"),
+					.oneOf([yup.ref('password'), null], "Password doesn't match"),
 			})
-			.strict(true)
-			.nullable(true)
 			.required('confirm field is a required field'),
 
 		accountType: yup

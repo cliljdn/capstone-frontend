@@ -104,6 +104,10 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="" v-if="this.$store.state.openPopOut">
+			<pop-modal />
+		</div>
 	</div>
 </template>
 <script>
