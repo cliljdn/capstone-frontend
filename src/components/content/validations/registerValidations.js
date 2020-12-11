@@ -45,7 +45,7 @@ export default {
 			.nullable(true)
 			.required('confirm field is a required field'),
 
-		account_type: yup
+		accountType: yup
 			.string()
 			.trim()
 			.matches(

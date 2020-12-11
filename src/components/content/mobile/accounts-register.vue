@@ -77,10 +77,10 @@
 						<div class="control has-icons-left mt-3">
 							<div class="select">
 								<select
-									v-model="values.account_type"
-									@click="errors.account_type = ''"
-									@blur="validate('account_type')"
-									@change="validate('account_type')"
+									v-model="values.accountType"
+									@click="errors.accountType = ''"
+									@blur="validate('accountType')"
+									@change="validate('accountType')"
 								>
 									<option>SELECT</option>
 									<option>User</option>
@@ -92,7 +92,7 @@
 								<i class="fas fa-globe"></i>
 							</span>
 						</div>
-						<span class="has-text-danger">{{ errors.account_type }}</span>
+						<span class="has-text-danger">{{ errors.accountType }}</span>
 
 						<button
 							@click="registerBtn"
