@@ -38,7 +38,7 @@
 									v-model="values.password"
 									@focus="errors.password = ''"
 									class="input"
-									type="password"
+									type="text"
 									@blur="validate('password')"
 									@input="validate('password')"
 									placeholder="Password"
@@ -52,7 +52,7 @@
 							</p>
 							<span class="has-text-danger">{{ errors.password }}</span>
 						</div>
-
+						{{ values.password }}
 						<span class="">Confirm Password:</span>
 						<div class="field mt-3">
 							<p class="control has-icons-left">
@@ -61,8 +61,8 @@
 									@focus="errors.confirm = ''"
 									@blur="validate('confirm')"
 									@input="validate('confirm')"
-									class="input "
-									type="password"
+									class="input"
+									type="text"
 									placeholder="Confirm Password"
 									required
 								/>
@@ -80,9 +80,9 @@
 									v-model="values.account_type"
 									@click="errors.account_type = ''"
 									@blur="validate('account_type')"
-									@input="validate('account_type')"
+									@change="validate('account_type')"
 								>
-									<option selected>SELECT</option>
+									<option>SELECT</option>
 									<option>User</option>
 									<option>Driver</option>
 									<option>Employee</option>

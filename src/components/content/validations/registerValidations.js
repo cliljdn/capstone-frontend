@@ -36,7 +36,7 @@ export default {
 			.string()
 			.trim()
 			.when('password', {
-				is: (password) => (password && password.length > 0 ? true : false),
+				is: (password) => ('password' && password.length > 0 ? true : false),
 				then: yup
 					.string()
 					.oneOf([yup.ref('password')], "Password doesn't match"),

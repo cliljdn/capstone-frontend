@@ -1,6 +1,8 @@
 <script>
 import registerIsValid from '../validations/registerValidations'
+
 export default {
+	mounted() {},
 	data() {
 		return {
 			// input fields
@@ -21,21 +23,19 @@ export default {
 
 			//options for validation
 			yupOptions: { abortEarly: false, strict: false },
-			validateInfo: registerIsValid,
 
-			isAuth: '',
+			getValidations: registerIsValid,
+
+			isAuth: false,
 		}
 	},
 
 	methods: {
 		validate: async function(field) {
-			let { registerIsValid } = this.validateInfo
+			let { registerIsValid } = this.getValidations
 			try {
-				this.isAuth = await registerIsValid.validateAt(
-					field,
-					this.values,
-					this.yupOptions
-				)
+				await registerIsValid.validateAt(field, this.values, this.yupOptions)
+				this.errors[field] = ''
 			} catch (err) {
 				err.inner.forEach((error) => {
 					console.log(error.path, error.message)
@@ -44,7 +44,23 @@ export default {
 			}
 		},
 
-		registerBtn() {},
+		registerBtn: async function() {
+			// let { state } = this.$store
+			let { registerIsValid } = this.getValidations
+			try {
+				this.isAuth = await registerIsValid.isValid(
+					this.values,
+					this.yupOptions
+				)
+				// if (this.isAuth) {
+				// }
+			} catch (err) {
+				err.inner.forEach((error) => {
+					console.log(error.path, error.message)
+					this.errors[error.path] = error.message
+				})
+			}
+		},
 	},
 }
 </script>
