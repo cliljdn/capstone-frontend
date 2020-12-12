@@ -76,8 +76,26 @@ const routes = [
 
 	{
 		path: '/accounts/verify/:token',
-		name: 'verify-accounts',
 		component: view('verify-accounts-view'),
+		children: [
+			{
+				path: '',
+				name: 'employee-creation',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/mobile/account-verify.vue'
+					),
+			},
+
+			{
+				path: '/profile/create',
+				name: 'user-driver-creation',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/mobile/form-fillup'
+					),
+			},
+		],
 	},
 
 	{ path: '/404', component: PageNotFound },

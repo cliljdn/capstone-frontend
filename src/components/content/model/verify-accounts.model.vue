@@ -3,6 +3,7 @@ export default {
 	data() {
 		return {
 			msg: '',
+			isType: '',
 		}
 	},
 	async mounted() {
@@ -15,8 +16,8 @@ export default {
 			)
 
 			if (res.status === 200) {
-				this.msg = 'verified'
-				console.log(this.getAccType(res.data.account_type))
+				this.msg = `Your email ${res.data.email} has been Verified`
+				this.isType = res.data.account_type
 			}
 		} catch (err) {
 			if (err.response.status === 500) {
@@ -29,17 +30,21 @@ export default {
 		getAccType(value) {
 			switch (value) {
 				case 'User':
-					return 'gago'
+					this.$router.push({ path: 'user-driver-creation' })
 					break
 				case 'Employee':
-					return 'bobo'
+					this.$router.push({ name: 'employee-creation' })
 					break
 				case 'Driver':
-					return 'tanga'
+					this.$router.push({ path: 'user-driver-creation' })
 					break
 				default:
 					break
 			}
+		},
+
+		gotoForm() {
+			this.getAccType(this.isType)
 		},
 	},
 }
