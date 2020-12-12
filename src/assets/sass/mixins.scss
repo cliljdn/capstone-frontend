@@ -1,0 +1,43 @@
+@import './main.scss';
+
+// Small devices
+@mixin xsm {
+	@media only screen and (min-width: #{$screen-xsm-min}) and (-webkit-min-device-pixel-ratio: 3) {
+		@content;
+	}
+}
+
+// Small devices
+@mixin sm {
+	@media only screen and (min-width: #{$screen-sm-min}) and (-webkit-min-device-pixel-ratio: 3) {
+		@content;
+	}
+}
+
+// Medium devices
+@mixin md {
+	@media only screen and (min-width: #{$screen-md-min}) and (-webkit-min-device-pixel-ratio: 2) {
+		@content;
+	}
+}
+
+// Large devices
+@mixin lg {
+	@media only screen and (min-width: #{$screen-lg-min})  and (-webkit-min-device-pixel-ratio: 2) {
+		@content;
+	}
+}
+
+// Extra large devices
+@mixin xl {
+	@media only screen and (min-width: #{$screen-xl-min}) and (-webkit-min-device-pixel-ratio: 2) {
+		@content;
+	}
+}
+
+//breakpoint
+@mixin rwd($screen) {
+	@media (min-width: $screen+'px') {
+		@content;
+	}
+}

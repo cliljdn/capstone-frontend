@@ -1,0 +1,156 @@
+@import '../../../assets/sass/mixins.scss';
+
+.slide-enter-active,
+.slide-leave-active {
+	transition: width 0.2s ease;
+}
+
+.slide-enter,
+.slide-leave-to {
+	transform: translateX(100%);
+	transition: all 50ms ease-in 0s;
+}
+
+.account-form-panel {
+	position: relative;
+	left: auto;
+	height: auto;
+	top: 0;
+	right: 0;
+	z-index: auto;
+	width: auto;
+}
+.show-edit {
+	overflow-y: auto;
+}
+.sidebar-edit {
+	min-height: calc(100vh);
+	border-left: 1px solid $primary;
+	border-top: 1px solid $primary;
+	border-bottom: 1px solid $primary;
+	display: flex;
+	flex-direction: column;
+
+	.edit-container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+
+		.edit-header {
+			left: 0 !important;
+		}
+
+		.edit-icon {
+			height: 1em !important;
+		}
+
+		.edit-tabs {
+			margin: 0;
+			padding: 0;
+
+			.personal-divider {
+				border-right: 1px solid $primary;
+			}
+		}
+	}
+}
+
+@include xsm {
+	.sidebar-edit {
+		width: auto;
+		height: auto;
+
+		font-size: 10px;
+		overflow-y: auto !important;
+		.edit-container {
+			position: relative;
+
+			.edit-header {
+				position: relative;
+				left: auto;
+			}
+
+			.edit-icon {
+				height: 1em !important;
+			}
+		}
+	}
+}
+
+@include sm {
+	.sidebar-edit {
+		width: auto;
+		height: auto;
+		overflow-y: auto !important;
+		.edit-container {
+			.edit-header {
+				position: relative;
+				left: auto;
+			}
+			.edit-icon {
+				height: 1em !important;
+			}
+		}
+	}
+}
+
+@include md {
+	.sidebar-edit {
+		width: auto;
+		height: auto;
+		overflow-y: auto !important;
+		.edit-container {
+			margin: 0;
+			padding: 0;
+			min-height: 700px;
+
+			.edit-header {
+				position: relative;
+				left: auto;
+			}
+
+			.edit-icon {
+				height: 1em !important;
+			}
+		}
+	}
+}
+
+@include lg {
+	.sidebar-edit {
+		width: auto;
+		height: auto;
+		overflow-y: auto !important;
+		.edit-container {
+			margin: 0;
+			padding: 0;
+
+			.edit-header {
+				position: relative;
+				left: auto;
+			}
+
+			.edit-icon {
+				height: 1em !important;
+			}
+		}
+	}
+}
+
+@include xl {
+	.sidebar-edit {
+		width: auto;
+		height: auto;
+		overflow-y: auto !important;
+		.edit-container {
+			.edit-header {
+				position: relative;
+				left: auto;
+			}
+
+			.edit-icon {
+				height: 1em !important;
+			}
+		}
+	}
+}

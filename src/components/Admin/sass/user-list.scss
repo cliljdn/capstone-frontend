@@ -1,0 +1,260 @@
+@import '../../../assets/sass/mixins.scss';
+
+.main-list {
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	font-weight: bold;
+	position: relative;
+	margin-top: 30px;
+	zoom: 0.9;
+
+	.top-options {
+		display: flex;
+		flex-direction: column;
+		width: auto;
+
+		.columns {
+			position: relative;
+			display: flex;
+			left: 40px;
+		}
+
+		input {
+			width: 100%;
+			padding: 0;
+		}
+
+		.field {
+			select {
+				width: 100%;
+			}
+		}
+
+		.sort-text {
+			display: inline-block;
+			margin-top: 10px;
+		}
+	}
+
+	.box {
+		border-top-left-radius: 50px;
+		border-top-right-radius: 50px;
+		border-bottom-left-radius: 50px;
+		border-bottom-right-radius: 50px;
+		border: 1px solid $primary;
+		width: auto;
+		flex: 3;
+
+		.user-content {
+			display: block;
+			width: auto;
+			white-space: nowrap;
+			padding: 10px;
+		}
+	}
+
+	.page-numbers {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+}
+
+@include xsm {
+	.main-list {
+		margin: 0;
+		padding: 0;
+		zoom: 0.7;
+		.top-options {
+			display: block;
+			width: auto;
+			margin-bottom: 20px;
+			margin-left: 0;
+			.field {
+				width: auto;
+
+				select {
+					width: auto;
+				}
+			}
+
+			.sort-text {
+				margin-left: 20px;
+			}
+		}
+
+		.box {
+			.user-content {
+				margin-top: 1em;
+				padding: 0px;
+			}
+		}
+	}
+
+	.page-numbers {
+		margin-top: 10px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+}
+
+@include sm {
+	.main-list {
+		margin: 0;
+		padding: 0;
+
+		.top-options {
+			display: inline;
+			width: auto;
+			margin-left: 0;
+			.field {
+				width: auto;
+
+				select {
+					width: auto;
+				}
+			}
+
+			.sort-text {
+				margin-left: 20px;
+			}
+		}
+
+		.box {
+			margin: 30px;
+
+			.image {
+				width: 300px;
+				height: 300px;
+			}
+			.user-content {
+				margin-top: 1em;
+				padding: 0px;
+			}
+		}
+	}
+
+	.page-numbers {
+		margin-top: 30px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+}
+
+@include md {
+	.main-list {
+		margin: 0;
+		padding: 0;
+		width: auto;
+		zoom: 0.7 !important;
+		.top-options {
+			display: inline;
+			width: auto;
+
+			.field {
+				width: auto;
+				margin: 10px;
+				select {
+					width: auto;
+				}
+			}
+
+			.sort-text {
+				margin-left: 20px;
+			}
+		}
+
+		.box {
+			min-width: 400px;
+			min-height: 300px;
+			.image {
+				margin-bottom: 50px;
+				width: 250px !important;
+			}
+			.user-content {
+				justify-content: center;
+				margin-top: 50px;
+			}
+		}
+	}
+}
+@include lg {
+	.main-list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		overflow: auto;
+		width: auto;
+
+		.top-options {
+			display: inline;
+			width: auto;
+
+			.field {
+				width: auto;
+				margin: 10px;
+				select {
+					width: auto;
+				}
+			}
+
+			.sort-text {
+				margin-left: 20px;
+			}
+		}
+
+		.box {
+			margin: 0%;
+			min-width: 600px;
+			width: auto;
+			.image {
+				margin-bottom: 50px;
+				width: auto;
+				min-width: 250px !important;
+			}
+			.user-content {
+				padding: 0%;
+				justify-content: center;
+				margin-top: 50px;
+			}
+		}
+	}
+
+	.page-numbers {
+		margin-bottom: 50px;
+	}
+}
+
+@include xl {
+	.main-list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		width: auto;
+
+		.top-options {
+			display: inline;
+			width: auto;
+
+			.field {
+				width: auto;
+				margin: 10px;
+				select {
+					width: auto;
+				}
+			}
+
+			.sort-text {
+				margin-left: 20px;
+			}
+		}
+
+		.box {
+			.user-content {
+			}
+		}
+	}
+}

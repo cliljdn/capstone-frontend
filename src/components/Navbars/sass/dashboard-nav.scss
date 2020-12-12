@@ -1,0 +1,60 @@
+@import '../../../assets/sass/mixins.scss';
+
+nav {
+	border-bottom: 1px solid $primary;
+	position: relative;
+
+	a :hover {
+		border-bottom: 1px solid lightgreen;
+	}
+
+	.text-underline {
+		border-bottom: 1px solid lightgreen;
+	}
+
+	.slide-enter-active,
+	.slide-leave-active {
+		transition: transform 0.2s ease;
+	}
+
+	.slide-enter,
+	.slide-leave-to {
+		transform: translateX(100%);
+		transition: all 150ms ease-in 0s;
+	}
+
+	.sidebar-panel {
+		position: fixed;
+		left: auto;
+		top: 0;
+		right: 0;
+		height: auto;
+		z-index: auto;
+		min-width: auto;
+		width: 100%;
+	}
+}
+
+@include xsm {
+	.sidebar-panel {
+		overflow-y: auto !important;
+	}
+}
+
+@include sm {
+	.sidebar-panel {
+		overflow-y: auto !important;
+	}
+}
+
+@include md {
+	.sidebar-panel {
+		overflow-y: auto !important;
+	}
+}
+
+@include lg {
+	.sidebar-panel {
+		overflow-y: auto !important;
+	}
+}

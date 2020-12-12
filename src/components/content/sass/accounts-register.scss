@@ -1,0 +1,45 @@
+@import '../../../assets/sass/mixins.scss';
+
+.column-card {
+	padding: 0 !important;
+	margin: 0 !important;
+	align-items: center;
+	justify-content: center;
+	display: flex !important;
+
+	.has-equal-height {
+		border: none !important;
+		box-shadow: none;
+
+		width: 500px !important;
+		flex-direction: column !important;
+		height: 100% !important;
+
+		.text-welcome {
+			font-size: 28px;
+		}
+	}
+}
+
+@include sm {
+	column-card {
+		padding: 0 !important;
+		margin: 0 !important;
+		align-items: center;
+		justify-content: center;
+		display: flex !important;
+
+		.has-equal-height {
+			border: 0 !important;
+			box-shadow: none;
+			display: flex !important;
+			width: 500px !important;
+			flex-direction: column !important;
+			height: 100% !important;
+		}
+
+		.has-equal-height .card-footer {
+			margin-top: auto !important;
+		}
+	}
+}

@@ -1,0 +1,35 @@
+// intialization for global sass
+
+@import '~bulma/css/bulma.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+$font-stack: 'Raleway', sans-serif;
+$primary: hsl(120, 30%, 41%);
+
+// section const
+$section-padding-large: 17rem 1.5rem;
+body {
+	margin: 0;
+	font: 100% $font-stack;
+
+	button {
+		font: 100% $font-stack;
+	}
+}
+
+// responsive
+// Small tablets and small smartphones (landscape view)
+$screen-xsm-min: 280px;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 1024px;
+
+// Large tablets and desktops
+$screen-xl-min: 1251px;
