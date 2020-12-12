@@ -1,6 +1,6 @@
-import Vue from 'vue'
-import VueCookies from 'vue-cookies'
+import Vue from "vue";
+import VueCookies from "vue-cookies";
 
-Vue.prototype.$cookies = VueCookies
+Vue.prototype.$cookies = VueCookies;
 
-Vue.use(VueCookies)
+Vue.use(VueCookies);

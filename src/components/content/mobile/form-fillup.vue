@@ -23,114 +23,150 @@
 						</div>
 					</div>
 				</div> -->
-				<div class="columns mt-3">
-					<div class="column">
-						<span class="">Firstname:</span>
-						<div class="field mt-3">
-							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="text" placeholder="" />
-								<span class="icon is-small is-left">
-									<i class="fas fa-user"></i>
-								</span>
-							</p>
+				<form action="" method="POST" @click.prevent>
+					<div class="columns mt-3">
+						<div class="column">
+							<span class="">Firstname:</span>
+							<div class="field mt-3">
+								<p class="control has-icons-left has-icons-right">
+									<input
+										v-model="personalInfo.firstName"
+										class="input"
+										type="text"
+										placeholder=""
+									/>
+									<span class="icon is-small is-left">
+										<i class="fas fa-user"></i>
+									</span>
+								</p>
+							</div>
+						</div>
+						<div class="column">
+							<span class="">Lastname:</span>
+							<div class="field mt-3">
+								<p class="control has-icons-left">
+									<input
+										v-model="personalInfo.lastName"
+										class="input"
+										type="text"
+										placeholder=""
+									/>
+									<span class="icon is-small is-left">
+										<i class="fas fa-user"></i>
+									</span>
+								</p>
+							</div>
+						</div>
+
+						<div class="column">
+							<span class="">Middlename:</span>
+							<div class="field mt-3">
+								<p class="control has-icons-left">
+									<input
+										v-model="personalInfo.middleName"
+										class="input"
+										type="text"
+										placeholder=""
+									/>
+									<span class="icon is-small is-left">
+										<i class="fas fa-user"></i>
+									</span>
+								</p>
+							</div>
 						</div>
 					</div>
 
-					<div class="column">
-						<span class="">Lastname:</span>
-						<div class="field mt-3">
-							<p class="control has-icons-left">
-								<input class="input" type="text" placeholder="" />
-								<span class="icon is-small is-left">
-									<i class="fas fa-user"></i>
-								</span>
-							</p>
+					<div class="columns">
+						<div class="column">
+							<span class="">Contact #:</span>
+							<div class="field mt-3">
+								<p class="control has-icons-left">
+									<input
+										v-model="personalInfo.contact"
+										class="input"
+										type="text"
+										placeholder=""
+									/>
+									<span class="icon is-small is-left">
+										<i class="fas fa-phone"></i>
+									</span>
+								</p>
+							</div>
+						</div>
+
+						<div class="column">
+							<span class="">Birthday:</span>
+							<div class="field mt-3">
+								<p class="control has-icons-left">
+									<input
+										v-model="personalInfo.birthday"
+										class="input"
+										type="datetime-local"
+									/>
+									<span class="icon is-small is-left">
+										<i class="fas fa-calendar"></i>
+									</span>
+								</p>
+							</div>
 						</div>
 					</div>
 
-					<div class="column">
-						<span class="">Middlename:</span>
-						<div class="field mt-3">
-							<p class="control has-icons-left">
-								<input class="input" type="text" placeholder="" />
-								<span class="icon is-small is-left">
-									<i class="fas fa-user"></i>
-								</span>
-							</p>
+					<div class="columns">
+						<div class="column">
+							<span class="">House and Lot #:</span>
+							<div class="field mt-3">
+								<p class="control has-icons-left">
+									<input
+										v-model="address.lotNumber"
+										class="input"
+										type="text"
+										placeholder=""
+									/>
+									<span class="icon is-small is-left">
+										<i class="fas fa-house"></i>
+									</span>
+								</p>
+							</div>
 						</div>
-					</div>
-				</div>
 
-				<div class="columns">
-					<div class="column">
-						<span class="">Contact #:</span>
-						<div class="field mt-3">
-							<p class="control has-icons-left">
-								<input class="input" type="text" placeholder="" />
-								<span class="icon is-small is-left">
-									<i class="fas fa-phone"></i>
-								</span>
-							</p>
-						</div>
-					</div>
-
-					<div class="column">
-						<span class="">Birthday:</span>
-						<div class="field mt-3">
-							<p class="control has-icons-left">
-								<input class="input" type="date" placeholder="" />
-								<span class="icon is-small is-left">
-									<i class="fas fa-calendar"></i>
-								</span>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="columns">
-					<div class="column">
-						<span class="">House and Lot #:</span>
-						<div class="field mt-3">
-							<p class="control has-icons-left">
-								<input class="input" type="text" placeholder="" />
-								<span class="icon is-small is-left">
-									<i class="fas fa-house"></i>
-								</span>
-							</p>
+						<div class="column">
+							<span class="">Barangay:</span>
+							<div class="field mt-3">
+								<p class="control has-icons-left">
+									<input
+										v-model="address.barangay"
+										class="input"
+										type="input"
+										placeholder="Confirm Password"
+									/>
+									<span class="icon is-small is-left">
+										<i class="fas fa-university"></i>
+									</span>
+								</p>
+							</div>
 						</div>
 					</div>
 
-					<div class="column">
-						<span class="">Barangay:</span>
-						<div class="field mt-3">
-							<p class="control has-icons-left">
-								<input
-									class="input"
-									type="input"
-									placeholder="Confirm Password"
-								/>
-								<span class="icon is-small is-left">
-									<i class="fas fa-university"></i>
-								</span>
-							</p>
+					<div class="columns">
+						<div class="column">
+							<span class="">City:</span>
+							<div class="field mt-3">
+								<p class="control has-icons-left">
+									<input
+										v-model="address.city"
+										class="input"
+										type="text"
+										placeholder=""
+										autocomplete="off"
+									/>
+									<span class="icon is-small is-left">
+										<i class="fas fa-house"></i>
+									</span>
+								</p>
+							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="columns">
-					<div class="column">
-						<span class="">City:</span>
-						<div class="field mt-3">
-							<p class="control has-icons-left">
-								<input class="input" type="password" placeholder="" />
-								<span class="icon is-small is-left">
-									<i class="fas fa-house"></i>
-								</span>
-							</p>
-						</div>
-					</div>
-				</div>
-
+				</form>
 				<button class="button is-success is-medium is-pulled-right mt-3">
 					Register
 				</button>
