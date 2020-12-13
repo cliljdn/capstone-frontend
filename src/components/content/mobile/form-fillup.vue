@@ -70,11 +70,7 @@
 						<span class="">Contact #:</span>
 						<div class="field mt-3">
 							<p class="control has-icons-left">
-								<input
-									class="input"
-									type="password"
-									placeholder="Confirm Password"
-								/>
+								<input class="input" type="text" placeholder="Contact #" />
 								<span class="icon is-small is-left">
 									<i class="fas fa-lock"></i>
 								</span>
@@ -86,13 +82,13 @@
 						<span class="">Birthday:</span>
 						<div class="field mt-3">
 							<p class="control has-icons-left">
-								<input
+								<flat-pickr
+									v-model="date"
 									class="input"
-									type="date"
-									placeholder="Confirm Password"
+									placeholder="Date of Birth"
 								/>
 								<span class="icon is-small is-left">
-									<i class="fas fa-birthday"></i>
+									<i class="fas fa-calendar"></i>
 								</span>
 							</p>
 						</div>
@@ -104,11 +100,7 @@
 						<span class="">House and Lot #:</span>
 						<div class="field mt-3">
 							<p class="control has-icons-left">
-								<input
-									class="input"
-									type="password"
-									placeholder="Confirm Password"
-								/>
+								<input class="input" type="text" placeholder="House Lot #" />
 								<span class="icon is-small is-left">
 									<i class="fas fa-house"></i>
 								</span>
@@ -123,7 +115,7 @@
 								<input
 									class="input"
 									type="input"
-									placeholder="Confirm Password"
+									placeholder="Barangay Input"
 								/>
 								<span class="icon is-small is-left">
 									<i class="fas fa-birthday"></i>
@@ -138,11 +130,7 @@
 						<span class="">City:</span>
 						<div class="field mt-3">
 							<p class="control has-icons-left">
-								<input
-									class="input"
-									type="password"
-									placeholder="Confirm Password"
-								/>
+								<input class="input" type="text" placeholder="City" />
 								<span class="icon is-small is-left">
 									<i class="fas fa-house"></i>
 								</span>
@@ -158,6 +146,11 @@
 		</div>
 	</div>
 </template>
+
+<script>
+import app from '../model/form-fill.model'
+export default app
+</script>
 
 <style lang="scss">
 @import '../sass/form-fillup.scss';

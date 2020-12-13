@@ -80,10 +80,19 @@ const routes = [
 		children: [
 			{
 				path: '',
-				name: 'employee-creation',
+				name: 'accounts-create-profile',
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '../components/content/mobile/account-verify.vue'
+					),
+			},
+
+			{
+				path: '/employee/create/profile',
+				name: 'employee-creation',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/mobile/employee-fillup.vue'
 					),
 			},
 

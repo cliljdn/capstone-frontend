@@ -30,13 +30,13 @@ export default {
 		getAccType(value) {
 			switch (value) {
 				case 'User':
-					this.$router.push({ path: 'user-driver-creation' })
+					this.$router.push({ name: 'user-driver-creation' })
 					break
 				case 'Employee':
 					this.$router.push({ name: 'employee-creation' })
 					break
 				case 'Driver':
-					this.$router.push({ path: 'user-driver-creation' })
+					this.$router.push({ name: 'user-driver-creation' })
 					break
 				default:
 					break
