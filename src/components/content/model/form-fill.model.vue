@@ -14,8 +14,11 @@ export default {
 				lastName: '',
 				middleName: '',
 				contact: '',
+				image: null,
 				birthday: null,
 			},
+
+			imgRef: '',
 
 			address: {
 				lotNumber: '',
@@ -29,6 +32,7 @@ export default {
 				middleName: '',
 				contact: '',
 				birthday: null,
+				image: null,
 			},
 
 			addressError: {
@@ -61,7 +65,6 @@ export default {
 				}
 			} catch (err) {
 				err.inner.forEach((error) => {
-					console.log(error.path)
 					if (error.path in this.addressError) {
 						this.addressError[error.path] = error.message
 					}
@@ -86,12 +89,39 @@ export default {
 			}
 		},
 
+		onFileChange(e) {
+			let imgFormats = ['jpg', 'jpeg', 'png']
+			const file = e.target.files[0]
+			this.imgRef = file.name
+			if (!file) {
+				e.preventDefault()
+				return
+			}
+
+			if (file.size > 1024 * 1024) {
+				e.preventDefault()
+				this.profileError.image = 'Image must be less than 1mb'
+				return
+			}
+			let fileFormat = file.name.split('.')[1]
+
+			if (!imgFormats.includes(fileFormat)) {
+				e.preventDefault()
+				this.profileError.image =
+					'jpg, jpeg and png are the only file supported'
+				return
+			}
+
+			this.profileBody.image = URL.createObjectURL(file)
+		},
+
 		validateProfile: async function(field) {
 			let { formValidate } = form
 			try {
 				await formValidate.validateAt(field, this.profileBody, this.yupOptions)
 				this.profileError[field] = ''
 			} catch (err) {
+				console.log(err)
 				err.inner.forEach((error) => {
 					this.profileError[error.path] = error.message
 				})
@@ -101,6 +131,8 @@ export default {
 		validateAddress: async function(field) {
 			let { addressValidate } = form
 			try {
+				// const buffer = new ArrayBuffer(8)
+				// const view = new Int32Array(buffer)
 				await addressValidate.validateAt(field, this.address, this.yupOptions)
 				this.addressError[field] = ''
 			} catch (err) {

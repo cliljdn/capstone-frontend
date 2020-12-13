@@ -18,11 +18,27 @@
 			font-size: 28px;
 		}
 
+		.media {
+			padding: 0px !important;
+			margin: 0 !important;
+
+			.image {
+				display: flex;
+
+				img {
+					flex-shrink: 0;
+					image-rendering: auto;
+					image-rendering: crisp-edges;
+					image-rendering: pixelated;
+				}
+			}
+		}
+
 		.columns-img {
 			padding: 0px !important;
-			border-bottom: 2px solid;
+			border-bottom: 1px solid;
 			img {
-				border-bottom: 2px solid black;
+				border-bottom: 1px solid black;
 			}
 		}
 	}

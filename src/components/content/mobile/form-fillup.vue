@@ -7,17 +7,51 @@
 						<span>Personal Information</span>
 					</div>
 				</div>
-				<div class="columns columns-img  is-centered is-vcentered is-mobile">
-					<div class="column is-narrow has-text-centered">
+
+				<div class="columns columns-img	is-mobile is-full">
+					<div class="column is-3">
 						<div class="media">
 							<div class="media-left">
 								<figure class="image is-128x128">
 									<img
+										v-if="profileBody.image"
+										class="is-rounded"
+										:src="profileBody.image"
+										alt="Placeholder image"
+									/>
+									<img
+										v-else
 										class="is-rounded"
 										src="https://versions.bulma.io/0.7.4/images/placeholders/96x96.png"
 										alt="Placeholder image"
 									/>
 								</figure>
+
+								<div class="columns">
+									<div class="media-content mt-2">
+										<div class="file has-name is-right">
+											<label class="file-label">
+												<input
+													@change="onFileChange"
+													class="file-input"
+													type="file"
+													name="resume"
+												/>
+												<span class="file-cta">
+													<span class="file-icon">
+														<i class="fas fa-upload"></i>
+													</span>
+													<span class="file-label">
+														Choose a file…
+													</span>
+												</span>
+											</label>
+										</div>
+									</div>
+									<span class="has-text-danger is-pulled-right mt-2 ml-3">{{
+										profileError.image
+									}}</span>
+								</div>
 							</div>
 						</div>
 					</div>
