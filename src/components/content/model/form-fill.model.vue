@@ -45,7 +45,7 @@ export default {
 	},
 
 	methods: {
-		createProfile: function() {},
+		createProfile: async function() {},
 
 		isNumber: function(evt) {
 			evt = evt ? evt : window.event

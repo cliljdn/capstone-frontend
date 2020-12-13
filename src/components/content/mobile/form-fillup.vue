@@ -212,7 +212,8 @@
 					</div>
 				</form>
 				<button
-					@click="createProfile" button is-success is-pulled-right is-medium is-center mt-3"
+					@click="createProfile"
+					class="button is-success is-pulled-right is-medium is-center mt-3"
 				>
 					Register
 				</button>

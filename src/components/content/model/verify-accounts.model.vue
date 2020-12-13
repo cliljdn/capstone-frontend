@@ -18,6 +18,7 @@ export default {
 			if (res.status === 200) {
 				this.msg = `Your email ${res.data.email} has been Verified`
 				this.isType = res.data.account_type
+				state.ACCESS_TOKEN = token
 			}
 		} catch (err) {
 			if (err.response.status === 500) {
