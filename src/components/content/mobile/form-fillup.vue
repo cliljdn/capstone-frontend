@@ -7,8 +7,7 @@
 						<span>Personal Information</span>
 					</div>
 				</div>
-				<span> </span>
-				<!-- <div class="columns columns-img  is-centered is-vcentered is-mobile">
+				<div class="columns columns-img  is-centered is-vcentered is-mobile">
 					<div class="column is-narrow has-text-centered">
 						<div class="media">
 							<div class="media-left">
@@ -22,12 +21,13 @@
 							</div>
 						</div>
 					</div>
-				</div> -->
+				</div>
+
 				<form action="" @click.prevent method="post">
-					<div class="columns mt-3">
+					<div class="columns mt-2">
 						<div class="column">
 							<span class="">Firstname:</span>
-							<div class="field mt-3">
+							<div class="field mt-2">
 								<p class="control has-icons-left has-icons-right">
 									<input
 										v-model="profileBody.firstName"
@@ -41,7 +41,7 @@
 										<i class="fas fa-user"></i>
 									</span>
 								</p>
-								<span class="mt-2 has-text-danger">{{
+								<span class="mt-1 has-text-danger">{{
 									profileError.firstName
 								}}</span>
 							</div>
@@ -49,7 +49,7 @@
 
 						<div class="column">
 							<span class="">Lastname:</span>
-							<div class="field mt-3">
+							<div class="field mt-2">
 								<p class="control has-icons-left">
 									<input
 										v-model="profileBody.lastName"
@@ -64,7 +64,7 @@
 									</span>
 								</p>
 
-								<span class="mt-2 has-text-danger">{{
+								<span class="mt-1 has-text-danger">{{
 									profileError.lastName
 								}}</span>
 							</div>
@@ -72,7 +72,7 @@
 
 						<div class="column">
 							<span class="">Middlename:</span>
-							<div class="field mt-3">
+							<div class="field mt-2">
 								<p class="control has-icons-left">
 									<input
 										@input="validateProfile('middleName')"
@@ -86,7 +86,7 @@
 										<i class="fas fa-user"></i>
 									</span>
 								</p>
-								<span class="mt-2 has-text-danger">{{
+								<span class="mt-1 has-text-danger">{{
 									profileError.middleName
 								}}</span>
 							</div>
@@ -96,7 +96,7 @@
 					<div class="columns">
 						<div class="column">
 							<span class="">Contact #:</span>
-							<div class="field mt-3">
+							<div class="field mt-2">
 								<p class="control has-icons-left">
 									<input
 										@keypress="isNumber(event)"
@@ -113,7 +113,7 @@
 									</span>
 								</p>
 
-								<span class="mt-2 has-text-danger">{{
+								<span class="mt-1 has-text-danger">{{
 									profileError.contact
 								}}</span>
 							</div>
@@ -121,7 +121,7 @@
 
 						<div class="column">
 							<span class="">Birthday:</span>
-							<div class="field mt-3">
+							<div class="field mt-2">
 								<p class="control has-icons-left">
 									<flat-pickr
 										v-model="profileBody.birthday"
@@ -134,7 +134,7 @@
 										<i class="fas fa-calendar"></i>
 									</span>
 								</p>
-								<span class="mt-2 has-text-danger">{{
+								<span class="mt-1 has-text-danger">{{
 									profileError.birthday
 								}}</span>
 							</div>
@@ -144,7 +144,7 @@
 					<div class="columns">
 						<div class="column">
 							<span class="">House and Lot #:</span>
-							<div class="field mt-3">
+							<div class="field mt-2">
 								<p class="control has-icons-left">
 									<input
 										@input="validateAddress('lotNumber')"
@@ -158,7 +158,7 @@
 										<i class="fas fa-house"></i>
 									</span>
 								</p>
-								<span class="mt-2 has-text-danger">{{
+								<span class="mt-1 has-text-danger">{{
 									addressError.lotNumber
 								}}</span>
 							</div>
@@ -166,7 +166,7 @@
 
 						<div class="column">
 							<span class="">Barangay:</span>
-							<div class="field mt-3">
+							<div class="field mt-2">
 								<p class="control has-icons-left">
 									<input
 										@input="validateAddress('barangay')"
@@ -180,7 +180,7 @@
 										<i class="fas fa-birthday"></i>
 									</span>
 								</p>
-								<span class="mt-2 has-text-danger">{{
+								<span class="mt-1 has-text-danger">{{
 									addressError.barangay
 								}}</span>
 							</div>
@@ -190,7 +190,7 @@
 					<div class="columns">
 						<div class="column">
 							<span class="">City:</span>
-							<div class="field mt-3">
+							<div class="field mt-2">
 								<p class="control has-icons-left">
 									<input
 										@input="validateAddress('city')"
@@ -204,7 +204,7 @@
 										<i class="fas fa-house"></i>
 									</span>
 								</p>
-								<span class="mt-2 has-text-danger">{{
+								<span class="mt-1 has-text-danger">{{
 									addressError.city
 								}}</span>
 							</div>

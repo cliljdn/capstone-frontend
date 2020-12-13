@@ -1,6 +1,6 @@
 <template>
 	<div class="">
-		<div class="columns is-multiline columns-main">
+		<div class="columns is-multiline  columns-main">
 			<div class="column column-main is-hidden-mobile is-5">
 				<section class="hero  is-fullheight">
 					<div class="columns is-full has-text-centered">

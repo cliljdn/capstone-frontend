@@ -9,7 +9,6 @@ export default {
 
 	data() {
 		return {
-			// https://chmln.github.io/flatpickr/options/
 			profileBody: {
 				firstName: '',
 				lastName: '',
@@ -45,7 +44,33 @@ export default {
 	},
 
 	methods: {
-		createProfile: async function() {},
+		createProfile: async function() {
+			let { formValidate, addressValidate } = form
+			try {
+				const validateProfile = await formValidate.validate(
+					this.profileBody,
+					this.yupOptions
+				)
+				const validateAddress = await addressValidate.validate(
+					this.address,
+					this.yupOptions
+				)
+
+				if (validateProfile && validateAddress) {
+					console.log(1)
+				}
+			} catch (err) {
+				err.inner.forEach((error) => {
+					console.log(error.path)
+					if (error.path in this.addressError) {
+						this.addressError[error.path] = error.message
+					}
+					if (error.path in this.profileError) {
+						this.profileError[error.path] = error.message
+					}
+				})
+			}
+		},
 
 		isNumber: function(evt) {
 			evt = evt ? evt : window.event
