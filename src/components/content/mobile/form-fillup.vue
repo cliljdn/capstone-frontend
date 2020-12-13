@@ -28,11 +28,12 @@
 								</figure>
 
 								<div class="columns">
-									<div class="media-content mt-2">
-										<div class="file has-name is-right">
+									<div class="media-content m-2">
+										<div class="file has-name">
 											<label class="file-label">
 												<input
 													@change="onFileChange"
+													@click="profileError.image = ''"
 													class="file-input"
 													type="file"
 													name="resume"
@@ -48,7 +49,7 @@
 											</label>
 										</div>
 									</div>
-									<span class="has-text-danger is-pulled-right mt-2 ml-3">{{
+									<span class="has-text-danger block mt-3">{{
 										profileError.image
 									}}</span>
 								</div>
@@ -133,7 +134,7 @@
 							<div class="field mt-2">
 								<p class="control has-icons-left">
 									<input
-										@keypress="isNumber(event)"
+										@keypress="isNumber"
 										@input="validateProfile('contact')"
 										@blur="validateProfile('contact')"
 										v-model="profileBody.contact"

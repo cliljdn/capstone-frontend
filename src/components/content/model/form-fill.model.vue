@@ -2,6 +2,7 @@
 import VueFlatpickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
 import form from '../validations/fillup-validations'
+import querystring from 'querystring'
 export default {
 	components: {
 		FlatPickr: VueFlatpickr,
@@ -49,29 +50,65 @@ export default {
 
 	methods: {
 		createProfile: async function() {
-			let { formValidate, addressValidate } = form
+			let { formValidate, addressValidate } = form,
+				{ state } = this.$store
 			try {
-				const validateProfile = await formValidate.validate(
+				// let fileImg = URL.revokeObjectURL(this.profileBody.image)
+				let blob = new Blob([this.profileBody.image], { type: 'image/jpg' })
+				let reader = new FileReader()
+				reader.onloadend = () => {
+					let base64data = reader.result
+					return base64data
+				}
+				this.profileBody.image = reader.readAsDataURL(blob)
+
+				console.log(this.profileBody.image)
+				let validateProfile = await formValidate.validate(
 					this.profileBody,
 					this.yupOptions
 				)
-				const validateAddress = await addressValidate.validate(
+				let validateAddress = await addressValidate.validate(
 					this.address,
 					this.yupOptions
 				)
 
 				if (validateProfile && validateAddress) {
-					console.log(1)
+					const res = await this.$axios.post(
+						`${state.BASE_URL}/accounts/create/profile`,
+						querystring.stringify(this.profileBody),
+						{
+							headers: {
+								Authorization: state.headers.Authorization,
+							},
+						}
+					)
+					console.log(res)
+					if (res.status === 201) {
+						await this.$axios.post(
+							`${state.BASE_URL}/account/create/address`,
+							this.profileBody,
+							{
+								headers: {
+									Authorization: state.headers.Authorization,
+								},
+							}
+						)
+					}
 				}
 			} catch (err) {
-				err.inner.forEach((error) => {
-					if (error.path in this.addressError) {
-						this.addressError[error.path] = error.message
-					}
-					if (error.path in this.profileError) {
-						this.profileError[error.path] = error.message
-					}
-				})
+				console.log(err)
+				if (err.response !== undefined) {
+					console.log(err.response)
+				} else {
+					err.inner.forEach((error) => {
+						if (error.path in this.addressError) {
+							this.addressError[error.path] = error.message
+						}
+						if (error.path in this.profileError) {
+							this.profileError[error.path] = error.message
+						}
+					})
+				}
 			}
 		},
 
@@ -92,6 +129,7 @@ export default {
 		onFileChange(e) {
 			let imgFormats = ['jpg', 'jpeg', 'png']
 			const file = e.target.files[0]
+			console.log(file)
 			this.imgRef = file.name
 			if (!file) {
 				e.preventDefault()
@@ -121,7 +159,6 @@ export default {
 				await formValidate.validateAt(field, this.profileBody, this.yupOptions)
 				this.profileError[field] = ''
 			} catch (err) {
-				console.log(err)
 				err.inner.forEach((error) => {
 					this.profileError[error.path] = error.message
 				})
@@ -131,8 +168,6 @@ export default {
 		validateAddress: async function(field) {
 			let { addressValidate } = form
 			try {
-				// const buffer = new ArrayBuffer(8)
-				// const view = new Int32Array(buffer)
 				await addressValidate.validateAt(field, this.address, this.yupOptions)
 				this.addressError[field] = ''
 			} catch (err) {

@@ -59,7 +59,7 @@ export default {
 					const res = await this.$axios.post(
 						`${state.BASE_URL}/accounts/register`,
 						this.values,
-						state.axiosOptions
+						state.headers
 					)
 
 					if (res.status === 200) {

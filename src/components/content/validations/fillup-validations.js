@@ -12,10 +12,7 @@ export default {
 			.trim()
 			.required('Lastname Field is required'),
 
-		middleName: yup
-			.string()
-			.trim()
-			.required('Middlename Field is required'),
+		middleName: yup.string().trim(),
 
 		birthday: yup
 			.date()

@@ -13,8 +13,8 @@ export default new Vuex.Store({
 		openModalDriver: false,
 		openModalEst: false,
 		openPopOut: false,
-		axiosOptions: {
-			'Content-Type': 'application/x-www-form-urlencoded',
+		headers: {
+			Authorization: '',
 		},
 	},
 	mutations: {
@@ -43,6 +43,10 @@ export default new Vuex.Store({
 
 		showPopOut(state) {
 			state.openPopOut = !state.openPopOut
+		},
+
+		assignToken(state) {
+			state.headers.Authorization = state.ACCESS_TOKEN
 		},
 	},
 	actions: {},
