@@ -7,8 +7,9 @@ export default new Vuex.Store({
 	state: {
 		BASE_URL: 'http://192.168.1.11:6060/api/v1',
 		ACCESS_TOKEN: '',
-		sideBarOpen: false,
 
+		//dashboard
+		sideBarOpen: false,
 		editProfileOpen: false,
 		openModalUser: false,
 		openModalDriver: false,
@@ -17,6 +18,11 @@ export default new Vuex.Store({
 		//message box
 		isEmpSuccess: false,
 		openPopOut: false,
+		accountsMsg: {
+			isRegistered: false,
+			isProfileCreated: false,
+		},
+
 		headers: {
 			Authorization: '',
 		},

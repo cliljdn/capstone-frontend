@@ -66,6 +66,8 @@ export default {
 						this.values.email = ''
 						this.values.password = ''
 						this.values.accountType = 'SELECT'
+						state.accountsMsg.isRegistered = true
+						state.accountsMsg.isProfileCreated = false
 						return commit('showPopOut')
 					}
 				}

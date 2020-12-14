@@ -20,7 +20,7 @@
 										alt="Placeholder image"
 									/>
 									<img
-										v-else
+										v-if="!profileBody.image"
 										class="is-rounded"
 										src="https://i.imgur.com/bCOd9N0.jpg"
 										alt="Placeholder image"
@@ -253,6 +253,9 @@
 					Register
 				</button>
 			</div>
+		</div>
+		<div class="" v-if="this.$store.state.openPopOut">
+			<pop-modal />
 		</div>
 	</div>
 </template>

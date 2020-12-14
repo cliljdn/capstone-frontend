@@ -9,8 +9,16 @@
 			<section class="modal-card-body">
 				<div class="columns ">
 					<div class="column  has-text-justified">
-						<h1>Successfully Registered</h1>
-						<h1>We Sent a Verification Link to your E-mail address</h1>
+						<div class="" v-if="this.$store.state.accountsMsg.isRegistered">
+							<h1>Successfully Registered</h1>
+							<h1>We Sent a Verification Link to your E-mail address</h1>
+						</div>
+						<div class="" v-if="this.$store.state.accountsMsg.isProfileCreated">
+							<h1>Profile Created</h1>
+							<h1>
+								You can now Login to your account on the android Application
+							</h1>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -24,11 +32,18 @@
 <script>
 export default {
 	data() {
-		return {}
+		return {
+			header: '',
+			sub: '',
+		}
 	},
 	methods: {
 		closeModal() {
-			let { commit } = this.$store
+			let { commit, state } = this.$store
+			if (state.accountsMsg.isProfileCreated) {
+				this.$router.push({ name: 'registerCitizens' })
+			}
+
 			return commit('showPopOut')
 		},
 	},

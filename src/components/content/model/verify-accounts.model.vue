@@ -19,8 +19,8 @@ export default {
 				this.msg = `Your email ${res.data.email} has been Verified`
 				this.isType = res.data.account_type
 				state.ACCESS_TOKEN = token
+				state.accountsMsg.isRegistered = true
 				this.$store.commit('assignToken')
-				console.log(state.headers.Authorization)
 			}
 		} catch (err) {
 			if (err.response.status === 500) {

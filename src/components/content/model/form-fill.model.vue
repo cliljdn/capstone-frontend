@@ -3,9 +3,11 @@ import VueFlatpickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
 import form from '../validations/fillup-validations'
 import qs from 'querystring'
+import PopModal from '../../msgmodal/pop-modal'
 export default {
 	components: {
 		FlatPickr: VueFlatpickr,
+		'pop-modal': PopModal,
 	},
 
 	data() {
@@ -51,10 +53,10 @@ export default {
 	methods: {
 		createProfile: async function() {
 			let { formValidate, addressValidate } = form,
-				{ state } = this.$store
+				{ state, commit } = this.$store
 			try {
 				let blob = new Blob([this.profileBody.image], { type: 'image/png' })
-				console.log(blob)
+
 				// console.log(blob)
 				let img = await this.blobToData(blob)
 
@@ -81,7 +83,7 @@ export default {
 					)
 
 					if (res.status === 201) {
-						await this.$axios.post(
+						const resAddress = await this.$axios.post(
 							`${state.BASE_URL}/account/create/address`,
 							qs.stringify(this.address),
 							{
@@ -91,14 +93,17 @@ export default {
 							}
 						)
 
-						// if ((resAddress.status = 201)) {
-						// }
+						if (resAddress.status === 201) {
+							state.accountsMsg.isRegistered = false
+							state.accountsMsg.isProfileCreated = true
+							return commit('showPopOut')
+						}
 					}
 				}
 			} catch (err) {
 				console.log(err)
 				if (err.response !== undefined) {
-					console.log(err.response)
+					return err.response
 				} else {
 					err.inner.forEach((error) => {
 						if (error.path in this.addressError) {
@@ -115,8 +120,8 @@ export default {
 		blobToData: (blob) => {
 			return new Promise((resolve) => {
 				const reader = new FileReader()
-				reader.onloadend = () => resolve(reader.result)
 				if (blob instanceof Blob) reader.readAsDataURL(blob)
+				reader.onloadend = () => resolve(reader.result)
 			})
 		},
 
