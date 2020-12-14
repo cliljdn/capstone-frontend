@@ -8,10 +8,14 @@ export default new Vuex.Store({
 		BASE_URL: 'http://192.168.1.11:6060/api/v1',
 		ACCESS_TOKEN: '',
 		sideBarOpen: false,
+
 		editProfileOpen: false,
 		openModalUser: false,
 		openModalDriver: false,
 		openModalEst: false,
+
+		//message box
+		isEmpSuccess: false,
 		openPopOut: false,
 		headers: {
 			Authorization: '',
@@ -47,6 +51,10 @@ export default new Vuex.Store({
 
 		assignToken(state) {
 			state.headers.Authorization = state.ACCESS_TOKEN
+		},
+
+		empCreateProfile(state) {
+			state.isEmpSuccess = !state.isEmpSuccess
 		},
 	},
 	actions: {},

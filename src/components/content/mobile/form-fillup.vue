@@ -22,7 +22,7 @@
 									<img
 										v-else
 										class="is-rounded"
-										src="https://versions.bulma.io/0.7.4/images/placeholders/96x96.png"
+										src="https://i.imgur.com/bCOd9N0.jpg"
 										alt="Placeholder image"
 									/>
 								</figure>

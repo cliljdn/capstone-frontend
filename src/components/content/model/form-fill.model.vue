@@ -53,13 +53,12 @@ export default {
 			let { formValidate, addressValidate } = form,
 				{ state } = this.$store
 			try {
-				let blob = new Blob([this.profileBody.image], { type: 'image/jpg' })
-				let buff = await new Response(blob).arrayBuffer()
+				let blob = new Blob([this.profileBody.image], { type: 'image/png' })
+				console.log(blob)
+				// console.log(blob)
+				let img = await this.blobToData(blob)
 
-				let jsonImage = JSON.stringify(Array.from(new Uint8Array(buff)))
-
-				console.log(jsonImage)
-				this.profileBody.image = jsonImage
+				this.profileBody.image = img
 
 				let validateProfile = await formValidate.validate(
 					this.profileBody,
@@ -80,17 +79,20 @@ export default {
 							},
 						}
 					)
-					console.log(res)
+
 					if (res.status === 201) {
 						await this.$axios.post(
 							`${state.BASE_URL}/account/create/address`,
-							this.profileBody,
+							qs.stringify(this.address),
 							{
 								headers: {
 									Authorization: state.headers.Authorization,
 								},
 							}
 						)
+
+						// if ((resAddress.status = 201)) {
+						// }
 					}
 				}
 			} catch (err) {
@@ -110,6 +112,14 @@ export default {
 			}
 		},
 
+		blobToData: (blob) => {
+			return new Promise((resolve) => {
+				const reader = new FileReader()
+				reader.onloadend = () => resolve(reader.result)
+				if (blob instanceof Blob) reader.readAsDataURL(blob)
+			})
+		},
+
 		isNumber: function(evt) {
 			evt = evt ? evt : window.event
 			var charCode = evt.which ? evt.which : evt.keyCode
@@ -127,7 +137,6 @@ export default {
 		onFileChange(e) {
 			let imgFormats = ['jpg', 'jpeg', 'png']
 			const file = e.target.files[0]
-			console.log(file)
 			this.imgRef = file.name
 			if (!file) {
 				e.preventDefault()

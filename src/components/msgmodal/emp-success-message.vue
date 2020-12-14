@@ -1,5 +1,5 @@
 <template>
-	<div class="modal" :class="{ 'is-active': this.$store.state.openPopOut }">
+	<div class="modal" :class="{ 'is-active': this.$store.state.isEmpSuccess }">
 		<div class="modal-background" @click="closeModal"></div>
 		<div class="modal-card">
 			<header class="modal-card-head">
@@ -23,13 +23,10 @@
 
 <script>
 export default {
-	data() {
-		return {}
-	},
 	methods: {
 		closeModal() {
 			let { commit } = this.$store
-			return commit('showPopOut')
+			return commit('empCreateProfile')
 		},
 	},
 }
