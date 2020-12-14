@@ -2,7 +2,7 @@
 import VueFlatpickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
 import form from '../validations/fillup-validations'
-import querystring from 'querystring'
+import qs from 'querystring'
 export default {
 	components: {
 		FlatPickr: VueFlatpickr,
@@ -53,16 +53,14 @@ export default {
 			let { formValidate, addressValidate } = form,
 				{ state } = this.$store
 			try {
-				// let fileImg = URL.revokeObjectURL(this.profileBody.image)
 				let blob = new Blob([this.profileBody.image], { type: 'image/jpg' })
-				let reader = new FileReader()
-				reader.onloadend = () => {
-					let base64data = reader.result
-					return base64data
-				}
-				this.profileBody.image = reader.readAsDataURL(blob)
+				let buff = await new Response(blob).arrayBuffer()
 
-				console.log(this.profileBody.image)
+				let jsonImage = JSON.stringify(Array.from(new Uint8Array(buff)))
+
+				console.log(jsonImage)
+				this.profileBody.image = jsonImage
+
 				let validateProfile = await formValidate.validate(
 					this.profileBody,
 					this.yupOptions
@@ -75,7 +73,7 @@ export default {
 				if (validateProfile && validateAddress) {
 					const res = await this.$axios.post(
 						`${state.BASE_URL}/accounts/create/profile`,
-						querystring.stringify(this.profileBody),
+						qs.stringify(this.profileBody),
 						{
 							headers: {
 								Authorization: state.headers.Authorization,
