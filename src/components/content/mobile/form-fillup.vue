@@ -250,7 +250,7 @@
 					@click="createProfile"
 					class="button is-success is-pulled-right is-medium is-center mt-3"
 				>
-					Register
+					Create Profile
 				</button>
 			</div>
 		</div>

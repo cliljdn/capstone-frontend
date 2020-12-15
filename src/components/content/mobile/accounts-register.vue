@@ -1,6 +1,6 @@
 <template>
 	<div class="card is-fullheight has-equal-height">
-		<div class="card-content">
+		<div class="card-content mt-6">
 			<div class="content">
 				<div class="columns">
 					<div class="column text-welcome">
