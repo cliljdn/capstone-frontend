@@ -19,9 +19,16 @@
 
 		.box:hover {
 			background-color: rgb(119, 136, 153);
+		}
 
-			.menu-list:hover li:hover a:hover {
-				background-color: transparent !important;
+		.menu-list {
+			margin: 0;
+			padding: 0;
+
+			.has-text-info {
+				margin: 0px;
+				padding: 0px !important;
+				height: 2em !important;
 			}
 		}
 	}
