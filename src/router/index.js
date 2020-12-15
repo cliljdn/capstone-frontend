@@ -103,16 +103,15 @@ const routes = [
 					import(
 						/* webpackChunkName: "components" */ '../components/content/mobile/employee-fillup.vue'
 					),
-				children: [
-					{
-						path: 'working/establishment/fillup',
-						name: 'fill-up establishment',
-						component: () =>
-							import(
-								/* webpackChunkName: "components" */ '../components/content/mobile/list-est-fillup.vue'
-							),
-					},
-				],
+			},
+
+			{
+				path: 'working/establishment/fillup',
+				name: 'fill-up-establishment',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/mobile/list-est-fillup.vue'
+					),
 			},
 
 			{

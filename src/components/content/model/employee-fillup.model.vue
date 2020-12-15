@@ -48,7 +48,7 @@ export default {
 	methods: {
 		createProfile: async function() {
 			let { employeeValidate, addressValidate } = form,
-				{ state, commit } = this.$store
+				{ state } = this.$store
 			try {
 				let blob = new Blob([this.profile.image], { type: 'image/png' })
 
@@ -76,7 +76,7 @@ export default {
 							},
 						}
 					)
-					console.log(res)
+
 					if (res.status === 201) {
 						const resAddress = await this.$axios.post(
 							`${state.BASE_URL}/employee/create/address`,
@@ -87,11 +87,12 @@ export default {
 								},
 							}
 						)
-						console.log(resAddress)
+
 						if (resAddress.status === 201) {
-							state.accountsMsg.isRegistered = false
-							state.accountsMsg.isProfileCreated = true
-							return commit('showPopOut')
+							// state.accountsMsg.isRegistered = false
+							// state.accountsMsg.isProfileCreated = true
+
+							this.$router.push({ name: 'fill-up-establishment' })
 						}
 					}
 				}
