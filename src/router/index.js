@@ -36,6 +36,15 @@ const routes = [
 						/* webpackChunkName: "components" */ '@/components/content/web/admin-login.vue'
 					),
 			},
+
+			{
+				path: 'employee/create/working',
+				name: 'employee-working-create',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '@/components/content/mobile/list-est-fillup.vue'
+					),
+			},
 		],
 	},
 

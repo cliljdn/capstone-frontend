@@ -57,7 +57,10 @@ export default {
 
 		birthday: yup
 			.date()
-			.max(new Date(), 'The Year cannot be greater on the present!')
+			.max(
+				new Date(),
+				'The year value cannot be on present and greater than present year!'
+			)
 			.typeError('Select a date')
 			.nullable(true)
 			.required('Birthday Field is required '),

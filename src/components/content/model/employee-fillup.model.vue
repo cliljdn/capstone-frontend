@@ -3,8 +3,9 @@ import VueFlatpickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
 import form from '../validations/fillup-validations'
 import qs from 'querystring'
+import PopModal from '../../msgmodal/pop-modal'
 export default {
-	components: { FlatPickr: VueFlatpickr },
+	components: { FlatPickr: VueFlatpickr, 'pop-modal': PopModal },
 
 	data() {
 		return {
@@ -67,7 +68,7 @@ export default {
 
 				if (validateProfile && validateAddress) {
 					const res = await this.$axios.post(
-						`${state.BASE_URL}/employee/create/address`,
+						`${state.BASE_URL}/accounts/create/profile`,
 						qs.stringify(this.profile),
 						{
 							headers: {
@@ -75,10 +76,10 @@ export default {
 							},
 						}
 					)
-
+					console.log(res)
 					if (res.status === 201) {
 						const resAddress = await this.$axios.post(
-							`${state.BASE_URL}/account/create/address`,
+							`${state.BASE_URL}/employee/create/address`,
 							qs.stringify(this.address),
 							{
 								headers: {
@@ -86,7 +87,7 @@ export default {
 								},
 							}
 						)
-
+						console.log(resAddress)
 						if (resAddress.status === 201) {
 							state.accountsMsg.isRegistered = false
 							state.accountsMsg.isProfileCreated = true
@@ -96,7 +97,7 @@ export default {
 				}
 			} catch (err) {
 				if (err.response !== undefined) {
-					return err.response
+					return true
 				} else {
 					err.inner.forEach((error) => {
 						if (error.path in this.addressError) {

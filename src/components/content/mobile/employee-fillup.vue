@@ -250,9 +250,9 @@
 							<div class="field mt-2">
 								<p class="control has-icons-left">
 									<input
-										@input="validateAddress('position')"
-										@blur="validateAddress('position')"
-										v-model="address.position"
+										v-model="profile.position"
+										@input="validateProfile('position')"
+										@blur="validateProfile('position')"
 										class="input"
 										type="text"
 										placeholder="City"
@@ -261,7 +261,7 @@
 										<i class="fas fa-house"></i>
 									</span>
 									<span class="mt-1 has-text-danger">{{
-										addressError.position
+										profileError.position
 									}}</span>
 								</p>
 							</div>
