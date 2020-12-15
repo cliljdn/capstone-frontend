@@ -1,0 +1,28 @@
+.column-card {
+	padding: 0 !important;
+	margin: 0 !important;
+	align-items: center;
+	justify-content: center;
+	border: none !important;
+	box-shadow: none;
+
+	.has-equal-height {
+		border: none !important;
+		box-shadow: none;
+		width: 700px !important;
+		flex-direction: column !important;
+		height: 100% !important;
+
+		.text-welcome {
+			font-size: 28px !important;
+		}
+
+		.box:hover {
+			background-color: rgb(119, 136, 153);
+
+			.menu-list:hover li:hover a:hover {
+				background-color: transparent !important;
+			}
+		}
+	}
+}
