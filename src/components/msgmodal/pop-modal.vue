@@ -40,10 +40,15 @@ export default {
 	methods: {
 		closeModal() {
 			let { commit, state } = this.$store
+			if (state.isAdminValid) {
+				this.$router.push({ name: 'loginAdmin' })
+			}
+
 			if (state.accountsMsg.isProfileCreated) {
 				this.$router.push({ name: 'registerCitizens' })
 			}
-
+			state.accountsMsg.isProfileCreated = false
+			state.isAdminValid = false
 			return commit('showPopOut')
 		},
 	},

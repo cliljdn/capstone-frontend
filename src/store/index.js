@@ -17,6 +17,7 @@ export default new Vuex.Store({
 
 		//message box
 		isEmpSuccess: false,
+		isAdminValid: false,
 		openPopOut: false,
 		accountsMsg: {
 			isRegistered: false,

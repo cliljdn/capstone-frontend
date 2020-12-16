@@ -125,6 +125,30 @@ const routes = [
 		],
 	},
 
+	{
+		path: '/admin/verify/:token',
+		component: view('verify-admin-view'),
+		children: [
+			{
+				path: '',
+				name: 'admin-account-verify',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/web/admin-verify.vue'
+					),
+			},
+
+			{
+				path: '/admin/create/profile',
+				name: 'admin-profile-creation',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/web/admin-info-form.vue'
+					),
+			},
+		],
+	},
+
 	{ path: '/404', component: PageNotFound },
 	{ path: '*', redirect: '/404' },
 ]

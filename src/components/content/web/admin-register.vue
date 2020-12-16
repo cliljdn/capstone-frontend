@@ -86,7 +86,7 @@
 	</div>
 </template>
 <script>
-import app from '../model/admin-register.model'
+import app from '../model/Admin/admin-register.model'
 export default app
 </script>
 <style lang="scss">

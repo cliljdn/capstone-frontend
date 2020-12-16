@@ -15,6 +15,9 @@
 						<div class="field mt-3">
 							<p class="control has-icons-left has-icons-right">
 								<input
+									@input="validateProfile('email')"
+									@blur="validateProfile('email')"
+									v-model="body.email"
 									class="input is-medium"
 									type="email"
 									placeholder="Email"
@@ -23,12 +26,16 @@
 									<i class="fas fa-envelope"></i>
 								</span>
 							</p>
+							<span class="mt-1 has-text-danger">{{ errors.email }}</span>
 						</div>
 
 						<span class="">Password:</span>
 						<div class="field mt-3">
 							<p class="control has-icons-left">
 								<input
+									@input="validateProfile('password')"
+									@blur="validateProfile('password')"
+									v-model="body.password"
 									class="input is-medium"
 									type="password"
 									placeholder="Password"
@@ -37,9 +44,13 @@
 									<i class="fas fa-key"></i>
 								</span>
 							</p>
+							<span class="mt-1 has-text-danger">{{ errors.password }}</span>
 						</div>
 
-						<button class="button is-success is-medium is-center mt-3">
+						<button
+							@click="btnLogin"
+							class="button is-success is-medium is-center mt-3"
+						>
 							Register
 						</button>
 					</div>
@@ -48,6 +59,10 @@
 		</div>
 	</div>
 </template>
+<script>
+import app from '../model/Admin/admin-login.model'
+export default app
+</script>
 
 <style lang="scss">
 @import '../sass/accounts-register.scss';

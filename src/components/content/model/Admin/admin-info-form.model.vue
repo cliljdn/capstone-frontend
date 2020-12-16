@@ -1,10 +1,9 @@
 <script>
 import VueFlatpickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
-import form from '../validations/fillup-validations'
+import form from '../../validations/fillup-validations'
 import qs from 'querystring'
-import PopModal from '../../msgmodal/pop-modal'
-
+import PopModal from '../../../msgmodal/pop-modal'
 export default {
 	components: {
 		FlatPickr: VueFlatpickr,
@@ -74,7 +73,7 @@ export default {
 
 				if (validateProfile && validateAddress) {
 					const res = await this.$axios.post(
-						`${state.BASE_URL}/accounts/create/profile`,
+						`${state.BASE_URL}/admin/create/profile`,
 						qs.stringify(this.profileBody),
 						{
 							headers: {
@@ -85,7 +84,7 @@ export default {
 
 					if (res.status === 201) {
 						const resAddress = await this.$axios.post(
-							`${state.BASE_URL}/account/create/address`,
+							`${state.BASE_URL}/admin/create/address`,
 							qs.stringify(this.address),
 							{
 								headers: {
@@ -97,11 +96,13 @@ export default {
 						if (resAddress.status === 201) {
 							state.accountsMsg.isRegistered = false
 							state.accountsMsg.isProfileCreated = true
+							state.isAdminValid = true
 							return commit('showPopOut')
 						}
 					}
 				}
 			} catch (err) {
+				console.log(err.response)
 				if (err.response !== undefined) {
 					return err.response
 				} else {

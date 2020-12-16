@@ -1,6 +1,6 @@
 <script>
-import PopModal from '../../msgmodal/pop-modal'
-import form from '../validations/registerValidations'
+import PopModal from '../../../msgmodal/pop-modal'
+import form from '../../validations/registerValidations'
 export default {
 	components: { 'pop-modal': PopModal },
 	data() {
@@ -37,7 +37,10 @@ export default {
 					if (res.status === 201) {
 						state.accountsMsg.isRegistered = true
 						state.accountsMsg.isProfileCreated = false
-
+						state.isAdminValid = true
+						this.body.email = ''
+						this.body.password = ''
+						this.body.confirm = ''
 						return commit('showPopOut')
 					}
 				}
