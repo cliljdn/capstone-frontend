@@ -15,6 +15,10 @@
 						<div class="field mt-3">
 							<p class="control has-icons-left has-icons-right">
 								<input
+									v-model="body.email"
+									@focus="errors.email = ''"
+									@blur="validate('email')"
+									@input="validate('email')"
 									class="input is-medium"
 									type="email"
 									placeholder="Email"
@@ -23,12 +27,17 @@
 									<i class="fas fa-envelope"></i>
 								</span>
 							</p>
+							<span class="has-text-danger">{{ errors.email }}</span>
 						</div>
 
 						<span class="">Password:</span>
 						<div class="field mt-3">
 							<p class="control has-icons-left">
 								<input
+									v-model="body.password"
+									@focus="errors.password = ''"
+									@blur="validate('password')"
+									@input="validate('password')"
 									class="input is-medium"
 									type="password"
 									placeholder="Password"
@@ -37,12 +46,18 @@
 									<i class="fas fa-key"></i>
 								</span>
 							</p>
+
+							<span class="has-text-danger">{{ errors.password }}</span>
 						</div>
 
 						<span class="">Confirm Password:</span>
 						<div class="field mt-3">
 							<p class="control has-icons-left">
 								<input
+									v-model="body.confirm"
+									@focus="errors.confirm = ''"
+									@blur="validate('confirm')"
+									@input="validate('confirm')"
 									class="input is-medium"
 									type="password"
 									placeholder="Confirm Password"
@@ -51,18 +66,29 @@
 									<i class="fas fa-lock"></i>
 								</span>
 							</p>
+							<span class="has-text-danger">{{ errors.confirm }}</span>
 						</div>
 
-						<button class="button is-success is-medium is-center mt-3">
+						<button
+							@click="registerAdmin"
+							class="button is-success is-medium is-center mt-3"
+						>
 							Register
 						</button>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<div class="" v-if="this.$store.state.openPopOut">
+			<pop-modal />
+		</div>
 	</div>
 </template>
-
+<script>
+import app from '../model/admin-register.model'
+export default app
+</script>
 <style lang="scss">
 @import '../sass/accounts-register.scss';
 </style>

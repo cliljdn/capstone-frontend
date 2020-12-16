@@ -1,26 +1,48 @@
 <script>
-import func from '../../../../vue-temp/vue-editor-bridge'
+import PopModal from '../../msgmodal/pop-modal'
 export default {
+	components: { 'pop-modal': PopModal },
 	data() {
 		return {
 			estList: [],
-			workingId: '',
+			body: {
+				establishment_id: 0,
+			},
 		}
 	},
 
 	methods: {
 		createProfile: async function() {
+			let { state, commit } = this.$store
 			try {
-
+				console.log(this.body)
+				if (!this.body.establishment_id) {
+					alert('please select a establishment from the list')
+				} else {
+					let res = await this.$axios.post(
+						`${state.BASE_URL}/account/establishment/create`,
+						this.body,
+						{
+							headers: {
+								Authorization: state.headers.Authorization,
+							},
+						}
+					)
+					console.log(res)
+					if (res.status === 201) {
+						state.accountsMsg.isRegistered = false
+						state.accountsMsg.isProfileCreated = true
+						return commit('showPopOut')
+					}
+				}
 			} catch (error) {
-
+				console.log(error.message)
 			}
-		}
-
-		getEstId: function(estId) {
-			this.workingId = estId
 		},
 
+		getEstId: function(estId) {
+			this.body.establishment_id = estId
+		},
 
 		getEstList: async function() {
 			let { state } = this.$store

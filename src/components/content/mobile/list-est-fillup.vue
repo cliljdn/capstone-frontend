@@ -58,10 +58,14 @@
 			</div>
 		</div>
 		<footer class="card-footer">
-			<a href="#" class="card-footer-item" @click="createProfile"
-				>Create Profile</a
-			>
+			<button class="card-footer-item button is-success" @click="createProfile">
+				Create Profile
+			</button>
 		</footer>
+
+		<div class="" v-if="this.$store.state.openPopOut">
+			<pop-modal />
+		</div>
 	</div>
 </template>
 

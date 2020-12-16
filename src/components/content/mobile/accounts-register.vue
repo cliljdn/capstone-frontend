@@ -37,9 +37,9 @@
 								<p class="control has-icons-left">
 									<input
 										v-model="values.password"
-										@focus="errors.password = ''"
 										class="input"
 										type="text"
+										@focus="errors.password = ''"
 										@blur="validate('password')"
 										@input="validate('password')"
 										placeholder="Password"
