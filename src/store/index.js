@@ -7,6 +7,7 @@ export default new Vuex.Store({
 	state: {
 		BASE_URL: 'http://192.168.1.11:6060/api/v1',
 		ACCESS_TOKEN: '',
+		TOKEN_NAME: '',
 
 		//dashboard
 		sideBarOpen: false,

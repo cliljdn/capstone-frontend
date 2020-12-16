@@ -34,8 +34,10 @@ export default {
 					)
 
 					if (res.status === 201) {
-						isLoggedIn(res.data.token)
-						console.log(checkCookies('Token'))
+						state.TOKEN_NAME = res.data.name
+						isLoggedIn(res.data.token, res.data.name)
+						let test = checkCookies(state.TOKEN_NAME)
+						console.log(test)
 					}
 				}
 			} catch (err) {
@@ -50,15 +52,19 @@ export default {
 						this.errors.email = err.response.data.message
 					}
 				} else {
-					err.inner.forEach((error) => {
-						if (error.path in this.errors) {
-							this.errors[error.path] = error.message
-						}
+					if (err.inner === undefined) {
+						return false
+					} else {
+						err.inner.forEach((error) => {
+							if (error.path in this.errors) {
+								this.errors[error.path] = error.message
+							}
 
-						if (error.path in this.profileError) {
-							this.errors[error.path] = error.message
-						}
-					})
+							if (error.path in this.errors) {
+								this.errors[error.path] = error.message
+							}
+						})
+					}
 				}
 			}
 		},

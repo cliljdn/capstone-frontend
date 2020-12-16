@@ -13,6 +13,9 @@ Vue.prototype.$axios = axios
 // initialize vue-cookies globally
 import './plugins/cookies.plugins'
 
+// import VueCookies from 'vue-cookies'
+// Vue.use(VueCookies)
+
 // Initialize store
 Vue.prototype.$store = store
 

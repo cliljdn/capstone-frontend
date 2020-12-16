@@ -1,13 +1,13 @@
 export default {
-	isLoggedIn: function(token) {
-		this.$cookies.set('Token', token, '1d')
+	isLoggedIn: function(token, name) {
+		return window.$cookies.set(name, token, '1d')
 	},
 
 	checkCookies: function(name) {
-		return this.$cookies.get(name)
+		return window.$cookies.get(name)
 	},
 
 	ifCookieExist: function(keyName) {
-		return this.$cookies.isKey(keyName)
+		return window.$cookies.isKey(keyName)
 	},
 }
