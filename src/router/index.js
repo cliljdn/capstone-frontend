@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PageNotFound from '@/components/Notfound/not-found.vue'
-
+import store from '../store/index'
 Vue.use(VueRouter)
 
 const routes = [
@@ -53,6 +53,15 @@ const routes = [
 		path: '/admin',
 		name: 'admin-dashboard',
 		component: view('Admin-view'),
+		//meta: { isAuthenticated: true },
+		beforeEnter(to, from, next) {
+			if (!store.state.isAuth) {
+				next({ name: 'loginAdmin' })
+			} else {
+				next()
+			}
+		},
+
 		children: [
 			{
 				path: 'users',

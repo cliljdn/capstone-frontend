@@ -4,7 +4,6 @@ export default {
 	components: { 'pop-modal': PopModal },
 	data() {
 		return {
-			estList: [],
 			body: {
 				establishment_id: 0,
 			},
@@ -43,29 +42,14 @@ export default {
 		getEstId: function(estId) {
 			this.body.establishment_id = estId
 		},
+	},
 
-		getEstList: async function() {
-			let { state } = this.$store
-
-			try {
-				let res = await this.$axios.get(
-					`${state.BASE_URL}/list/account/establishment/profile`,
-					{
-						headers: {
-							Authorization: state.headers.Authorization,
-						},
-					}
-				)
-
-				this.estList = await res.data
-			} catch (error) {
-				return error
-			}
-		},
+	listEst() {
+		return this.store.state.estList
 	},
 
 	async mounted() {
-		await this.getEstList()
+		return await this.$store.dispatch('getEst')
 	},
 }
 </script>

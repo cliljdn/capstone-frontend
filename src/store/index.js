@@ -9,7 +9,8 @@ export default new Vuex.Store({
 	state: {
 		BASE_URL: 'http://scanolongapo-api.com/api/v1',
 		ACCESS_TOKEN: '',
-		TOKEN_NAME: '',
+		TOKEN_NAME: 'walang laman',
+		isAuth: false,
 
 		//dashboard
 		sideBarOpen: false,
@@ -30,6 +31,8 @@ export default new Vuex.Store({
 		headers: {
 			Authorization: '',
 		},
+
+		estList: [],
 	},
 	mutations: {
 		// hide and show the sidebar profile
@@ -67,6 +70,10 @@ export default new Vuex.Store({
 			state.isEmpSuccess = !state.isEmpSuccess
 		},
 
+		isAuth(state, auth) {
+			state.isAuth = auth
+		},
+
 		setCookie(state, payload) {
 			state.ACCESS_TOKEN = payload.token
 			state.TOKEN_NAME = payload.name
@@ -74,12 +81,18 @@ export default new Vuex.Store({
 			Cookies.set(state.TOKEN_NAME, state.ACCESS_TOKEN, { expires: 1 })
 		},
 
-		getCookie(state) {
-			if (!state.TOKEN_NAME) {
+		getCookie(state, name) {
+			state.TOKEN_NAME = name
+
+			if (Cookies.get(state.TOKEN_NAME) === undefined) {
 				return false
 			} else {
-				Cookies.get(state.TOKEN_NAME)
+				state.ACCESS_TOKEN = Cookies.get(state.TOKEN_NAME)
 			}
+		},
+
+		getEst(state, list) {
+			state.estList = list
 		},
 	},
 
@@ -88,8 +101,25 @@ export default new Vuex.Store({
 			commit('setCookie', payload)
 		},
 
-		getCookie({ commit }) {
-			return commit('getCookie')
+		getCookie(context, name) {
+			return context.commit('getCookie', name)
+		},
+
+		async getEst({ commit }) {
+			let res = await this.$axios.get(
+				`${this.state.BASE_URL}/list/account/establishment/profile`,
+				{
+					headers: {
+						Authorization: this.state.headers.Authorization,
+					},
+				}
+			)
+
+			return commit('getEst', res.data)
+		},
+
+		isAuth({ commit }, auth) {
+			commit('isAuth', auth)
 		},
 	},
 	modules: {},

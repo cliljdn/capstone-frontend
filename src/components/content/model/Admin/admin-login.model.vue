@@ -24,6 +24,7 @@ export default {
 		...mapActions({
 			setCookie: 'setCookie',
 		}),
+
 		btnLogin: async function() {
 			let { validateLogin } = form,
 				{ state } = this.$store
@@ -47,6 +48,7 @@ export default {
 						}
 
 						this.$store.dispatch('setCookie', auth)
+						this.$store.dispatch('isAuth', true)
 						this.$router.push({ name: 'admin-dashboard' })
 					}
 				}

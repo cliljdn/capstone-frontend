@@ -51,7 +51,7 @@
 							@click="btnLogin"
 							class="button is-success is-medium is-center mt-3"
 						>
-							Register
+							Login
 						</button>
 					</div>
 				</div>

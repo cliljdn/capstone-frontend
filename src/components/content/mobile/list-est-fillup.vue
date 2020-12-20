@@ -8,7 +8,7 @@
 					</div>
 				</div>
 				<aside class="menu">
-					<div class="" v-for="est in estList" :key="est.establishment_id">
+					<div class="" v-for="est in estList()" :key="est.establishment_id">
 						<div class="box mb-3" @click="getEstId(est.establishment_id)">
 							<p class="menu-label"></p>
 							<ul class="menu-list">

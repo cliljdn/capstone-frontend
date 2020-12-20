@@ -12,13 +12,19 @@ import DashboardNav from '../components/Navbars/dashboard-nav'
 export default {
 	components: { 'dashboard-nav': DashboardNav },
 
-	mounted() {
-		console.log(this.$store.state.TOKEN_NAME)
-		if (!this.$store.dispatch('getCookie')) {
-			return this.$router.push({ name: 'loginAdmin' })
+	async mounted() {
+		console.log(await this.checkToken())
+		if (!this.checkToken()) {
+			console.log(1)
 		} else {
-			return true
+			console.log(2)
 		}
+	},
+
+	methods: {
+		async checkToken() {
+			return await this.$store.dispatch('getCookie', 'Admin-6')
+		},
 	},
 }
 </script>
