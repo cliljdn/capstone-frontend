@@ -95,14 +95,13 @@ export default {
 
 						if (resAddress.status === 201) {
 							state.accountsMsg.isRegistered = false
-							state.accountsMsg.isProfileCreated = true
-							state.isAdminValid = true
+							state.accountsMsg.isProfileCreated = false
+							state.accountsMsg.adminProfileCreated = true
 							return commit('showPopOut')
 						}
 					}
 				}
 			} catch (err) {
-				console.log(err.response)
 				if (err.response !== undefined) {
 					return err.response
 				} else {

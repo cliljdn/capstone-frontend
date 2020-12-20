@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
+import * as Cookies from 'js-cookie'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		BASE_URL: 'http://192.168.1.11:6060/api/v1',
+		BASE_URL: 'http://scanolongapo-api.com/api/v1',
 		ACCESS_TOKEN: '',
 		TOKEN_NAME: '',
 
@@ -18,11 +20,11 @@ export default new Vuex.Store({
 
 		//message box
 		isEmpSuccess: false,
-		isAdminValid: false,
 		openPopOut: false,
 		accountsMsg: {
 			isRegistered: false,
 			isProfileCreated: false,
+			adminProfileCreated: false,
 		},
 
 		headers: {
@@ -64,7 +66,33 @@ export default new Vuex.Store({
 		empCreateProfile(state) {
 			state.isEmpSuccess = !state.isEmpSuccess
 		},
+
+		setCookie(state, payload) {
+			state.ACCESS_TOKEN = payload.token
+			state.TOKEN_NAME = payload.name
+
+			Cookies.set(state.TOKEN_NAME, state.ACCESS_TOKEN, { expires: 1 })
+		},
+
+		getCookie(state) {
+			if (!state.TOKEN_NAME) {
+				return false
+			} else {
+				Cookies.get(state.TOKEN_NAME)
+			}
+		},
 	},
-	actions: {},
+
+	actions: {
+		setCookie({ commit }, payload) {
+			commit('setCookie', payload)
+		},
+
+		getCookie({ commit }) {
+			return commit('getCookie')
+		},
+	},
 	modules: {},
+
+	plugins: [createPersistedState()],
 })

@@ -1,6 +1,8 @@
 <script>
-import cookies from '../../../../assets/cookies/cookies'
+// import store from '../../../../assets/cookies/cookies'
 import form from '../../validations/registerValidations'
+import { mapActions } from 'vuex'
+
 export default {
 	data() {
 		return {
@@ -19,10 +21,12 @@ export default {
 	},
 
 	methods: {
+		...mapActions({
+			setCookie: 'setCookie',
+		}),
 		btnLogin: async function() {
 			let { validateLogin } = form,
-				{ state } = this.$store,
-				{ isLoggedIn, checkCookies } = cookies
+				{ state } = this.$store
 
 			try {
 				let isValid = await validateLogin.validate(this.body, this.yupOptions)
@@ -35,13 +39,18 @@ export default {
 
 					if (res.status === 201) {
 						state.TOKEN_NAME = res.data.name
-						isLoggedIn(res.data.token, res.data.name)
-						let test = checkCookies(state.TOKEN_NAME)
-						console.log(test)
+
+						//stores token on cookies
+						let auth = {
+							name: res.data.name,
+							token: res.data.token,
+						}
+
+						this.$store.dispatch('setCookie', auth)
+						this.$router.push({ name: 'admin-dashboard' })
 					}
 				}
 			} catch (err) {
-				console.log(err.response)
 				if (err.response !== undefined) {
 					if (
 						err.response.data.message.includes('Password') ||

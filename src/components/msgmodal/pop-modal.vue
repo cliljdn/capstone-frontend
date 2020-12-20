@@ -19,6 +19,16 @@
 								You can now Login to your account on the android Application
 							</h1>
 						</div>
+
+						<div
+							class=""
+							v-if="this.$store.state.accountsMsg.adminProfileCreated"
+						>
+							<h1>Profile Created</h1>
+							<h1>
+								You can now Login to your account on the Web Application
+							</h1>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -40,7 +50,7 @@ export default {
 	methods: {
 		closeModal() {
 			let { commit, state } = this.$store
-			if (state.isAdminValid) {
+			if (state.accountsMsg.adminProfileCreated) {
 				this.$router.push({ name: 'loginAdmin' })
 			}
 
@@ -49,6 +59,7 @@ export default {
 			}
 			state.accountsMsg.isProfileCreated = false
 			state.isAdminValid = false
+			state.accountsMsg.adminProfileCreated = false
 			return commit('showPopOut')
 		},
 	},

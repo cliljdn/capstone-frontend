@@ -29,7 +29,15 @@
 </template>
 
 <script>
-export default {}
+export default {
+	mounted() {
+		if (this.$store.dispatch('getCookie')) {
+			return this.$router.push({ name: 'admin-dashboard' })
+		} else {
+			return this.$router.push({ name: 'loginAdmin' })
+		}
+	},
+}
 </script>
 
 <style lang="scss">

@@ -51,7 +51,7 @@ const routes = [
 	{
 		//admin dashboard
 		path: '/admin',
-		name: 'AdminView',
+		name: 'admin-dashboard',
 		component: view('Admin-view'),
 		children: [
 			{

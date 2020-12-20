@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import VueCookies from 'vue-cookies'
+import Cookies from 'js-cookie'
 
-Vue.prototype.$cookies = VueCookies
+Vue.prototype.$cookies = Cookies
 
-Vue.use(VueCookies)
+Vue.use(Cookies)
