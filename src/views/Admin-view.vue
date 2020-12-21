@@ -12,20 +12,9 @@ import DashboardNav from '../components/Navbars/dashboard-nav'
 export default {
 	components: { 'dashboard-nav': DashboardNav },
 
-	async mounted() {
-		console.log(await this.checkToken())
-		if (!this.checkToken()) {
-			console.log(1)
-		} else {
-			console.log(2)
-		}
-	},
+	mounted() {},
 
-	methods: {
-		async checkToken() {
-			return await this.$store.dispatch('getCookie', 'Admin-6')
-		},
-	},
+	methods: {},
 }
 </script>
 <style lang="scss"></style>

@@ -35,6 +35,13 @@ const routes = [
 					import(
 						/* webpackChunkName: "components" */ '@/components/content/web/admin-login.vue'
 					),
+				beforeEnter(to, from, next) {
+					if (!store.state.isAuth) {
+						next()
+					} else {
+						next({ name: 'admin-dashboard' })
+					}
+				},
 			},
 
 			{

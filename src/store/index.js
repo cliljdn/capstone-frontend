@@ -34,6 +34,17 @@ export default new Vuex.Store({
 
 		estList: [],
 	},
+
+	getters: {
+		isLoggedIn: (state) => {
+			if (Cookies.get(state.TOKEN_NAME) === undefined) {
+				return false
+			} else {
+				return Cookies.get(state.TOKEN_NAME)
+			}
+		},
+	},
+
 	mutations: {
 		// hide and show the sidebar profile
 		toggleSideBar(state) {
@@ -81,16 +92,6 @@ export default new Vuex.Store({
 			Cookies.set(state.TOKEN_NAME, state.ACCESS_TOKEN, { expires: 1 })
 		},
 
-		getCookie(state, name) {
-			state.TOKEN_NAME = name
-
-			if (Cookies.get(state.TOKEN_NAME) === undefined) {
-				return false
-			} else {
-				state.ACCESS_TOKEN = Cookies.get(state.TOKEN_NAME)
-			}
-		},
-
 		getEst(state, list) {
 			state.estList = list
 		},
@@ -99,10 +100,6 @@ export default new Vuex.Store({
 	actions: {
 		setCookie({ commit }, payload) {
 			commit('setCookie', payload)
-		},
-
-		getCookie(context, name) {
-			return context.commit('getCookie', name)
 		},
 
 		async getEst({ commit }) {
