@@ -36,7 +36,10 @@
 								<span class="ml-2 pr-10">caliljaudiannn@gmail.com</span>
 							</span>
 
-							<button class="btn-signout pd-5   button is-ghost mb-2">
+							<button
+								class="btn-signout pd-5 button is-ghost mb-2"
+								@click="logout"
+							>
 								Sign out
 							</button>
 						</div>

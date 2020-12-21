@@ -17,6 +17,16 @@ export default {
 		toggleEditForm() {
 			return this.$store.commit('toggleEditForm')
 		},
+
+		logout() {
+			this.$store.dispatch('removeCookie')
+			this.$store.dispatch('isAuth', false)
+			this.$router.push({ name: 'loginAdmin' })
+		},
+	},
+
+	mounted() {
+		console.log(this.$store.state.TOKEN_NAME)
 	},
 }
 </script>

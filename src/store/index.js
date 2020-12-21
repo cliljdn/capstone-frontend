@@ -92,6 +92,12 @@ export default new Vuex.Store({
 			Cookies.set(state.TOKEN_NAME, state.ACCESS_TOKEN, { expires: 1 })
 		},
 
+		removeCookie(state) {
+			Cookies.remove(state.TOKEN_NAME, { path: '/', domain: 'localhost' })
+			state.TOKEN_NAME = ''
+			state.ACCESS_TOKEN = ''
+		},
+
 		getEst(state, list) {
 			state.estList = list
 		},
@@ -100,6 +106,10 @@ export default new Vuex.Store({
 	actions: {
 		setCookie({ commit }, payload) {
 			commit('setCookie', payload)
+		},
+
+		removeCookie({ commit }) {
+			commit('removeCookie')
 		},
 
 		async getEst({ commit }) {
