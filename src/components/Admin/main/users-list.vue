@@ -37,84 +37,96 @@
 			</div>
 		</div>
 
-		<div class="columns is-0-tablet is-0-mobile is-0-desktop">
-			<div class="column m-3">
-				<div class="box is-medium" @click="openModal">
-					<article class="media">
-						<div class="media-left">
-							<figure class="image is-128x128">
-								<img
-									class="is-rounded"
-									src="https://bulma.io/images/placeholders/128x128.png"
-									alt="Image"
-								/>
-							</figure>
-						</div>
-						<div class="media-content">
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
-								</span>
+		<div class="">
+			<div class="columns is-0-tablet is-0-mobile is-0-desktop">
+				<div
+					class="column m-3"
+					v-for="user in userList().slice(0, 3)"
+					:key="user.user_id"
+				>
+					<div class="box is-medium" @click="openModal">
+						<article class="media">
+							<div class="media-left">
+								<figure class="image is-128x128">
+									<img
+										class="is-rounded"
+										src="https://bulma.io/images/placeholders/128x128.png"
+										alt="Image"
+									/>
+								</figure>
 							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
-								</span>
+							<div class="media-content">
+								<div class="content user-content">
+									<span class="icon is-small is-left level">
+										<i class="fas fa-user"></i>
+										<span class="admin- ml-2">Firstname: </span>
+										<span class="admin- ml-2">{{ user.firstname }}</span>
+									</span>
+								</div>
+								<div class="content user-content">
+									<span class="icon is-small is-left level">
+										<i class="fas fa-user"></i>
+										<span class="admin- ml-2">Lastname: </span>
+										<span class="admin- ml-2">{{ user.lastname }}</span>
+									</span>
+								</div>
+								<div class="content user-content">
+									<span class="icon is-small is-left level">
+										<i class="fas fa-cog"></i>
+										<span class="account-type ml-2">Account Type: </span>
+										<span class="admin ml-2">User</span>
+									</span>
+								</div>
 							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin ml-2">User</span>
-								</span>
-							</div>
-						</div>
-					</article>
+						</article>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="columns">
-			<div class="column m-3">
-				<div class="box is-medium">
-					<article class="media">
-						<div class="media-left">
-							<figure class="image is-128x128">
-								<img
-									class="is-rounded"
-									src="https://bulma.io/images/placeholders/128x128.png"
-									alt="Image"
-								/>
-							</figure>
-						</div>
-						<div class="media-content">
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Firstname: </span>
-									<span class="admin- ml-2">Calil</span>
-								</span>
+		<div class="" v-if="userList().length > 3">
+			<div class="columns">
+				<div
+					class="column m-3"
+					v-for="user in userList().slice(3, 6)"
+					:key="user.user_id"
+				>
+					<div class="box is-medium">
+						<article class="media">
+							<div class="media-left">
+								<figure class="image is-128x128">
+									<img
+										class="is-rounded"
+										src="https://bulma.io/images/placeholders/128x128.png"
+										alt="Image"
+									/>
+								</figure>
 							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-user"></i>
-									<span class="admin- ml-2">Lastname: </span>
-									<span class="admin- ml-2">Jaudian</span>
-								</span>
+							<div class="media-content">
+								<div class="content user-content">
+									<span class="icon is-small is-left level">
+										<i class="fas fa-user"></i>
+										<span class="admin- ml-2">Firstname: </span>
+										<span class="admin- ml-2">{{ user.firstname }}</span>
+									</span>
+								</div>
+								<div class="content user-content">
+									<span class="icon is-small is-left level">
+										<i class="fas fa-user"></i>
+										<span class="admin- ml-2">Lastname: </span>
+										<span class="admin- ml-2">{{ user.lastname }}</span>
+									</span>
+								</div>
+								<div class="content user-content">
+									<span class="icon is-small is-left level">
+										<i class="fas fa-cog"></i>
+										<span class="account-type ml-2">Account Type: </span>
+										<span class="admin ml-2">User</span>
+									</span>
+								</div>
 							</div>
-							<div class="content user-content">
-								<span class="icon is-small is-left level">
-									<i class="fas fa-cog"></i>
-									<span class="account-type ml-2">Account Type: </span>
-									<span class="admin ml-2">User</span>
-								</span>
-							</div>
-						</div>
-					</article>
+						</article>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -128,20 +140,17 @@
 				<a class="pagination-previous">Previous</a>
 				<a class="pagination-next">Next page</a>
 				<ul class="pagination-list">
-					<li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-					<li><span class="pagination-ellipsis">&hellip;</span></li>
-					<li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-					<li>
-						<a
-							class="pagination-link is-current"
-							aria-label="Page 46"
-							aria-current="page"
-							>46</a
-						>
-					</li>
-					<li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-					<li><span class="pagination-ellipsis">&hellip;</span></li>
-					<li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+					<div class="" v-for="(number, index) in pageNumbers()" :key="index">
+						<li>
+							<a
+								@click="getPage(number)"
+								class="pagination-link is-current"
+								aria-label="Page 46"
+								aria-current="page"
+								>{{ number }}</a
+							>
+						</li>
+					</div>
 				</ul>
 			</nav>
 		</div>

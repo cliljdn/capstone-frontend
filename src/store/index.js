@@ -44,7 +44,12 @@ export default new Vuex.Store({
 
 		estList: [],
 
-		userList: [],
+		userList: {
+			pageNo: 0,
+			list: [],
+		},
+
+		adminProfile: {},
 	},
 
 	getters: {
@@ -114,8 +119,13 @@ export default new Vuex.Store({
 			state.estList = list
 		},
 
-		getUsers(state, list) {
-			state.userList = list
+		getUsers(state, payload) {
+			state.userList.list = payload.list
+			state.userList.pageNo = payload.pageNo
+		},
+
+		getProfile(state, payload) {
+			state.adminProfile = { ...payload }
 		},
 	},
 
@@ -128,22 +138,50 @@ export default new Vuex.Store({
 		},
 
 		async getEst({ commit }) {
-			await setInterval(async () => {
+			setInterval(async () => {
+				console.log(this.state.headers.Authorization)
 				let res = await axios.get(
 					`${this.state.BASE_URL}/list/account/establishment/profile`,
 					{
 						headers: {
-							Authorization: this.state.headers.Authorization,
+							Authorization: this.state.getters.isLoggedIn,
 						},
 					}
 				)
-				console.log(1)
+
 				commit('getEst', res.data)
-			}, 30000)
+			}, 1000)
 		},
+
+		// async getProfile({ commit }) {
+		// 	setInterval(async () => {
+		// 		let res = await axios.get(`${this.state.BASE_URL}/list/admin/profile`, {
+		// 			headers: {
+		// 				Authorization: this.state.headers.Authorization,
+		// 			},
+		// 		})
+
+		// 		commit('getEst', res.data)
+		// 	}, 1000)
+		// },
 
 		isAuth({ commit }, auth) {
 			commit('isAuth', auth)
+		},
+
+		async getUsers({ commit }, page) {
+			if (!page) page = 0
+			let res = await axios.get(
+				`${this.state.BASE_URL}/list/users/?page=${page}`,
+				{
+					headers: { Authorization: this.getters.isLoggedIn },
+				}
+			)
+			let userPayload = {
+				pageNo: res.data.total,
+				list: res.data.results,
+			}
+			commit('getUsers', userPayload)
 		},
 	},
 	modules: {},
