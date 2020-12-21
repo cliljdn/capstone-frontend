@@ -14,6 +14,8 @@ export default {
 		},
 
 		async getPage(number) {
+			console.log(number)
+
 			return await this.$store.dispatch('getUsers', number)
 		},
 
@@ -21,8 +23,8 @@ export default {
 			return this.$store.state.userList.pageNo
 		},
 
-		async initUserlist(page) {
-			return await this.$store.dispatch('getUsers', page)
+		async initUserlist() {
+			return await this.$store.dispatch('getUsers')
 		},
 	},
 

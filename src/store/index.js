@@ -170,15 +170,17 @@ export default new Vuex.Store({
 		},
 
 		async getUsers({ commit }, page) {
-			if (!page) page = 0
 			let res = await axios.get(
-				`${this.state.BASE_URL}/list/users/?page=${page}`,
+				`${this.state.BASE_URL}/list/users/?page=${!page ? 0 : page}`,
 				{
 					headers: { Authorization: this.getters.isLoggedIn },
 				}
 			)
+			let temp_total = Math.ceil(res.data.total / res.data.results.length)
+
+			console.log(temp_total)
 			let userPayload = {
-				pageNo: res.data.total,
+				pageNo: temp_total,
 				list: res.data.results,
 			}
 			commit('getUsers', userPayload)

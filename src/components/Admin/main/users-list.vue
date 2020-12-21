@@ -84,7 +84,7 @@
 			</div>
 		</div>
 
-		<div class="" v-if="userList().length > 3">
+		<div class="" v-if="userList().length > 4">
 			<div class="columns">
 				<div
 					class="column m-3"
@@ -143,7 +143,7 @@
 					<div class="" v-for="(number, index) in pageNumbers()" :key="index">
 						<li>
 							<a
-								@click="getPage(number)"
+								@click="getPage(index)"
 								class="pagination-link is-current"
 								aria-label="Page 46"
 								aria-current="page"
