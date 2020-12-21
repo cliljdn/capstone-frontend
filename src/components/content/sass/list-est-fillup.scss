@@ -10,9 +10,9 @@
 		border: none !important;
 		box-shadow: none;
 		width: 700px !important;
-		flex-direction: column !important;
 		height: 100% !important;
-
+		display: block;
+		justify-items: center;
 		.text-welcome {
 			font-size: 28px !important;
 		}

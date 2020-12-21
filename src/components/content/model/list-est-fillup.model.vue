@@ -2,6 +2,7 @@
 import PopModal from '../../msgmodal/pop-modal'
 export default {
 	components: { 'pop-modal': PopModal },
+
 	data() {
 		return {
 			body: {
@@ -48,7 +49,7 @@ export default {
 	},
 
 	async mounted() {
-		return await this.$store.dispatch('getEst')
+		await this.$store.dispatch('getEst')
 	},
 }
 </script>

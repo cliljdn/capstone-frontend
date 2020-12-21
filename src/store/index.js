@@ -4,7 +4,17 @@ import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
 import axios from 'axios'
 Vue.use(Vuex)
+// function refreshList(ms) {
+// 	return new Promise((resolve) => {
+// 		setInterval(resolve, ms)
+// 	})
+// }
 
+// function stopTimeout(name) {
+// 	return new Promise((resolve) => {
+// 		resolve(clearTimeout(name))
+// 	})
+// }
 export default new Vuex.Store({
 	state: {
 		BASE_URL: 'http://scanolongapo-api.com/api/v1',
@@ -33,6 +43,8 @@ export default new Vuex.Store({
 		},
 
 		estList: [],
+
+		userList: [],
 	},
 
 	getters: {
@@ -101,28 +113,33 @@ export default new Vuex.Store({
 		getEst(state, list) {
 			state.estList = list
 		},
+
+		getUsers(state, list) {
+			state.userList = list
+		},
 	},
 
 	actions: {
+		removeCookie({ commit }) {
+			commit('removeCookie')
+		},
 		setCookie({ commit }, payload) {
 			commit('setCookie', payload)
 		},
 
-		removeCookie({ commit }) {
-			commit('removeCookie')
-		},
-
 		async getEst({ commit }) {
-			let res = await axios.get(
-				`${this.state.BASE_URL}/list/account/establishment/profile`,
-				{
-					headers: {
-						Authorization: this.state.headers.Authorization,
-					},
-				}
-			)
-			console.log(res.data)
-			return commit('getEst', res.data)
+			await setInterval(async () => {
+				let res = await axios.get(
+					`${this.state.BASE_URL}/list/account/establishment/profile`,
+					{
+						headers: {
+							Authorization: this.state.headers.Authorization,
+						},
+					}
+				)
+				console.log(1)
+				commit('getEst', res.data)
+			}, 30000)
 		},
 
 		isAuth({ commit }, auth) {

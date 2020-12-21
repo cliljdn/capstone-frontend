@@ -43,15 +43,6 @@ const routes = [
 					}
 				},
 			},
-
-			{
-				path: 'employee/create/working',
-				name: 'employee-working-create',
-				component: () =>
-					import(
-						/* webpackChunkName: "components" */ '@/components/content/mobile/list-est-fillup.vue'
-					),
-			},
 		],
 	},
 
@@ -113,11 +104,20 @@ const routes = [
 			},
 
 			{
-				path: '/employee/create/profile',
+				path: 'employee/create/profile',
 				name: 'employee-creation',
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '../components/content/mobile/employee-fillup.vue'
+					),
+			},
+
+			{
+				path: 'est/employee/create/working',
+				name: 'employee-working-create',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '@/components/content/mobile/list-est-fillup.vue'
 					),
 			},
 

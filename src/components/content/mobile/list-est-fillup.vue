@@ -58,8 +58,14 @@
 			</div>
 		</div>
 		<footer class="card-footer">
-			<button class="card-footer-item button is-success" @click="createProfile">
-				Create Profile
+			<button
+				class="button is-large card-footer-item is-success"
+				@click="createProfile"
+			>
+				<span class="icon is-medium">
+					<i class="fa fa-user"></i>
+				</span>
+				<span>Create Profile</span>
 			</button>
 		</footer>
 
