@@ -20,7 +20,9 @@
 		.box:hover {
 			background-color: rgb(119, 136, 153);
 		}
-
+		.menu {
+			overflow: auto;
+		}
 		.menu-list {
 			margin: 0;
 			padding: 0;

@@ -24,9 +24,5 @@ export default {
 			this.$router.push({ name: 'loginAdmin' })
 		},
 	},
-
-	mounted() {
-		console.log(this.$store.state.TOKEN_NAME)
-	},
 }
 </script>

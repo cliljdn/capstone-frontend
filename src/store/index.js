@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
-
+import axios from 'axios'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -113,7 +113,7 @@ export default new Vuex.Store({
 		},
 
 		async getEst({ commit }) {
-			let res = await this.$axios.get(
+			let res = await axios.get(
 				`${this.state.BASE_URL}/list/account/establishment/profile`,
 				{
 					headers: {
@@ -121,7 +121,7 @@ export default new Vuex.Store({
 					},
 				}
 			)
-
+			console.log(res.data)
 			return commit('getEst', res.data)
 		},
 

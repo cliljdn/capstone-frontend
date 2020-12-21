@@ -27,7 +27,6 @@ export default {
 							},
 						}
 					)
-					console.log(res)
 					if (res.status === 201) {
 						state.accountsMsg.isRegistered = false
 						state.accountsMsg.isProfileCreated = true
@@ -42,10 +41,10 @@ export default {
 		getEstId: function(estId) {
 			this.body.establishment_id = estId
 		},
-	},
 
-	listEst() {
-		return this.store.state.estList
+		listEst() {
+			return this.$store.state.estList
+		},
 	},
 
 	async mounted() {
