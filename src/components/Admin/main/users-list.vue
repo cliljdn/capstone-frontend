@@ -8,7 +8,7 @@
 						<p class="control has-icons-left">
 							<input
 								v-model="inpSearch"
-								@keypress="searchUsers(inpSearch)"
+								@keyup="searchUsers(inpSearch)"
 								class="input inp-search is-primary is-rounded"
 								type="text"
 								placeholder="Enter Search"
@@ -25,9 +25,11 @@
 					<div class="field">
 						<div class="control has-icons-left">
 							<div class="select is-primary is-rounded">
-								<select>
+								<select v-model="sortUsers" @change="sortList(sortUsers)">
 									<option>Select</option>
-									<option>With options</option>
+									<option>Firstname</option>
+									<option>Lastname</option>
+									<option>Middlename</option>
 								</select>
 							</div>
 							<span class="icon is-small is-left">
@@ -83,11 +85,11 @@
 						</article>
 					</div>
 
-					<div class="" v-if="foundUsers().length > 3">
+					<div class="" v-if="foundUsers().length >= 4">
 						<div class="columns">
 							<div
 								class="column m-3"
-								v-for="user in userList().slice(3, 6)"
+								v-for="user in foundUsers().slice(3, 6)"
 								:key="user.user_id"
 							>
 								<div class="box is-medium" @click="openModal">
@@ -131,11 +133,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="" v-if="foundUsers().length === 0">no result</div>
+		</div>
+		<div class="" v-if="foundUsers().length === 0">
+			no result
 		</div>
 
 		<div class="" v-if="inpSearch === ''">
-			<div class="" else>
+			<div class="">
 				<div class="columns is-0-tablet is-0-mobile is-0-desktop">
 					<div
 						class="column m-3"
@@ -180,55 +184,56 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
-				<div class="" v-if="userList().length > 4">
-					<div class="columns">
-						<div
-							class="column m-3"
-							v-for="user in userList().slice(3, 6)"
-							:key="user.user_id"
-						>
-							<div class="box is-medium" @click="openModal">
-								<article class="media">
-									<div class="media-left">
-										<figure class="image is-128x128">
-											<img
-												class="is-rounded"
-												src="https://bulma.io/images/placeholders/128x128.png"
-												alt="Image"
-											/>
-										</figure>
+			<div class="" v-if="userList().length >= 3">
+				<div class="columns">
+					<div
+						class="column m-3"
+						v-for="user in userList().slice(3, 6)"
+						:key="user.user_id"
+					>
+						<div class="box is-medium" @click="openModal">
+							<article class="media">
+								<div class="media-left">
+									<figure class="image is-128x128">
+										<img
+											class="is-rounded"
+											src="https://bulma.io/images/placeholders/128x128.png"
+											alt="Image"
+										/>
+									</figure>
+								</div>
+								<div class="media-content">
+									<div class="content user-content">
+										<span class="icon is-small is-left level">
+											<i class="fas fa-user"></i>
+											<span class="admin- ml-2">Firstname: </span>
+											<span class="admin- ml-2">{{ user.firstname }}</span>
+										</span>
 									</div>
-									<div class="media-content">
-										<div class="content user-content">
-											<span class="icon is-small is-left level">
-												<i class="fas fa-user"></i>
-												<span class="admin- ml-2">Firstname: </span>
-												<span class="admin- ml-2">{{ user.firstname }}</span>
-											</span>
-										</div>
-										<div class="content user-content">
-											<span class="icon is-small is-left level">
-												<i class="fas fa-user"></i>
-												<span class="admin- ml-2">Lastname: </span>
-												<span class="admin- ml-2">{{ user.lastname }}</span>
-											</span>
-										</div>
-										<div class="content user-content">
-											<span class="icon is-small is-left level">
-												<i class="fas fa-cog"></i>
-												<span class="account-type ml-2">Account Type: </span>
-												<span class="admin ml-2">User</span>
-											</span>
-										</div>
+									<div class="content user-content">
+										<span class="icon is-small is-left level">
+											<i class="fas fa-user"></i>
+											<span class="admin- ml-2">Lastname: </span>
+											<span class="admin- ml-2">{{ user.lastname }}</span>
+										</span>
 									</div>
-								</article>
-							</div>
+									<div class="content user-content">
+										<span class="icon is-small is-left level">
+											<i class="fas fa-cog"></i>
+											<span class="account-type ml-2">Account Type: </span>
+											<span class="admin ml-2">User</span>
+										</span>
+									</div>
+								</div>
+							</article>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div class="page-numbers mt-5">
 			<nav
 				class="pagination is-centered"

@@ -6,6 +6,8 @@ export default {
 	data() {
 		return {
 			inpSearch: '',
+			sortUsers: '',
+			notFound: false,
 		}
 	},
 
@@ -39,7 +41,24 @@ export default {
 		},
 
 		async searchUsers(search) {
+			this.$store.state.userList.userFound = []
 			await this.$store.dispatch('searchUser', search)
+		},
+
+		async sortList(order) {
+			if (order) {
+				await this.$store.dispatch('sortUsers', order.toLowerCase())
+			} else {
+				return this.$store.state.userList.list
+			}
+		},
+
+		blobToData: (blob) => {
+			return new Promise((resolve) => {
+				const reader = new FileReader()
+				if (blob instanceof Blob) reader.readAsDataURL(blob)
+				reader.onloadend = () => resolve(reader.result)
+			})
 		},
 	},
 

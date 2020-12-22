@@ -58,7 +58,6 @@ export default {
 			try {
 				let blob = new Blob([this.profileBody.image], { type: 'image/png' })
 
-				// console.log(blob)
 				let img = await this.blobToData(blob)
 
 				this.profileBody.image = img

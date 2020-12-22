@@ -5,22 +5,12 @@ import * as Cookies from 'js-cookie'
 import axios from 'axios'
 
 Vue.use(Vuex)
-// function refreshList(ms) {
-// 	return new Promise((resolve) => {
-// 		setInterval(resolve, ms)
-// 	})
-// }
 
-// function stopTimeout(name) {
-// 	return new Promise((resolve) => {
-// 		resolve(clearTimeout(name))
-// 	})
-// }
 export default new Vuex.Store({
 	state: {
 		BASE_URL: 'http://scanolongapo-api.com/api/v1',
 		ACCESS_TOKEN: '',
-		TOKEN_NAME: 'walang laman',
+		TOKEN_NAME: '',
 		isAuth: false,
 
 		//dashboard
@@ -122,8 +112,13 @@ export default new Vuex.Store({
 		},
 
 		getUsers(state, payload) {
-			state.userList.list = payload.list
-			state.userList.pageNo = payload.pageNo
+			if (!payload.pageNo) {
+				state.userList.list = []
+				state.userList.list = payload.list
+			} else {
+				state.userList.list = payload.list
+				state.userList.pageNo = payload.pageNo
+			}
 		},
 
 		getProfile(state, payload) {
@@ -146,7 +141,6 @@ export default new Vuex.Store({
 
 		async getEst({ commit }) {
 			setInterval(async () => {
-				console.log(this.state.headers.Authorization)
 				let res = await axios.get(
 					`${this.state.BASE_URL}/list/account/establishment/profile`,
 					{
@@ -206,7 +200,27 @@ export default new Vuex.Store({
 					}
 				)
 
+				this.state.userList.userFound = []
 				commit('searchUser', res.data)
+			} catch (error) {
+				return error
+			}
+		},
+
+		async sortUsers({ commit }, order) {
+			try {
+				let res = await axios.get(
+					`${this.state.BASE_URL}/list/users?order=${order}&page=${0}`,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+					}
+				)
+
+				let load = {
+					list: res.data.results,
+				}
+
+				commit('getUsers', load)
 			} catch (error) {
 				return error
 			}
@@ -214,5 +228,9 @@ export default new Vuex.Store({
 	},
 	modules: {},
 
-	plugins: [createPersistedState()],
+	plugins: [
+		createPersistedState({
+			paths: ['ACCESS_TOKEN', 'TOKEN_NAME', 'isAuth'],
+		}),
+	],
 })

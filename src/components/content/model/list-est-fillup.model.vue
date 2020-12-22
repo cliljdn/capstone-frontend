@@ -15,7 +15,6 @@ export default {
 		createProfile: async function() {
 			let { state, commit } = this.$store
 			try {
-				console.log(this.body)
 				if (!this.body.establishment_id) {
 					alert('please select a establishment from the list')
 				} else {

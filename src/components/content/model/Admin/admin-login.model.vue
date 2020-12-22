@@ -49,6 +49,7 @@ export default {
 
 						this.$store.dispatch('setCookie', auth)
 						this.$store.dispatch('isAuth', true)
+
 						this.$router.push({ name: 'admin-dashboard' })
 					}
 				}
@@ -93,8 +94,6 @@ export default {
 		},
 	},
 
-	mounted() {
-		console.log(this.$store.state.TOKEN_NAME)
-	},
+	mounted() {},
 }
 </script>
