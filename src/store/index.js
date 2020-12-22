@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
 import axios from 'axios'
+
 Vue.use(Vuex)
 // function refreshList(ms) {
 // 	return new Promise((resolve) => {
@@ -47,6 +48,7 @@ export default new Vuex.Store({
 		userList: {
 			pageNo: 0,
 			list: [],
+			userFound: [],
 		},
 
 		adminProfile: {},
@@ -127,8 +129,13 @@ export default new Vuex.Store({
 		getProfile(state, payload) {
 			state.adminProfile = { ...payload }
 		},
+
+		searchUser(state, name) {
+			state.userList.userFound = name
+		},
 	},
 
+	//dispatch
 	actions: {
 		removeCookie({ commit }) {
 			commit('removeCookie')
@@ -171,19 +178,38 @@ export default new Vuex.Store({
 
 		async getUsers({ commit }, page) {
 			let res = await axios.get(
-				`${this.state.BASE_URL}/list/users/?page=${!page ? 0 : page}`,
+				`${this.state.BASE_URL}/list/users?page=${!page ? 0 : page}`,
 				{
 					headers: { Authorization: this.getters.isLoggedIn },
 				}
 			)
-			let temp_total = Math.ceil(res.data.total / res.data.results.length)
 
-			console.log(temp_total)
+			let temp_total = Math.ceil(res.data.total / res.data.results.length)
+			if (res.data.results.length < 6) {
+				temp_total = res.data.results.length
+			}
+
 			let userPayload = {
 				pageNo: temp_total,
 				list: res.data.results,
 			}
+
 			commit('getUsers', userPayload)
+		},
+
+		async searchUser({ commit }, search) {
+			try {
+				let res = await axios.get(
+					`${this.state.BASE_URL}/list/users?search=${search}`,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+					}
+				)
+
+				commit('searchUser', res.data)
+			} catch (error) {
+				return error
+			}
 		},
 	},
 	modules: {},
