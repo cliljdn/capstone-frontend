@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/kq19tmyhq500/repositories/capstone-frontend
-    - /bin/cp -a * $DEPLOYPATH
+    - export DEPLOYPATH=/home/kq19tmyhq500/public_html/capstone-frontend
+    - /bin/cp -r * $DEPLOYPATH
