@@ -140,20 +140,20 @@ export default new Vuex.Store({
 		},
 
 		async getEst({ commit }) {
-			setInterval(async () => {
+		
 				let res = await axios.get(
 					`${this.state.BASE_URL}/list/account/establishment/profile`,
 					{
 						headers: {
-							Authorization: !this.state.getters.isLoggedIn
-								? this.state.headers.Authorization
-								: this.state.getters.isLoggedIn,
+								
+							Authorization: this.state.headers.Authorization
+								
 						},
 					}
 				)
 
 				commit('getEst', res.data)
-			}, 1000)
+		
 		},
 
 		async getProfile({ commit }) {
