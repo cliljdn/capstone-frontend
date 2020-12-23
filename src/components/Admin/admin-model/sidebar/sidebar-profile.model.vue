@@ -18,11 +18,20 @@ export default {
 			return this.$store.commit('toggleEditForm')
 		},
 
+		adminProfile() {
+			return this.$store.state.adminProfile
+		},
+
 		logout() {
 			this.$store.dispatch('removeCookie')
 			this.$store.dispatch('isAuth', false)
 			this.$router.push({ name: 'loginAdmin' })
 		},
+	},
+
+	async mounted() {
+		await this.$store.dispatch('getProfile')
+		console.log(this.adminProfile())
 	},
 }
 </script>

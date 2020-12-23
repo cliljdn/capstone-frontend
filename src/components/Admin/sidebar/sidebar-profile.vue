@@ -26,14 +26,16 @@
 						<div class="item-2 ml-2">
 							<span class="icon is-small is-left level">
 								<i class="fas fa-user"></i>
-								<span class="admin-email ml-2">Calil Jaudian</span>
+								<span class="admin-email ml-2"
+									>{{ adminProfile().firstname }} {{ adminProfile().lastname }}
+								</span>
 							</span>
 
 							<span
 								class="icon is-mobile admin-email is-small is-left level is-centered"
 							>
 								<i class="fas fa-envelope"></i>
-								<span class="ml-2 pr-10">caliljaudiannn@gmail.com</span>
+								<span class="ml-2 pr-10">{{ adminProfile().email }}</span>
 							</span>
 
 							<button
@@ -68,7 +70,7 @@
 								<span class="ml-2">Address: </span>
 
 								<p class="ml-1 address-label">
-									<span>Blk 7 Lot lot 16 Sta.monica subdivision</span>
+									<span>{{ adminProfile().house_lot_number }}</span>
 								</p>
 							</span>
 						</div>
@@ -78,47 +80,59 @@
 								<i class="fas fa-home"></i>
 								<span class="ml-2">Barangay: </span>
 
-								<p class="ml-1 barangay-label"><span>Sto.thomas</span></p>
+								<p class="ml-1 barangay-label">
+									<span>{{ adminProfile().barangay }}</span>
+								</p>
 							</span>
 						</div>
 
 						<div class="city-container">
 							<span class="icon is-small city-icon is-left level">
-								<i class="fas fa-home"></i>
+								<i class="fas fa-university"></i>
 								<span class="ml-2">City: </span>
-								<p class="ml-1 city-label"><span>Olongapo City</span></p>
+								<p class="ml-1 city-label">
+									<span>{{ adminProfile().city }}</span>
+								</p>
 							</span>
 						</div>
 
 						<div class="firstname-container">
 							<span class="icon is-small firstname-icon is-left level">
-								<i class="fas fa-home"></i>
+								<i class="fas fa-user"></i>
 								<span class="ml-2">Firstname: </span>
-								<p class="ml-1 firstname-label"><span>Calil</span></p>
+								<p class="ml-1 firstname-label">
+									<span>{{ adminProfile().firstname }}</span>
+								</p>
 							</span>
 						</div>
 
 						<div class="lastname-container">
 							<span class="icon is-small lastname-icon is-left level">
-								<i class="fas fa-home"></i>
+								<i class="fas fa-user"></i>
 								<span class="ml-2">Lastname: </span>
-								<p class="ml-1 lastname-label"><span>Jaudian</span></p>
+								<p class="ml-1 lastname-label">
+									<span>{{ adminProfile().lastname }}</span>
+								</p>
 							</span>
 						</div>
 
 						<div class="mname-container">
 							<span class="icon is-small mname-icon is-left level">
-								<i class="fas fa-home"></i>
+								<i class="fas fa-user"></i>
 								<span class="ml-2">Middlename: </span>
-								<p class="ml-1 mname-label"><span>Christopher</span></p>
+								<p class="ml-1 mname-label">
+									<span>{{ adminProfile().middlename }}</span>
+								</p>
 							</span>
 						</div>
 
 						<div class="age-container">
 							<span class="icon is-small age-icon is-left level">
-								<i class="fas fa-home"></i>
-								<span class="ml-2">Age: </span>
-								<p class="ml-1 age-label"><span>23</span></p>
+								<i class="fas fa-calendar"></i>
+								<span class="ml-2">Birthday: </span>
+								<p class="ml-1 age-label">
+									<span>{{ adminProfile().birthday }}</span>
+								</p>
 							</span>
 						</div>
 
@@ -128,7 +142,9 @@
 								<span class="ml-2" style="white-space: nowrap;"
 									>Contact Number:
 								</span>
-								<p class="ml-1 contact-label"><span>09955591932</span></p>
+								<p class="ml-1 contact-label">
+									<span>{{ adminProfile().contactnumber }}</span>
+								</p>
 							</span>
 						</div>
 					</div>

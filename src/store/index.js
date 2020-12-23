@@ -154,17 +154,19 @@ export default new Vuex.Store({
 			}, 1000)
 		},
 
-		// async getProfile({ commit }) {
-		// 	setInterval(async () => {
-		// 		let res = await axios.get(`${this.state.BASE_URL}/list/admin/profile`, {
-		// 			headers: {
-		// 				Authorization: this.state.headers.Authorization,
-		// 			},
-		// 		})
+		async getProfile({ commit }) {
+			try {
+				let res = await axios.get(`${this.state.BASE_URL}/list/admin/profile`, {
+					headers: {
+						Authorization: this.getters.isLoggedIn,
+					},
+				})
 
-		// 		commit('getEst', res.data)
-		// 	}, 1000)
-		// },
+				commit('getProfile', res.data)
+			} catch (error) {
+				console.log(error.response)
+			}
+		},
 
 		isAuth({ commit }, auth) {
 			commit('isAuth', auth)

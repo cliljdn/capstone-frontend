@@ -38,7 +38,7 @@
 									<input
 										v-model="values.password"
 										class="input"
-										type="text"
+										type="password"
 										@focus="errors.password = ''"
 										@blur="validate('password')"
 										@input="validate('password')"
@@ -53,7 +53,7 @@
 								</p>
 								<span class="has-text-danger">{{ errors.password }}</span>
 							</div>
-							{{ values.password }}
+
 							<span class="">Confirm Password:</span>
 							<div class="field mt-3">
 								<p class="control has-icons-left">
@@ -63,7 +63,7 @@
 										@blur="validate('confirm')"
 										@input="validate('confirm')"
 										class="input"
-										type="text"
+										type="password"
 										placeholder="Confirm Password"
 										required
 									/>

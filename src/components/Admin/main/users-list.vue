@@ -134,9 +134,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="" v-if="foundUsers().length === 0">
-			no result
-		</div>
+		<!-- <div class="">
+			<div class="columns is-vcentered has-text-centered" v-if="notFound">
+				<div class="column text-results">
+					<div class="">
+						<span class="is-large">NO RESULTS</span>
+					</div>
+				</div>
+			</div>
+		</div> -->
 
 		<div class="" v-if="inpSearch === ''">
 			<div class="">

@@ -22,6 +22,7 @@ export default {
 
 		foundUsers() {
 			if (this.$store.state.userList.userFound.length > 0) {
+				this.notFound = !this.notFound
 				return this.$store.state.userList.userFound
 			} else {
 				return []
