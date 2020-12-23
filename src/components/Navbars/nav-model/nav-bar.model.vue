@@ -31,6 +31,10 @@ export default {
 			this.isEstActive = false
 		},
 
+		adminInfo() {
+			return this.$store.state.adminProfile
+		},
+
 		activeEst() {
 			this.isUserActive = false
 			this.isDriverActive = false
@@ -38,7 +42,8 @@ export default {
 		},
 	},
 
-	mounted() {
+	async mounted() {
+		await this.$store.dispatch('getProfile')
 		return this.$router.push({ name: 'users-list' }).catch(() => {})
 	},
 }

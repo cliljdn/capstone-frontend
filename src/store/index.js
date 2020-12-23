@@ -145,7 +145,9 @@ export default new Vuex.Store({
 					`${this.state.BASE_URL}/list/account/establishment/profile`,
 					{
 						headers: {
-							Authorization: this.state.getters.isLoggedIn,
+							Authorization: !this.state.getters.isLoggedIn
+								? this.state.headers.Authorization
+								: this.state.getters.isLoggedIn,
 						},
 					}
 				)

@@ -31,7 +31,6 @@ export default {
 
 	async mounted() {
 		await this.$store.dispatch('getProfile')
-		console.log(this.adminProfile())
 	},
 }
 </script>
