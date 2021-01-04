@@ -46,7 +46,12 @@
 							</p>
 							<span class="mt-1 has-text-danger">{{ errors.password }}</span>
 						</div>
-
+						<div class="">
+							<span
+								>Don't have an account yet?
+								<router-link to="/users/register">Sign up</router-link></span
+							>
+						</div>
 						<button
 							@click="btnLogin"
 							class="button is-success is-medium is-center mt-3"
