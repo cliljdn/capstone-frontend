@@ -1,6 +1,6 @@
 <script>
 // import store from '../../../../assets/cookies/cookies'
-import form from '../../validations/registerValidations'
+import form from '../validations/registerValidations'
 import { mapActions } from 'vuex'
 
 export default {

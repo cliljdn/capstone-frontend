@@ -12,6 +12,22 @@ const routes = [
 		children: [
 			{
 				path: '',
+				name: 'loginAdmin',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '@/components/content/mobile/users-login.vue'
+					),
+				beforeEnter(to, from, next) {
+					if (!store.state.isAuth) {
+						next()
+					} else {
+						next({ name: 'admin-dashboard' })
+					}
+				},
+			},
+
+			{
+				path: '/users/register',
 				name: 'registerCitizens',
 				component: () =>
 					import(
@@ -26,22 +42,6 @@ const routes = [
 					import(
 						/* webpackChunkName: "components" */ '@/components/content/web/admin-register.vue'
 					),
-			},
-
-			{
-				path: 'admin/olongapo/cityhall/mis/login',
-				name: 'loginAdmin',
-				component: () =>
-					import(
-						/* webpackChunkName: "components" */ '@/components/content/web/admin-login.vue'
-					),
-				beforeEnter(to, from, next) {
-					if (!store.state.isAuth) {
-						next()
-					} else {
-						next({ name: 'admin-dashboard' })
-					}
-				},
 			},
 		],
 	},

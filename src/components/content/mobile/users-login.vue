@@ -7,7 +7,7 @@
 						<span>Welcome to Scan Gapo</span>
 					</div>
 				</div>
-				<span>This is a Login for Admin Dashboard</span>
+				<span>This is a Login for Accounts Dashboard</span>
 
 				<div class="columns mt-3">
 					<div class="column">
@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import app from '../model/Admin/admin-login.model'
+import app from '../model/users-login.model'
 export default app
 </script>
 
