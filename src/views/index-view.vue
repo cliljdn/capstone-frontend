@@ -6,16 +6,14 @@
 					<div class="columns is-full has-text-centered">
 						<div class="column mt-5">
 							<h1 class="title">
-								SCAN GAPO
+								SCAN OlONGAPO
 							</h1>
 							<h2 class="subtitle"></h2>
 						</div>
 					</div>
 					<div class="hero-body">
 						<div class="container">
-							<h1 class="title">
-								Download Our App on
-							</h1>
+							<h1 class="title"></h1>
 							<h2 class="subtitle"></h2>
 						</div>
 					</div>
