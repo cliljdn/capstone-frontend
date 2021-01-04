@@ -59,6 +59,7 @@
 		</div>
 	</div>
 </template>
+
 <script>
 import app from '../model/Admin/admin-login.model'
 export default app
