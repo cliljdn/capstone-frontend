@@ -8,7 +8,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		BASE_URL: 'http://scanolongapo-api.com/api/v1',
+		//development
+		BASE_URL: 'http://192.168.1.11:6060/api/v1',
+
+		//production
+		// BASE_URL: 'http://scanolongapo-api.com/api/v1',
 		ACCESS_TOKEN: '',
 		TOKEN_NAME: '',
 		isAuth: false,
@@ -26,22 +30,13 @@ export default new Vuex.Store({
 		accountsMsg: {
 			isRegistered: false,
 			isProfileCreated: false,
-			adminProfileCreated: false,
 		},
 
 		headers: {
 			Authorization: '',
 		},
 
-		estList: [],
-
-		userList: {
-			pageNo: 0,
-			list: [],
-			userFound: [],
-		},
-
-		adminProfile: {},
+		userProfile: {},
 	},
 
 	getters: {
@@ -107,26 +102,8 @@ export default new Vuex.Store({
 			state.ACCESS_TOKEN = ''
 		},
 
-		getEst(state, list) {
-			state.estList = list
-		},
-
-		getUsers(state, payload) {
-			if (!payload.pageNo) {
-				state.userList.list = []
-				state.userList.list = payload.list
-			} else {
-				state.userList.list = payload.list
-				state.userList.pageNo = payload.pageNo
-			}
-		},
-
 		getProfile(state, payload) {
 			state.adminProfile = { ...payload }
-		},
-
-		searchUser(state, name) {
-			state.userList.userFound = name
 		},
 	},
 
@@ -137,23 +114,6 @@ export default new Vuex.Store({
 		},
 		setCookie({ commit }, payload) {
 			commit('setCookie', payload)
-		},
-
-		async getEst({ commit }) {
-		
-				let res = await axios.get(
-					`${this.state.BASE_URL}/list/account/establishment/profile`,
-					{
-						headers: {
-								
-							Authorization: this.state.headers.Authorization
-								
-						},
-					}
-				)
-
-				commit('getEst', res.data)
-		
 		},
 
 		async getProfile({ commit }) {
@@ -172,62 +132,6 @@ export default new Vuex.Store({
 
 		isAuth({ commit }, auth) {
 			commit('isAuth', auth)
-		},
-
-		async getUsers({ commit }, page) {
-			let res = await axios.get(
-				`${this.state.BASE_URL}/list/users?page=${!page ? 0 : page}`,
-				{
-					headers: { Authorization: this.getters.isLoggedIn },
-				}
-			)
-
-			let temp_total = Math.ceil(res.data.total / res.data.results.length)
-			if (res.data.results.length < 6) {
-				temp_total = res.data.results.length
-			}
-
-			let userPayload = {
-				pageNo: temp_total,
-				list: res.data.results,
-			}
-
-			commit('getUsers', userPayload)
-		},
-
-		async searchUser({ commit }, search) {
-			try {
-				let res = await axios.get(
-					`${this.state.BASE_URL}/list/users?search=${search}`,
-					{
-						headers: { Authorization: this.getters.isLoggedIn },
-					}
-				)
-
-				this.state.userList.userFound = []
-				commit('searchUser', res.data)
-			} catch (error) {
-				return error
-			}
-		},
-
-		async sortUsers({ commit }, order) {
-			try {
-				let res = await axios.get(
-					`${this.state.BASE_URL}/list/users?order=${order}&page=${0}`,
-					{
-						headers: { Authorization: this.getters.isLoggedIn },
-					}
-				)
-
-				let load = {
-					list: res.data.results,
-				}
-
-				commit('getUsers', load)
-			} catch (error) {
-				return error
-			}
 		},
 	},
 	modules: {},

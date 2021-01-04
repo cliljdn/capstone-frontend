@@ -95,7 +95,6 @@ export default {
 						if (resAddress.status === 201) {
 							state.accountsMsg.isRegistered = false
 							state.accountsMsg.isProfileCreated = false
-							state.accountsMsg.adminProfileCreated = true
 							return commit('showPopOut')
 						}
 					}
