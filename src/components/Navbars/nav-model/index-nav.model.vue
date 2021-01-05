@@ -7,18 +7,22 @@ export default {
 	},
 
 	methods: {
-		async downloadApp() {
+		downloadApp() {
 			let { state } = this.$store
 
 			try {
-				let app = await this.$axios.get(
-					`${state.BASE_URL}/download/scanolongapo/hello.txt`,
-					{
+				this.$axios
+					.get(`${state.BASE_URL}/download/scanolongapo/hello.txt`, {
 						responseType: 'blob',
-					}
-				)
-
-				console.log(app.data)
+					})
+					.then((res) => {
+						const url = window.URL.createObjectURL(new Blob([res.data]))
+						const link = document.createElement('a')
+						link.href = url
+						link.setAttribute('download', 'hello.txt')
+						document.body.appendChild(link)
+						link.click()
+					})
 			} catch (err) {
 				console.log(err.response)
 			}
