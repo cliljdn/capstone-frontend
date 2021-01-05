@@ -1,15 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PageNotFound from '@/components/Notfound/not-found.vue'
-// import store from '../store/index'
+import store from '../store/index'
 Vue.use(VueRouter)
-// beforeEnter(to, from, next) {
-// 					if (!store.state.isAuth) {
-// 						next()
-// 					} else {
-// 						next({ name: 'admin-dashboard' })
-// 					}
-// 				},
+
 const routes = [
 	{
 		//index page
@@ -73,6 +67,13 @@ const routes = [
 		path: '/accounts/auth/dashboard',
 		component: view('users-view'),
 		name: '',
+		beforeEnter(to, from, next) {
+			if (!store.state.isAuth) {
+				next({ name: 'usersLogin' })
+			} else {
+				next()
+			}
+		},
 		children: [
 			{
 				path: '',

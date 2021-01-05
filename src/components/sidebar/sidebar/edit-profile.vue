@@ -16,10 +16,13 @@
 				</div>
 				<div class="tabs edit-tabs is-centered mb-3">
 					<ul>
-						<li class="is-active personal-divider">
+						<li
+							class="personal-divider"
+							:class="{ 'is-active': showPersonalInfo }"
+						>
 							<a @click="showPersonal">Personal Information</a>
 						</li>
-						<li>
+						<li :class="{ 'is-active': showAccountInfo }">
 							<a @click="showAccount">Account information</a>
 						</li>
 					</ul>

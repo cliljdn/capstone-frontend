@@ -42,7 +42,7 @@
 
 					<div class="navbar-end">
 						<a @click="toggleSideBar" class="navbar-item">
-							<!-- {{ adminInfo().firstname }} {{ adminInfo().lastname }} -->
+							Profile
 						</a>
 					</div>
 				</div>

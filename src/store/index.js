@@ -60,19 +60,6 @@ export default new Vuex.Store({
 			state.editProfileOpen = !state.editProfileOpen
 		},
 
-		//hide and show the modal profile
-		toggleModalUser(state) {
-			state.openModalUser = !state.openModalUser
-		},
-
-		toggleModalDriver(state) {
-			state.openModalDriver = !state.openModalDriver
-		},
-
-		toggleModalEst(state) {
-			state.openModalEst = !state.openModalEst
-		},
-
 		showPopOut(state) {
 			state.openPopOut = !state.openPopOut
 		},

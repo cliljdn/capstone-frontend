@@ -1,5 +1,5 @@
 <script>
-import sidebar from '../../Admin/sidebar/sidebar-profile'
+import sidebar from '../../sidebar/sidebar/sidebar-profile'
 export default {
 	components: {
 		sidebar,
@@ -31,9 +31,9 @@ export default {
 			this.isEstActive = false
 		},
 
-		adminInfo() {
-			return this.$store.state.adminProfile
-		},
+		// adminInfo() {
+		// 	return this.$store.state.adminProfile
+		// },
 
 		activeEst() {
 			this.isUserActive = false
@@ -42,9 +42,8 @@ export default {
 		},
 	},
 
-	async mounted() {
-		await this.$store.dispatch('getProfile')
-		return this.$router.push({ name: 'users-list' }).catch(() => {})
-	},
+	// async mounted() {
+	// 	await this.$store.dispatch('getProfile')
+	// },
 }
 </script>
