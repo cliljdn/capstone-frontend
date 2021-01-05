@@ -1,9 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PageNotFound from '@/components/Notfound/not-found.vue'
-import store from '../store/index'
+// import store from '../store/index'
 Vue.use(VueRouter)
-
+// beforeEnter(to, from, next) {
+// 					if (!store.state.isAuth) {
+// 						next()
+// 					} else {
+// 						next({ name: 'admin-dashboard' })
+// 					}
+// 				},
 const routes = [
 	{
 		//index page
@@ -12,18 +18,11 @@ const routes = [
 		children: [
 			{
 				path: '',
-				name: 'loginAdmin',
+				name: 'usersLogin',
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '@/components/content/mobile/users-login.vue'
 					),
-				beforeEnter(to, from, next) {
-					if (!store.state.isAuth) {
-						next()
-					} else {
-						next({ name: 'admin-dashboard' })
-					}
-				},
 			},
 
 			{
@@ -70,73 +69,21 @@ const routes = [
 		],
 	},
 
-	// {
-	// 	//admin dashboard
-	// 	path: '/admin',
-	// 	name: 'admin-dashboard',
-	// 	component: view('Admin-view'),
-	// 	//meta: { isAuthenticated: true },
-	// 	beforeEnter(to, from, next) {
-	// 		if (!store.state.isAuth) {
-	// 			next({ name: 'loginAdmin' })
-	// 		} else {
-	// 			next()
-	// 		}
-	// 	},
-
-	// 	children: [
-	// 		{
-	// 			path: 'users',
-	// 			name: 'users-list',
-	// 			component: () =>
-	// 				import(
-	// 					/* webpackChunkName: "components" */ '../components/Admin/main/users-list.vue'
-	// 				),
-	// 		},
-
-	// 		{
-	// 			path: 'drivers',
-	// 			name: 'driver-list',
-	// 			component: () =>
-	// 				import(
-	// 					/* webpackChunkName: "components" */ '../components/Admin/main/driver-list.vue'
-	// 				),
-	// 		},
-
-	// 		{
-	// 			path: 'establishments',
-	// 			name: 'establishment-list',
-	// 			component: () =>
-	// 				import(
-	// 					/* webpackChunkName: "components" */ '../components/Admin/main/establishment-list.vue'
-	// 				),
-	// 		},
-	// 	],
-	// },
-
-	// {
-	// 	path: '/admin/verify/:token',
-	// 	component: view('verify-admin-view'),
-	// 	children: [
-	// 		{
-	// 			path: '',
-	// 			name: 'admin-account-verify',
-	// 			component: () =>
-	// 				import(
-	// 					/* webpackChunkName: "components" */ '../components/content/web/admin-verify.vue'
-	// 				),
-	// 		},
-
-	// 		{
-	// 			path: '/admin/create/profile',
-	// 			name: 'admin-profile-creation',
-	// 			component: () =>
-	// 				import(
-	// 					/* webpackChunkName: "components" */ '../components/content/web/admin-info-form.vue'
-	// 				),
-	// 		},
-	// 	],
-	// },
+	{
+		path: '/accounts/auth/dashboard',
+		component: view('users-view'),
+		name: '',
+		children: [
+			{
+				path: '',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/mobile/users-dashboard'
+					),
+				name: 'usersDashboard',
+			},
+		],
+	},
 
 	{ path: '/404', component: PageNotFound },
 	{ path: '*', redirect: '/404' },

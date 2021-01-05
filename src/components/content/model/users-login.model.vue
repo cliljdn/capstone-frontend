@@ -34,13 +34,13 @@ export default {
 
 				if (isValid) {
 					let res = await this.$axios.post(
-						`${state.BASE_URL}/admin/login`,
+						`${state.BASE_URL}/accounts/login`,
 						this.body
 					)
 
 					if (res.status === 201) {
 						state.TOKEN_NAME = res.data.name
-
+						console.log(res.data)
 						//stores token on cookies
 						let auth = {
 							name: res.data.name,
@@ -54,6 +54,7 @@ export default {
 					}
 				}
 			} catch (err) {
+				console.log(err.response)
 				if (err.response !== undefined) {
 					if (
 						err.response.data.message.includes('Password') ||
