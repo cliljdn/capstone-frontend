@@ -27,9 +27,8 @@
 					:class="{ 'is-active': isActive }"
 				>
 					<div class="navbar-end">
-						<a @click="downloadApp" class="navbar-item">Download Our App</a>
-						<router-link to="/users/register" class="navbar-item"
-							>Register</router-link
+						<a type="submit" @click="downloadApp" class="navbar-item"
+							>Download Our App</a
 						>
 					</div>
 				</div>

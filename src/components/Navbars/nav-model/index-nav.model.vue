@@ -11,10 +11,16 @@ export default {
 			let { state } = this.$store
 
 			try {
-				let app  = await this.$axios.get(`${state.BASE_URL}/download/scanolongapo`)
-				return  app
-			} catch (error) {
-				console.log(error.response)
+				let app = await this.$axios.get(
+					`${state.BASE_URL}/download/scanolongapo/hello.txt`,
+					{
+						responseType: 'blob',
+					}
+				)
+
+				console.log(app.data)
+			} catch (err) {
+				console.log(err.response)
 			}
 		},
 	},
