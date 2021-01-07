@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PageNotFound from '@/components/Notfound/not-found.vue'
-import store from '../store/index'
+// import store from '../store/index'
 Vue.use(VueRouter)
 
 const routes = [
@@ -15,7 +15,7 @@ const routes = [
 				name: 'usersLogin',
 				component: () =>
 					import(
-						/* webpackChunkName: "components" */ '@/components/content/mobile/users-login.vue'
+						/* webpackChunkName: "components" */ '@/components/content/web/users-login.vue'
 					),
 			},
 
@@ -24,16 +24,7 @@ const routes = [
 				name: 'registerCitizens',
 				component: () =>
 					import(
-						/* webpackChunkName: "components" */ '@/components/content/mobile/accounts-register.vue'
-					),
-			},
-
-			{
-				path: 'admin/olongapo/cityhall/mis/register',
-				name: 'registerAdmin',
-				component: () =>
-					import(
-						/* webpackChunkName: "components" */ '@/components/content/web/admin-register.vue'
+						/* webpackChunkName: "components" */ '@/components/content/web/accounts-register.vue'
 					),
 			},
 		],
@@ -48,7 +39,7 @@ const routes = [
 				name: 'accounts-create-profile',
 				component: () =>
 					import(
-						/* webpackChunkName: "components" */ '../components/content/mobile/account-verify.vue'
+						/* webpackChunkName: "components" */ '../components/content/web/account-verify.vue'
 					),
 			},
 
@@ -57,7 +48,7 @@ const routes = [
 				name: 'user-driver-creation',
 				component: () =>
 					import(
-						/* webpackChunkName: "components" */ '../components/content/mobile/form-fillup'
+						/* webpackChunkName: "components" */ '../components/content/web/form-fillup'
 					),
 			},
 		],
@@ -67,19 +58,19 @@ const routes = [
 		path: '/accounts/auth/dashboard',
 		component: view('users-view'),
 		name: '',
-		beforeEnter(to, from, next) {
-			if (!store.state.isAuth) {
-				next({ name: 'usersLogin' })
-			} else {
-				next()
-			}
-		},
+		// beforeEnter(to, from, next) {
+		// 	if (!store.state.isAuth) {
+		// 		next({ name: 'usersLogin' })
+		// 	} else {
+		// 		next()
+		// 	}
+		// },
 		children: [
 			{
 				path: '',
 				component: () =>
 					import(
-						/* webpackChunkName: "components" */ '../components/content/mobile/users-dashboard'
+						/* webpackChunkName: "components" */ '../components/content/web/users-dashboard'
 					),
 				name: 'usersDashboard',
 			},

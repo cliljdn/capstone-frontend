@@ -20,9 +20,6 @@ export default new Vuex.Store({
 		//dashboard
 		sideBarOpen: false,
 		editProfileOpen: false,
-		openModalUser: false,
-		openModalDriver: false,
-		openModalEst: false,
 
 		//message box
 		isEmpSuccess: false,

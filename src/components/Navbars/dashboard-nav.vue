@@ -64,6 +64,6 @@ import app from './nav-model/nav-bar.model'
 export default app
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import './sass/dashboard-nav.scss';
 </style>
