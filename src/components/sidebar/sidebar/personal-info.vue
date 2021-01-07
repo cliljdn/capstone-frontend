@@ -3,21 +3,21 @@
 		<p class="box-title is-pulled-left is-fixed-top">
 			Personal Information
 		</p>
+
 		<div class="columns is-vcentered">
 			<div class="column">
 				<article class="media">
-					<div class="media-left">
-						<figure class="image is-96x96">
-							<img
-								class="is-rounded"
-								src="https://i.imgur.com/bCOd9N0.jpg"
-								alt="Image"
-							/>
-						</figure>
-					</div>
+					<figure class="image is-96x96">
+						<img
+							class="is-rounded"
+							src="https://i.imgur.com/bCOd9N0.jpg"
+							alt="Image"
+						/>
+					</figure>
 				</article>
 			</div>
 		</div>
+
 		<div class="media-content">
 			<form action="" method="PATCH">
 				<div class="columns">
@@ -116,6 +116,6 @@
 	</div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../sass/personal-info.scss';
 </style>

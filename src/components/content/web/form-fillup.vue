@@ -10,7 +10,7 @@
 
 				<div class="columns columns-img	is-mobile is-full">
 					<div class="column is-3">
-						<div class="media">
+						<div class="media media-image">
 							<div class="media-left">
 								<figure class="image is-128x128">
 									<img
