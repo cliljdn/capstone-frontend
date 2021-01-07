@@ -36,14 +36,14 @@
 				>
 					<div class="navbar-start">
 						<div class="icon-text navbar-item">
-							<span class="icon has-text-info is-success">
+							<span class="icon has-text-success">
 								<i class="fas fa-bus"></i>
 							</span>
 							<a class="ml-3">Travel History</a>
 						</div>
 
 						<div class="icon-text navbar-item">
-							<span class="icon has-text-info is-success">
+							<span class="icon has-text-success">
 								<i class="fas fa-university"></i>
 							</span>
 							<a class="ml-3">Establishment Entered</a>
@@ -51,14 +51,16 @@
 					</div>
 
 					<div class="navbar-end">
-						<div class="icon-text navbar-item">
-							<span class="icon has-text-info is-success">
-								<i class="fas fa-user-circle"></i>
-							</span>
+						<div class="" @click="toggleSideBar">
+							<div class="icon-text navbar-item">
+								<span class="icon has-text-success">
+									<i class="fas fa-user-circle"></i>
+								</span>
 
-							<a @click="toggleSideBar" class="ml-3">
-								Profile
-							</a>
+								<a class="ml-3">
+									Profile
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -80,6 +82,6 @@ import app from './nav-model/nav-bar.model'
 export default app
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './sass/dashboard-nav.scss';
 </style>

@@ -1,44 +1,26 @@
 <template>
 	<div class="">
-		<div class="columns">
-			<div class="column">
-				<aside class="menu">
-					<p class="menu-label">
-						General
-					</p>
-					<ul class="menu-list">
-						<li><a>Dashboard</a></li>
-						<li><a>Customers</a></li>
-					</ul>
-					<p class="menu-label">
-						Administration
-					</p>
-					<ul class="menu-list">
-						<li><a>Team Settings</a></li>
-						<li>
-							<a class="is-active">Manage Your Team</a>
-							<ul>
-								<li><a>Members</a></li>
-								<li><a>Plugins</a></li>
-								<li><a>Add a member</a></li>
-							</ul>
-						</li>
-						<li><a>Invitations</a></li>
-						<li><a>Cloud Storage Environment Settings</a></li>
-						<li><a>Authentication</a></li>
-					</ul>
-					<p class="menu-label">
-						Transactions
-					</p>
-					<ul class="menu-list">
-						<li><a>Payments</a></li>
-						<li><a>Transfers</a></li>
-						<li><a>Balance</a></li>
-					</ul>
-				</aside>
+		<div class="container">
+			<div class="columns travel-columns">
+				<div class="column">
+					<span>Travel History</span>
+				</div>
+			</div>
+
+			<div class="columns travel-columns">
+				<div class="column">
+					<aside class="menu">
+						<p class="menu-label">
+							Travel History
+						</p>
+						<ul class="menu-list">
+							<li><a>Dashboard</a></li>
+							<li><a>Customers</a></li>
+						</ul>
+					</aside>
+				</div>
 			</div>
 		</div>
-		<div class="columns"><div class="column"></div></div>
 	</div>
 </template>
 
@@ -46,3 +28,7 @@
 import app from '../model/travel-history.model'
 export default app
 </script>
+
+<style lang="scss">
+@import '../sass/travel-history.scss';
+</style>
