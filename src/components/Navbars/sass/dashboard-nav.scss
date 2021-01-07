@@ -33,6 +33,15 @@ nav {
 		min-width: auto;
 		width: 100%;
 	}
+
+	a {
+		color: inherit !important;
+	}
+
+	.navbar-item:hover {
+		background-color: hsla(120, 30%, 41%, 0.1);
+		border-radius: 30px;
+	}
 }
 
 @include xsm {

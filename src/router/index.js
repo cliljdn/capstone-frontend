@@ -57,7 +57,6 @@ const routes = [
 	{
 		path: '/accounts/auth/dashboard',
 		component: view('users-view'),
-		name: '',
 		// beforeEnter(to, from, next) {
 		// 	if (!store.state.isAuth) {
 		// 		next({ name: 'usersLogin' })
@@ -70,9 +69,9 @@ const routes = [
 				path: '',
 				component: () =>
 					import(
-						/* webpackChunkName: "components" */ '../components/content/web/users-dashboard'
+						/* webpackChunkName: "components" */ '../components/content/web/travel-history'
 					),
-				name: 'usersDashboard',
+				name: 'TravelHistory',
 			},
 		],
 	},

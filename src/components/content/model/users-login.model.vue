@@ -50,7 +50,7 @@ export default {
 						this.$store.dispatch('setCookie', auth)
 						this.$store.dispatch('isAuth', true)
 
-						this.$router.push({ name: 'usersDashboard' })
+						this.$router.push({ name: 'TravelHistory' })
 					}
 				}
 			} catch (err) {

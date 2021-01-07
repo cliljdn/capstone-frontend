@@ -35,15 +35,31 @@
 					:class="{ 'is-active': isActive }"
 				>
 					<div class="navbar-start">
-						<a class="navbar-item ">Travel History</a>
+						<div class="icon-text navbar-item">
+							<span class="icon has-text-info is-success">
+								<i class="fas fa-bus"></i>
+							</span>
+							<a class="ml-3">Travel History</a>
+						</div>
 
-						<a class="navbar-item ">Establishment Entered</a>
+						<div class="icon-text navbar-item">
+							<span class="icon has-text-info is-success">
+								<i class="fas fa-university"></i>
+							</span>
+							<a class="ml-3">Establishment Entered</a>
+						</div>
 					</div>
 
 					<div class="navbar-end">
-						<a @click="toggleSideBar" class="navbar-item">
-							Profile
-						</a>
+						<div class="icon-text navbar-item">
+							<span class="icon has-text-info is-success">
+								<i class="fas fa-user-circle"></i>
+							</span>
+
+							<a @click="toggleSideBar" class="ml-3">
+								Profile
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
