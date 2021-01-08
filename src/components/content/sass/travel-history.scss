@@ -1,15 +1,26 @@
+@import '../../../assets/sass/mixins.scss';
 .travel-container {
-	display: flex;
-	flex-direction: column;
-	overflow-y: auto;
+	display: block;
+	width: auto;
+
 	.travel-columns {
 		margin: 15px !important;
 		.menu-label {
 			font-weight: bolder;
 			font-size: 22px;
 		}
-		.panel-block {
-			display: flex;
+		.travel-log {
+			display: block !important;
+			overflow-y: auto !important;
+			height: 300px !important;
+		}
+
+		.choose-panel {
+			font-size: 18px;
+
+			a {
+				color: $primary !important;
+			}
 		}
 	}
 }

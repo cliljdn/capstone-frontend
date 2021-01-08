@@ -7,17 +7,16 @@
 						<p class="menu-label">
 							Travel History
 						</p>
-						<article class="panel is-primary">
-							<p class="panel-tabs">
-								<a class="is-active">All</a>
-								<a>Public</a>
-								<a>Private</a>
-								<a>Sources</a>
-								<a>Forks</a>
+
+						<article class="panel">
+							<p class="panel-tabs choose-panel">
+								<a>Between Time</a>
+								<a>Or</a>
+								<a>By Details</a>
 							</p>
 							<div class="columns travel-columns">
 								<div class="column">
-									<span class="select-labels">Sort between time: </span>
+									<span class="select-labels">Sort by: </span>
 									<div class="field mt-3">
 										<div class="control has-icons-left">
 											<div class="select is-primary">
@@ -47,90 +46,147 @@
 									</span>
 								</p>
 							</div>
-							<a class="panel-block is-active">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								bulma
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								marksheet
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								minireset.css
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								jgthms.github.io
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								minireset.css
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								jgthms.github.io
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								minireset.css
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								jgthms.github.io
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								minireset.css
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								jgthms.github.io
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								minireset.css
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								jgthms.github.io
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								minireset.css
-							</a>
-							<a class="panel-block">
-								<span class="panel-icon">
-									<i class="fas fa-book" aria-hidden="true"></i>
-								</span>
-								jgthms.github.io
-							</a>
+
+							<main class="travel-log">
+								<a class="panel-block is-active">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									bulma
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									marksheet
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									minireset.css
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									jgthms.github.io
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									minireset.css
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									jgthms.github.io
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									minireset.css
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									jgthms.github.io
+								</a>
+								<a class="panel-block is-active">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									bulma
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									marksheet
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									minireset.css
+								</a>
+								<a class="panel-block is-active">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									bulma
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									marksheet
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									minireset.css
+								</a>
+								<a class="panel-block is-active">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									bulma
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									marksheet
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									minireset.css
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									minireset.css
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									jgthms.github.io
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									minireset.css
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									jgthms.github.io
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									minireset.css
+								</a>
+								<a class="panel-block">
+									<span class="panel-icon">
+										<i class="fas fa-book" aria-hidden="true"></i>
+									</span>
+									jgthms.github.io
+								</a>
+							</main>
 						</article>
 					</aside>
 				</div>
