@@ -1,21 +1,21 @@
 <template>
-	<div class="box personal-info-container m-5">
+	<div class="box personal-info-container m-5 is-flex">
 		<p class="box-title is-pulled-left is-fixed-top">
 			Personal Information
 		</p>
 
-		<div class="columns is-vcentered">
-			<div class="column">
+		<div class="columns is-vcentered is-horizontal-center">
+			<figure class="image is-128x128">
 				<article class="media">
-					<figure class="image is-96x96">
+					<div class="column">
 						<img
 							class="is-rounded"
 							src="https://i.imgur.com/bCOd9N0.jpg"
 							alt="Image"
 						/>
-					</figure>
+					</div>
 				</article>
-			</div>
+			</figure>
 		</div>
 
 		<div class="media-content">

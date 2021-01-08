@@ -12,7 +12,9 @@
 		margin-top: 0px;
 		padding-bottom: 50px;
 	}
-
+	.is-horizontal-center {
+		justify-content: center !important;
+	}
 	.field .control input {
 		border-top-style: hidden;
 		border-right-style: hidden;
