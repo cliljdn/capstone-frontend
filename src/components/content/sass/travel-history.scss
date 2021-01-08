@@ -1,12 +1,15 @@
-.travel-columns {
+.travel-container {
 	display: flex;
 	flex-direction: column;
-	margin: 30px;
-	.menu {
-		overflow-y: hidden !important;
+	overflow-y: auto;
+	.travel-columns {
+		margin: 15px !important;
 		.menu-label {
 			font-weight: bolder;
 			font-size: 22px;
+		}
+		.panel-block {
+			display: flex;
 		}
 	}
 }

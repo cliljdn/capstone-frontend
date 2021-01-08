@@ -1,22 +1,137 @@
 <template>
 	<div class="">
-		<div class="container">
-			<div class="columns travel-columns">
-				<div class="column">
-					<span>Travel History</span>
-				</div>
-			</div>
-
+		<div class="container travel-container">
 			<div class="columns travel-columns">
 				<div class="column">
 					<aside class="menu">
 						<p class="menu-label">
 							Travel History
 						</p>
-						<ul class="menu-list">
-							<li><a>Dashboard</a></li>
-							<li><a>Customers</a></li>
-						</ul>
+						<article class="panel is-primary">
+							<p class="panel-tabs">
+								<a class="is-active">All</a>
+								<a>Public</a>
+								<a>Private</a>
+								<a>Sources</a>
+								<a>Forks</a>
+							</p>
+							<div class="columns travel-columns">
+								<div class="column">
+									<span class="select-labels">Sort between time: </span>
+									<div class="field mt-3">
+										<div class="control has-icons-left">
+											<div class="select is-primary">
+												<select>
+													<option selected>Country</option>
+													<option>Select dropdown</option>
+													<option>With options</option>
+												</select>
+											</div>
+											<div class="icon is-small is-left has-text-success">
+												<i class="fas fa-globe"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-block">
+								<p class="control has-icons-left">
+									<input
+										class="input is-primary"
+										type="text"
+										placeholder="Search"
+									/>
+									<span class="icon is-left">
+										<i class="fas fa-search" aria-hidden="true"></i>
+									</span>
+								</p>
+							</div>
+							<a class="panel-block is-active">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								bulma
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								marksheet
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								minireset.css
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								jgthms.github.io
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								minireset.css
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								jgthms.github.io
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								minireset.css
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								jgthms.github.io
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								minireset.css
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								jgthms.github.io
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								minireset.css
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								jgthms.github.io
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								minireset.css
+							</a>
+							<a class="panel-block">
+								<span class="panel-icon">
+									<i class="fas fa-book" aria-hidden="true"></i>
+								</span>
+								jgthms.github.io
+							</a>
+						</article>
 					</aside>
 				</div>
 			</div>

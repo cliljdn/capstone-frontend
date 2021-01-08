@@ -53,6 +53,10 @@
 			}
 		}
 	}
+
+	.is-active {
+		color: blue;
+	}
 }
 
 @include xsm {
