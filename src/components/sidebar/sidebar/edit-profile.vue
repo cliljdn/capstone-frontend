@@ -14,6 +14,7 @@
 						></a>
 					</span>
 				</div>
+
 				<div class="tabs edit-tabs is-centered mb-3">
 					<ul>
 						<li
@@ -22,11 +23,13 @@
 						>
 							<a @click="showPersonal">Personal Information</a>
 						</li>
+
 						<li :class="{ 'is-active': showAccountInfo }">
 							<a @click="showAccount">Account information</a>
 						</li>
 					</ul>
 				</div>
+
 				<transition name="slide">
 					<div class="" v-if="showPersonalInfo">
 						<personal-info />
