@@ -1,8 +1,21 @@
 <script>
 export default {
 	data() {
-		return {}
+		return {
+			isTimeActive: true,
+			isDetailsActive: false,
+		}
 	},
-	methods: {},
+	methods: {
+		showBetweenTimeSort() {
+			this.isTimeActive = true
+			this.isDetailsActive = false
+		},
+
+		showDetailsSort() {
+			this.isTimeActive = false
+			this.isDetailsActive = true
+		},
+	},
 }
 </script>
