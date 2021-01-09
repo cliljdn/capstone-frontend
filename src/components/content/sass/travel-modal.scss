@@ -1,0 +1,17 @@
+@import '../../../assets/sass/mixins.scss';
+
+.modal {
+	.travel-information {
+		.icon-text {
+			margin-bottom: 10px !important;
+		}
+
+		.tvl-info {
+			font-weight: bold;
+		}
+	}
+
+	.tabs ul li a:hover {
+		border-bottom: none !important;
+	}
+}

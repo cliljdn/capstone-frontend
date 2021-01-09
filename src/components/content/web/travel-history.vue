@@ -24,10 +24,13 @@
 								>
 							</p>
 
-							<div class="" v-if="isTimeActive">
+							<div
+								class="is-flex is-justify-content-center"
+								v-if="isTimeActive"
+							>
 								<!-- SORT BETWEEN TIME -->
 								<div class="columns travel-columns">
-									<div class="column is-one-fifth">
+									<div class="column">
 										<span class="select-labels">Start Time: </span>
 										<div class="field mt-3">
 											<div class="control has-icons-left">
@@ -64,10 +67,13 @@
 								</div>
 							</div>
 
-							<div class="" v-if="isDetailsActive">
+							<div
+								class="is-flex is-justify-content-center"
+								v-if="isDetailsActive"
+							>
 								<!-- SORT BY DETAILS -->
 								<div class="columns travel-columns">
-									<div class="column is-one-fifth">
+									<div class="column ">
 										<span class="select-labels">Sort List By: </span>
 										<div class="field mt-3">
 											<div class="control has-icons-left">
@@ -84,22 +90,37 @@
 											</div>
 										</div>
 									</div>
+									<div class="column">
+										<span class="select-labels">Search By: </span>
+										<div class="panel-block">
+											<p class="control has-icons-left">
+												<input
+													class="input is-primary"
+													type="text"
+													placeholder="Search"
+												/>
+												<span class="icon is-left">
+													<i class="fas fa-search" aria-hidden="true"></i>
+												</span>
+											</p>
+										</div>
+									</div>
 								</div>
 							</div>
-
-							<div class="panel-block">
-								<p class="control has-icons-left">
-									<input
-										class="input is-primary"
-										type="text"
-										placeholder="Search"
-									/>
-									<span class="icon is-left">
-										<i class="fas fa-search" aria-hidden="true"></i>
-									</span>
-								</p>
+							<div class="" v-if="isTimeActive">
+								<div class="panel-block">
+									<p class="control has-icons-left">
+										<input
+											class="input is-primary"
+											type="text"
+											placeholder="Search"
+										/>
+										<span class="icon is-left">
+											<i class="fas fa-search" aria-hidden="true"></i>
+										</span>
+									</p>
+								</div>
 							</div>
-
 							<main class="travel-log">
 								<div class="table-container">
 									<table
@@ -115,8 +136,8 @@
 										</thead>
 
 										<tbody>
-											<tr>
-												<td>Alfreds Futterkiste</td>
+											<tr @click="openModal">
+												<td>Alfreds Futterkiste 1</td>
 												<td>Maria Anders</td>
 												<td>Germany</td>
 											</tr>
@@ -184,6 +205,8 @@
 				</div>
 			</div>
 		</div>
+
+		<travel-history-modal />
 	</div>
 </template>
 

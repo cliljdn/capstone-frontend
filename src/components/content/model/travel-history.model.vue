@@ -1,5 +1,10 @@
 <script>
+import TravelHistoryModal from '../modals/travel-history-modal'
 export default {
+	components: {
+		'travel-history-modal': TravelHistoryModal,
+	},
+
 	data() {
 		return {
 			isTimeActive: true,
@@ -7,6 +12,11 @@ export default {
 		}
 	},
 	methods: {
+		openModal() {
+			console.log(this.$store.state.dashboardModal.travelHistory)
+			return this.$store.commit('modalTravel')
+		},
+
 		showBetweenTimeSort() {
 			this.isTimeActive = true
 			this.isDetailsActive = false

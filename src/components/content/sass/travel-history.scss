@@ -1,11 +1,12 @@
 @import '../../../assets/sass/mixins.scss';
 .travel-container {
-	display: block;
 	width: auto;
 
 	.travel-columns {
 		margin: 15px !important;
-
+		.select-labels {
+			font-weight: bold !important;
+		}
 		.menu-label {
 			font-weight: bolder;
 			font-size: 22px;
@@ -15,11 +16,17 @@
 			overflow-y: auto !important;
 			height: 300px !important;
 
+			tbody tr td {
+				padding: 13px;
+			}
+
 			.table tbody tr:nth-child(even) {
 				background-color: hsl(0, 0%, 95%);
 			}
+
 			.table tbody tr:hover {
 				background-color: hsl(171, 100%, 41%) !important;
+				font-weight: bold;
 			}
 
 			.table thead th:hover {

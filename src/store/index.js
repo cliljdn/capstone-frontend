@@ -28,6 +28,12 @@ export default new Vuex.Store({
 			isRegistered: false,
 			isProfileCreated: false,
 		},
+		//
+
+		dashboardModal: {
+			travelHistory: false,
+			estEntered: false,
+		},
 
 		headers: {
 			Authorization: '',
@@ -47,6 +53,26 @@ export default new Vuex.Store({
 	},
 
 	mutations: {
+		assignToken(state) {
+			state.headers.Authorization = state.ACCESS_TOKEN
+		},
+
+		empCreateProfile(state) {
+			state.isEmpSuccess = !state.isEmpSuccess
+		},
+
+		getProfile(state, payload) {
+			state.adminProfile = { ...payload }
+		},
+
+		isAuth(state, auth) {
+			state.isAuth = auth
+		},
+
+		modalTravel(state) {
+			state.dashboardModal.travelHistory = !state.dashboardModal.travelHistory
+		},
+
 		// hide and show the sidebar profile
 		toggleSideBar(state) {
 			state.sideBarOpen = !state.sideBarOpen
@@ -61,18 +87,6 @@ export default new Vuex.Store({
 			state.openPopOut = !state.openPopOut
 		},
 
-		assignToken(state) {
-			state.headers.Authorization = state.ACCESS_TOKEN
-		},
-
-		empCreateProfile(state) {
-			state.isEmpSuccess = !state.isEmpSuccess
-		},
-
-		isAuth(state, auth) {
-			state.isAuth = auth
-		},
-
 		setCookie(state, payload) {
 			state.ACCESS_TOKEN = payload.token
 			state.TOKEN_NAME = payload.name
@@ -84,10 +98,6 @@ export default new Vuex.Store({
 			Cookies.remove(state.TOKEN_NAME, { path: '/', domain: 'localhost' })
 			state.TOKEN_NAME = ''
 			state.ACCESS_TOKEN = ''
-		},
-
-		getProfile(state, payload) {
-			state.adminProfile = { ...payload }
 		},
 	},
 
