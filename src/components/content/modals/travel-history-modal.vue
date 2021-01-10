@@ -95,13 +95,122 @@
 
 				<div class="columns companion-information">
 					<div class="column">
-						<h1>1st</h1>
+						<div class="box">
+							<article class="media">
+								<div class="media-left mt-4">
+									<figure class="image is-64x64">
+										<img src="https://i.imgur.com/bCOd9N0.jpg" alt="Image" />
+									</figure>
+								</div>
+								<div class="media-content level">
+									<div class="content">
+										<!-- <strong>John Smith</strong> <small>@johnsmith</small>
+											<small>31m</small>
+											<br />
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Aenean efficitur sit amet massa fringilla egestas. Nullam
+											condimentum luctus turpis. -->
+										<p class="icon-text  level-left level-item">
+											<span class="icon has-text-info">
+												<i class="fas fa-tasks"></i>
+											</span>
+											<span class="ml-1 tvl-info">
+												Firstname:
+											</span>
+
+											<span class="ml-1 user-info">
+												Calil
+											</span>
+										</p>
+										<p class="icon-text  level-left level-item">
+											<span class="icon has-text-info">
+												<i class="fas fa-tasks"></i>
+											</span>
+											<span class="ml-1 tvl-info">
+												Lastname:
+											</span>
+
+											<span class="ml-1 user-info">
+												Jaudian
+											</span>
+										</p>
+										<p class="icon-text  level-left level-item">
+											<span class="icon has-text-info">
+												<i class="fas fa-tasks"></i>
+											</span>
+											<span class="ml-1 tvl-info">
+												Middlename:
+											</span>
+
+											<span class="ml-1 user-info">
+												Christopher
+											</span>
+										</p>
+									</div>
+								</div>
+							</article>
+						</div>
+
+						<div class="box">
+							<article class="media">
+								<div class="media-left mt-4">
+									<figure class="image is-64x64">
+										<img src="https://i.imgur.com/bCOd9N0.jpg" alt="Image" />
+									</figure>
+								</div>
+								<div class="media-content level">
+									<div class="content">
+										<!-- <strong>John Smith</strong> <small>@johnsmith</small>
+											<small>31m</small>
+											<br />
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Aenean efficitur sit amet massa fringilla egestas. Nullam
+											condimentum luctus turpis. -->
+										<p class="icon-text  level-left level-item">
+											<span class="icon has-text-info">
+												<i class="fas fa-tasks"></i>
+											</span>
+											<span class="ml-1 tvl-info">
+												Firstname:
+											</span>
+
+											<span class="ml-1 user-info">
+												Calil
+											</span>
+										</p>
+										<p class="icon-text  level-left level-item">
+											<span class="icon has-text-info">
+												<i class="fas fa-tasks"></i>
+											</span>
+											<span class="ml-1 tvl-info">
+												Lastname:
+											</span>
+
+											<span class="ml-1 user-info">
+												Jaudian
+											</span>
+										</p>
+										<p class="icon-text  level-left level-item">
+											<span class="icon has-text-info">
+												<i class="fas fa-tasks"></i>
+											</span>
+											<span class="ml-1 tvl-info">
+												Middlename:
+											</span>
+
+											<span class="ml-1 user-info">
+												Christopher
+											</span>
+										</p>
+									</div>
+								</div>
+							</article>
+						</div>
 					</div>
-					<div class="column"><h1>2nd</h1></div>
 				</div>
 			</section>
 			<footer class="modal-card-foot is-flex is-justify-content-center">
-				<button class="button">Close Modal</button>
+				<button @click="closeModal" class="button">Close Modal</button>
 			</footer>
 		</div>
 	</div>
