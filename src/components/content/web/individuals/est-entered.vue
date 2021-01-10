@@ -8,7 +8,34 @@
 					</p>
 				</aside>
 
+				<div class="tabs is-centered est-tabs">
+					<ul>
+						<li class="tab-label"><span>Sort List by: </span></li>
+						<li><a>Between Time</a></li>
+						<li class="tab-label"><span>Or</span></li>
+						<li><a>Details</a></li>
+					</ul>
+				</div>
+
 				<div class="columns mt-1">
+					<div class="column is-one-quarter">
+						<strong class="select-labels">Choose Date: </strong>
+						<div class="field mt-3">
+							<div class="control has-icons-left">
+								<div class="select is-primary">
+									<select>
+										<option selected>Country</option>
+										<option>Select dropdown</option>
+										<option>With options</option>
+									</select>
+								</div>
+								<div class="icon is-small is-left has-text-success">
+									<i class="fas fa-globe"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<div class="column is-one-quarter">
 						<strong class="select-labels">Start Time: </strong>
 						<div class="field mt-3">
@@ -40,6 +67,320 @@
 								</div>
 								<div class="icon is-small is-left has-text-success">
 									<i class="fas fa-globe"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="columns">
+					<div class="column">
+						<strong class="select-labels">Search: </strong>
+						<div class="field mt-3">
+							<p class="control has-icons-left has-icons-right">
+								<input
+									class="input is-primary"
+									type="text"
+									placeholder="Search"
+								/>
+								<span class="icon is-small is-left">
+									<i class="fas fa-search"></i>
+								</span>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="columns is-multiline">
+					<div class="column is-4">
+						<div class="card">
+							<div class="card-content">
+								<div class="media">
+									<div class="media-left">
+										<figure class="image is-48x48">
+											<img
+												src="https://bulma.io/images/placeholders/96x96.png"
+												alt="Placeholder image"
+											/>
+										</figure>
+									</div>
+									<div class="media-content">
+										<p class="title is-4 menu-label">John Smith</p>
+										<p class="subtitle is-6">@johnsmith</p>
+									</div>
+								</div>
+
+								<div class="content">
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-calendar"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Date Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											2020-12-13
+										</span>
+									</p>
+
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-clock"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Time Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											11:07
+										</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="column is-4">
+						<div class="card">
+							<div class="card-content">
+								<div class="media">
+									<div class="media-left">
+										<figure class="image is-48x48">
+											<img
+												src="https://bulma.io/images/placeholders/96x96.png"
+												alt="Placeholder image"
+											/>
+										</figure>
+									</div>
+									<div class="media-content">
+										<p class="title is-4 menu-label">John Smith</p>
+										<p class="subtitle is-6">@johnsmith</p>
+									</div>
+								</div>
+
+								<div class="content">
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-calendar"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Date Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											2020-12-13
+										</span>
+									</p>
+
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-clock"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Time Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											11:07
+										</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="column is-4">
+						<div class="card">
+							<div class="card-content">
+								<div class="media">
+									<div class="media-left">
+										<figure class="image is-48x48">
+											<img
+												src="https://bulma.io/images/placeholders/96x96.png"
+												alt="Placeholder image"
+											/>
+										</figure>
+									</div>
+									<div class="media-content">
+										<p class="title is-4 menu-label">John Smith</p>
+										<p class="subtitle is-6">@johnsmith</p>
+									</div>
+								</div>
+
+								<div class="content">
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-calendar"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Date Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											2020-12-13
+										</span>
+									</p>
+
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-clock"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Time Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											11:07
+										</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="column is-4">
+						<div class="card">
+							<div class="card-content">
+								<div class="media">
+									<div class="media-left">
+										<figure class="image is-48x48">
+											<img
+												src="https://bulma.io/images/placeholders/96x96.png"
+												alt="Placeholder image"
+											/>
+										</figure>
+									</div>
+									<div class="media-content">
+										<p class="title is-4 menu-label">John Smith</p>
+										<p class="subtitle is-6">@johnsmith</p>
+									</div>
+								</div>
+
+								<div class="content">
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-calendar"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Date Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											2020-12-13
+										</span>
+									</p>
+
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-clock"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Time Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											11:07
+										</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="column is-4">
+						<div class="card">
+							<div class="card-content">
+								<div class="media">
+									<div class="media-left">
+										<figure class="image is-48x48">
+											<img
+												src="https://bulma.io/images/placeholders/96x96.png"
+												alt="Placeholder image"
+											/>
+										</figure>
+									</div>
+									<div class="media-content">
+										<p class="title is-4 menu-label">John Smith</p>
+										<p class="subtitle is-6">@johnsmith</p>
+									</div>
+								</div>
+
+								<div class="content">
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-calendar"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Date Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											2020-12-13
+										</span>
+									</p>
+
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-clock"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Time Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											11:07
+										</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="column is-4">
+						<div class="card">
+							<div class="card-content">
+								<div class="media">
+									<div class="media-left">
+										<figure class="image is-48x48">
+											<img
+												src="https://bulma.io/images/placeholders/96x96.png"
+												alt="Placeholder image"
+											/>
+										</figure>
+									</div>
+									<div class="media-content">
+										<p class="title is-4 menu-label">John Smith</p>
+										<p class="subtitle is-6">@johnsmith</p>
+									</div>
+								</div>
+
+								<div class="content">
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-calendar"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Date Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											2020-12-13
+										</span>
+									</p>
+
+									<p class="icon-text  level-left level-item">
+										<span class="icon has-text-success">
+											<i class="fas fa-clock"></i>
+										</span>
+										<span class="ml-1 tvl-info">
+											Time Entered:
+										</span>
+
+										<span class="ml-1 user-info">
+											11:07
+										</span>
+									</p>
 								</div>
 							</div>
 						</div>
@@ -80,302 +421,6 @@
 								</li>
 							</ul>
 						</nav>
-					</div>
-				</div>
-
-				<div class="columns is-multiline">
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-info">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

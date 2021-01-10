@@ -10,5 +10,21 @@
 			font-weight: bolder;
 			font-size: 22px;
 		}
+
+		.est-tabs {
+			font-size: 18px;
+
+			a {
+				color: $primary !important;
+			}
+
+			span {
+				color: $primary !important;
+			}
+		}
+		.est-tabs a:hover {
+			outline: none !important;
+			text-decoration: none !important;
+		}
 	}
 }
