@@ -104,48 +104,75 @@
 								</div>
 								<div class="media-content level">
 									<div class="content">
-										<!-- <strong>John Smith</strong> <small>@johnsmith</small>
-											<small>31m</small>
-											<br />
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-											Aenean efficitur sit amet massa fringilla egestas. Nullam
-											condimentum luctus turpis. -->
-										<p class="icon-text  level-left level-item">
-											<span class="icon has-text-info">
-												<i class="fas fa-tasks"></i>
-											</span>
-											<span class="ml-1 tvl-info">
-												Firstname:
-											</span>
+										<div class="columns">
+											<div class="column">
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-info">
+														<i class="fas fa-tasks"></i>
+													</span>
 
-											<span class="ml-1 user-info">
-												Calil
-											</span>
-										</p>
-										<p class="icon-text  level-left level-item">
-											<span class="icon has-text-info">
-												<i class="fas fa-tasks"></i>
-											</span>
-											<span class="ml-1 tvl-info">
-												Lastname:
-											</span>
+													<small class="ml-1 tvl-info">
+														Firstname:
+													</small>
 
-											<span class="ml-1 user-info">
-												Jaudian
-											</span>
-										</p>
-										<p class="icon-text  level-left level-item">
-											<span class="icon has-text-info">
-												<i class="fas fa-tasks"></i>
-											</span>
-											<span class="ml-1 tvl-info">
-												Middlename:
-											</span>
+													<small class="ml-1 user-info">
+														Calil
+													</small>
+												</p>
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-info">
+														<i class="fas fa-tasks"></i>
+													</span>
+													<small class="ml-1 tvl-info">
+														Lastname:
+													</small>
 
-											<span class="ml-1 user-info">
-												Christopher
-											</span>
-										</p>
+													<small class="ml-1 user-info">
+														Jaudian
+													</small>
+												</p>
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-info">
+														<i class="fas fa-tasks"></i>
+													</span>
+													<small class="ml-1 tvl-info">
+														Middlename:
+													</small>
+
+													<small class="ml-1 user-info">
+														Christopher
+													</small>
+												</p>
+											</div>
+
+											<div class="column">
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-info">
+														<i class="fas fa-home"></i>
+													</span>
+													<small class="ml-1 tvl-info">
+														Address:
+													</small>
+
+													<small class="ml-1 user-info">
+														Blk 7 Lot 16 Sta.monica Subdivision
+													</small>
+												</p>
+
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-info">
+														<i class="fas fa-phone"></i>
+													</span>
+													<small class="ml-1 tvl-info">
+														Contact #:
+													</small>
+
+													<small class="ml-1 user-info">
+														09078382454
+													</small>
+												</p>
+											</div>
+										</div>
 									</div>
 								</div>
 							</article>
@@ -160,48 +187,74 @@
 								</div>
 								<div class="media-content level">
 									<div class="content">
-										<!-- <strong>John Smith</strong> <small>@johnsmith</small>
-											<small>31m</small>
-											<br />
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-											Aenean efficitur sit amet massa fringilla egestas. Nullam
-											condimentum luctus turpis. -->
-										<p class="icon-text  level-left level-item">
-											<span class="icon has-text-info">
-												<i class="fas fa-tasks"></i>
-											</span>
-											<span class="ml-1 tvl-info">
-												Firstname:
-											</span>
+										<div class="columns">
+											<div class="column">
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-info">
+														<i class="fas fa-tasks"></i>
+													</span>
+													<small class="ml-1 tvl-info">
+														Firstname:
+													</small>
 
-											<span class="ml-1 user-info">
-												Calil
-											</span>
-										</p>
-										<p class="icon-text  level-left level-item">
-											<span class="icon has-text-info">
-												<i class="fas fa-tasks"></i>
-											</span>
-											<span class="ml-1 tvl-info">
-												Lastname:
-											</span>
+													<small class="ml-1 user-info">
+														Calil
+													</small>
+												</p>
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-info">
+														<i class="fas fa-tasks"></i>
+													</span>
+													<small class="ml-1 tvl-info">
+														Lastname:
+													</small>
 
-											<span class="ml-1 user-info">
-												Jaudian
-											</span>
-										</p>
-										<p class="icon-text  level-left level-item">
-											<span class="icon has-text-info">
-												<i class="fas fa-tasks"></i>
-											</span>
-											<span class="ml-1 tvl-info">
-												Middlename:
-											</span>
+													<small class="ml-1 user-info">
+														Jaudian
+													</small>
+												</p>
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-info">
+														<i class="fas fa-tasks"></i>
+													</span>
+													<small class="ml-1 tvl-info">
+														Middlename:
+													</small>
 
-											<span class="ml-1 user-info">
-												Christopher
-											</span>
-										</p>
+													<small class="ml-1 user-info">
+														Christopher
+													</small>
+												</p>
+											</div>
+
+											<div class="column">
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-info">
+														<i class="fas fa-home"></i>
+													</span>
+													<small class="ml-1 tvl-info">
+														Address:
+													</small>
+
+													<small class="ml-1 user-info">
+														Blk 7 Lot 16 Sta.monica Subdivision
+													</small>
+												</p>
+
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-info">
+														<i class="fas fa-phone"></i>
+													</span>
+													<small class="ml-1 tvl-info">
+														Contact #:
+													</small>
+
+													<small class="ml-1 user-info">
+														09078382454
+													</small>
+												</p>
+											</div>
+										</div>
 									</div>
 								</div>
 							</article>
