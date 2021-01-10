@@ -39,14 +39,18 @@
 							<span class="icon has-text-success">
 								<i class="fas fa-bus"></i>
 							</span>
-							<a class="ml-3">Travel History</a>
+							<router-link to="/accounts/auth/dashboard">
+								<a class="ml-3">Travel History</a></router-link
+							>
 						</div>
 
 						<div class="icon-text navbar-item">
 							<span class="icon has-text-success">
 								<i class="fas fa-university"></i>
 							</span>
-							<a class="ml-3">Establishment Entered</a>
+							<router-link to="/est">
+								<a class="ml-3">Establishment Entered</a></router-link
+							>
 						</div>
 					</div>
 

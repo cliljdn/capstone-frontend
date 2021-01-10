@@ -69,9 +69,18 @@ const routes = [
 				path: '',
 				component: () =>
 					import(
-						/* webpackChunkName: "components" */ '../components/content/web/travel-history'
+						/* webpackChunkName: "components" */ '../components/content/web/individuals/travel-history'
 					),
 				name: 'TravelHistory',
+			},
+
+			{
+				path: '/est',
+				name: 'estEntered',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/web/individuals/est-entered'
+					),
 			},
 		],
 	},

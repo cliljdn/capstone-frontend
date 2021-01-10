@@ -280,5 +280,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../sass/travel-modal.scss';
+@import '../sass/individuals/travel-modal.scss';
 </style>

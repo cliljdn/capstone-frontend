@@ -30,7 +30,7 @@
 	border-bottom: 1px solid $primary;
 	display: flex;
 	flex-direction: column;
-
+	overflow: hidden;
 	.edit-container {
 		position: relative;
 		display: flex;

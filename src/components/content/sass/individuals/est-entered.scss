@@ -1,0 +1,14 @@
+@import '../../../../assets/sass/mixins.scss';
+
+.est-entered-container {
+	width: auto;
+
+	.est-entered-columns {
+		margin: 15px !important;
+
+		.menu-label {
+			font-weight: bolder;
+			font-size: 22px;
+		}
+	}
+}

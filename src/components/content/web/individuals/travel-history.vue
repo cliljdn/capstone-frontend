@@ -211,10 +211,10 @@
 </template>
 
 <script>
-import app from '../model/travel-history.model'
+import app from '../../model/travel-history.model'
 export default app
 </script>
 
 <style lang="scss">
-@import '../sass/travel-history.scss';
+@import '../../sass/individuals/travel-history.scss';
 </style>
