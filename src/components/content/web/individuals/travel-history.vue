@@ -211,7 +211,7 @@
 </template>
 
 <script>
-import app from '../../model/travel-history.model'
+import app from '../../model/individuals/travel-history.model'
 export default app
 </script>
 

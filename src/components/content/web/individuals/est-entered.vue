@@ -11,13 +11,17 @@
 				<div class="tabs is-centered est-tabs">
 					<ul>
 						<li class="tab-label"><span>Sort List by: </span></li>
-						<li><a>Between Time</a></li>
+						<li :class="{ 'is-active': betweenTime }">
+							<a @click="switchPanelTime">Between Time</a>
+						</li>
 						<li class="tab-label"><span>Or</span></li>
-						<li><a>Details</a></li>
+						<li :class="{ 'is-active': byDetails }">
+							<a @click="switchPanelDetails">Details</a>
+						</li>
 					</ul>
 				</div>
 
-				<div class="columns mt-1">
+				<div class="columns mt-1" v-if="betweenTime">
 					<div class="column is-one-quarter">
 						<strong class="select-labels">Choose Date: </strong>
 						<div class="field mt-3">
@@ -55,6 +59,26 @@
 					</div>
 
 					<div class="column is-6">
+						<strong class="select-labels">End Time: </strong>
+						<div class="field mt-3">
+							<div class="control has-icons-left">
+								<div class="select is-primary">
+									<select>
+										<option selected>Country</option>
+										<option>Select dropdown</option>
+										<option>With options</option>
+									</select>
+								</div>
+								<div class="icon is-small is-left has-text-success">
+									<i class="fas fa-globe"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="columns" v-if="byDetails">
+					<div class="column">
 						<strong class="select-labels">End Time: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
@@ -428,6 +452,10 @@
 	</div>
 </template>
 
+<script>
+import app from '../../model/individuals/est-entered.model'
+export default app
+</script>
 <style lang="scss">
 @import '../../sass/individuals/est-entered.scss';
 </style>
