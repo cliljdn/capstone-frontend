@@ -24,13 +24,28 @@
 								>
 							</p>
 
-							<div
-								class="is-flex is-justify-content-center"
-								v-if="isTimeActive"
-							>
+							<div class="" v-if="isTimeActive">
 								<!-- SORT BETWEEN TIME -->
 								<div class="columns travel-columns">
-									<div class="column">
+									<div class="column is-one-quarter">
+										<strong class="select-labels">Choose Date: </strong>
+										<div class="field mt-3">
+											<div class="control has-icons-left">
+												<div class="select is-primary">
+													<select>
+														<option selected>Country</option>
+														<option>Select dropdown</option>
+														<option>With options</option>
+													</select>
+												</div>
+												<div class="icon is-small is-left has-text-success">
+													<i class="fas fa-globe"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="column is-one-quarter">
 										<span class="select-labels">Start Time: </span>
 										<div class="field mt-3">
 											<div class="control has-icons-left">
@@ -47,7 +62,8 @@
 											</div>
 										</div>
 									</div>
-									<div class="column">
+
+									<div class="column  is-6">
 										<span class="select-labels">End Time: </span>
 										<div class="field mt-3">
 											<div class="control has-icons-left">

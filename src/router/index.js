@@ -57,6 +57,7 @@ const routes = [
 	{
 		path: '/accounts/auth/dashboard',
 		component: view('users-view'),
+		name: 'accDashboard',
 		// beforeEnter(to, from, next) {
 		// 	if (!store.state.isAuth) {
 		// 		next({ name: 'usersLogin' })
@@ -64,9 +65,10 @@ const routes = [
 		// 		next()
 		// 	}
 		// },
+
 		children: [
 			{
-				path: '',
+				path: '/travelhistory',
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/individuals/travel-history'
@@ -80,6 +82,15 @@ const routes = [
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/individuals/est-entered'
+					),
+			},
+
+			{
+				path: '/passengers',
+				name: 'listPassengers',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/web/drivers/list-passengers'
 					),
 			},
 		],

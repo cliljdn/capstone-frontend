@@ -20,9 +20,7 @@
 	z-index: auto;
 	width: auto;
 }
-.show-edit {
-	overflow-y: auto;
-}
+
 .sidebar-edit {
 	min-height: calc(100vh);
 	border-left: 1px solid $primary;
@@ -30,7 +28,7 @@
 	border-bottom: 1px solid $primary;
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
+
 	.edit-container {
 		position: relative;
 		display: flex;

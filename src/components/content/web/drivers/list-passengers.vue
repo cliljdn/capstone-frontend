@@ -4,7 +4,7 @@
 			<div class="column">
 				<aside class="menu">
 					<p class="menu-label">
-						Establishment Entered
+						List of Passengers
 					</p>
 				</aside>
 
@@ -77,7 +77,7 @@
 
 				<div class="columns mt-1" v-if="byDetails">
 					<div class="column">
-						<strong class="select-labels">End Time: </strong>
+						<strong class="select-labels">Sort By: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
 								<div class="select is-primary">
@@ -448,15 +448,15 @@
 			</div>
 		</div>
 
-		<!-- modal -->
-		<est-entered-modal />
+		<list-passengers-modal />
 	</div>
 </template>
 
 <script>
-import app from '../../model/individuals/est-entered.model'
+import app from '../../model/driver/list-passengers.model'
 export default app
 </script>
+
 <style lang="scss">
 @import '../../sass/individuals/est-entered.scss';
 </style>

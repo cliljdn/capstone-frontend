@@ -16,6 +16,7 @@ export default new Vuex.Store({
 		ACCESS_TOKEN: '',
 		TOKEN_NAME: '',
 		isAuth: false,
+		accType: 'Driver',
 
 		//dashboard
 		sideBarOpen: false,
@@ -33,6 +34,7 @@ export default new Vuex.Store({
 		dashboardModal: {
 			travelHistory: false,
 			estEntered: false,
+			passengers: false,
 		},
 
 		headers: {
@@ -69,18 +71,16 @@ export default new Vuex.Store({
 			state.isAuth = auth
 		},
 
+		modalEntered(state) {
+			state.dashboardModal.estEntered = !state.dashboardModal.estEntered
+		},
+
 		modalTravel(state) {
 			state.dashboardModal.travelHistory = !state.dashboardModal.travelHistory
 		},
 
-		// hide and show the sidebar profile
-		toggleSideBar(state) {
-			state.sideBarOpen = !state.sideBarOpen
-		},
-
-		//hide and show the edit profile form
-		toggleEditForm(state) {
-			state.editProfileOpen = !state.editProfileOpen
+		modalPassengers(state) {
+			state.dashboardModal.passengers = !state.dashboardModal.passengers
 		},
 
 		showPopOut(state) {
@@ -92,6 +92,16 @@ export default new Vuex.Store({
 			state.TOKEN_NAME = payload.name
 
 			Cookies.set(state.TOKEN_NAME, state.ACCESS_TOKEN, { expires: 1 })
+		},
+
+		// hide and show the sidebar profile
+		toggleSideBar(state) {
+			state.sideBarOpen = !state.sideBarOpen
+		},
+
+		//hide and show the edit profile form
+		toggleEditForm(state) {
+			state.editProfileOpen = !state.editProfileOpen
 		},
 
 		removeCookie(state) {

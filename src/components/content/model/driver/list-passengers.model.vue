@@ -1,7 +1,7 @@
 <script>
-import EstEnteredModal from '../../modals/individuals/est-entered-modal'
+import ListPassengersModal from '../../modals/driver/list-passengers-modal'
 export default {
-	components: { 'est-entered-modal': EstEnteredModal },
+	components: { 'list-passengers-modal': ListPassengersModal },
 
 	data() {
 		return {
@@ -17,7 +17,7 @@ export default {
 		},
 
 		openModal() {
-			return this.$store.commit('modalEntered')
+			return this.$store.commit('modalPassengers')
 		},
 
 		switchPanelDetails() {
