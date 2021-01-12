@@ -71,8 +71,8 @@
 								<span class="icon has-text-success">
 									<i class="fas fa-bus"></i>
 								</span>
-								<router-link to="/accounts/auth/dashboard">
-									<a class="ml-3">Individuals Entered</a></router-link
+								<router-link to="/establishment/entered">
+									<a class="ml-3">List of Individuals</a></router-link
 								>
 							</div>
 						</div>

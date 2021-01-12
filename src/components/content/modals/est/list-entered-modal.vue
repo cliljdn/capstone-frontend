@@ -1,23 +1,23 @@
 <template>
 	<div
 		class="modal"
-		:class="{ 'is-active': this.$store.state.dashboardModal.passengers }"
+		:class="{ 'is-active': this.$store.state.dashboardModal.listEntered }"
 	>
 		<div class="modal-background" @click="closeModal"></div>
 		<div class="modal-card">
 			<header class="modal-card-head">
-				<p class="modal-card-title">Passenger Information</p>
+				<p class="modal-card-title">Individual Information</p>
 				<button @click="closeModal" class="delete" aria-label="close"></button>
 			</header>
 			<section class="modal-card-body">
 				<div class="columns travel-information level">
-					<div class="column">
+					<div class="column is-5">
 						<div class="icon-text mb-1 level-left level-item">
 							<span class="icon has-text-info">
 								<i class="fas fa-map-pin"></i>
 							</span>
 							<span class="ml-1 tvl-info">
-								Destination:
+								Est Name:
 							</span>
 
 							<span class="ml-1 user-info">
@@ -30,7 +30,7 @@
 								<i class="fas fa-calendar"></i>
 							</span>
 							<span class="ml-1 tvl-info">
-								Date Boarded:
+								Date Entered:
 							</span>
 
 							<span class="ml-1 user-info">
@@ -43,7 +43,7 @@
 								<i class="fas fa-clock"></i>
 							</span>
 							<span class="ml-1 tvl-info">
-								Time Boarded:
+								Time Entered:
 							</span>
 
 							<span class="ml-1 user-info">
@@ -51,35 +51,25 @@
 							</span>
 						</div>
 					</div>
+				</div>
 
+				<div class="columns">
 					<div class="column">
 						<div class="icon-text mb-1 level-left level-item">
 							<span class="icon has-text-info">
 								<i class="fas fa-user-secret"></i>
 							</span>
-							<span class="ml-1 tvl-info">
-								Driver Name:
-							</span>
+							<strong class="ml-1 tvl-info">
+								Employee:
+							</strong>
 
 							<span class="ml-1 user-info">
 								Carlito Manuel
 							</span>
 						</div>
-
-						<div class="icon-text mb-1 level-left level-item">
-							<span class="icon has-text-info">
-								<i class="fas fa-tasks"></i>
-							</span>
-							<span class="ml-1 tvl-info">
-								Driver Plate Number:
-							</span>
-
-							<span class="ml-1 user-info">
-								TXUFF2
-							</span>
-						</div>
 					</div>
 				</div>
+
 				<div class="tabs is-centered">
 					<ul>
 						<li class="is-success">
@@ -217,7 +207,7 @@
 export default {
 	methods: {
 		closeModal() {
-			this.$store.commit('modalPassengers')
+			this.$store.commit('modalListEntered')
 		},
 	},
 }

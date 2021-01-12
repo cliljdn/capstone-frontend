@@ -16,7 +16,7 @@ export default new Vuex.Store({
 		ACCESS_TOKEN: '',
 		TOKEN_NAME: '',
 		isAuth: false,
-		accType: 'Driver',
+		accType: 'Establishment',
 
 		//dashboard
 		sideBarOpen: false,
@@ -35,6 +35,7 @@ export default new Vuex.Store({
 			travelHistory: false,
 			estEntered: false,
 			passengers: false,
+			listEntered: false,
 		},
 
 		headers: {
@@ -81,6 +82,10 @@ export default new Vuex.Store({
 
 		modalPassengers(state) {
 			state.dashboardModal.passengers = !state.dashboardModal.passengers
+		},
+
+		modalListEntered(state) {
+			state.dashboardModal.listEntered = !state.dashboardModal.listEntered
 		},
 
 		showPopOut(state) {

@@ -93,6 +93,15 @@ const routes = [
 						/* webpackChunkName: "components" */ '../components/content/web/drivers/list-passengers'
 					),
 			},
+
+			{
+				path: '/establishment/entered',
+				name: 'listEntered',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/web/est/list-entered'
+					),
+			},
 		],
 	},
 
