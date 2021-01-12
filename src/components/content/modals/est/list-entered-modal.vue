@@ -11,13 +11,13 @@
 			</header>
 			<section class="modal-card-body">
 				<div class="columns travel-information level">
-					<div class="column is-5">
+					<div class="column">
 						<div class="icon-text mb-1 level-left level-item">
 							<span class="icon has-text-info">
 								<i class="fas fa-map-pin"></i>
 							</span>
 							<span class="ml-1 tvl-info">
-								Est Name:
+								Establishment Name:
 							</span>
 
 							<span class="ml-1 user-info">
@@ -53,9 +53,15 @@
 					</div>
 				</div>
 
-				<div class="columns">
+				<div class="columns level">
 					<div class="column">
-						<div class="icon-text mb-1 level-left level-item">
+						<span class="menu-label level-item">Present Employee</span>
+					</div>
+				</div>
+
+				<div class="columns level">
+					<div class="column">
+						<div class="icon-text mb-2 level-left level-item">
 							<span class="icon has-text-info">
 								<i class="fas fa-user-secret"></i>
 							</span>
@@ -65,6 +71,32 @@
 
 							<span class="ml-1 user-info">
 								Carlito Manuel
+							</span>
+						</div>
+
+						<div class="icon-text mb-2 level-left level-item">
+							<span class="icon has-text-info">
+								<i class="fas fa-envelope-open-text"></i>
+							</span>
+							<strong class="ml-1 tvl-info">
+								Establishment Email:
+							</strong>
+
+							<span class="ml-1 user-info">
+								smolongapo@gmail.com
+							</span>
+						</div>
+
+						<div class="icon-text mb-2 level-left level-item">
+							<span class="icon has-text-info">
+								<i class="fas fa-phone"></i>
+							</span>
+							<strong class="ml-1 tvl-info">
+								Est Contact Number:
+							</strong>
+
+							<span class="ml-1 user-info">
+								223-123
 							</span>
 						</div>
 					</div>
@@ -214,5 +246,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../sass/individuals/travel-modal.scss';
+@import '../../sass/est/list-entered-modal.scss';
 </style>

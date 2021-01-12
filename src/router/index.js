@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PageNotFound from '@/components/Notfound/not-found.vue'
-// import store from '../store/index'
+import store from '../store/index'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -55,29 +56,30 @@ const routes = [
 	},
 
 	{
-		path: '/accounts/auth/dashboard',
+		path: '/accounts/auth/dashboard/',
+		// name: 'accountDashboard',
 		component: view('users-view'),
-		name: 'accDashboard',
-		// beforeEnter(to, from, next) {
-		// 	if (!store.state.isAuth) {
-		// 		next({ name: 'usersLogin' })
-		// 	} else {
-		// 		next()
-		// 	}
-		// },
+		beforeEnter(to, from, next) {
+			if (!store.state.accType) {
+				next({ name: 'usersLogin' })
+			} else {
+				next()
+			}
+		},
 
 		children: [
+			//for individuals
 			{
-				path: '/travelhistory',
+				path: '',
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/individuals/travel-history'
 					),
-				name: 'TravelHistory',
+				name: 'travelHistory',
 			},
 
 			{
-				path: '/est',
+				path: 'est',
 				name: 'estEntered',
 				component: () =>
 					import(
@@ -85,8 +87,9 @@ const routes = [
 					),
 			},
 
+			//for driver
 			{
-				path: '/passengers',
+				path: 'passengers',
 				name: 'listPassengers',
 				component: () =>
 					import(
@@ -94,8 +97,9 @@ const routes = [
 					),
 			},
 
+			// for est
 			{
-				path: '/establishment/entered',
+				path: 'establishment/entered',
 				name: 'listEntered',
 				component: () =>
 					import(

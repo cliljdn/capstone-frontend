@@ -34,47 +34,54 @@
 					class="navbar-menu"
 					:class="{ 'is-active': isActive }"
 				>
-					<div class="navbar-start">
-						<div class="" v-if="this.$store.state.accType === 'Individual'">
-							<div class="icon-text navbar-item">
-								<span class="icon has-text-success">
-									<i class="fas fa-bus"></i>
-								</span>
-								<router-link to="/accounts/auth/dashboard">
-									<a class="ml-3">Travel History</a></router-link
-								>
-							</div>
-
-							<div class="icon-text navbar-item">
-								<span class="icon has-text-success">
-									<i class="fas fa-university"></i>
-								</span>
-								<router-link to="/est">
-									<a class="ml-3">Establishment Entered</a></router-link
-								>
-							</div>
+					<div
+						class="navbar-start"
+						v-if="this.$store.state.accType === 'Individual'"
+					>
+						<div class="icon-text navbar-item">
+							<span class="icon has-text-success">
+								<i class="fas fa-bus"></i>
+							</span>
+							<router-link to="/accounts/auth/dashboard/">
+								<a class="ml-3">Travel History</a></router-link
+							>
 						</div>
 
-						<div class="" v-if="this.$store.state.accType === 'Driver'">
-							<div class="icon-text navbar-item">
-								<span class="icon has-text-success">
-									<i class="fas fa-users"></i>
-								</span>
-								<router-link to="/passengers">
-									<a class="ml-3">List of Passengers</a></router-link
-								>
-							</div>
+						<div class="icon-text navbar-item">
+							<span class="icon has-text-success">
+								<i class="fas fa-university"></i>
+							</span>
+							<router-link to="est">
+								<a class="ml-3">Establishment Entered</a></router-link
+							>
 						</div>
+					</div>
 
-						<div class="" v-if="this.$store.state.accType === 'Establishment'">
-							<div class="icon-text navbar-item">
-								<span class="icon has-text-success">
-									<i class="fas fa-bus"></i>
-								</span>
-								<router-link to="/establishment/entered">
-									<a class="ml-3">List of Individuals</a></router-link
-								>
-							</div>
+					<div
+						class="navbar-start"
+						v-if="this.$store.state.accType === 'Driver'"
+					>
+						<div class="icon-text navbar-item">
+							<span class="icon has-text-success">
+								<i class="fas fa-users"></i>
+							</span>
+							<router-link to="/passengers">
+								<a class="ml-3">List of Passengers</a></router-link
+							>
+						</div>
+					</div>
+
+					<div
+						class="navbar-start"
+						v-if="this.$store.state.accType === 'Establishment'"
+					>
+						<div class="icon-text navbar-item">
+							<span class="icon has-text-success">
+								<i class="fas fa-bus"></i>
+							</span>
+							<router-link to="/establishment/entered">
+								<a class="ml-3">List of Individuals</a></router-link
+							>
 						</div>
 					</div>
 
