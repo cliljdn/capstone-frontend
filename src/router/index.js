@@ -59,13 +59,6 @@ const routes = [
 		path: '/accounts/auth/dashboard/',
 		// name: 'accountDashboard',
 		component: view('users-view'),
-		beforeEnter(to, from, next) {
-			if (!store.state.accType) {
-				next({ name: 'usersLogin' })
-			} else {
-				next()
-			}
-		},
 
 		children: [
 			//for individuals
@@ -76,6 +69,17 @@ const routes = [
 						/* webpackChunkName: "components" */ '../components/content/web/individuals/travel-history'
 					),
 				name: 'travelHistory',
+				beforeEnter(to, from, next) {
+					if (store.state.accType === 'Individual') {
+						next()
+					} else if (store.state.accType === 'Driver') {
+						next({ name: 'listPassengers' })
+					} else if (store.state.accType === 'Establishment') {
+						next({ name: 'listEntered' })
+					} else {
+						next({ name: 'usersLogin' })
+					}
+				},
 			},
 
 			{
@@ -85,6 +89,14 @@ const routes = [
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/individuals/est-entered'
 					),
+
+				beforeEnter(to, from, next) {
+					if (store.state.accType !== 'Individual') {
+						next({ name: 'travelHistory' })
+					} else {
+						next()
+					}
+				},
 			},
 
 			//for driver
@@ -95,6 +107,14 @@ const routes = [
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/drivers/list-passengers'
 					),
+
+				beforeEnter(to, from, next) {
+					if (store.state.accType !== 'Driver') {
+						next({ name: 'travelHistory' })
+					} else {
+						next()
+					}
+				},
 			},
 
 			// for est
@@ -105,6 +125,14 @@ const routes = [
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/est/list-entered'
 					),
+
+				beforeEnter(to, from, next) {
+					if (store.state.accType !== 'Establishment') {
+						next({ name: 'travelHistory' })
+					} else {
+						next()
+					}
+				},
 			},
 		],
 	},

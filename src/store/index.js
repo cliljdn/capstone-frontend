@@ -16,7 +16,7 @@ export default new Vuex.Store({
 		ACCESS_TOKEN: '',
 		TOKEN_NAME: '',
 		isAuth: false,
-		accType: 'Individual',
+		accType: 'Establishment',
 
 		//dashboard
 		sideBarOpen: false,

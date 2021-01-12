@@ -77,9 +77,9 @@
 					>
 						<div class="icon-text navbar-item">
 							<span class="icon has-text-success">
-								<i class="fas fa-bus"></i>
+								<i class="fas fa-users"></i>
 							</span>
-							<router-link to="/establishment/entered">
+							<router-link to="/accounts/auth/dashboard/">
 								<a class="ml-3">List of Individuals</a></router-link
 							>
 						</div>
