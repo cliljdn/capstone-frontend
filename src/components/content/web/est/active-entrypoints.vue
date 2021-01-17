@@ -1,7 +1,7 @@
 <template>
 	<div class="columns is-multiline mt-3 is-justify-content-center">
 		<div class="column is-8">
-			<div class="card">
+			<div class="card" @click="openModal">
 				<div class="card-content">
 					<div class="media">
 						<div class="media-left">
@@ -97,5 +97,22 @@
 				</div>
 			</div>
 		</div>
+
+		<entryPoints />
 	</div>
 </template>
+
+<script>
+import EntryPoints from '../../modals/est/entrypoints.modal'
+export default {
+	components: {
+		entryPoints: EntryPoints,
+	},
+
+	methods: {
+		openModal() {
+			return this.$store.commit('modalEntrypoints')
+		},
+	},
+}
+</script>

@@ -3,30 +3,29 @@
 .entrypoints-columns {
 	width: auto !important;
 
-	.columns {
+	.columns-header {
 		margin: 15px !important;
-	}
 
+		.entry-tabs {
+			font-size: 18px;
+
+			a {
+				color: $primary !important;
+			}
+
+			span {
+				color: $primary !important;
+			}
+		}
+
+		.entry-tabs a:hover {
+			outline: none !important;
+			text-decoration: none !important;
+		}
+	}
 	.menu-label {
 		font-weight: bolder;
 		font-size: 22px;
-	}
-
-	.entry-tabs {
-		font-size: 18px;
-
-		a {
-			color: $primary !important;
-		}
-
-		span {
-			color: $primary !important;
-		}
-	}
-
-	.entry-tabs a:hover {
-		outline: none !important;
-		text-decoration: none !important;
 	}
 
 	.card:hover {

@@ -1,0 +1,23 @@
+@import '../../../../assets/sass/mixins.scss';
+
+.modal {
+	width: auto;
+	.modal-card {
+		.icon-text {
+			margin-bottom: 10px !important;
+		}
+
+		.tvl-info {
+			font-weight: bold;
+		}
+
+		.menu-label {
+			font-weight: bolder;
+			font-size: 15px;
+		}
+
+		.tabs ul li a:hover {
+			border-bottom: none !important;
+		}
+	}
+}

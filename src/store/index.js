@@ -36,6 +36,7 @@ export default new Vuex.Store({
 			estEntered: false,
 			passengers: false,
 			listEntered: false,
+			entryPoints: false,
 		},
 
 		headers: {
@@ -74,6 +75,10 @@ export default new Vuex.Store({
 
 		modalEntered(state) {
 			state.dashboardModal.estEntered = !state.dashboardModal.estEntered
+		},
+
+		modalEntrypoints(state) {
+			state.dashboardModal.entryPoints = !state.dashboardModal.entryPoints
 		},
 
 		modalTravel(state) {

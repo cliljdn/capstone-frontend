@@ -17,7 +17,7 @@ export default {
 	},
 
 	mounted() {
-		return this.$router.push({ name: 'activeEntry' })
+		return this.$router.push({ name: 'activeEntry' }).catch(() => {})
 	},
 }
 </script>

@@ -162,7 +162,7 @@ const routes = [
 					},
 
 					{
-						path: '/inactive',
+						path: 'inactive',
 						name: 'inactiveEntry',
 						component: () =>
 							import(
