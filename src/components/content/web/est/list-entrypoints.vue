@@ -35,11 +35,11 @@
 									<i class="fas fa-calendar"></i>
 								</span>
 								<span class="ml-1 tvl-info">
-									Date Entered:
+									Time In:
 								</span>
 
 								<span class="ml-1 user-info">
-									2020-12-13
+									11:07
 								</span>
 							</p>
 
@@ -48,7 +48,7 @@
 									<i class="fas fa-clock"></i>
 								</span>
 								<span class="ml-1 tvl-info">
-									Time Entered:
+									Time out:
 								</span>
 
 								<span class="ml-1 user-info">
@@ -84,11 +84,11 @@
 									<i class="fas fa-calendar"></i>
 								</span>
 								<span class="ml-1 tvl-info">
-									Date Entered:
+									Time In:
 								</span>
 
 								<span class="ml-1 user-info">
-									2020-12-13
+									11:07
 								</span>
 							</p>
 
@@ -97,7 +97,7 @@
 									<i class="fas fa-clock"></i>
 								</span>
 								<span class="ml-1 tvl-info">
-									Time Entered:
+									Time out:
 								</span>
 
 								<span class="ml-1 user-info">
@@ -133,11 +133,11 @@
 									<i class="fas fa-calendar"></i>
 								</span>
 								<span class="ml-1 tvl-info">
-									Date Entered:
+									Time In:
 								</span>
 
 								<span class="ml-1 user-info">
-									2020-12-13
+									11:07
 								</span>
 							</p>
 
@@ -146,7 +146,7 @@
 									<i class="fas fa-clock"></i>
 								</span>
 								<span class="ml-1 tvl-info">
-									Time Entered:
+									Time out:
 								</span>
 
 								<span class="ml-1 user-info">
