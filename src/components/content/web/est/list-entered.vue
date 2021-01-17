@@ -11,8 +11,8 @@
 				<p class="panel-tabs is-centered est-tabs">
 					<a>Sort List by: </a>
 					<a :class="{ 'is-active': betweenTime }" @click="switchPanelTime"
-						>Between Time</a
-					>
+						>Between Time
+					</a>
 					<a>Or</a>
 					<a :class="{ 'is-active': byDetails }" @click="switchPanelDetails"
 						>Details</a

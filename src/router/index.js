@@ -56,7 +56,7 @@ const routes = [
 	},
 
 	{
-		path: '/accounts/auth/dashboard/',
+		path: '/accounts/auth/dashboard',
 		// name: 'accountDashboard',
 		component: view('users-view'),
 
@@ -83,7 +83,7 @@ const routes = [
 			},
 
 			{
-				path: 'est',
+				path: '/est',
 				name: 'estEntered',
 				component: () =>
 					import(
@@ -101,7 +101,7 @@ const routes = [
 
 			//for driver
 			{
-				path: 'passengers',
+				path: '/passengers',
 				name: 'listPassengers',
 				component: () =>
 					import(
@@ -119,7 +119,7 @@ const routes = [
 
 			// for est
 			{
-				path: 'establishment/entered',
+				path: '/establishment/entered',
 				name: 'listEntered',
 				component: () =>
 					import(
@@ -136,20 +136,40 @@ const routes = [
 			},
 
 			{
-				path: 'establishment/entrypoints',
-				name: 'listEntered',
+				path: '/establishment/entrypoints',
+				// name: 'listEntrypoints',
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/est/list-entrypoints'
 					),
 
-				beforeEnter(to, from, next) {
-					if (store.state.accType !== 'Establishment') {
-						next({ name: 'travelHistory' })
-					} else {
-						next()
-					}
-				},
+				children: [
+					{
+						path: '',
+						name: 'activeEntry',
+						component: () =>
+							import(
+								/* webpackChunkName: "components" */ '../components/content/web/est/active-entrypoints'
+							),
+
+						beforeEnter(to, from, next) {
+							if (store.state.accType !== 'Establishment') {
+								next({ name: 'travelHistory' })
+							} else {
+								next()
+							}
+						},
+					},
+
+					{
+						path: '/inactive',
+						name: 'inactiveEntry',
+						component: () =>
+							import(
+								/* webpackChunkName: "components" */ '../components/content/web/est/inactive-entrypoints'
+							),
+					},
+				],
 			},
 		],
 	},

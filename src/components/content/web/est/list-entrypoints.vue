@@ -1,6 +1,6 @@
 <template>
 	<div class="container entrypoints-columns">
-		<div class="columns">
+		<div class="columns columns-header">
 			<div class="column">
 				<aside class="menu">
 					<p class="menu-label">
@@ -10,154 +10,60 @@
 			</div>
 		</div>
 
-		<div class="columns is-multiline mt-3">
-			<div class="column is-6">
-				<div class="card">
-					<div class="card-content">
-						<div class="media">
-							<div class="media-left">
-								<figure class="image is-48x48">
-									<img
-										src="https://bulma.io/images/placeholders/96x96.png"
-										alt="Placeholder image"
-									/>
-								</figure>
-							</div>
-							<div class="media-content">
-								<p class="title is-4 menu-label">John Smith</p>
-								<p class="subtitle is-6">@johnsmith</p>
-							</div>
-						</div>
-
-						<div class="content">
-							<p class="icon-text  level-left level-item">
-								<span class="icon has-text-success">
-									<i class="fas fa-calendar"></i>
-								</span>
-								<span class="ml-1 tvl-info">
-									Time In:
-								</span>
-
-								<span class="ml-1 user-info">
-									11:07
-								</span>
-							</p>
-
-							<p class="icon-text  level-left level-item">
-								<span class="icon has-text-success">
-									<i class="fas fa-clock"></i>
-								</span>
-								<span class="ml-1 tvl-info">
-									Time out:
-								</span>
-
-								<span class="ml-1 user-info">
-									11:07
-								</span>
-							</p>
-						</div>
-					</div>
+		<div class="columns">
+			<div class="column is-one-quarter">
+				<strong class="select-labels">Search: </strong>
+				<div class="field mt-3">
+					<p class="control has-icons-left has-icons-right">
+						<input
+							class="input is-primary"
+							type="text"
+							placeholder="Search Employee"
+						/>
+						<span class="icon is-small is-left">
+							<i class="fas fa-search"></i>
+						</span>
+					</p>
 				</div>
 			</div>
 
-			<div class="column is-6">
-				<div class="card">
-					<div class="card-content">
-						<div class="media">
-							<div class="media-left">
-								<figure class="image is-48x48">
-									<img
-										src="https://bulma.io/images/placeholders/96x96.png"
-										alt="Placeholder image"
-									/>
-								</figure>
-							</div>
-							<div class="media-content">
-								<p class="title is-4 menu-label">John Smith</p>
-								<p class="subtitle is-6">@johnsmith</p>
-							</div>
+			<div class="column is-one-quarter">
+				<strong class="select-labels">Sort List: </strong>
+				<div class="field mt-3">
+					<div class="control has-icons-left">
+						<div class="select is-primary">
+							<select>
+								<option selected>Country</option>
+								<option>Select dropdown</option>
+								<option>With options</option>
+							</select>
 						</div>
-
-						<div class="content">
-							<p class="icon-text  level-left level-item">
-								<span class="icon has-text-success">
-									<i class="fas fa-calendar"></i>
-								</span>
-								<span class="ml-1 tvl-info">
-									Time In:
-								</span>
-
-								<span class="ml-1 user-info">
-									11:07
-								</span>
-							</p>
-
-							<p class="icon-text  level-left level-item">
-								<span class="icon has-text-success">
-									<i class="fas fa-clock"></i>
-								</span>
-								<span class="ml-1 tvl-info">
-									Time out:
-								</span>
-
-								<span class="ml-1 user-info">
-									11:07
-								</span>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="column is-12">
-				<div class="card">
-					<div class="card-content">
-						<div class="media">
-							<div class="media-left">
-								<figure class="image is-48x48">
-									<img
-										src="https://bulma.io/images/placeholders/96x96.png"
-										alt="Placeholder image"
-									/>
-								</figure>
-							</div>
-							<div class="media-content">
-								<p class="title is-4 menu-label">John Smith</p>
-								<p class="subtitle is-6">@johnsmith</p>
-							</div>
-						</div>
-
-						<div class="content">
-							<p class="icon-text  level-left level-item">
-								<span class="icon has-text-success">
-									<i class="fas fa-calendar"></i>
-								</span>
-								<span class="ml-1 tvl-info">
-									Time In:
-								</span>
-
-								<span class="ml-1 user-info">
-									11:07
-								</span>
-							</p>
-
-							<p class="icon-text  level-left level-item">
-								<span class="icon has-text-success">
-									<i class="fas fa-clock"></i>
-								</span>
-								<span class="ml-1 tvl-info">
-									Time out:
-								</span>
-
-								<span class="ml-1 user-info">
-									11:07
-								</span>
-							</p>
+						<div class="icon is-small is-left has-text-success">
+							<i class="fas fa-globe"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<p class="panel-tabs entry-tabs">
+			<a>View: </a>
+			<router-link to="/establishment/entrypoints/">
+				<a :class="{ 'is-active': switchTabs }" @click="switchActive"
+					>Active Employees</a
+				>
+			</router-link>
+
+			<a>Or</a>
+
+			<router-link to="/inactive">
+				<a :class="{ 'is-active': !switchTabs }" @click="switchInactive"
+					>Inactive Employees</a
+				>
+			</router-link>
+		</p>
+
+		<router-view />
 	</div>
 </template>
 

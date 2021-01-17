@@ -83,6 +83,15 @@
 								<a class="ml-3">List of Individuals</a></router-link
 							>
 						</div>
+
+						<div class="icon-text navbar-item">
+							<span class="icon has-text-success">
+								<i class="fas fa-users"></i>
+							</span>
+							<router-link to="/establishment/entrypoints/">
+								<a class="ml-3">List of Employees</a></router-link
+							>
+						</div>
 					</div>
 
 					<div class="navbar-end">
