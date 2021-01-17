@@ -134,6 +134,23 @@ const routes = [
 					}
 				},
 			},
+
+			{
+				path: 'establishment/entrypoints',
+				name: 'listEntered',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/web/est/list-entrypoints'
+					),
+
+				beforeEnter(to, from, next) {
+					if (store.state.accType !== 'Establishment') {
+						next({ name: 'travelHistory' })
+					} else {
+						next()
+					}
+				},
+			},
 		],
 	},
 
