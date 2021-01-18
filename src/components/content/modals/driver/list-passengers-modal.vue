@@ -10,6 +10,14 @@
 				<button @click="closeModal" class="delete" aria-label="close"></button>
 			</header>
 			<section class="modal-card-body">
+				<div class="columns">
+					<div class="column is-flex is-justify-content-center">
+						<figure class="image is-128x128">
+							<img src="https://i.imgur.com/4AcjS2P.png" alt="Image" />
+						</figure>
+					</div>
+				</div>
+
 				<div class="columns travel-information level">
 					<div class="column">
 						<div class="icon-text mb-1 level-left level-item">
@@ -18,6 +26,19 @@
 							</span>
 							<span class="ml-1 tvl-info">
 								Destination:
+							</span>
+
+							<span class="ml-1 user-info">
+								Sm City
+							</span>
+						</div>
+
+						<div class="icon-text mb-1 level-left level-item">
+							<span class="icon has-text-info">
+								<i class="fas fa-map-pin"></i>
+							</span>
+							<span class="ml-1 tvl-info">
+								Name:
 							</span>
 
 							<span class="ml-1 user-info">
@@ -51,7 +72,30 @@
 							</span>
 						</div>
 					</div>
+				</div>
 
+				<div class="tabs is-centered">
+					<ul>
+						<li class="is-success">
+							<a>
+								<span class="icon is-small"
+									><i class="fas fa-users" aria-hidden="true"></i
+								></span>
+								<span>Driver Information</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="columns">
+					<div class="column is-flex is-justify-content-center">
+						<figure class="image is-128x128">
+							<img src="https://i.imgur.com/4AcjS2P.png" alt="Image" />
+						</figure>
+					</div>
+				</div>
+
+				<div class="columns travel-information level">
 					<div class="column">
 						<div class="icon-text mb-1 level-left level-item">
 							<span class="icon has-text-info">
@@ -66,9 +110,9 @@
 							</span>
 						</div>
 
-						<div class="icon-text mb-1 level-left level-item">
+						<div class="icon-text mb-1 level-left">
 							<span class="icon has-text-info">
-								<i class="fas fa-tasks"></i>
+								<i class="fas fa-bus"></i>
 							</span>
 							<span class="ml-1 tvl-info">
 								Driver Plate Number:
@@ -78,8 +122,22 @@
 								TXUFF2
 							</span>
 						</div>
+
+						<div class="icon-text mb-1 level-left">
+							<span class="icon has-text-info">
+								<i class="fas fa-road"></i>
+							</span>
+							<span class="ml-1 tvl-info">
+								Driver Route:
+							</span>
+
+							<span class="ml-1 user-info">
+								TXUFF2
+							</span>
+						</div>
 					</div>
 				</div>
+
 				<div class="tabs is-centered">
 					<ul>
 						<li class="is-success">
@@ -95,7 +153,7 @@
 
 				<div class="columns companion-information">
 					<div class="column">
-						<div class="box is-flex is-justify-content-center">
+						<div class="box">
 							<article class="media">
 								<div class="media-left mt-4">
 									<figure class="image is-96x96">
@@ -110,7 +168,6 @@
 													<span class="icon has-text-info">
 														<i class="fas fa-tasks"></i>
 													</span>
-
 													<small class="ml-1 tvl-info">
 														Firstname:
 													</small>
@@ -150,7 +207,7 @@
 							</article>
 						</div>
 
-						<div class="box is-flex is-justify-content-center">
+						<div class="box ">
 							<article class="media">
 								<div class="media-left mt-4">
 									<figure class="image is-96x96">

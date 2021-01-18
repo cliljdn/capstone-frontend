@@ -137,9 +137,11 @@
 									</p>
 								</div>
 							</div>
+
 							<main class="travel-log">
 								<div class="table-container">
 									<table
+										id="my-table"
 										class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
 									>
 										<!-- Your table content -->

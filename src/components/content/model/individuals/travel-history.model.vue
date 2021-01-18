@@ -1,5 +1,6 @@
 <script>
 import TravelHistoryModal from '../../modals/individuals/travel-history-modal'
+
 export default {
 	components: {
 		'travel-history-modal': TravelHistoryModal,

@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store/index'
 import './assets/sass/main.scss'
-
+import 'jspdf-autotable'
 Vue.config.productionTip = false
 
 //initialize global for axios

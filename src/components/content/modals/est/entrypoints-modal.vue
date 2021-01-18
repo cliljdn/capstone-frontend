@@ -1,6 +1,7 @@
 <template>
 	<div
 		class="modal"
+		id="modal"
 		:class="{ 'is-active': this.$store.state.dashboardModal.entryPoints }"
 	>
 		<div class="modal-background" @click="closeModal"></div>
@@ -15,17 +16,6 @@
 					<div class="column is-flex is-justify-content-center">
 						<figure class="image is-128x128">
 							<img src="https://i.imgur.com/4AcjS2P.png" alt="Image" />
-						</figure>
-					</div>
-					<!-- QR-Code -->
-					<div class="column mb-3 is-flex is-justify-content-center">
-						<figure class="image is-128x128" v-if="text">
-							<img src="https://i.imgur.com/4AcjS2P.png" alt="Image" />
-							<div class="columns mt-1">
-								<div class="column is-flex is-justify-content-center">
-									<span class="subtitle">QR-CODE</span>
-								</div>
-							</div>
 						</figure>
 					</div>
 				</div>
@@ -256,7 +246,9 @@
 						<button @click="closeModal" class="button">Close Modal</button>
 					</div>
 					<div class="column">
-						<button class="button is-success">Print Qr-Code</button>
+						<button class="button is-success">
+							Print Qr-Code
+						</button>
 					</div>
 				</div>
 			</footer>
@@ -270,7 +262,7 @@ export default {
 
 	data() {
 		return {
-		
+			faker: ['gago', 'tanga', 'inutil'],
 		}
 	},
 
@@ -278,9 +270,7 @@ export default {
 		closeModal() {
 			this.$store.commit('modalEntrypoints')
 		},
-
 	},
-
 }
 </script>
 

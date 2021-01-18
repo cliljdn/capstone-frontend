@@ -117,6 +117,59 @@ const routes = [
 				},
 			},
 
+			{
+				path: '/vehicles/',
+				//name: 'listVehicles',
+				component: () =>
+					import(
+						/* webpackChunkName: "components" */ '../components/content/web/drivers/list-vehicles'
+					),
+
+				beforeEnter(to, from, next) {
+					if (store.state.accType !== 'Driver') {
+						next({ name: 'travelHistory' })
+					} else {
+						next()
+					}
+				},
+
+				children: [
+					{
+						path: '',
+						name: 'activeVehicles',
+						component: () =>
+							import(
+								/* webpackChunkName: "components" */ '../components/content/web/drivers/active-vehicles'
+							),
+
+						beforeEnter(to, from, next) {
+							if (store.state.accType !== 'Driver') {
+								next({ name: 'travelHistory' })
+							} else {
+								next()
+							}
+						},
+					},
+
+					{
+						path: 'inactive',
+						name: 'inactiveVehicles',
+						component: () =>
+							import(
+								/* webpackChunkName: "components" */ '../components/content/web/drivers/inactive-vehicles'
+							),
+
+						beforeEnter(to, from, next) {
+							if (store.state.accType !== 'Driver') {
+								next({ name: 'travelHistory' })
+							} else {
+								next()
+							}
+						},
+					},
+				],
+			},
+
 			// for est
 			{
 				path: '/establishment/entered',
