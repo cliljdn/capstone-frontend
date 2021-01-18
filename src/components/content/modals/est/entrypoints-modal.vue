@@ -19,8 +19,11 @@
 					</div>
 					<!-- QR-Code -->
 					<div class="column mb-3 is-flex is-justify-content-center">
-						<figure class="image is-128x128">
-							<img src="https://i.imgur.com/4AcjS2P.png" alt="Image" />
+						<figure class="image is-128x128" v-if="text">
+							<img
+								:src="newQRCode()"
+								alt="Image"
+							/>
 							<div class="columns mt-1">
 								<div class="column is-flex is-justify-content-center">
 									<span class="subtitle">QR-CODE</span>
@@ -251,18 +254,45 @@
 				</div>
 			</section>
 			<footer class="modal-card-foot is-flex is-justify-content-center">
-				<button @click="closeModal" class="button">Close Modal</button>
+				<div class="columns">
+					<div class="column">
+						<button @click="closeModal" class="button">Close Modal</button>
+					</div>
+					<div class="column">
+						<button class="button is-success">Print Qr-Code</button>
+					</div>
+				</div>
 			</footer>
 		</div>
 	</div>
 </template>
 
 <script>
+import QRious from 'qrious'
 export default {
+	components: {},
+
+	data() {
+		return {
+			text: 'hahahahaha',
+			qrcode: new QRious({ size: 300 }),
+		}
+	},
+
 	methods: {
 		closeModal() {
 			this.$store.commit('modalEntrypoints')
 		},
+
+		newQRCode() {
+			this.qrcode.value = this.text
+			return this.qrcode.toDataURL()
+		},
+	},
+
+	mounted() {
+		
+		return this.newQRCode()
 	},
 }
 </script>

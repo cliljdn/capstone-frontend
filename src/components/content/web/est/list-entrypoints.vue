@@ -7,24 +7,8 @@
 						List of Entrypoints
 					</p>
 				</aside>
-				<p class="panel-tabs is-centered entry-tabs">
-					<a>View:</a>
 
-					<router-link to="/establishment/entrypoints/">
-						<a @click="switchActive" :class="{ 'is-active': switchTabs }"
-							>Active Employees</a
-						>
-					</router-link>
-
-					<a>Or</a>
-
-					<router-link to="/establishment/entrypoints/inactive">
-						<a @click="switchInactive" :class="{ 'is-active': !switchTabs }"
-							>Inactive Employees</a
-						>
-					</router-link>
-				</p>
-				<div class="columns mt-1">
+				<div class="columns mt-1" v-if="!switchTabs">
 					<div class="column is-one-quarter">
 						<strong class="select-labels">Search: </strong>
 						<div class="field mt-3">
@@ -61,7 +45,23 @@
 				</div>
 			</div>
 		</div>
+		<p class="panel-tabs m-3 is-centered entry-tabs">
+			<a>View:</a>
 
+			<router-link to="/establishment/entrypoints/">
+				<a @click="switchActive" :class="{ 'is-active': switchTabs }"
+					>Active Employees</a
+				>
+			</router-link>
+
+			<a>Or</a>
+
+			<router-link to="/establishment/entrypoints/inactive">
+				<a @click="switchInactive" :class="{ 'is-active': !switchTabs }"
+					>Inactive Employees</a
+				>
+			</router-link>
+		</p>
 		<router-view />
 	</div>
 </template>

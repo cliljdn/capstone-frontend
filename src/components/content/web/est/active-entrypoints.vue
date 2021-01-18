@@ -103,7 +103,7 @@
 </template>
 
 <script>
-import EntryPoints from '../../modals/est/entrypoints.modal'
+import EntryPoints from '../../modals/est/entrypoints-modal'
 export default {
 	components: {
 		entryPoints: EntryPoints,
