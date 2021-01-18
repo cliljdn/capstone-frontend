@@ -20,10 +20,7 @@
 					<!-- QR-Code -->
 					<div class="column mb-3 is-flex is-justify-content-center">
 						<figure class="image is-128x128" v-if="text">
-							<img
-								:src="newQRCode()"
-								alt="Image"
-							/>
+							<img src="https://i.imgur.com/4AcjS2P.png" alt="Image" />
 							<div class="columns mt-1">
 								<div class="column is-flex is-justify-content-center">
 									<span class="subtitle">QR-CODE</span>
@@ -268,14 +265,12 @@
 </template>
 
 <script>
-import QRious from 'qrious'
 export default {
 	components: {},
 
 	data() {
 		return {
-			text: 'hahahahaha',
-			qrcode: new QRious({ size: 300 }),
+		
 		}
 	},
 
@@ -284,16 +279,8 @@ export default {
 			this.$store.commit('modalEntrypoints')
 		},
 
-		newQRCode() {
-			this.qrcode.value = this.text
-			return this.qrcode.toDataURL()
-		},
 	},
 
-	mounted() {
-		
-		return this.newQRCode()
-	},
 }
 </script>
 
