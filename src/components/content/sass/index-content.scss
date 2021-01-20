@@ -3,16 +3,19 @@
 .columns-main {
 	color: #ffffff !important;
 	font-weight: bold;
-	margin: 0;
+
+	padding: 0 !important;
 	height: auto;
+	width: auto;
 
 	.column-main {
-		background-image: url('https://i.imgur.com/KkBjS9g.jpg');
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: top;
-
 		.hero {
+			background-image: url('https://i.imgur.com/KkBjS9g.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			margin: 0 !important;
+
 			.hero-body {
 				margin-top: 130px;
 			}

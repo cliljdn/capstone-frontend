@@ -3,7 +3,7 @@
 		<index-nav />
 		<div class="is-overlay">
 			<div class="columns is-multiline  columns-main ">
-				<div class="column column-main is-hidden-mobile is-5">
+				<div class="column column-main is-5 is-hidden-mobile is-5">
 					<section class="hero  is-fullheight">
 						<div class="columns is-full has-text-centered">
 							<div class="column mt-5">
@@ -21,7 +21,7 @@
 						</div>
 					</section>
 				</div>
-				<div class="column column-card">
+				<div class="column is-7 column-card">
 					<router-view />
 				</div>
 			</div>

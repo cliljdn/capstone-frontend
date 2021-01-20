@@ -20,7 +20,7 @@
 										@focus="errors.email = ''"
 										@blur="validate('email')"
 										@input="validate('email')"
-										class="input"
+										class="input is-primary"
 										type="email"
 										placeholder="Email"
 										required
@@ -37,7 +37,7 @@
 								<p class="control has-icons-left">
 									<input
 										v-model="values.password"
-										class="input"
+										class="input is-primary"
 										type="password"
 										@focus="errors.password = ''"
 										@blur="validate('password')"
@@ -62,7 +62,7 @@
 										@focus="errors.confirm = ''"
 										@blur="validate('confirm')"
 										@input="validate('confirm')"
-										class="input"
+										class="input is-primary"
 										type="password"
 										placeholder="Confirm Password"
 										required
@@ -76,17 +76,17 @@
 
 							<span class="">Account Type:</span>
 							<div class="control has-icons-left mt-3">
-								<div class="select">
+								<div class="select is-primary">
 									<select
 										v-model="values.accountType"
 										@click="errors.accountType = ''"
 										@blur="validate('accountType')"
 										@change="validate('accountType')"
 									>
-										<option>SELECT</option>
-										<option>Individual</option>
-										<option>Driver</option>
-										<option>Establishment</option>
+										<option value="" selected>SELECT</option>
+										<option value="Individual">Individual</option>
+										<option value="Driver">Driver</option>
+										<option value="Establishment">Establishment</option>
 									</select>
 								</div>
 								<span class="icon is-medium is-left">
