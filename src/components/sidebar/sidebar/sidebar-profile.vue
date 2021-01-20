@@ -4,7 +4,7 @@
 			<main class="hero profile-sidebar is-pulled-right has-background-white">
 				<div class="main-container">
 					<div class="has-text-weight-bold mb-5 profile-header">
-						Users Profile
+						{{ authProfile.accType }} Profile
 						<span class="icon is-pulled-right close-sidebar">
 							<a @click="toggleSideBar"
 								><button class="delete" aria-label="close"></button
@@ -27,7 +27,7 @@
 							<span class="icon is-small is-left level">
 								<i class="fas fa-user"></i>
 								<span class="admin-email ml-2">
-									Calil Jaudian
+									{{ authProfile.firstname }} {{ authProfile.firstname }}
 								</span>
 							</span>
 
@@ -36,7 +36,7 @@
 							>
 								<i class="fas fa-envelope"></i>
 								<span class="ml-2 pr-10">
-									caliljaudiannn@gmail.com
+									{{ authProfile.email }}
 								</span>
 							</span>
 
@@ -73,7 +73,7 @@
 
 								<p class="ml-1 address-label">
 									<span>
-										Blk 7 Lot 16 Sta.Monica
+										{{ authProfile.house_lot_number }}
 									</span>
 								</p>
 							</span>
@@ -86,7 +86,7 @@
 
 								<p class="ml-1 barangay-label">
 									<span>
-										Santo Thomas
+										{{ authProfile.barangay }}
 									</span>
 								</p>
 							</span>
@@ -98,7 +98,7 @@
 								<span class="ml-2">City: </span>
 								<p class="ml-1 city-label">
 									<span>
-										Olongapo
+										{{ authProfile.city }}
 									</span>
 								</p>
 							</span>
@@ -110,7 +110,7 @@
 								<span class="ml-2">Firstname: </span>
 								<p class="ml-1 firstname-label">
 									<span>
-										Calil
+										{{ authProfile.firstname }}
 									</span>
 								</p>
 							</span>
@@ -122,7 +122,7 @@
 								<span class="ml-2">Lastname: </span>
 								<p class="ml-1 lastname-label">
 									<span>
-										Jaudian
+										{{ authProfile.lastname }}
 									</span>
 								</p>
 							</span>
@@ -134,7 +134,7 @@
 								<span class="ml-2">Middlename: </span>
 								<p class="ml-1 mname-label">
 									<span>
-										Christopher
+										{{ authProfile.middlename }}
 									</span>
 								</p>
 							</span>
@@ -146,7 +146,7 @@
 								<span class="ml-2">Birthday: </span>
 								<p class="ml-1 age-label">
 									<span>
-										1997-29-03
+										{{ authProfile.birthday }}
 									</span>
 								</p>
 							</span>
@@ -160,7 +160,7 @@
 								</span>
 								<p class="ml-1 contact-label">
 									<span>
-										09078382454
+										{{ authProfile.contactnumber }}
 									</span>
 								</p>
 							</span>

@@ -33,28 +33,25 @@ export default {
 				let isValid = await validateLogin.validate(this.body, this.yupOptions)
 
 				if (isValid) {
-					let res = await this.$axios.post(
-						`${state.BASE_URL}/accounts/login`,
-						this.body
-					)
+					let res = await this.$axios.post(`/accounts/login`, this.body)
 
 					if (res.status === 201) {
 						state.TOKEN_NAME = res.data.name
-						console.log(res.data)
+						console.log(res.data, 'haha')
 						//stores token on cookies
 						let auth = {
 							name: res.data.name,
 							token: res.data.token,
+							accType: res.data.account_type,
 						}
 
 						this.$store.dispatch('setCookie', auth)
 						this.$store.dispatch('isAuth', true)
 
-						this.$router.push({ name: 'TravelHistory' })
+						this.$router.push({ name: 'travelHistory' })
 					}
 				}
 			} catch (err) {
-				console.log(err.response)
 				if (err.response !== undefined) {
 					if (
 						err.response.data.message.includes('Password') ||

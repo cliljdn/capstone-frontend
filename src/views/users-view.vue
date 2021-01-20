@@ -12,7 +12,9 @@ import DashboardNav from '../components/Navbars/dashboard-nav'
 export default {
 	components: { 'dashboard-nav': DashboardNav },
 
-	mounted() {},
+	mounted() {
+		return this.$store.dispatch('getProfile')
+	},
 
 	methods: {},
 }

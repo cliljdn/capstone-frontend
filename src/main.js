@@ -11,10 +11,9 @@ import axios from 'axios'
 
 Vue.prototype.$axios = axios.create({
 	baseURL: 'http://192.168.1.11:6060/api/v1',
-	timeout: 1000,
 
 	headers: {
-		Authorization: store.getters.isLoggedIn,
+		Authorization: store.state.ACCESS_TOKEN,
 	},
 })
 

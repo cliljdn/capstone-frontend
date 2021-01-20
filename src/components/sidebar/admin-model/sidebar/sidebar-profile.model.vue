@@ -5,7 +5,12 @@ export default {
 	components: { 'edit-profile': edit },
 
 	data() {
-		return {}
+		return {
+			authProfile: {
+				...this.$store.getters.userProfile,
+				accType: this.$store.state.accType,
+			},
+		}
 	},
 
 	methods: {
@@ -28,9 +33,5 @@ export default {
 			this.$router.push({ name: 'usersLogin' })
 		},
 	},
-
-	// async mounted() {
-	// 	await this.$store.dispatch('getProfile')
-	// },
 }
 </script>

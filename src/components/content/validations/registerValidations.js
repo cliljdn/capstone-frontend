@@ -54,4 +54,29 @@ export default {
 			.nullable(true)
 			.required('account type is a required field'),
 	}),
+
+	validateLogin: yup.object().shape({
+		email: yup
+			.string()
+			.trim()
+			.matches(
+				/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+
+				errors.email
+			)
+			.strict(true)
+			.nullable(true)
+			.required(),
+
+		password: yup
+			.string()
+			.trim()
+			.matches(
+				/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+				errors.password
+			)
+			.strict(true)
+			.nullable(true)
+			.required(),
+	}),
 }

@@ -2,21 +2,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
-import axios from 'axios'
+// import axios from 'axios'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		//development
-		BASE_URL: 'http://192.168.1.11:6060/api/v1',
-
-		//production
-		// BASE_URL: 'http://scanolongapo-api.com/api/v1',
 		ACCESS_TOKEN: '',
 		TOKEN_NAME: '',
 		isAuth: false,
-		accType: 'Driver',
+		accType: '',
 
 		//dashboard
 		sideBarOpen: false,
@@ -44,6 +39,11 @@ export default new Vuex.Store({
 		},
 
 		userProfile: {},
+
+		individual: {
+			travelHistory: [],
+			estEntered: [],
+		},
 	},
 
 	getters: {
@@ -54,6 +54,10 @@ export default new Vuex.Store({
 				return Cookies.get(state.TOKEN_NAME)
 			}
 		},
+
+		userProfile: (state) => {
+			return state.userProfile
+		},
 	},
 
 	mutations: {
@@ -61,12 +65,8 @@ export default new Vuex.Store({
 			state.headers.Authorization = state.ACCESS_TOKEN
 		},
 
-		empCreateProfile(state) {
-			state.isEmpSuccess = !state.isEmpSuccess
-		},
-
 		getProfile(state, payload) {
-			state.adminProfile = { ...payload }
+			state.userProfile = { ...payload }
 		},
 
 		isAuth(state, auth) {
@@ -100,6 +100,7 @@ export default new Vuex.Store({
 		setCookie(state, payload) {
 			state.ACCESS_TOKEN = payload.token
 			state.TOKEN_NAME = payload.name
+			state.accType = payload.accType
 
 			Cookies.set(state.TOKEN_NAME, state.ACCESS_TOKEN, { expires: 1 })
 		},
@@ -118,41 +119,40 @@ export default new Vuex.Store({
 			Cookies.remove(state.TOKEN_NAME, { path: '/', domain: 'localhost' })
 			state.TOKEN_NAME = ''
 			state.ACCESS_TOKEN = ''
+			state.accType = ''
 		},
 	},
 
 	//dispatch
 	actions: {
+		isAuth({ commit }, auth) {
+			commit('isAuth', auth)
+		},
+
+		async getProfile({ commit }) {
+			try {
+				const userProfile = await this._vm.$axios.get(
+					'/list/account/login/profile'
+				)
+
+				commit('getProfile', userProfile.data)
+			} catch (error) {
+				console.log(error.response)
+			}
+		},
+
 		removeCookie({ commit }) {
 			commit('removeCookie')
 		},
 		setCookie({ commit }, payload) {
 			commit('setCookie', payload)
 		},
-
-		async getProfile({ commit }) {
-			try {
-				let res = await axios.get(`${this.state.BASE_URL}/list/admin/profile`, {
-					headers: {
-						Authorization: this.getters.isLoggedIn,
-					},
-				})
-
-				commit('getProfile', res.data)
-			} catch (error) {
-				console.log(error.response)
-			}
-		},
-
-		isAuth({ commit }, auth) {
-			commit('isAuth', auth)
-		},
 	},
 	modules: {},
 
 	plugins: [
 		createPersistedState({
-			paths: ['ACCESS_TOKEN', 'TOKEN_NAME', 'isAuth'],
+			paths: ['ACCESS_TOKEN', 'TOKEN_NAME', 'isAuth', 'accType'],
 		}),
 	],
 })

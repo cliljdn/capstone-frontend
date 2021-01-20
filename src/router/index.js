@@ -70,11 +70,14 @@ const routes = [
 					),
 				name: 'travelHistory',
 				beforeEnter(to, from, next) {
-					if (store.state.accType === 'Individual') {
+					if (store.state.accType === 'Individual' && store.state.isAuth) {
 						next()
-					} else if (store.state.accType === 'Driver') {
+					} else if (store.state.accType === 'Driver' && store.state.isAuth) {
 						next({ name: 'listPassengers' })
-					} else if (store.state.accType === 'Establishment') {
+					} else if (
+						store.state.accType === 'Establishment' &&
+						store.state.isAuth
+					) {
 						next({ name: 'listEntered' })
 					} else {
 						next({ name: 'usersLogin' })
@@ -91,7 +94,7 @@ const routes = [
 					),
 
 				beforeEnter(to, from, next) {
-					if (store.state.accType !== 'Individual') {
+					if (store.state.accType !== 'Individual' && !store.state.isAuth) {
 						next({ name: 'travelHistory' })
 					} else {
 						next()
@@ -109,7 +112,7 @@ const routes = [
 					),
 
 				beforeEnter(to, from, next) {
-					if (store.state.accType !== 'Driver') {
+					if (store.state.accType !== 'Driver' && !store.state.isAuth) {
 						next({ name: 'travelHistory' })
 					} else {
 						next()
@@ -126,7 +129,7 @@ const routes = [
 					),
 
 				beforeEnter(to, from, next) {
-					if (store.state.accType !== 'Driver') {
+					if (store.state.accType !== 'Driver' && !store.state.isAuth) {
 						next({ name: 'travelHistory' })
 					} else {
 						next()
@@ -143,7 +146,7 @@ const routes = [
 							),
 
 						beforeEnter(to, from, next) {
-							if (store.state.accType !== 'Driver') {
+							if (store.state.accType !== 'Driver' && !store.state.isAuth) {
 								next({ name: 'travelHistory' })
 							} else {
 								next()
@@ -160,7 +163,7 @@ const routes = [
 							),
 
 						beforeEnter(to, from, next) {
-							if (store.state.accType !== 'Driver') {
+							if (store.state.accType !== 'Driver' && !store.state.isAuth) {
 								next({ name: 'travelHistory' })
 							} else {
 								next()
@@ -180,7 +183,7 @@ const routes = [
 					),
 
 				beforeEnter(to, from, next) {
-					if (store.state.accType !== 'Establishment') {
+					if (store.state.accType !== 'Establishment' && !store.state.isAuth) {
 						next({ name: 'travelHistory' })
 					} else {
 						next()
@@ -206,7 +209,10 @@ const routes = [
 							),
 
 						beforeEnter(to, from, next) {
-							if (store.state.accType !== 'Establishment') {
+							if (
+								store.state.accType !== 'Establishment' &&
+								!store.state.isAuth
+							) {
 								next({ name: 'travelHistory' })
 							} else {
 								next()
@@ -221,6 +227,17 @@ const routes = [
 							import(
 								/* webpackChunkName: "components" */ '../components/content/web/est/inactive-entrypoints'
 							),
+
+						beforeEnter(to, from, next) {
+							if (
+								store.state.accType !== 'Establishment' &&
+								!store.state.isAuth
+							) {
+								next({ name: 'travelHistory' })
+							} else {
+								next()
+							}
+						},
 					},
 				],
 			},
