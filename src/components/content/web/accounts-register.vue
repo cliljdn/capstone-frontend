@@ -84,9 +84,9 @@
 										@change="validate('accountType')"
 									>
 										<option>SELECT</option>
-										<option>User</option>
+										<option>Individual</option>
 										<option>Driver</option>
-										<option>Employee</option>
+										<option>Establishment</option>
 									</select>
 								</div>
 								<span class="icon is-medium is-left">
