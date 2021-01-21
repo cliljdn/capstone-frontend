@@ -64,10 +64,6 @@ export default {
 			if (startDate === 'Select Date') {
 				startDate = ''
 			}
-			console.log(start)
-			if (!start) {
-				this.payloadErrors['all'] = 'Please Select Start Time'
-			}
 
 			if (splitStart[0] > splitEnd[0]) {
 				this.payloadErrors['all'] =
@@ -84,6 +80,19 @@ export default {
 
 			if ((startDate && start && end) || (start && end)) {
 				this.$store.dispatch('travelHistory', sendDispatch)
+			}
+		},
+
+		searchList(searchParams) {
+			const sendDispatch = {
+				search: searchParams,
+			}
+
+			this.$store.dispatch('travelHistory', sendDispatch)
+			if (this.$store.state.individual.travelHistory.length === 0) {
+				this.payloadErrors['all'] = 'No results'
+			} else {
+				this.payloadErrors['all'] = ''
 			}
 		},
 	},

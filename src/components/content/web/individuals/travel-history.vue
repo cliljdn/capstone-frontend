@@ -154,6 +154,7 @@
 									<p class="control has-icons-left">
 										<input
 											v-model="payload.search"
+											@input="searchList(payload.search)"
 											class="input  is-rounded is-primary"
 											type="text"
 											placeholder="Search"
