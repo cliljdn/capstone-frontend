@@ -4,7 +4,7 @@
 			<main class="hero profile-sidebar is-pulled-right has-background-white">
 				<div class="main-container">
 					<div class="has-text-weight-bold mb-5 profile-header">
-						{{ authProfile.accType }} Profile
+						Profile
 						<span class="icon is-pulled-right close-sidebar">
 							<a @click="toggleSideBar"
 								><button class="delete" aria-label="close"></button
@@ -27,7 +27,7 @@
 							<span class="icon is-small is-left level">
 								<i class="fas fa-user"></i>
 								<span class="admin-email ml-2">
-									{{ authProfile.firstname }} {{ authProfile.firstname }}
+									{{ authProfile.firstname }} {{ authProfile.lastname }}
 								</span>
 							</span>
 
@@ -66,6 +66,42 @@
 					</div>
 
 					<div class="container-info admin-personal-info">
+						<div class="firstname-container">
+							<span class="icon is-small firstname-icon is-left level">
+								<i class="fas fa-user"></i>
+								<span class="ml-2">Firstname: </span>
+								<p class="ml-1 firstname-label">
+									<span>
+										{{ authProfile.firstname }}
+									</span>
+								</p>
+							</span>
+						</div>
+
+						<div class="lastname-container">
+							<span class="icon is-small lastname-icon is-left level">
+								<i class="fas fa-user"></i>
+								<span class="ml-2">Lastname: </span>
+								<p class="ml-1 lastname-label">
+									<span>
+										{{ authProfile.lastname }}
+									</span>
+								</p>
+							</span>
+						</div>
+
+						<div class="mname-container">
+							<span class="icon is-small mname-icon is-left level">
+								<i class="fas fa-user"></i>
+								<span class="ml-2">Middlename: </span>
+								<p class="ml-1 mname-label">
+									<span>
+										{{ authProfile.middlename }}
+									</span>
+								</p>
+							</span>
+						</div>
+
 						<div class="address-container">
 							<span class="icon address-icon is-small  is-left level">
 								<i class="fas fa-home"></i>
@@ -99,42 +135,6 @@
 								<p class="ml-1 city-label">
 									<span>
 										{{ authProfile.city }}
-									</span>
-								</p>
-							</span>
-						</div>
-
-						<div class="firstname-container">
-							<span class="icon is-small firstname-icon is-left level">
-								<i class="fas fa-user"></i>
-								<span class="ml-2">Firstname: </span>
-								<p class="ml-1 firstname-label">
-									<span>
-										{{ authProfile.firstname }}
-									</span>
-								</p>
-							</span>
-						</div>
-
-						<div class="lastname-container">
-							<span class="icon is-small lastname-icon is-left level">
-								<i class="fas fa-user"></i>
-								<span class="ml-2">Lastname: </span>
-								<p class="ml-1 lastname-label">
-									<span>
-										{{ authProfile.lastname }}
-									</span>
-								</p>
-							</span>
-						</div>
-
-						<div class="mname-container">
-							<span class="icon is-small mname-icon is-left level">
-								<i class="fas fa-user"></i>
-								<span class="ml-2">Middlename: </span>
-								<p class="ml-1 mname-label">
-									<span>
-										{{ authProfile.middlename }}
 									</span>
 								</p>
 							</span>

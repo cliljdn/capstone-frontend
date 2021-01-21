@@ -69,7 +69,7 @@ const routes = [
 						/* webpackChunkName: "components" */ '../components/content/web/individuals/travel-history'
 					),
 				name: 'travelHistory',
-				beforeEnter(to, from, next) {
+				async beforeEnter(to, from, next) {
 					if (store.state.accType === 'Individual' && store.state.isAuth) {
 						next()
 					} else if (store.state.accType === 'Driver' && store.state.isAuth) {

@@ -4,6 +4,17 @@ import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
 // import axios from 'axios'
 
+const getDefaultState = () => {
+	return {
+		TOKEN_NAME: '',
+		ACCESS_TOKEN: '',
+		accType: '',
+		sideBarOpen: false,
+		editProfileOpen: false,
+		userProfile: {},
+	}
+}
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -12,6 +23,7 @@ export default new Vuex.Store({
 		TOKEN_NAME: '',
 		isAuth: false,
 		accType: '',
+		baseURL: 'http://192.168.1.11:6060/api/v1',
 
 		//dashboard
 		sideBarOpen: false,
@@ -34,10 +46,6 @@ export default new Vuex.Store({
 			entryPoints: false,
 		},
 
-		headers: {
-			Authorization: '',
-		},
-
 		userProfile: {},
 
 		individual: {
@@ -55,8 +63,8 @@ export default new Vuex.Store({
 			}
 		},
 
-		userProfile: (state) => {
-			return state.userProfile
+		getBaseURL: (state) => {
+			return state.baseURL
 		},
 	},
 
@@ -66,6 +74,7 @@ export default new Vuex.Store({
 		},
 
 		getProfile(state, payload) {
+			console.log(state.userProfile)
 			state.userProfile = { ...payload }
 		},
 
@@ -98,6 +107,7 @@ export default new Vuex.Store({
 		},
 
 		setCookie(state, payload) {
+			console.log(payload, 'setcookie')
 			state.ACCESS_TOKEN = payload.token
 			state.TOKEN_NAME = payload.name
 			state.accType = payload.accType
@@ -117,9 +127,15 @@ export default new Vuex.Store({
 
 		removeCookie(state) {
 			Cookies.remove(state.TOKEN_NAME, { path: '/', domain: 'localhost' })
-			state.TOKEN_NAME = ''
-			state.ACCESS_TOKEN = ''
-			state.accType = ''
+		},
+
+		resetState(state) {
+			Object.keys(state.userProfile).forEach((k) => delete state.userProfile[k])
+			const initial = getDefaultState()
+			Object.keys(initial).forEach((key) => {
+				state[key] = initial[key]
+			})
+			localStorage.removeItem('vuex')
 		},
 	},
 
@@ -129,21 +145,26 @@ export default new Vuex.Store({
 			commit('isAuth', auth)
 		},
 
-		async getProfile({ commit }) {
+		async getProfile({ commit, state }) {
 			try {
-				const userProfile = await this._vm.$axios.get(
-					'/list/account/login/profile'
+				const profile = await this._vm.$axios.get(
+					`${state.baseURL}/list/account/login/profile`,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+					}
 				)
 
-				commit('getProfile', userProfile.data)
+				commit('getProfile', profile.data)
 			} catch (error) {
-				console.log(error.response)
+				console.log(error.response, 'getProfile')
 			}
 		},
 
 		removeCookie({ commit }) {
 			commit('removeCookie')
+			commit('resetState')
 		},
+
 		setCookie({ commit }, payload) {
 			commit('setCookie', payload)
 		},
@@ -152,7 +173,7 @@ export default new Vuex.Store({
 
 	plugins: [
 		createPersistedState({
-			paths: ['ACCESS_TOKEN', 'TOKEN_NAME', 'isAuth', 'accType'],
+			paths: ['ACCESS_TOKEN', 'TOKEN_NAME', 'isAuth', 'accType', 'userProfile'],
 		}),
 	],
 })

@@ -102,7 +102,7 @@
 								</span>
 
 								<a class="ml-3">
-									Profile
+									{{ authUser.firstname }} {{ authUser.lastname }}
 								</a>
 							</div>
 						</div>

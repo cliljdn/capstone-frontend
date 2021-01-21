@@ -4,6 +4,13 @@ export default {
 	components: {
 		sidebar,
 	},
+
+	computed: {
+		authUser() {
+			return this.$store.state.userProfile
+		},
+	},
+
 	data() {
 		return {
 			isActive: false,
@@ -31,19 +38,11 @@ export default {
 			this.isEstActive = false
 		},
 
-		// adminInfo() {
-		// 	return this.$store.state.adminProfile
-		// },
-
 		activeEst() {
 			this.isUserActive = false
 			this.isDriverActive = false
 			this.isEstActive = true
 		},
 	},
-
-	// async mounted() {
-	// 	await this.$store.dispatch('getProfile')
-	// },
 }
 </script>

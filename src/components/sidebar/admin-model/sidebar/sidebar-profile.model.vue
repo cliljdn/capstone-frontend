@@ -4,13 +4,14 @@ import edit from '../../sidebar/edit-profile.vue'
 export default {
 	components: { 'edit-profile': edit },
 
+	computed: {
+		authProfile() {
+			return this.$store.state.userProfile
+		},
+	},
+
 	data() {
-		return {
-			authProfile: {
-				...this.$store.getters.userProfile,
-				accType: this.$store.state.accType,
-			},
-		}
+		return {}
 	},
 
 	methods: {
@@ -32,6 +33,10 @@ export default {
 			this.$store.dispatch('isAuth', false)
 			this.$router.push({ name: 'usersLogin' })
 		},
+	},
+
+	mounted() {
+		this.$store.dispatch('getProfile')
 	},
 }
 </script>

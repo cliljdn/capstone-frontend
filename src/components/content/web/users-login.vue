@@ -54,6 +54,7 @@
 						</div>
 						<button
 							@click="btnLogin"
+							type="submit"
 							class="button is-success is-medium is-center mt-3"
 						>
 							Login

@@ -1,7 +1,6 @@
 <script>
 // import store from '../../../../assets/cookies/cookies'
 import form from '../validations/registerValidations'
-import { mapActions } from 'vuex'
 
 export default {
 	data() {
@@ -21,10 +20,6 @@ export default {
 	},
 
 	methods: {
-		...mapActions({
-			setCookie: 'setCookie',
-		}),
-
 		btnLogin: async function() {
 			let { validateLogin } = form,
 				{ state } = this.$store
@@ -33,11 +28,14 @@ export default {
 				let isValid = await validateLogin.validate(this.body, this.yupOptions)
 
 				if (isValid) {
-					let res = await this.$axios.post(`/accounts/login`, this.body)
+					let res = await this.$axios.post(
+						`${state.baseURL}/accounts/login`,
+						this.body
+					)
 
 					if (res.status === 201) {
 						state.TOKEN_NAME = res.data.name
-						console.log(res.data, 'haha')
+						console.log(res.data)
 						//stores token on cookies
 						let auth = {
 							name: res.data.name,
@@ -92,6 +90,8 @@ export default {
 		},
 	},
 
-	mounted() {},
+	mounted() {
+		console.log(this.$store.state.ACCESS_TOKEN)
+	},
 }
 </script>
