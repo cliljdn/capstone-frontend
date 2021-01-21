@@ -31,7 +31,7 @@
 										<strong class="select-labels">Choose Date: </strong>
 										<div class="field mt-3">
 											<div class="control has-icons-left">
-												<div class="select is-primary">
+												<div class="select  is-rounded is-primary">
 													<select>
 														<option selected>Country</option>
 														<option>Select dropdown</option>
@@ -47,13 +47,16 @@
 
 									<div class="column is-one-quarter">
 										<span class="select-labels">Start Time: </span>
-										<div class="field mt-3">
+										<div class="field between-time mt-3">
 											<div class="control has-icons-left">
-												<div class="select is-primary">
+												<div class="select  is-rounded is-primary">
 													<select>
-														<option selected>Country</option>
-														<option>Select dropdown</option>
-														<option>With options</option>
+														<option value="" selected>Select Time</option>
+														<option
+															v-for="(time, index) in timeValue"
+															:key="index"
+															>{{ time }}:00</option
+														>
 													</select>
 												</div>
 												<div class="icon is-small is-left has-text-success">
@@ -67,11 +70,14 @@
 										<span class="select-labels">End Time: </span>
 										<div class="field mt-3">
 											<div class="control has-icons-left">
-												<div class="select is-primary">
+												<div class="select is-rounded is-primary">
 													<select>
-														<option selected>Country</option>
-														<option>Select dropdown</option>
-														<option>With options</option>
+														<option value="" selected>Select Time</option>
+														<option
+															v-for="(time, index) in timeValue"
+															:key="index"
+															>{{ time }}:00</option
+														>
 													</select>
 												</div>
 												<div class="icon is-small is-left has-text-success">
@@ -127,7 +133,7 @@
 								<div class="panel-block">
 									<p class="control has-icons-left">
 										<input
-											class="input is-primary"
+											class="input  is-rounded is-primary"
 											type="text"
 											placeholder="Search"
 										/>
@@ -154,65 +160,14 @@
 										</thead>
 
 										<tbody>
-											<tr @click="openModal">
-												<td>Alfreds Futterkiste 1</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
-											</tr>
-											<tr>
-												<td>Alfreds Futterkiste</td>
-												<td>Maria Anders</td>
-												<td>Germany</td>
+											<tr
+												@click="openModal"
+												v-for="log in userTravelHistory"
+												:key="log.batch"
+											>
+												<td>{{ log.destination }}</td>
+												<td>{{ log.time_boarded }}</td>
+												<td>{{ log.date_boarded }}</td>
 											</tr>
 										</tbody>
 									</table>

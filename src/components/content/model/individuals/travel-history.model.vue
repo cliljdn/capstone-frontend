@@ -6,10 +6,18 @@ export default {
 		'travel-history-modal': TravelHistoryModal,
 	},
 
+	computed: {
+		userTravelHistory() {
+			return this.$store.state.individual.travelHistory
+		},
+	},
+
 	data() {
 		return {
 			isTimeActive: true,
 			isDetailsActive: false,
+			timeValue: 24,
+			endTime: 25,
 		}
 	},
 	methods: {

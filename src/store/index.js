@@ -74,7 +74,6 @@ export default new Vuex.Store({
 		},
 
 		getProfile(state, payload) {
-			console.log(state.userProfile)
 			state.userProfile = { ...payload }
 		},
 
@@ -107,7 +106,6 @@ export default new Vuex.Store({
 		},
 
 		setCookie(state, payload) {
-			console.log(payload, 'setcookie')
 			state.ACCESS_TOKEN = payload.token
 			state.TOKEN_NAME = payload.name
 			state.accType = payload.accType
@@ -123,6 +121,10 @@ export default new Vuex.Store({
 		//hide and show the edit profile form
 		toggleEditForm(state) {
 			state.editProfileOpen = !state.editProfileOpen
+		},
+
+		travelHistory(state, payload) {
+			state.individual.travelHistory.push(...payload)
 		},
 
 		removeCookie(state) {
@@ -157,6 +159,21 @@ export default new Vuex.Store({
 				commit('getProfile', profile.data)
 			} catch (error) {
 				console.log(error.response, 'getProfile')
+			}
+		},
+
+		async travelHistory({ commit, state }) {
+			try {
+				const travelHistory = await this._vm.$axios.get(
+					`${state.baseURL}/accounts/list/travelhistory`,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+					}
+				)
+
+				commit('travelHistory', travelHistory.data)
+			} catch (err) {
+				console.log(err.response)
 			}
 		},
 
