@@ -10,6 +10,13 @@ export default {
 		userTravelHistory() {
 			return this.$store.state.individual.travelHistory
 		},
+
+		getTravelData() {
+			const { getTravelHistoryDate } = this.$store.getters
+			return getTravelHistoryDate.filter(
+				(value, index) => getTravelHistoryDate.indexOf(value) === index
+			)
+		},
 	},
 
 	data() {
@@ -17,7 +24,13 @@ export default {
 			isTimeActive: true,
 			isDetailsActive: false,
 			timeValue: 24,
-			endTime: 25,
+			payload: {
+				start: undefined,
+				end: undefined,
+				order: undefined,
+				startDate: undefined,
+				search: undefined,
+			},
 		}
 	},
 	methods: {
@@ -35,6 +48,10 @@ export default {
 			this.isTimeActive = false
 			this.isDetailsActive = true
 		},
+	},
+
+	mounted() {
+		this.$store.dispatch('travelHistory', this.payload)
 	},
 }
 </script>

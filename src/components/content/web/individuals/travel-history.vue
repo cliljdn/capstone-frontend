@@ -32,10 +32,13 @@
 										<div class="field mt-3">
 											<div class="control has-icons-left">
 												<div class="select  is-rounded is-primary">
-													<select>
+													<select v-model="payload.startDate">
 														<option selected>Country</option>
-														<option>Select dropdown</option>
-														<option>With options</option>
+														<option
+															v-for="(date, index) in getTravelData"
+															:key="index"
+															>{{ date }}</option
+														>
 													</select>
 												</div>
 												<div class="icon is-small is-left has-text-success">
@@ -50,7 +53,7 @@
 										<div class="field between-time mt-3">
 											<div class="control has-icons-left">
 												<div class="select  is-rounded is-primary">
-													<select>
+													<select v-model="payload.start">
 														<option value="" selected>Select Time</option>
 														<option
 															v-for="(time, index) in timeValue"
@@ -71,7 +74,7 @@
 										<div class="field mt-3">
 											<div class="control has-icons-left">
 												<div class="select is-rounded is-primary">
-													<select>
+													<select v-model="payload.end">
 														<option value="" selected>Select Time</option>
 														<option
 															v-for="(time, index) in timeValue"
@@ -100,7 +103,7 @@
 										<div class="field mt-3">
 											<div class="control has-icons-left">
 												<div class="select is-primary">
-													<select>
+													<select v-model="payload.order">
 														<option selected>SELECT</option>
 														<option>Select dropdown</option>
 														<option>With options</option>
@@ -117,6 +120,7 @@
 										<div class="panel-block">
 											<p class="control has-icons-left">
 												<input
+													v-model="payload.search"
 													class="input is-primary"
 													type="text"
 													placeholder="Search"
@@ -133,6 +137,7 @@
 								<div class="panel-block">
 									<p class="control has-icons-left">
 										<input
+											v-model="payload.search"
 											class="input  is-rounded is-primary"
 											type="text"
 											placeholder="Search"

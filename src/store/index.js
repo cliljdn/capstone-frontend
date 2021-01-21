@@ -15,6 +15,11 @@ const getDefaultState = () => {
 	}
 }
 
+const delUndefined = (payload) => {
+	Object.keys(payload).forEach(
+		(key) => payload[key] === undefined && delete payload[key]
+	)
+}
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -65,6 +70,12 @@ export default new Vuex.Store({
 
 		getBaseURL: (state) => {
 			return state.baseURL
+		},
+
+		getTravelHistoryDate: (state) => {
+			return state.individual.travelHistory.map(
+				({ date_boarded }) => date_boarded
+			)
 		},
 	},
 
@@ -162,18 +173,28 @@ export default new Vuex.Store({
 			}
 		},
 
-		async travelHistory({ commit, state }) {
+		async travelHistory({ commit, state }, payload) {
+			const qryParams = {
+				search: payload.search,
+				start: payload.start,
+				end: payload.end,
+				order: payload.order,
+				startDate: payload.startDate,
+			}
 			try {
+				delUndefined(qryParams)
+				console.log(qryParams)
 				const travelHistory = await this._vm.$axios.get(
 					`${state.baseURL}/accounts/list/travelhistory`,
 					{
 						headers: { Authorization: this.getters.isLoggedIn },
+						params: { qryParams },
 					}
 				)
 
 				commit('travelHistory', travelHistory.data)
 			} catch (err) {
-				console.log(err.response)
+				console.log(err)
 			}
 		},
 
