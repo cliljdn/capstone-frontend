@@ -33,7 +33,7 @@
 											<div class="control has-icons-left">
 												<div class="select  is-rounded is-primary">
 													<select v-model="payload.startDate">
-														<option selected>Country</option>
+														<option value="" selected>Select Date</option>
 														<option
 															v-for="(date, index) in getTravelData"
 															:key="index"
@@ -69,12 +69,22 @@
 										</div>
 									</div>
 
-									<div class="column  is-6">
+									<div class="column  is-one-quarter">
 										<span class="select-labels">End Time: </span>
 										<div class="field mt-3">
 											<div class="control has-icons-left">
 												<div class="select is-rounded is-primary">
-													<select v-model="payload.end">
+													<select
+														:disabled="!payload.start"
+														v-model="payload.end"
+														@change="
+															btwnTime(
+																payload.startDate,
+																payload.start,
+																payload.end
+															)
+														"
+													>
 														<option value="" selected>Select Time</option>
 														<option
 															v-for="(time, index) in timeValue"
@@ -88,6 +98,12 @@
 												</div>
 											</div>
 										</div>
+									</div>
+								</div>
+
+								<div class="columns" v-if="payloadErrors.all !== ''">
+									<div class="column is-flex is-justify-content-center">
+										<span class="has-text-danger">{{ payloadErrors.all }}</span>
 									</div>
 								</div>
 							</div>

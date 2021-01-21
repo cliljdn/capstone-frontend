@@ -4,6 +4,7 @@ import router from './router'
 import store from './store/index'
 import './assets/sass/main.scss'
 import 'jspdf-autotable'
+import axios from 'axios'
 Vue.config.productionTip = false
 
 // import axiosConfig from './plugins/axios.plugins'
@@ -14,7 +15,6 @@ Vue.config.productionTip = false
 Vue.prototype.$store = store
 
 // initialize global for axios
-import axios from 'axios'
 
 Vue.prototype.$axios = axios
 

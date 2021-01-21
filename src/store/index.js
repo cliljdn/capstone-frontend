@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
-// import axios from 'axios'
+import axios from 'axios'
 
 const getDefaultState = () => {
 	return {
@@ -15,11 +15,11 @@ const getDefaultState = () => {
 	}
 }
 
-const delUndefined = (payload) => {
-	Object.keys(payload).forEach(
-		(key) => payload[key] === undefined && delete payload[key]
-	)
-}
+// const delUndefined = (payload) => {
+// 	Object.keys(payload).forEach(
+// 		(key) => payload[key] === undefined && delete payload[key]
+// 	)
+// }
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -135,7 +135,7 @@ export default new Vuex.Store({
 		},
 
 		travelHistory(state, payload) {
-			state.individual.travelHistory.push(...payload)
+			state.individual.travelHistory = payload
 		},
 
 		removeCookie(state) {
@@ -174,27 +174,18 @@ export default new Vuex.Store({
 		},
 
 		async travelHistory({ commit, state }, payload) {
-			const qryParams = {
-				search: payload.search,
-				start: payload.start,
-				end: payload.end,
-				order: payload.order,
-				startDate: payload.startDate,
-			}
 			try {
-				delUndefined(qryParams)
-				console.log(qryParams)
-				const travelHistory = await this._vm.$axios.get(
+				const travelHistory = await axios.get(
 					`${state.baseURL}/accounts/list/travelhistory`,
 					{
 						headers: { Authorization: this.getters.isLoggedIn },
-						params: { qryParams },
+						params: { ...payload },
 					}
 				)
 
 				commit('travelHistory', travelHistory.data)
 			} catch (err) {
-				console.log(err)
+				err
 			}
 		},
 

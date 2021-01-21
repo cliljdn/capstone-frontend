@@ -8,7 +8,10 @@ export default {
 
 	computed: {
 		userTravelHistory() {
-			return this.$store.state.individual.travelHistory
+			const { travelHistory } = this.$store.state.individual
+			return travelHistory.filter(
+				(value, index) => travelHistory.indexOf(value) === index
+			)
 		},
 
 		getTravelData() {
@@ -25,11 +28,15 @@ export default {
 			isDetailsActive: false,
 			timeValue: 24,
 			payload: {
-				start: undefined,
-				end: undefined,
-				order: undefined,
-				startDate: undefined,
-				search: undefined,
+				start: '',
+				end: '',
+				order: '',
+				startDate: '',
+				search: '',
+			},
+
+			payloadErrors: {
+				all: '',
 			},
 		}
 	},
@@ -47,6 +54,37 @@ export default {
 		showDetailsSort() {
 			this.isTimeActive = false
 			this.isDetailsActive = true
+		},
+
+		btwnTime(startDate, start, end) {
+			const splitStart = start.split(':')
+			const splitEnd = end.split(':')
+
+			this.payloadErrors['all'] = ''
+			if (startDate === 'Select Date') {
+				startDate = ''
+			}
+			console.log(start)
+			if (!start) {
+				this.payloadErrors['all'] = 'Please Select Start Time'
+			}
+
+			if (splitStart[0] > splitEnd[0]) {
+				this.payloadErrors['all'] =
+					'The start time must be less than the end time'
+			} else {
+				this.payloadErrors['all'] = ''
+			}
+
+			const sendDispatch = {
+				startDate: startDate,
+				start: start,
+				end: end,
+			}
+
+			if ((startDate && start && end) || (start && end)) {
+				this.$store.dispatch('travelHistory', sendDispatch)
+			}
 		},
 	},
 
