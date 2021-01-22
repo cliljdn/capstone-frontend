@@ -42,20 +42,6 @@ export default {
 		}
 	},
 	methods: {
-		openModal() {
-			return this.$store.commit('modalTravel')
-		},
-
-		showBetweenTimeSort() {
-			this.isTimeActive = true
-			this.isDetailsActive = false
-		},
-
-		showDetailsSort() {
-			this.isTimeActive = false
-			this.isDetailsActive = true
-		},
-
 		btwnTime(startDate, start, end) {
 			const splitStart = start.split(':')
 			const splitEnd = end.split(':')
@@ -72,12 +58,6 @@ export default {
 				this.payloadErrors['all'] = ''
 			}
 
-			if (!end) {
-				this.$store.dispatch('travelHistory')
-				this.payload.start = ''
-				this.payload.startDate = ''
-			}
-
 			const sendDispatch = {
 				startDate: startDate,
 				start: start,
@@ -87,6 +67,28 @@ export default {
 			if ((startDate && start && end) || (start && end)) {
 				this.$store.dispatch('travelHistory', sendDispatch)
 			}
+		},
+
+		openModal() {
+			return this.$store.commit('modalTravel')
+		},
+
+		resetDropdowns() {
+			this.$store.dispatch('travelHistory')
+
+			Object.keys(this.payload).forEach((k) => {
+				this.payload[k] = ''
+			})
+		},
+
+		showBetweenTimeSort() {
+			this.isTimeActive = true
+			this.isDetailsActive = false
+		},
+
+		showDetailsSort() {
+			this.isTimeActive = false
+			this.isDetailsActive = true
 		},
 
 		searchList(searchParams) {
