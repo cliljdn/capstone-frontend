@@ -16,6 +16,12 @@
 			border: 1px solid hsl(171, 100%, 41%) !important;
 		}
 
+		.reset-button:hover {
+			color: $primary;
+			font-weight: bold;
+			background-color: hsl(171, 100%, 41%) !important;
+		}
+
 		.travel-log {
 			display: block !important;
 			overflow-y: auto !important;

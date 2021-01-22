@@ -15,11 +15,6 @@ const getDefaultState = () => {
 	}
 }
 
-// const delUndefined = (payload) => {
-// 	Object.keys(payload).forEach(
-// 		(key) => payload[key] === undefined && delete payload[key]
-// 	)
-// }
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -56,6 +51,7 @@ export default new Vuex.Store({
 		individual: {
 			travelHistory: [],
 			travelDates: [],
+			tvlCompanionInfo: [],
 			estEntered: [],
 		},
 	},
@@ -143,6 +139,10 @@ export default new Vuex.Store({
 			state.individual.travelHistory = payload
 		},
 
+		tvlCompanionInfo(state, payload) {
+			state.individual.tvlCompanionInfo = payload
+		},
+
 		removeCookie(state) {
 			Cookies.remove(state.TOKEN_NAME, { path: '/', domain: 'localhost' })
 		},
@@ -193,6 +193,19 @@ export default new Vuex.Store({
 			} catch (err) {
 				console.log(err.response)
 			}
+		},
+
+		async tvlCompanionInfo({ commit, state }, batchParams) {
+			const travelHistory = await axios.get(
+				`${state.baseURL}/accounts/list/travelhistory/${batchParams}`,
+				{
+					headers: { Authorization: this.getters.isLoggedIn },
+				}
+			)
+
+			console.log(travelHistory.data)
+
+			commit('tvlCompanionInfo', travelHistory.data)
 		},
 
 		removeCookie({ commit }) {

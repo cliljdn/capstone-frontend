@@ -149,14 +149,27 @@
 								</div>
 							</div>
 
-							<div class="columns">
+							<div class="columns ">
 								<div class="column is-flex is-justify-content-center">
-									<button
-										@click="resetDropdowns"
-										class="button reset-button is-ghost is-rounded"
-									>
-										Reset Dropdowns
-									</button>
+									<div class="columns">
+										<div class="column ">
+											<button
+												@click="resetDropdowns"
+												class="button reset-button is-ghost is-rounded"
+											>
+												Reset Dropdowns
+											</button>
+										</div>
+
+										<div class="column">
+											<button
+												@click="printInfo"
+												class="button  reset-button is-ghost is-rounded"
+											>
+												Print Travel History
+											</button>
+										</div>
+									</div>
 								</div>
 							</div>
 
@@ -195,7 +208,7 @@
 
 										<tbody>
 											<tr
-												@click="openModal"
+												@click="openModal(log.batch)"
 												v-for="log in userTravelHistory"
 												:key="log.batch"
 											>

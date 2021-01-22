@@ -1,6 +1,7 @@
 <script>
 import TravelHistoryModal from '../../modals/individuals/travel-history-modal'
-
+import jsPdf from 'jspdf'
+import 'jspdf-autotable'
 export default {
 	components: {
 		'travel-history-modal': TravelHistoryModal,
@@ -69,20 +70,9 @@ export default {
 			}
 		},
 
-		openModal() {
-			return this.$store.commit('modalTravel')
-		},
-
-		resetDropdowns() {
-			this.$store.dispatch('travelHistory')
-
-			Object.keys(this.payload).forEach((k) => {
-				this.payload[k] = ''
-			})
-
-			Object.keys(this.payloadErrors).forEach((k) => {
-				this.payloadErrors[k] = ''
-			})
+		openModal(batch) {
+			this.$store.dispatch('tvlCompanionInfo', batch)
+			this.$store.commit('modalTravel')
 		},
 
 		orderBy(order) {
@@ -108,8 +98,46 @@ export default {
 				default:
 					break
 			}
-			console.log(payload.order)
+
 			this.$store.dispatch('travelHistory', payload)
+		},
+
+		printInfo() {
+			const doc = new jsPdf()
+			const { travelHistory } = this.$store.state.individual
+			const printData = []
+			const { userProfile } = this.$store.state
+			travelHistory.forEach((el) => {
+				console.log(el)
+				printData.push({
+					destination: el.destination,
+					time_entered: el.time_boarded,
+					date_entered: el.date_boarded,
+				})
+			})
+			console.log(printData)
+			doc.autoTable({
+				columnStyles: { halign: 'center' }, // European countries centered
+				body: printData,
+				columns: [
+					{ header: 'Destination', dataKey: 'destination' },
+					{ header: 'Time Entered', dataKey: 'time_entered' },
+					{ header: 'Date Entered', dataKey: 'date_entered' },
+				],
+			})
+			doc.save(`${userProfile.firstname.toLowerCase()}-travelhistory.pdf`)
+		},
+
+		resetDropdowns() {
+			this.$store.dispatch('travelHistory')
+
+			Object.keys(this.payload).forEach((k) => {
+				this.payload[k] = ''
+			})
+
+			Object.keys(this.payloadErrors).forEach((k) => {
+				this.payloadErrors[k] = ''
+			})
 		},
 
 		showBetweenTimeSort() {

@@ -21,7 +21,7 @@
 							</span>
 
 							<span class="ml-1 user-info">
-								Sm City
+								{{ travelInfo ? travelInfo[0].destination : '' }}
 							</span>
 						</div>
 
@@ -34,7 +34,7 @@
 							</span>
 
 							<span class="ml-1 user-info">
-								1997-12-23
+								{{ travelInfo ? travelInfo[0].date_boarded : '' }}
 							</span>
 						</div>
 
@@ -47,7 +47,7 @@
 							</span>
 
 							<span class="ml-1 user-info">
-								11:50
+								{{ travelInfo ? travelInfo[0].time_boarded : '' }}
 							</span>
 						</div>
 					</div>
@@ -62,7 +62,8 @@
 							</span>
 
 							<span class="ml-1 user-info">
-								Carlito Manuel
+								{{ driverInfo ? driverInfo.firstname : '' }}
+								{{ driverInfo ? driverInfo.lastname : '' }}
 							</span>
 						</div>
 
@@ -75,7 +76,7 @@
 							</span>
 
 							<span class="ml-1 user-info">
-								TXUFF2
+								{{ vehicleInfo ? vehicleInfo.plate_number : '' }}
 							</span>
 						</div>
 					</div>
@@ -95,7 +96,7 @@
 
 				<div class="columns companion-information">
 					<div class="column">
-						<div class="box">
+						<div class="box" v-for="(info, index) in travelInfo" :key="index">
 							<article class="media">
 								<div class="media-left mt-4">
 									<figure class="image is-64x64">
@@ -116,7 +117,7 @@
 													</small>
 
 													<small class="ml-1 user-info">
-														Calil
+														{{ info.firstname }}
 													</small>
 												</p>
 												<p class="icon-text  level-left level-item">
@@ -128,34 +129,7 @@
 													</small>
 
 													<small class="ml-1 user-info">
-														Jaudian
-													</small>
-												</p>
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Middlename:
-													</small>
-
-													<small class="ml-1 user-info">
-														Christopher
-													</small>
-												</p>
-											</div>
-
-											<div class="column">
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-home"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Address:
-													</small>
-
-													<small class="ml-1 user-info">
-														Blk 7 Lot 16 Sta.monica Subdivision
+														{{ info.lastname }}
 													</small>
 												</p>
 
@@ -168,89 +142,7 @@
 													</small>
 
 													<small class="ml-1 user-info">
-														09078382454
-													</small>
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
-						</div>
-
-						<div class="box">
-							<article class="media">
-								<div class="media-left mt-4">
-									<figure class="image is-64x64">
-										<img src="https://i.imgur.com/bCOd9N0.jpg" alt="Image" />
-									</figure>
-								</div>
-								<div class="media-content level">
-									<div class="content">
-										<div class="columns">
-											<div class="column">
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Firstname:
-													</small>
-
-													<small class="ml-1 user-info">
-														Calil
-													</small>
-												</p>
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Lastname:
-													</small>
-
-													<small class="ml-1 user-info">
-														Jaudian
-													</small>
-												</p>
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Middlename:
-													</small>
-
-													<small class="ml-1 user-info">
-														Christopher
-													</small>
-												</p>
-											</div>
-
-											<div class="column">
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-home"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Address:
-													</small>
-
-													<small class="ml-1 user-info">
-														Blk 7 Lot 16 Sta.monica Subdivision
-													</small>
-												</p>
-
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-phone"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Contact #:
-													</small>
-
-													<small class="ml-1 user-info">
-														09078382454
+														{{ info.contact_number }}
 													</small>
 												</p>
 											</div>
@@ -270,13 +162,8 @@
 </template>
 
 <script>
-export default {
-	methods: {
-		closeModal() {
-			this.$store.commit('modalTravel')
-		},
-	},
-}
+import app from '../../model/individuals/tvl-modal.model'
+export default app
 </script>
 
 <style lang="scss">
