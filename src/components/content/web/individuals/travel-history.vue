@@ -112,11 +112,15 @@
 										<span class="select-labels">Sort List By: </span>
 										<div class="field mt-3">
 											<div class="control has-icons-left">
-												<div class="select is-primary">
-													<select v-model="payload.order">
-														<option selected>SELECT</option>
-														<option>Select dropdown</option>
-														<option>With options</option>
+												<div class="select is-rounded is-primary">
+													<select
+														@change="orderBy(payload.order)"
+														v-model="payload.order"
+													>
+														<option value="" selected>Select Details</option>
+														<option>Destination</option>
+														<option>Time Boarded</option>
+														<option>Date Boarded</option>
 													</select>
 												</div>
 												<div class="icon is-small is-left has-text-success">
@@ -131,7 +135,8 @@
 											<p class="control has-icons-left">
 												<input
 													v-model="payload.search"
-													class="input is-primary"
+													@input="searchList(payload.search)"
+													class="input is-rounded is-primary"
 													type="text"
 													placeholder="Search"
 												/>
@@ -148,7 +153,7 @@
 								<div class="column is-flex is-justify-content-center">
 									<button
 										@click="resetDropdowns"
-										class="button is-warning is-rounded"
+										class="button reset-button is-ghost is-rounded"
 									>
 										Reset Dropdowns
 									</button>
@@ -195,8 +200,8 @@
 												:key="log.batch"
 											>
 												<td>{{ log.destination }}</td>
-												<td>{{ log.time_boarded }}</td>
 												<td>{{ log.date_boarded }}</td>
+												<td>{{ log.time_boarded }}</td>
 											</tr>
 										</tbody>
 									</table>
@@ -207,7 +212,18 @@
 									>
 										<div class="column is-flex is-justify-content-center">
 											<span class="has-text-danger">{{
-												payloadErrors.search
+												payloadErrors.searchl
+											}}</span>
+										</div>
+									</div>
+
+									<div
+										class="columns columns-error"
+										v-if="payloadErrors.all !== ''"
+									>
+										<div class="column is-flex is-justify-content-center">
+											<span class="has-text-danger">{{
+												payloadErrors.all
 											}}</span>
 										</div>
 									</div>

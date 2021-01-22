@@ -79,6 +79,37 @@ export default {
 			Object.keys(this.payload).forEach((k) => {
 				this.payload[k] = ''
 			})
+
+			Object.keys(this.payloadErrors).forEach((k) => {
+				this.payloadErrors[k] = ''
+			})
+		},
+
+		orderBy(order) {
+			const payload = { order: '' }
+			// let dash = '-'
+			switch (order) {
+				case 'Destination':
+					payload.order = order.toLowerCase()
+					break
+				case 'Time Boarded':
+					payload.order = order
+						.split(' ')
+						.join('_')
+						.toLowerCase()
+					break
+
+				case 'Date Boarded':
+					payload.order = order
+						.split(' ')
+						.join('_')
+						.toLowerCase()
+					break
+				default:
+					break
+			}
+			console.log(payload.order)
+			this.$store.dispatch('travelHistory', payload)
 		},
 
 		showBetweenTimeSort() {

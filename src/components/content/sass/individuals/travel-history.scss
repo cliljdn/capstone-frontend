@@ -12,6 +12,10 @@
 			font-size: 22px;
 		}
 
+		.reset-button {
+			border: 1px solid hsl(171, 100%, 41%) !important;
+		}
+
 		.travel-log {
 			display: block !important;
 			overflow-y: auto !important;
@@ -25,6 +29,7 @@
 			.columns-error {
 				font-size: 30px;
 				margin: 100px !important;
+				font-weight: bold;
 			}
 
 			.table tbody tr:nth-child(even) {

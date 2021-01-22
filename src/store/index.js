@@ -191,7 +191,7 @@ export default new Vuex.Store({
 
 				commit('travelHistory', travelHistory.data.travelHistory)
 			} catch (err) {
-				return err
+				console.log(err.response)
 			}
 		},
 

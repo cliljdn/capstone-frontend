@@ -86,7 +86,7 @@ const routes = [
 			},
 
 			{
-				path: '/est',
+				path: 'est',
 				name: 'estEntered',
 				component: () =>
 					import(
