@@ -37,12 +37,12 @@ export default {
 
 			payloadErrors: {
 				all: '',
+				search: '',
 			},
 		}
 	},
 	methods: {
 		openModal() {
-			console.log(this.$store.state.dashboardModal.travelHistory)
 			return this.$store.commit('modalTravel')
 		},
 
@@ -65,11 +65,17 @@ export default {
 				startDate = ''
 			}
 
-			if (splitStart[0] > splitEnd[0]) {
+			if (parseInt(splitStart[0]) > parseInt(splitEnd[0])) {
 				this.payloadErrors['all'] =
 					'The start time must be less than the end time'
 			} else {
 				this.payloadErrors['all'] = ''
+			}
+
+			if (!end) {
+				this.$store.dispatch('travelHistory')
+				this.payload.start = ''
+				this.payload.startDate = ''
 			}
 
 			const sendDispatch = {
@@ -90,9 +96,9 @@ export default {
 
 			this.$store.dispatch('travelHistory', sendDispatch)
 			if (this.$store.state.individual.travelHistory.length === 0) {
-				this.payloadErrors['all'] = 'No results'
+				this.payloadErrors['search'] = 'No results'
 			} else {
-				this.payloadErrors['all'] = ''
+				this.payloadErrors['search'] = ''
 			}
 		},
 	},

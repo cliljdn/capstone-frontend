@@ -55,6 +55,7 @@ export default new Vuex.Store({
 
 		individual: {
 			travelHistory: [],
+			travelDates: [],
 			estEntered: [],
 		},
 	},
@@ -73,7 +74,7 @@ export default new Vuex.Store({
 		},
 
 		getTravelHistoryDate: (state) => {
-			return state.individual.travelHistory.map(
+			return state.individual.travelDates.map(
 				({ date_boarded }) => date_boarded
 			)
 		},
@@ -134,6 +135,10 @@ export default new Vuex.Store({
 			state.editProfileOpen = !state.editProfileOpen
 		},
 
+		travelDates(state, payload) {
+			state.individual.travelDates = payload
+		},
+
 		travelHistory(state, payload) {
 			state.individual.travelHistory = payload
 		},
@@ -166,7 +171,6 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
-
 				commit('getProfile', profile.data)
 			} catch (error) {
 				console.log(error.response, 'getProfile')
@@ -183,9 +187,11 @@ export default new Vuex.Store({
 					}
 				)
 
-				commit('travelHistory', travelHistory.data)
+				commit('travelDates', travelHistory.data.dates)
+
+				commit('travelHistory', travelHistory.data.travelHistory)
 			} catch (err) {
-				err
+				return err
 			}
 		},
 

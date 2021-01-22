@@ -15,10 +15,15 @@
 		.travel-log {
 			display: block !important;
 			overflow-y: auto !important;
+
 			height: 300px !important;
 
 			tbody tr td {
 				padding: 13px;
+			}
+
+			.columns-error {
+				margin: 100px !important;
 			}
 
 			.table tbody tr:nth-child(even) {

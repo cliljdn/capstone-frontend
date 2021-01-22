@@ -100,12 +100,6 @@
 										</div>
 									</div>
 								</div>
-
-								<div class="columns" v-if="payloadErrors.all !== ''">
-									<div class="column is-flex is-justify-content-center">
-										<span class="has-text-danger">{{ payloadErrors.all }}</span>
-									</div>
-								</div>
 							</div>
 
 							<div
@@ -149,6 +143,15 @@
 									</div>
 								</div>
 							</div>
+
+							<div class="columns">
+								<div class="column is-flex is-justify-content-center">
+									<button class="button is-warning is-rounded">
+										Reset Dropdowns
+									</button>
+								</div>
+							</div>
+
 							<div class="" v-if="isTimeActive">
 								<div class="panel-block">
 									<p class="control has-icons-left">
@@ -173,6 +176,17 @@
 										class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
 									>
 										<!-- Your table content -->
+										<div
+											class="columns columns-error"
+											v-if="payloadErrors.search !== ''"
+										>
+											<div class="column is-flex is-justify-content-center">
+												<span class="has-text-danger">{{
+													payloadErrors.search
+												}}</span>
+											</div>
+										</div>
+
 										<thead>
 											<tr>
 												<th>Destination</th>
