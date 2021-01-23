@@ -225,7 +225,7 @@
 									>
 										<div class="column is-flex is-justify-content-center">
 											<span class="has-text-danger">{{
-												payloadErrors.searchl
+												payloadErrors.search
 											}}</span>
 										</div>
 									</div>

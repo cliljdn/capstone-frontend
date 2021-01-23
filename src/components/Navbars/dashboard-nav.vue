@@ -42,7 +42,7 @@
 							<span class="icon has-text-success">
 								<i class="fas fa-bus"></i>
 							</span>
-							<router-link to="/accounts/auth/dashboard/">
+							<router-link to="/accounts/auth/dashboard">
 								<a class="ml-3">Travel History</a></router-link
 							>
 						</div>
@@ -51,7 +51,7 @@
 							<span class="icon has-text-success">
 								<i class="fas fa-university"></i>
 							</span>
-							<router-link to="est">
+							<router-link to="/est">
 								<a class="ml-3">Establishment Entered</a></router-link
 							>
 						</div>

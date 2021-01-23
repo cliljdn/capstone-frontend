@@ -25,10 +25,13 @@
 						<div class="field mt-3">
 							<div class="control has-icons-left">
 								<div class="select is-primary">
-									<select>
-										<option selected>Country</option>
-										<option>Select dropdown</option>
-										<option>With options</option>
+									<select v-model="sendDispatch.startDate">
+										<option value="" selected>Select Date</option>
+										<option
+											v-for="(date, index) in getEstEnteredDates"
+											:key="index"
+											>{{ date }}</option
+										>
 									</select>
 								</div>
 								<div class="icon is-small is-left has-text-success">
@@ -43,10 +46,11 @@
 						<div class="field mt-3">
 							<div class="control has-icons-left">
 								<div class="select is-primary">
-									<select>
-										<option selected>Country</option>
-										<option>Select dropdown</option>
-										<option>With options</option>
+									<select v-model="sendDispatch.start">
+										<option value="" selected>Select Time</option>
+										<option v-for="(time, index) in timeFormat" :key="index"
+											>{{ time }}:00</option
+										>
 									</select>
 								</div>
 								<div class="icon is-small is-left has-text-success">
@@ -61,10 +65,11 @@
 						<div class="field mt-3">
 							<div class="control has-icons-left">
 								<div class="select is-primary">
-									<select>
-										<option selected>Country</option>
-										<option>Select dropdown</option>
-										<option>With options</option>
+									<select v-model="sendDispatch.end">
+										<option value="" selected>Select Time</option>
+										<option v-for="(time, index) in timeFormat" :key="index"
+											>{{ time }}:00</option
+										>
 									</select>
 								</div>
 								<div class="icon is-small is-left has-text-success">
@@ -77,14 +82,15 @@
 
 				<div class="columns mt-1" v-if="byDetails">
 					<div class="column">
-						<strong class="select-labels">End Time: </strong>
+						<strong class="select-labels">Sort List by: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
 								<div class="select is-primary">
-									<select>
-										<option selected>Country</option>
-										<option>Select dropdown</option>
-										<option>With options</option>
+									<select v-model="sendDispatch.order">
+										<option value="" seleted>Select Info</option>
+										<option>Establishment Name</option>
+										<option>Date Entered</option>
+										<option>Time Entered</option>
 									</select>
 								</div>
 								<div class="icon is-small is-left has-text-success">
@@ -101,6 +107,8 @@
 						<div class="field mt-3">
 							<p class="control has-icons-left has-icons-right">
 								<input
+									v-model="sendDispatch.search"
+									@input="searchList(sendDispatch.search)"
 									class="input is-primary"
 									type="text"
 									placeholder="Search"
@@ -113,155 +121,14 @@
 					</div>
 				</div>
 
-				<div class="columns is-multiline">
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-success">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-success">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
+				<div class="columns-error" v-if="estErrors !== ''">
+					<div class="column is-flex is-justify-content-center">
+						<span class="has-text-danger">{{ estErrors }}</span>
 					</div>
+				</div>
 
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-success">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-success">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-success">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-success">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-4">
+				<div class="columns is-multiline" v-if="estErrors === ''">
+					<div class="column is-4" v-for="est in estEntered" :key="est.batch">
 						<div class="card" @click="openModal">
 							<div class="card-content">
 								<div class="media">
@@ -274,8 +141,8 @@
 										</figure>
 									</div>
 									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
+										<p class="title is-4 menu-label">{{ est.estList.name }}</p>
+										<p class="subtitle is-6">{{ est.estList.street }}</p>
 									</div>
 								</div>
 
@@ -289,7 +156,7 @@
 										</span>
 
 										<span class="ml-1 user-info">
-											2020-12-13
+											{{ est.date_entered }}
 										</span>
 									</p>
 
@@ -302,105 +169,7 @@
 										</span>
 
 										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-success">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-success">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
-										</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="column is-4">
-						<div class="card">
-							<div class="card-content">
-								<div class="media">
-									<div class="media-left">
-										<figure class="image is-48x48">
-											<img
-												src="https://bulma.io/images/placeholders/96x96.png"
-												alt="Placeholder image"
-											/>
-										</figure>
-									</div>
-									<div class="media-content">
-										<p class="title is-4 menu-label">John Smith</p>
-										<p class="subtitle is-6">@johnsmith</p>
-									</div>
-								</div>
-
-								<div class="content">
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-success">
-											<i class="fas fa-calendar"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Date Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											2020-12-13
-										</span>
-									</p>
-
-									<p class="icon-text  level-left level-item">
-										<span class="icon has-text-success">
-											<i class="fas fa-clock"></i>
-										</span>
-										<span class="ml-1 tvl-info">
-											Time Entered:
-										</span>
-
-										<span class="ml-1 user-info">
-											11:07
+											{{ est.time_entered }}
 										</span>
 									</p>
 								</div>
@@ -410,36 +179,134 @@
 				</div>
 
 				<div class="columns">
-					<div class="column">
+					<div class="column is-flex is-justify-content-center">
 						<nav
 							class="pagination is-centered"
 							role="navigation"
 							aria-label="pagination"
 						>
-							<a class="pagination-previous">Previous</a>
-							<a class="pagination-next">Next page</a>
-							<ul class="pagination-list">
+							<a
+								@click="decPage"
+								class="pagination-previous"
+								:disabled="currentPage === 0"
+								>Previous</a
+							>
+							<a
+								@click="incPage"
+								class="pagination-next"
+								:disabled="
+									currentPage === estEnteredPages[estEnteredPages.length - 1]
+								"
+								>Next page</a
+							>
+							<ul class="pagination-list" v-if="estEnteredPages.length > 5">
 								<li>
-									<a class="pagination-link" aria-label="Goto page 1">1</a>
+									<a
+										:class="{
+											'is-current':
+												currentPage ===
+												estEnteredPages.indexOf(estEnteredPages[0]),
+										}"
+										@click="gotoPage(estEnteredPages[0])"
+										class="pagination-link"
+										aria-label="Goto page 1"
+										>{{ estEnteredPages[0] }}</a
+									>
 								</li>
 								<li><span class="pagination-ellipsis">&hellip;</span></li>
 								<li>
-									<a class="pagination-link" aria-label="Goto page 45">45</a>
+									<a
+										:class="{
+											'is-current':
+												currentPage ===
+												estEnteredPages[
+													Math.round((estEnteredPages.length - 1) / 2) - 1
+												],
+										}"
+										@click="
+											gotoPage(
+												estEnteredPages[
+													Math.round((estEnteredPages.length - 1) / 2) - 1
+												]
+											)
+										"
+										class="pagination-link"
+										aria-label="Goto page 45"
+										>{{
+											estEnteredPages[
+												Math.round((estEnteredPages.length - 1) / 2) - 1
+											]
+										}}</a
+									>
 								</li>
+
 								<li>
 									<a
-										class="pagination-link is-current"
+										:class="{
+											'is-current':
+												currentPage ===
+												estEnteredPages[
+													Math.round((estEnteredPages.length - 1) / 2)
+												],
+										}"
+										@click="
+											gotoPage(
+												estEnteredPages[
+													Math.round((estEnteredPages.length - 1) / 2)
+												]
+											)
+										"
+										class="pagination-link"
 										aria-label="Page 46"
 										aria-current="page"
-										>46</a
+										>{{
+											estEnteredPages[
+												Math.round((estEnteredPages.length - 1) / 2)
+											]
+										}}</a
 									>
 								</li>
 								<li>
-									<a class="pagination-link" aria-label="Goto page 47">47</a>
+									<a
+										:class="{
+											'is-current':
+												currentPage ===
+												estEnteredPages[
+													Math.round((estEnteredPages.length - 1) / 2) + 1
+												],
+										}"
+										@click="
+											gotoPage(
+												estEnteredPages[
+													Math.round((estEnteredPages.length - 1) / 2) + 1
+												]
+											)
+										"
+										class="pagination-link"
+										aria-label="Goto page 45"
+										>{{
+											estEnteredPages[
+												Math.round((estEnteredPages.length - 1) / 2) + 1
+											]
+										}}</a
+									>
 								</li>
+
 								<li><span class="pagination-ellipsis">&hellip;</span></li>
 								<li>
-									<a class="pagination-link" aria-label="Goto page 86">86</a>
+									<a
+										:class="{
+											'is-current':
+												currentPage ===
+												estEnteredPages[estEnteredPages.length - 1],
+										}"
+										@click="
+											gotoPage(estEnteredPages[estEnteredPages.length - 1])
+										"
+										class="pagination-link"
+										aria-label="Goto page 86"
+										>{{ estEnteredPages[estEnteredPages.length - 1] }}</a
+									>
 								</li>
 							</ul>
 						</nav>

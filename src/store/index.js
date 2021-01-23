@@ -52,7 +52,9 @@ export default new Vuex.Store({
 			travelHistory: [],
 			travelDates: [],
 			tvlCompanionInfo: [],
+
 			estEntered: [],
+			estEnteredDates: [],
 		},
 	},
 
@@ -74,11 +76,26 @@ export default new Vuex.Store({
 				({ date_boarded }) => date_boarded
 			)
 		},
+
+		getEstEnteredDates: (state) => {
+			return state.individual.estEnteredDates.map(
+				({ date_entered }) => date_entered
+			)
+		},
 	},
 
 	mutations: {
 		assignToken(state) {
 			state.headers.Authorization = state.ACCESS_TOKEN
+		},
+
+		estEnteredDates(state, payload) {
+			state.individual.estEnteredDates = payload
+		},
+
+		estEntered(state, payload) {
+			state.individual.estEntered = payload
+			console.log(state.individual.estEntered.results.length)
 		},
 
 		getProfile(state, payload) {
@@ -163,6 +180,23 @@ export default new Vuex.Store({
 			commit('isAuth', auth)
 		},
 
+		async estEntered({ commit, state }, payload) {
+			try {
+				const estEntered = await axios.get(
+					`${state.baseURL}/accounts/list/est/entered`,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+						params: { ...payload },
+					}
+				)
+
+				commit('estEnteredDates', estEntered.data.dates)
+				commit('estEntered', estEntered.data.listEmployees)
+			} catch (err) {
+				console.log(err.response)
+			}
+		},
+
 		async getProfile({ commit, state }) {
 			try {
 				const profile = await this._vm.$axios.get(
@@ -173,7 +207,7 @@ export default new Vuex.Store({
 				)
 				commit('getProfile', profile.data)
 			} catch (error) {
-				console.log(error.response, 'getProfile')
+				return error.response
 			}
 		},
 
