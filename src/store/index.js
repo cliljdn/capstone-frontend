@@ -190,8 +190,8 @@ export default new Vuex.Store({
 					}
 				)
 
+				commit('estEntered', estEntered.data.listEmployees.results)
 				commit('estEnteredDates', estEntered.data.dates)
-				commit('estEntered', estEntered.data.listEmployees)
 			} catch (err) {
 				console.log(err.response)
 			}

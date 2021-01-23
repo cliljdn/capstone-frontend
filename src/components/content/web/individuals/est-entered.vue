@@ -121,13 +121,7 @@
 					</div>
 				</div>
 
-				<div class="columns-error" v-if="estErrors !== ''">
-					<div class="column is-flex is-justify-content-center">
-						<span class="has-text-danger">{{ estErrors }}</span>
-					</div>
-				</div>
-
-				<div class="columns is-multiline" v-if="estErrors === ''">
+				<div class="columns is-multiline" v-if="estEntered.length > 0">
 					<div class="column is-4" v-for="est in estEntered" :key="est.batch">
 						<div class="card" @click="openModal">
 							<div class="card-content">
@@ -175,6 +169,11 @@
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+				<div class="columns-error" v-if="estEntered.length === 0">
+					<div class="column is-flex is-justify-content-center">
+						<span class="has-text-danger">{{ estErrors }}</span>
 					</div>
 				</div>
 

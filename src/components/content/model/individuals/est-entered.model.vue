@@ -1,11 +1,12 @@
 <script>
 import EstEnteredModal from '../../modals/individuals/est-entered-modal'
+import _debounce from 'lodash.debounce'
 export default {
 	components: { 'est-entered-modal': EstEnteredModal },
 	computed: {
 		estEntered() {
 			const { estEntered } = this.$store.state.individual
-			return estEntered.results ? estEntered.results : ''
+			return estEntered ? estEntered : ''
 		},
 
 		estEnteredPages() {
@@ -24,6 +25,10 @@ export default {
 			return getEstEnteredDates.filter(
 				(value, index) => getEstEnteredDates.indexOf(value) === index
 			)
+		},
+
+		debouncedOnChange() {
+			return _debounce(this.searchList(this.sendDispatch.search), 700)
 		},
 	},
 	data() {
@@ -84,19 +89,18 @@ export default {
 			return this.$store.commit('modalEntered')
 		},
 
-		searchList(searchParams) {
+		searchList: _debounce(function(searchParams) {
 			this.currentPage = 0
 			const sendParams = { search: searchParams }
-			setTimeout(() => {
-				this.$store.dispatch('estEntered', sendParams)
-				if (this.$store.state.individual.estEntered.results.length < 1) {
-					this.estErrors = 'No results'
-					console.log(this.estErrors)
-				} else {
-					this.estErrors = ''
-				}
-			}, 1000)
-		},
+			this.$store.dispatch('estEntered', sendParams)
+			if (this.estEntered > 0) {
+				this.estErrors = ''
+			} else {
+				this.estErrors = 'No Results'
+			}
+
+			console.log(this.estErrors)
+		}, 300),
 
 		switchPanelDetails() {
 			this.byDetails = true

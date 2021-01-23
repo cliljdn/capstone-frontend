@@ -115,7 +115,7 @@ export default {
 					date_entered: el.date_boarded,
 				})
 			})
-			console.log(printData)
+
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
 				body: printData,
