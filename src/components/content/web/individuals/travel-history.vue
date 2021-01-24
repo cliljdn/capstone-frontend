@@ -135,7 +135,10 @@
 									<div class="field mt-3">
 										<div class="control has-icons-left">
 											<div class="select is-rounded is-primary">
-												<select>
+												<select
+													@change="filterDate(payload)"
+													v-model="payload.filterMonth"
+												>
 													<option value="" seleted>Select Month</option>
 													<option
 														v-for="(month, index) in monthValues"
@@ -156,7 +159,10 @@
 									<div class="field mt-3">
 										<div class="control has-icons-left">
 											<div class="select is-rounded is-primary">
-												<select>
+												<select
+													@change="filterDate(payload)"
+													v-model="payload.filterDay"
+												>
 													<option value="" seleted>Select Day</option>
 													<option
 														v-for="(day, index) in daysValue"
@@ -177,7 +183,10 @@
 									<div class="field mt-3">
 										<div class="control has-icons-left">
 											<div class="select is-rounded is-primary">
-												<select>
+												<select
+													@change="filterDate(payload)"
+													v-model="payload.filterYear"
+												>
 													<option value="" selected>Select Year</option>
 													<option
 														v-for="(year, index) in yearValue()"

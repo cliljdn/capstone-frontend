@@ -90,12 +90,20 @@ export default {
 		},
 
 		filterDate(obj) {
-			console.log(obj)
-			this.payload.filterMonth = !this.sendFilter.filterMonth
-				? ''
-				: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1
-			console.log(this.payload)
-			this.$store.dispatch('travelHistory', this.payload)
+			const payload = {
+				start: obj.start,
+				end: obj.end,
+				order: obj.order,
+				startDate: obj.startDate,
+				search: obj.search,
+				filterMonth: !obj.filterMonth
+					? ''
+					: this.monthValues.indexOf(obj.filterMonth) + 1,
+				filterDay: obj.filterDay,
+				filterYear: obj.filterYear,
+			}
+
+			this.$store.dispatch('travelHistory', payload)
 		},
 
 		openModal(batch) {
