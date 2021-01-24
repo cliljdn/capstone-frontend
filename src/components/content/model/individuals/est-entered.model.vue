@@ -10,10 +10,10 @@ export default {
 		},
 
 		estEnteredPages() {
-			const { estEntered } = this.$store.state.individual
+			const { estEnteredPages } = this.$store.state.individual
 			const pages = []
 
-			for (let i = 1; i < Math.ceil(estEntered.total / 6); i++) {
+			for (let i = 1; i < Math.ceil(estEnteredPages / 6); i++) {
 				pages.push(i)
 			}
 
@@ -36,12 +36,31 @@ export default {
 			betweenTime: true,
 			byDetails: false,
 			pages: [],
+			monthValues: [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December',
+			],
 
 			currentPage: 0,
 			isCurrentActive: false,
 			timeFormat: 24,
 
-			estErrors: '',
+			estErrors: {
+				all: '',
+				search: 'No Results Found',
+			},
+
+			filterData: '',
 
 			sendDispatch: {
 				page: '',
@@ -62,6 +81,35 @@ export default {
 				this.currentPage--
 				this.sendDispatch.page = this.currentPage
 				this.$store.dispatch('estEntered', this.sendDispatch)
+			}
+		},
+		filterDate(startDate) {
+			this.$store.dispatch('estEntered', { startDate: startDate })
+		},
+
+		filterList(dateParams) {
+			console.log(parseInt(dateParams) + 1)
+		},
+
+		findBtwnTime(startDate, start, end) {
+			const splitStart = start.split(':')
+			const splitEnd = end.split(':')
+
+			this.estErrors.all = ''
+			if (parseInt(splitStart[0]) > parseInt(splitEnd[0])) {
+				this.estErrors.all = 'The start time must be less than the end time'
+			} else {
+				this.estErrors.all = ''
+			}
+
+			const sendDispatch = {
+				startDate: startDate,
+				start: start,
+				end: end,
+			}
+
+			if ((startDate && start && end) || (start && end)) {
+				this.$store.dispatch('estEntered', sendDispatch)
 			}
 		},
 
@@ -89,17 +137,29 @@ export default {
 			return this.$store.commit('modalEntered')
 		},
 
+		resetDispatch(obj) {
+			if (!obj) {
+				Object.keys(this.sendDispatch).forEach((k) => {
+					this.sendDispatch[k] = ''
+				})
+
+				this.estErrors.all = ''
+			} else {
+				Object.keys(obj).forEach((k) => {
+					obj[k] = ''
+				})
+				this.estErrors.all = ''
+			}
+			this.$store.dispatch('estEntered', this.sendDispatch)
+		},
+
 		searchList: _debounce(function(searchParams) {
 			this.currentPage = 0
 			const sendParams = { search: searchParams }
 			this.$store.dispatch('estEntered', sendParams)
 			if (this.estEntered > 0) {
-				this.estErrors = ''
-			} else {
-				this.estErrors = 'No Results'
+				this.estErrors.search = ''
 			}
-
-			console.log(this.estErrors)
 		}, 300),
 
 		switchPanelDetails() {
@@ -111,9 +171,20 @@ export default {
 			this.byDetails = false
 			this.betweenTime = true
 		},
+
+		yearValue() {
+			let currentYear = new Date().getFullYear(),
+				years = [],
+				startYear = 1960
+			while (startYear <= currentYear) {
+				years.push(startYear++)
+			}
+			return years
+		},
 	},
 
 	mounted() {
+		this.yearValue()
 		this.$store.dispatch('estEntered', this.sendDispatch)
 	},
 }

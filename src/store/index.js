@@ -55,6 +55,7 @@ export default new Vuex.Store({
 
 			estEntered: [],
 			estEnteredDates: [],
+			estEnteredPages: 0,
 		},
 	},
 
@@ -95,7 +96,10 @@ export default new Vuex.Store({
 
 		estEntered(state, payload) {
 			state.individual.estEntered = payload
-			console.log(state.individual.estEntered.results.length)
+		},
+
+		estEnteredPages(state, payload) {
+			state.individual.estEnteredPages = payload
 		},
 
 		getProfile(state, payload) {
@@ -190,10 +194,11 @@ export default new Vuex.Store({
 					}
 				)
 
+				commit('estEnteredPages', estEntered.data.listEmployees.total)
 				commit('estEntered', estEntered.data.listEmployees.results)
 				commit('estEnteredDates', estEntered.data.dates)
 			} catch (err) {
-				console.log(err.response)
+				console.log(err)
 			}
 		},
 

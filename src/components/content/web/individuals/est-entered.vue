@@ -20,12 +20,15 @@
 				</p>
 
 				<div class="columns mt-1" v-if="betweenTime">
-					<div class="column is-one-quarter">
+					<div class="column is-3">
 						<strong class="select-labels">Choose Date: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
-								<div class="select is-primary">
-									<select v-model="sendDispatch.startDate">
+								<div class="select is-rounded is-primary">
+									<select
+										@change="filterDate(sendDispatch.startDate)"
+										v-model="sendDispatch.startDate"
+									>
 										<option value="" selected>Select Date</option>
 										<option
 											v-for="(date, index) in getEstEnteredDates"
@@ -45,7 +48,7 @@
 						<strong class="select-labels">Start Time: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
-								<div class="select is-primary">
+								<div class="select is-rounded is-primary">
 									<select v-model="sendDispatch.start">
 										<option value="" selected>Select Time</option>
 										<option v-for="(time, index) in timeFormat" :key="index"
@@ -60,12 +63,21 @@
 						</div>
 					</div>
 
-					<div class="column is-6">
+					<div class="column is-one-quarter">
 						<strong class="select-labels">End Time: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
-								<div class="select is-primary">
-									<select v-model="sendDispatch.end">
+								<div class="select  is-rounded is-primary">
+									<select
+										@change="
+											findBtwnTime(
+												sendDispatch.startDate,
+												sendDispatch.start,
+												sendDispatch.end
+											)
+										"
+										v-model="sendDispatch.end"
+									>
 										<option value="" selected>Select Time</option>
 										<option v-for="(time, index) in timeFormat" :key="index"
 											>{{ time }}:00</option
@@ -81,11 +93,11 @@
 				</div>
 
 				<div class="columns mt-1" v-if="byDetails">
-					<div class="column">
+					<div class="column is-one-quarter">
 						<strong class="select-labels">Sort List by: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
-								<div class="select is-primary">
+								<div class="select is-rounded is-primary">
 									<select v-model="sendDispatch.order">
 										<option value="" seleted>Select Info</option>
 										<option>Establishment Name</option>
@@ -103,13 +115,88 @@
 
 				<div class="columns">
 					<div class="column">
+						<strong class="select-labels">Filter by: </strong>
+						<div class="field mt-3">
+							<div class="control has-icons-left">
+								<div class="select is-rounded is-primary">
+									<select
+										@change="filterList(monthValues.indexOf(filterData))"
+										v-model="filterData"
+									>
+										<option value="" seleted>Select Month</option>
+										<option
+											v-for="(month, index) in monthValues"
+											:key="index"
+											>{{ month }}</option
+										>
+									</select>
+								</div>
+								<div class="icon is-small is-left has-text-success">
+									<i class="fas fa-globe"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="column">
+						<strong class="select-labels">Filter by: </strong>
+						<div class="field mt-3">
+							<div class="control has-icons-left">
+								<div class="select is-rounded is-primary">
+									<select
+										@change="filterList(monthValues.indexOf(filterData))"
+										v-model="filterData"
+									>
+										<option value="" seleted>Select Month</option>
+										<option
+											v-for="(month, index) in monthValues"
+											:key="index"
+											>{{ month }}</option
+										>
+									</select>
+								</div>
+								<div class="icon is-small is-left has-text-success">
+									<i class="fas fa-globe"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="column">
+						<strong class="select-labels">Filter by: </strong>
+						<div class="field mt-3">
+							<div class="control has-icons-left">
+								<div class="select is-rounded is-primary">
+									<select>
+										<option value="" seleted>Select Month</option>
+										<option v-for="(year, index) in yearValue()" :key="index">{{
+											year
+										}}</option>
+									</select>
+								</div>
+								<div class="icon is-small is-left has-text-success">
+									<i class="fas fa-globe"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="columns-error-all" v-if="estEntered.all !== ''">
+					<div class="column is-flex is-justify-content-center">
+						<span class="has-text-danger">{{ estErrors.all }}</span>
+					</div>
+				</div>
+
+				<div class="columns">
+					<div class="column">
 						<strong class="select-labels">Search: </strong>
 						<div class="field mt-3">
 							<p class="control has-icons-left has-icons-right">
 								<input
 									v-model="sendDispatch.search"
 									@input="searchList(sendDispatch.search)"
-									class="input is-primary"
+									class="input is-rounded is-primary"
 									type="text"
 									placeholder="Search"
 								/>
@@ -117,6 +204,29 @@
 									<i class="fas fa-search"></i>
 								</span>
 							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="columns">
+					<div class="column is-flex is-justify-content-center">
+						<div class="columns">
+							<div class="column ">
+								<button
+									@click="resetDispatch(sendDispatch)"
+									class="button is-rounded column-buttons is-ghost is-rounded"
+								>
+									Refresh Dropdowns
+								</button>
+							</div>
+
+							<div class="column">
+								<button
+									class="button is-rounded  column-buttons is-ghost is-rounded"
+								>
+									Print Travel History
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -171,9 +281,10 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="columns-error" v-if="estEntered.length === 0">
 					<div class="column is-flex is-justify-content-center">
-						<span class="has-text-danger">{{ estErrors }}</span>
+						<span class="has-text-danger">{{ estErrors.search }}</span>
 					</div>
 				</div>
 
