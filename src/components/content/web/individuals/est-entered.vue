@@ -246,10 +246,11 @@
 
 							<div class="column">
 								<button
+									@click="printEstList"
 									class="button is-rounded  column-buttons is-ghost is-rounded"
 									:disabled="estEntered.length === 0"
 								>
-									Print Travel History
+									Print Establishment History
 								</button>
 							</div>
 						</div>
@@ -258,7 +259,7 @@
 
 				<div class="columns is-multiline" v-if="estEntered.length > 0">
 					<div class="column is-4" v-for="est in estEntered" :key="est.batch">
-						<div class="card" @click="openModal">
+						<div class="card" @click="openModal(est.batch)">
 							<div class="card-content">
 								<div class="media">
 									<div class="media-left">

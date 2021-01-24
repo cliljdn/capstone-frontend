@@ -34,7 +34,26 @@ export default {
 				order: '',
 				startDate: '',
 				search: '',
+				filterMonth: '',
+				filterDay: '',
+				filterYear: '',
 			},
+
+			monthValues: [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December',
+			],
+			daysValue: 31,
 
 			payloadErrors: {
 				all: '',
@@ -68,6 +87,15 @@ export default {
 			if ((startDate && start && end) || (start && end)) {
 				this.$store.dispatch('travelHistory', sendDispatch)
 			}
+		},
+
+		filterDate(obj) {
+			console.log(obj)
+			this.payload.filterMonth = !this.sendFilter.filterMonth
+				? ''
+				: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1
+			console.log(this.payload)
+			this.$store.dispatch('travelHistory', this.payload)
 		},
 
 		openModal(batch) {
@@ -108,11 +136,10 @@ export default {
 			const printData = []
 			const { userProfile } = this.$store.state
 			travelHistory.forEach((el) => {
-				console.log(el)
 				printData.push({
 					destination: el.destination,
-					time_entered: el.time_boarded,
-					date_entered: el.date_boarded,
+					time_boarded: el.time_boarded,
+					date_boarded: el.date_boarded,
 				})
 			})
 
@@ -121,8 +148,8 @@ export default {
 				body: printData,
 				columns: [
 					{ header: 'Destination', dataKey: 'destination' },
-					{ header: 'Time Entered', dataKey: 'time_entered' },
-					{ header: 'Date Entered', dataKey: 'date_entered' },
+					{ header: 'Time Boarded', dataKey: 'time_boarded' },
+					{ header: 'Date Boarded', dataKey: 'date_boarded' },
 				],
 			})
 			doc.save(`${userProfile.firstname.toLowerCase()}-travelhistory.pdf`)
@@ -162,9 +189,20 @@ export default {
 				this.payloadErrors['search'] = ''
 			}
 		},
+
+		yearValue() {
+			let currentYear = new Date().getFullYear(),
+				years = [],
+				startYear = 1960
+			while (startYear <= currentYear) {
+				years.push(startYear++)
+			}
+			return years
+		},
 	},
 
 	mounted() {
+		this.yearValue()
 		this.$store.dispatch('travelHistory', this.payload)
 	},
 }

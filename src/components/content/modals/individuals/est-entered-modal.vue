@@ -11,7 +11,7 @@
 			</header>
 			<section class="modal-card-body">
 				<div class="columns travel-information level">
-					<div class="column is-5">
+					<div class="column is-12">
 						<div class="icon-text mb-1 level-left level-item">
 							<span class="icon has-text-info">
 								<i class="fas fa-building"></i>
@@ -21,7 +21,7 @@
 							</strong>
 
 							<span class="ml-1 user-info">
-								Sm City
+								{{ estInfo ? estInfo.name : '' }}
 							</span>
 						</div>
 
@@ -34,7 +34,7 @@
 							</strong>
 
 							<span class="ml-1 user-info">
-								1997-12-23
+								{{ companions ? companions[0].date_entered : '' }}
 							</span>
 						</div>
 
@@ -47,26 +47,25 @@
 							</strong>
 
 							<span class="ml-1 user-info">
-								11:50
+								{{ companions ? companions[0].time_entered : '' }}
 							</span>
 						</div>
-					</div>
 
-					<div class="column">
 						<div class="icon-text mb-1 level-left level-item">
 							<span class="icon has-text-info">
 								<i class="fas fa-user-secret"></i>
 							</span>
 							<strong class="ml-1 tvl-info">
-								Employee Name:
+								Present Est Employee:
 							</strong>
 
 							<span class="ml-1 user-info">
-								Carlito Manuel
+								{{ empInfo ? empInfo.firstname : '' }}
+								{{ empInfo ? empInfo.lastname : '' }}
 							</span>
 						</div>
 
-						<div class="icon-text mb-1 level-left level-item">
+						<div class="icon-text mb-1">
 							<span class="icon has-text-info">
 								<i class="fas fa-map-pin"></i>
 							</span>
@@ -75,7 +74,7 @@
 							</strong>
 
 							<span class="ml-1 user-info">
-								TXUFF2
+								{{ estInfo ? estInfo.street : '' }}
 							</span>
 						</div>
 					</div>
@@ -95,7 +94,7 @@
 
 				<div class="columns companion-information">
 					<div class="column">
-						<div class="box">
+						<div class="box" v-for="(comp, index) in companions" :key="index">
 							<article class="media">
 								<div class="media-left mt-4">
 									<figure class="image is-64x64">
@@ -116,7 +115,7 @@
 													</small>
 
 													<small class="ml-1 user-info">
-														Calil
+														{{ comp.firstname }}
 													</small>
 												</p>
 												<p class="icon-text  level-left level-item">
@@ -128,34 +127,7 @@
 													</small>
 
 													<small class="ml-1 user-info">
-														Jaudian
-													</small>
-												</p>
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Middlename:
-													</small>
-
-													<small class="ml-1 user-info">
-														Christopher
-													</small>
-												</p>
-											</div>
-
-											<div class="column">
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-home"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Address:
-													</small>
-
-													<small class="ml-1 user-info">
-														Blk 7 Lot 16 Sta.monica Subdivision
+														{{ comp.lastname }}
 													</small>
 												</p>
 
@@ -168,89 +140,11 @@
 													</small>
 
 													<small class="ml-1 user-info">
-														09078382454
-													</small>
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
-						</div>
-
-						<div class="box">
-							<article class="media">
-								<div class="media-left mt-4">
-									<figure class="image is-64x64">
-										<img src="https://i.imgur.com/bCOd9N0.jpg" alt="Image" />
-									</figure>
-								</div>
-								<div class="media-content level">
-									<div class="content">
-										<div class="columns">
-											<div class="column">
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Firstname:
-													</small>
-
-													<small class="ml-1 user-info">
-														Calil
-													</small>
-												</p>
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Lastname:
-													</small>
-
-													<small class="ml-1 user-info">
-														Jaudian
-													</small>
-												</p>
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Middlename:
-													</small>
-
-													<small class="ml-1 user-info">
-														Christopher
-													</small>
-												</p>
-											</div>
-
-											<div class="column">
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-home"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Address:
-													</small>
-
-													<small class="ml-1 user-info">
-														Blk 7 Lot 16 Sta.monica Subdivision
-													</small>
-												</p>
-
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-phone"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Contact #:
-													</small>
-
-													<small class="ml-1 user-info">
-														09078382454
+														{{
+															!comp.contact_number
+																? 'No Contact Info'
+																: comp.contact_number
+														}}
 													</small>
 												</p>
 											</div>
@@ -270,13 +164,8 @@
 </template>
 
 <script>
-export default {
-	methods: {
-		closeModal() {
-			return this.$store.commit('modalEntered')
-		},
-	},
-}
+import app from '../../model/individuals/estentered-modal.model'
+export default app
 </script>
 
 <style lang="scss">

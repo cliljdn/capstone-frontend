@@ -1,6 +1,8 @@
 <script>
 import EstEnteredModal from '../../modals/individuals/est-entered-modal'
 import _debounce from 'lodash.debounce'
+import jsPdf from 'jspdf'
+import 'jspdf-autotable'
 export default {
 	components: { 'est-entered-modal': EstEnteredModal },
 	computed: {
@@ -126,6 +128,9 @@ export default {
 		// month day year
 		filterList(filterYear, filterMonth, filterDay) {
 			const payload = {
+				startDate: this.sendDispatch.startDate,
+				start: this.sendDispatch.start,
+				end: this.sendDispatch.end,
 				order: this.changeSelectValue(this.sendDispatch.order),
 				filterYear: filterYear,
 				filterMonth: filterMonth,
@@ -149,6 +154,12 @@ export default {
 				startDate: startDate,
 				start: start,
 				end: end,
+				filterYear: this.sendFilter.filterYear,
+				filterMonth: !this.sendFilter.filterMonth
+					? ''
+					: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
+				filterDay: this.sendFilter.filterDay,
+				order: this.changeSelectValue(this.sendDispatch.order),
 			}
 
 			if ((startDate && start && end) || (start && end)) {
@@ -193,8 +204,35 @@ export default {
 			}
 		},
 
-		openModal() {
+		openModal(batch) {
+			this.$store.dispatch('estEnteredCompanions', batch)
 			return this.$store.commit('modalEntered')
+		},
+
+		printEstList() {
+			const doc = new jsPdf()
+			const { userProfile } = this.$store.state
+			const printList = []
+			this.estEntered.forEach((el) => {
+				printList.push({
+					time_entered: el.time_entered,
+					date_entered: el.date_entered,
+					...el.estList,
+				})
+			})
+
+			doc.autoTable({
+				columnStyles: { halign: 'center' }, // European countries centered
+				body: printList,
+				columns: [
+					{ header: 'Establishment Name', dataKey: 'name' },
+					{ header: 'Street Address', dataKey: 'street' },
+					{ header: 'Time Entered', dataKey: 'time_entered' },
+					{ header: 'Date Entered', dataKey: 'date_entered' },
+				],
+			})
+
+			doc.save(`${userProfile.firstname.toLowerCase()}-estentered.pdf`)
 		},
 
 		resetDispatch(obj) {
@@ -234,6 +272,9 @@ export default {
 
 		sortList(order) {
 			const payload = {
+				startDate: this.sendDispatch.startDate,
+				start: this.sendDispatch.start,
+				end: this.sendDispatch.end,
 				order: '',
 				filterYear: this.sendFilter.filterYear,
 				filterMonth: !this.sendFilter.filterMonth
@@ -241,6 +282,7 @@ export default {
 					: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
 				filterDay: this.sendFilter.filterDay,
 			}
+
 			payload.order = this.changeSelectValue(order)
 			this.$store.dispatch('estEntered', payload)
 		},

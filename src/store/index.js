@@ -56,6 +56,7 @@ export default new Vuex.Store({
 			estEntered: [],
 			estEnteredDates: [],
 			estEnteredPages: 0,
+			estEnteredCompanions: [],
 		},
 	},
 
@@ -96,6 +97,10 @@ export default new Vuex.Store({
 
 		estEntered(state, payload) {
 			state.individual.estEntered = payload
+		},
+
+		estEnteredCompanions(state, payload) {
+			state.individual.estEnteredCompanions = payload
 		},
 
 		estEnteredPages(state, payload) {
@@ -196,6 +201,21 @@ export default new Vuex.Store({
 				commit('estEnteredPages', estEntered.data.listEmployees.total)
 				commit('estEntered', estEntered.data.listEmployees.results)
 				commit('estEnteredDates', estEntered.data.dates)
+			} catch (err) {
+				console.log(err.reponse)
+			}
+		},
+
+		async estEnteredCompanions({ commit, state }, batchParams) {
+			try {
+				const companions = await axios.get(
+					`${state.baseURL}/accounts/list/est/entered/${batchParams}`,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+					}
+				)
+				console.log(companions.data)
+				commit('estEnteredCompanions', companions.data)
 			} catch (err) {
 				console.log(err.reponse)
 			}

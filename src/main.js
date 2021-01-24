@@ -6,9 +6,11 @@ import './assets/sass/main.scss'
 import 'jspdf-autotable'
 import axios from 'axios'
 Vue.config.productionTip = false
-
+import jsPdf from 'jspdf'
+import 'jspdf-autotable'
 // import axiosConfig from './plugins/axios.plugins'
 
+Vue.use(jsPdf)
 // Vue.use(axiosConfig)
 
 // Initialize store

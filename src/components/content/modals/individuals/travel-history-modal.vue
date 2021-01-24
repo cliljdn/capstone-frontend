@@ -142,7 +142,11 @@
 													</small>
 
 													<small class="ml-1 user-info">
-														{{ info.contact_number }}
+														{{
+															!info.contact_number
+																? 'No Contact Info'
+																: info.contact_number
+														}}
 													</small>
 												</p>
 											</div>

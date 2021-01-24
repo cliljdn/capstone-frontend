@@ -102,10 +102,7 @@
 								</div>
 							</div>
 
-							<div
-								class="is-flex is-justify-content-center"
-								v-if="isDetailsActive"
-							>
+							<div class="" v-if="isDetailsActive">
 								<!-- SORT BY DETAILS -->
 								<div class="columns travel-columns">
 									<div class="column ">
@@ -129,21 +126,69 @@
 											</div>
 										</div>
 									</div>
-									<div class="column">
-										<span class="select-labels">Search By: </span>
-										<div class="panel-block">
-											<p class="control has-icons-left">
-												<input
-													v-model="payload.search"
-													@input="searchList(payload.search)"
-													class="input is-rounded is-primary"
-													type="text"
-													placeholder="Search"
-												/>
-												<span class="icon is-left">
-													<i class="fas fa-search" aria-hidden="true"></i>
-												</span>
-											</p>
+								</div>
+							</div>
+
+							<div class="columns ml-3" v-if="isDetailsActive">
+								<div class="column is-one-fifth">
+									<strong class="select-labels">Filter by Month: </strong>
+									<div class="field mt-3">
+										<div class="control has-icons-left">
+											<div class="select is-rounded is-primary">
+												<select>
+													<option value="" seleted>Select Month</option>
+													<option
+														v-for="(month, index) in monthValues"
+														:key="index"
+														>{{ month }}</option
+													>
+												</select>
+											</div>
+											<div class="icon is-small is-left has-text-success">
+												<i class="fas fa-globe"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="column is-one-fifth">
+									<strong class="select-labels">Day</strong>
+									<div class="field mt-3">
+										<div class="control has-icons-left">
+											<div class="select is-rounded is-primary">
+												<select>
+													<option value="" seleted>Select Day</option>
+													<option
+														v-for="(day, index) in daysValue"
+														:key="index"
+														>{{ day }}</option
+													>
+												</select>
+											</div>
+											<div class="icon is-small is-left has-text-success">
+												<i class="fas fa-globe"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="column is-one-fifth">
+									<strong class="select-labels">Year</strong>
+									<div class="field mt-3">
+										<div class="control has-icons-left">
+											<div class="select is-rounded is-primary">
+												<select>
+													<option value="" selected>Select Year</option>
+													<option
+														v-for="(year, index) in yearValue()"
+														:key="index"
+														>{{ year }}</option
+													>
+												</select>
+											</div>
+											<div class="icon is-small is-left has-text-success">
+												<i class="fas fa-globe"></i>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -173,21 +218,19 @@
 								</div>
 							</div>
 
-							<div class="" v-if="isTimeActive">
-								<div class="panel-block">
-									<p class="control has-icons-left">
-										<input
-											v-model="payload.search"
-											@input="searchList(payload.search)"
-											class="input  is-rounded is-primary"
-											type="text"
-											placeholder="Search"
-										/>
-										<span class="icon is-left">
-											<i class="fas fa-search" aria-hidden="true"></i>
-										</span>
-									</p>
-								</div>
+							<div class="panel-block">
+								<p class="control has-icons-left">
+									<input
+										v-model="payload.search"
+										@input="searchList(payload.search)"
+										class="input  is-rounded is-primary"
+										type="text"
+										placeholder="Search"
+									/>
+									<span class="icon is-left">
+										<i class="fas fa-search" aria-hidden="true"></i>
+									</span>
+								</p>
 							</div>
 
 							<main class="travel-log">
