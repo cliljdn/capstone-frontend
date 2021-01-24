@@ -20,7 +20,7 @@
 				</p>
 
 				<div class="columns mt-1" v-if="betweenTime">
-					<div class="column is-3">
+					<div class="column is-one-fifth">
 						<strong class="select-labels">Choose Date: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
@@ -44,7 +44,7 @@
 						</div>
 					</div>
 
-					<div class="column is-one-quarter">
+					<div class="column is-one-fifth">
 						<strong class="select-labels">Start Time: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
@@ -63,7 +63,7 @@
 						</div>
 					</div>
 
-					<div class="column is-one-quarter">
+					<div class="column is-one-fifth">
 						<strong class="select-labels">End Time: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
@@ -97,7 +97,10 @@
 						<strong class="select-labels">Sort List by: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
-								<div class="select is-rounded is-primary">
+								<div
+									@change="sortList(sendDispatch.order)"
+									class="select is-rounded is-primary"
+								>
 									<select v-model="sendDispatch.order">
 										<option value="" seleted>Select Info</option>
 										<option>Establishment Name</option>
@@ -113,15 +116,21 @@
 					</div>
 				</div>
 
-				<div class="columns">
-					<div class="column">
-						<strong class="select-labels">Filter by: </strong>
+				<div class="columns" v-if="byDetails">
+					<div class="column is-one-fifth">
+						<strong class="select-labels">Filter by Month: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
 								<div class="select is-rounded is-primary">
 									<select
-										@change="filterList(monthValues.indexOf(filterData))"
-										v-model="filterData"
+										@change="
+											filterList(
+												sendFilter.filterYear,
+												monthValues.indexOf(sendFilter.filterMonth) + 1,
+												sendFilter.filterDay
+											)
+										"
+										v-model="sendFilter.filterMonth"
 									>
 										<option value="" seleted>Select Month</option>
 										<option
@@ -138,21 +147,25 @@
 						</div>
 					</div>
 
-					<div class="column">
-						<strong class="select-labels">Filter by: </strong>
+					<div class="column is-one-fifth">
+						<strong class="select-labels">Day</strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
 								<div class="select is-rounded is-primary">
 									<select
-										@change="filterList(monthValues.indexOf(filterData))"
-										v-model="filterData"
+										@change="
+											filterList(
+												sendFilter.filterYear,
+												monthValues.indexOf(sendFilter.filterMonth) + 1,
+												sendFilter.filterDay
+											)
+										"
+										v-model="sendFilter.filterDay"
 									>
-										<option value="" seleted>Select Month</option>
-										<option
-											v-for="(month, index) in monthValues"
-											:key="index"
-											>{{ month }}</option
-										>
+										<option value="" seleted>Select Day</option>
+										<option v-for="(day, index) in daysValue" :key="index">{{
+											day
+										}}</option>
 									</select>
 								</div>
 								<div class="icon is-small is-left has-text-success">
@@ -162,13 +175,22 @@
 						</div>
 					</div>
 
-					<div class="column">
-						<strong class="select-labels">Filter by: </strong>
+					<div class="column is-one-fifth">
+						<strong class="select-labels">Year</strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
 								<div class="select is-rounded is-primary">
-									<select>
-										<option value="" seleted>Select Month</option>
+									<select
+										@change="
+											filterList(
+												sendFilter.filterYear,
+												monthValues.indexOf(sendFilter.filterMonth) + 1,
+												sendFilter.filterDay
+											)
+										"
+										v-model="sendFilter.filterYear"
+									>
+										<option value="" selected>Select Year</option>
 										<option v-for="(year, index) in yearValue()" :key="index">{{
 											year
 										}}</option>
@@ -213,7 +235,9 @@
 						<div class="columns">
 							<div class="column ">
 								<button
-									@click="resetDispatch(sendDispatch)"
+									@click="
+										resetDispatch(sendDispatch), resetDispatch(sendFilter)
+									"
 									class="button is-rounded column-buttons is-ghost is-rounded"
 								>
 									Refresh Dropdowns
@@ -223,6 +247,7 @@
 							<div class="column">
 								<button
 									class="button is-rounded  column-buttons is-ghost is-rounded"
+									:disabled="estEntered.length === 0"
 								>
 									Print Travel History
 								</button>
@@ -298,18 +323,24 @@
 							<a
 								@click="decPage"
 								class="pagination-previous"
-								:disabled="currentPage === 0"
+								:disabled="
+									currentPage === 0 ||
+										estEntered.length === 0 ||
+										estEnteredPages.length <= 1
+								"
 								>Previous</a
 							>
 							<a
 								@click="incPage"
 								class="pagination-next"
 								:disabled="
-									currentPage === estEnteredPages[estEnteredPages.length - 1]
+									currentPage === estEnteredPages[estEnteredPages.length - 1] ||
+										estEntered.length === 0 ||
+										estEnteredPages.length <= 1
 								"
 								>Next page</a
 							>
-							<ul class="pagination-list" v-if="estEnteredPages.length > 5">
+							<ul class="pagination-list" v-if="estEnteredPages.length > 1">
 								<li>
 									<a
 										:class="{
@@ -324,7 +355,7 @@
 									>
 								</li>
 								<li><span class="pagination-ellipsis">&hellip;</span></li>
-								<li>
+								<li v-if="estEnteredPages.length > 3">
 									<a
 										:class="{
 											'is-current':
@@ -376,7 +407,7 @@
 										}}</a
 									>
 								</li>
-								<li>
+								<li v-if="estEnteredPages.length > 4">
 									<a
 										:class="{
 											'is-current':

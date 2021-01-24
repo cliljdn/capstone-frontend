@@ -193,12 +193,11 @@ export default new Vuex.Store({
 						params: { ...payload },
 					}
 				)
-
 				commit('estEnteredPages', estEntered.data.listEmployees.total)
 				commit('estEntered', estEntered.data.listEmployees.results)
 				commit('estEnteredDates', estEntered.data.dates)
 			} catch (err) {
-				console.log(err)
+				console.log(err.reponse)
 			}
 		},
 

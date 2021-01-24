@@ -16,7 +16,6 @@ export default {
 			for (let i = 1; i < Math.ceil(estEnteredPages / 6); i++) {
 				pages.push(i)
 			}
-
 			return pages
 		},
 
@@ -25,10 +24,6 @@ export default {
 			return getEstEnteredDates.filter(
 				(value, index) => getEstEnteredDates.indexOf(value) === index
 			)
-		},
-
-		debouncedOnChange() {
-			return _debounce(this.searchList(this.sendDispatch.search), 700)
 		},
 	},
 	data() {
@@ -50,6 +45,7 @@ export default {
 				'November',
 				'December',
 			],
+			daysValue: 31,
 
 			currentPage: 0,
 			isCurrentActive: false,
@@ -60,7 +56,11 @@ export default {
 				search: 'No Results Found',
 			},
 
-			filterData: '',
+			sendFilter: {
+				filterYear: '',
+				filterMonth: '',
+				filterDay: '',
+			},
 
 			sendDispatch: {
 				page: '',
@@ -74,21 +74,64 @@ export default {
 	},
 
 	methods: {
+		changeSelectValue(selectList) {
+			switch (selectList) {
+				case 'Establishment Name':
+					selectList = selectList.split(' ')[1].toLowerCase()
+
+					return selectList
+				case 'Time Entered':
+					selectList = selectList
+						.split(' ')
+						.join('_')
+						.toLowerCase()
+					return selectList
+
+				case 'Date Entered':
+					selectList = selectList
+						.split(' ')
+						.join('_')
+						.toLowerCase()
+					return selectList
+				default:
+					break
+			}
+		},
+
 		decPage() {
 			if (this.currentPage < 1) {
 				return true
 			} else {
 				this.currentPage--
-				this.sendDispatch.page = this.currentPage
-				this.$store.dispatch('estEntered', this.sendDispatch)
+
+				const payload = {
+					order: this.changeSelectValue(this.sendDispatch.order),
+					page: this.currentPage,
+					filterYear: this.sendFilter.filterYear,
+					filterMonth: !this.sendFilter.filterMonth
+						? ''
+						: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
+					filterDay: this.sendFilter.filterDay,
+				}
+
+				this.$store.dispatch('estEntered', payload)
 			}
 		},
+
+		//date on the db
 		filterDate(startDate) {
 			this.$store.dispatch('estEntered', { startDate: startDate })
 		},
 
-		filterList(dateParams) {
-			console.log(parseInt(dateParams) + 1)
+		// month day year
+		filterList(filterYear, filterMonth, filterDay) {
+			const payload = {
+				order: this.changeSelectValue(this.sendDispatch.order),
+				filterYear: filterYear,
+				filterMonth: filterMonth,
+				filterDay: filterDay,
+			}
+			this.$store.dispatch('estEntered', payload)
 		},
 
 		findBtwnTime(startDate, start, end) {
@@ -115,9 +158,16 @@ export default {
 
 		gotoPage(page) {
 			if (page === 1) page = 0
-			this.currentPage = page
-			this.sendDispatch.page = page
-			this.$store.dispatch('estEntered', this.sendDispatch)
+			const payload = {
+				order: this.changeSelectValue(this.sendDispatch.order),
+				page: page,
+				filterYear: this.sendFilter.filterYear,
+				filterMonth: !this.sendFilter.filterMonth
+					? ''
+					: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
+				filterDay: this.sendFilter.filterDay,
+			}
+			this.$store.dispatch('estEntered', payload)
 		},
 
 		incPage() {
@@ -128,8 +178,18 @@ export default {
 				return true
 			} else {
 				this.currentPage++
-				this.sendDispatch.page = this.currentPage
-				this.$store.dispatch('estEntered', this.sendDispatch)
+				const payload = {
+					order: this.changeSelectValue(this.sendDispatch.order),
+					page: this.currentPage,
+					filterYear: this.sendFilter.filterYear,
+					filterMonth: !this.sendFilter.filterMonth
+						? ''
+						: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
+
+					filterDay: this.sendFilter.filterDay,
+				}
+
+				this.$store.dispatch('estEntered', payload)
 			}
 		},
 
@@ -172,6 +232,19 @@ export default {
 			this.betweenTime = true
 		},
 
+		sortList(order) {
+			const payload = {
+				order: '',
+				filterYear: this.sendFilter.filterYear,
+				filterMonth: !this.sendFilter.filterMonth
+					? ''
+					: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
+				filterDay: this.sendFilter.filterDay,
+			}
+			payload.order = this.changeSelectValue(order)
+			this.$store.dispatch('estEntered', payload)
+		},
+
 		yearValue() {
 			let currentYear = new Date().getFullYear(),
 				years = [],
@@ -185,6 +258,7 @@ export default {
 
 	mounted() {
 		this.yearValue()
+
 		this.$store.dispatch('estEntered', this.sendDispatch)
 	},
 }
