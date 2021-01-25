@@ -19,10 +19,17 @@
 								You can now Login to your account on the android Application
 							</h1>
 						</div>
+
+						<div
+							class="has-text-black-bis"
+							v-if="this.$store.state.accountsMsg.isProfileUpdated"
+						>
+							<h1 class="title">Profile Updated</h1>
+						</div>
 					</div>
 				</div>
 			</section>
-			<footer class="modal-card-foot is-vcentered">
+			<footer class="modal-card-foot is-flex is-justify-content-center">
 				<button @click="closeModal" class="button is-success">OK</button>
 			</footer>
 		</div>
@@ -43,8 +50,16 @@ export default {
 			if (state.accountsMsg.isProfileCreated) {
 				this.$router.push({ name: 'registerCitizens' })
 			}
+
+			if (state.accountsMsg.isProfileUpdated) {
+				this.$store.commit('toggleEditForm')
+				this.$store.commit('toggleSideBar')
+			}
+
 			state.accountsMsg.isProfileCreated = false
 			state.isAdminValid = false
+			state.accountsMsg.isProfileUpdated = false
+
 			return commit('showPopOut')
 		},
 	},

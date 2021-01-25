@@ -35,6 +35,8 @@ export default new Vuex.Store({
 		accountsMsg: {
 			isRegistered: false,
 			isProfileCreated: false,
+			isProfileUpdated: false,
+			isLogout: false,
 		},
 		//
 
@@ -113,6 +115,10 @@ export default new Vuex.Store({
 
 		isAuth(state, auth) {
 			state.isAuth = auth
+		},
+
+		isProfileUpdated(state) {
+			state.accountsMsg.isProfileUpdated = !state.accountsMsg.isProfileUpdated
 		},
 
 		modalEntered(state) {
@@ -202,7 +208,7 @@ export default new Vuex.Store({
 				commit('estEntered', estEntered.data.listEmployees.results)
 				commit('estEnteredDates', estEntered.data.dates)
 			} catch (err) {
-				console.log(err.reponse)
+				return err.reponse
 			}
 		},
 
@@ -214,10 +220,9 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
-				console.log(companions.data)
 				commit('estEnteredCompanions', companions.data)
 			} catch (err) {
-				console.log(err.reponse)
+				return err.response
 			}
 		},
 
@@ -229,6 +234,7 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
+
 				commit('getProfile', profile.data)
 			} catch (error) {
 				return error.response
@@ -249,7 +255,7 @@ export default new Vuex.Store({
 
 				commit('travelHistory', travelHistory.data.travelHistory)
 			} catch (err) {
-				console.log(err.response)
+				return err.response
 			}
 		},
 
@@ -261,8 +267,6 @@ export default new Vuex.Store({
 				}
 			)
 
-			console.log(travelHistory.data)
-
 			commit('tvlCompanionInfo', travelHistory.data)
 		},
 
@@ -273,6 +277,49 @@ export default new Vuex.Store({
 
 		setCookie({ commit }, payload) {
 			commit('setCookie', payload)
+		},
+
+		async updateProfile({ commit, state, dispatch }, payload) {
+			const { profile, address, account } = payload
+			console.log(account)
+			try {
+				const profileUpdate = await axios.patch(
+					`${state.baseURL}/accounts/update/profile`,
+					profile, //data body
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+					}
+				)
+
+				const addressUpdate = await axios.patch(
+					`${state.baseURL}/account/update/address`,
+					address,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+					}
+				)
+
+				const accountUpdate = await axios.patch(
+					`${state.baseURL}/update/account`,
+					account,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+					}
+				)
+
+				if (
+					profileUpdate.status === 201 ||
+					addressUpdate.status === 201 ||
+					accountUpdate.status === 201
+				) {
+					commit('showPopOut')
+
+					commit('isProfileUpdated')
+					dispatch('getProfile')
+				}
+			} catch (error) {
+				console.log(error.response)
+			}
 		},
 	},
 	modules: {},

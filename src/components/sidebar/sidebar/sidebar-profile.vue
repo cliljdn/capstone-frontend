@@ -21,7 +21,11 @@
 							<div class="media-left">
 								<figure class=" image is-128x128">
 									<img
-										src="https://bulma.io/images/placeholders/96x96.png"
+										:src="
+											authProfile.image
+												? authProfile.image
+												: 'https://i.imgur.com/bCOd9N0.jpg'
+										"
 										alt="Placeholder image"
 									/>
 								</figure>
@@ -64,7 +68,7 @@
 			</div>
 
 			<footer class="card-footer">
-				<a class="card-footer-item">Sign Out</a>
+				<a @click="logout" class="card-footer-item">Sign Out</a>
 			</footer>
 		</div>
 		<transition name="slide">
@@ -81,6 +85,6 @@ import app from '../admin-model/sidebar/sidebar-profile.model'
 export default app
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../sass/sidebar-profile.scss';
 </style>

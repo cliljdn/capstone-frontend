@@ -79,4 +79,38 @@ export default {
 			.nullable(true)
 			.required(),
 	}),
+
+	updateValidation: yup.object().shape({
+		email: yup
+			.string()
+			.trim()
+			.matches(
+				/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+
+				errors.email
+			)
+			.strict(true)
+			.nullable(true),
+
+		password: yup
+			.string()
+			.trim()
+			.matches(
+				/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+				errors.password
+			)
+			.strict(true)
+			.nullable(true),
+
+		confirm: yup
+			.string()
+			.trim()
+			.when('password', {
+				is: (password) => ('password' && password.length > 0 ? true : false),
+				then: yup
+					.string()
+					.oneOf([yup.ref('password'), null], "Password doesn't match")
+					.required('confirm field is a required field'),
+			}),
+	}),
 }

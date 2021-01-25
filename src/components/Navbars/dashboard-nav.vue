@@ -104,7 +104,8 @@
 								</span>
 
 								<a class="ml-3">
-									{{ authUser.firstname }} {{ authUser.lastname }}
+									{{ authUser.firstname ? authUser.firstname : authUser.name }}
+									{{ authUser.lastname }}
 								</a>
 							</div>
 						</div>
@@ -113,7 +114,7 @@
 			</div>
 			<transition name="slide">
 				<div v-if="this.$store.state.sideBarOpen" class="is-overlay ">
-					<div class="column   is-12">
+					<div class="column  is-12">
 						<sidebar />
 					</div>
 				</div>

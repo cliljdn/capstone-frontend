@@ -1,15 +1,12 @@
 @import '../../../assets/sass/mixins.scss';
 
 .account-sidebar {
-	position: relative;
-	width: auto !important;
 	font-weight: bold;
+	overflow: hidden !important;
+	margin: 0 !important;
+	padding: 0 !important;
 	height: auto;
-	display: flex;
-	min-width: auto;
-	flex-direction: column;
-
-	height: auto;
+	right: 0 !important;
 
 	.box-title {
 		margin-top: 0px;

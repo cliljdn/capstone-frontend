@@ -7,11 +7,16 @@
 	font-weight: bold;
 	display: flex;
 	flex-direction: column !important;
-	overflow: hidden;
+
+	.media-content {
+		overflow-x: hidden;
+		overflow-y: auto !important;
+		height: 300px;
+	}
 
 	.box-title {
 		margin-top: 0px;
-		padding-bottom: 50px;
+		padding-bottom: 20px;
 	}
 	.is-horizontal-center {
 		justify-content: center !important;

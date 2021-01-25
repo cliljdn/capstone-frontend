@@ -15,6 +15,10 @@
 			font-size: 28px;
 		}
 	}
+
+	.card {
+		box-shadow: none;
+	}
 }
 
 @include sm {
