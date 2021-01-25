@@ -55,13 +55,13 @@ const routes = [
 		],
 	},
 
+	//for individuals
 	{
-		path: '/accounts/auth/dashboard',
+		path: '/individual/auth/dashboard/',
 		// name: 'accountDashboard',
 		component: view('users-view'),
 
 		children: [
-			//for individuals
 			{
 				path: '',
 				component: () =>
@@ -72,13 +72,6 @@ const routes = [
 				async beforeEnter(to, from, next) {
 					if (store.state.accType === 'Individual' && store.state.isAuth) {
 						next()
-					} else if (store.state.accType === 'Driver' && store.state.isAuth) {
-						next({ name: 'listPassengers' })
-					} else if (
-						store.state.accType === 'Establishment' &&
-						store.state.isAuth
-					) {
-						next({ name: 'listEntered' })
 					} else {
 						next({ name: 'usersLogin' })
 					}
@@ -86,7 +79,7 @@ const routes = [
 			},
 
 			{
-				path: '/est',
+				path: 'est',
 				name: 'estEntered',
 				component: () =>
 					import(
@@ -95,16 +88,32 @@ const routes = [
 
 				beforeEnter(to, from, next) {
 					if (store.state.accType !== 'Individual' && !store.state.isAuth) {
-						next({ name: 'travelHistory' })
+						next({ name: 'usersLogin' })
 					} else {
 						next()
 					}
 				},
 			},
+		],
+	},
 
-			//for driver
+	//for driver
+	{
+		path: '/driver/auth/dashboard',
+		// name: 'listPassengers',
+		component: view('users-view'),
+
+		beforeEnter(to, from, next) {
+			if (store.state.accType !== 'Driver' && !store.state.isAuth) {
+				next({ name: 'usersLogin' })
+			} else {
+				next()
+			}
+		},
+
+		children: [
 			{
-				path: '/passengers',
+				path: '',
 				name: 'listPassengers',
 				component: () =>
 					import(
@@ -113,7 +122,7 @@ const routes = [
 
 				beforeEnter(to, from, next) {
 					if (store.state.accType !== 'Driver' && !store.state.isAuth) {
-						next({ name: 'travelHistory' })
+						next({ name: 'usersLogin' })
 					} else {
 						next()
 					}
@@ -121,7 +130,7 @@ const routes = [
 			},
 
 			{
-				path: '/vehicles/',
+				path: 'vehicles',
 				//name: 'listVehicles',
 				component: () =>
 					import(
@@ -130,7 +139,7 @@ const routes = [
 
 				beforeEnter(to, from, next) {
 					if (store.state.accType !== 'Driver' && !store.state.isAuth) {
-						next({ name: 'travelHistory' })
+						next({ name: 'usersLogin' })
 					} else {
 						next()
 					}
@@ -147,7 +156,7 @@ const routes = [
 
 						beforeEnter(to, from, next) {
 							if (store.state.accType !== 'Driver' && !store.state.isAuth) {
-								next({ name: 'travelHistory' })
+								next({ name: 'usersLogin' })
 							} else {
 								next()
 							}
@@ -164,7 +173,7 @@ const routes = [
 
 						beforeEnter(to, from, next) {
 							if (store.state.accType !== 'Driver' && !store.state.isAuth) {
-								next({ name: 'travelHistory' })
+								next({ name: 'usersLogin' })
 							} else {
 								next()
 							}
@@ -172,10 +181,26 @@ const routes = [
 					},
 				],
 			},
+		],
+	},
 
-			// for est
+	// for est
+	{
+		path: '/establishment/auth/dashboard',
+		// name: 'listEntered',
+		component: view('users-view'),
+
+		beforeEnter(to, from, next) {
+			if (store.state.accType !== 'Establishment' && !store.state.isAuth) {
+				next({ name: 'usersLogin' })
+			} else {
+				next()
+			}
+		},
+
+		children: [
 			{
-				path: '/establishment/entered',
+				path: '',
 				name: 'listEntered',
 				component: () =>
 					import(
@@ -184,7 +209,7 @@ const routes = [
 
 				beforeEnter(to, from, next) {
 					if (store.state.accType !== 'Establishment' && !store.state.isAuth) {
-						next({ name: 'travelHistory' })
+						next({ name: 'usersLogin' })
 					} else {
 						next()
 					}
@@ -192,7 +217,7 @@ const routes = [
 			},
 
 			{
-				path: '/establishment/entrypoints',
+				path: 'establishment/entrypoints',
 				// name: 'listEntrypoints',
 				component: () =>
 					import(
@@ -213,7 +238,7 @@ const routes = [
 								store.state.accType !== 'Establishment' &&
 								!store.state.isAuth
 							) {
-								next({ name: 'travelHistory' })
+								next({ name: 'usersLogin' })
 							} else {
 								next()
 							}
@@ -233,7 +258,7 @@ const routes = [
 								store.state.accType !== 'Establishment' &&
 								!store.state.isAuth
 							) {
-								next({ name: 'travelHistory' })
+								next({ name: 'usersLogin' })
 							} else {
 								next()
 							}

@@ -42,7 +42,7 @@
 							<span class="icon has-text-success">
 								<i class="fas fa-bus"></i>
 							</span>
-							<router-link to="/accounts/auth/dashboard">
+							<router-link to="/individual/auth/dashboard">
 								<a class="ml-3">Travel History</a></router-link
 							>
 						</div>
@@ -51,7 +51,7 @@
 							<span class="icon has-text-success">
 								<i class="fas fa-university"></i>
 							</span>
-							<router-link to="/est">
+							<router-link to="/individual/auth/dashboard/est">
 								<a class="ml-3">Establishment Entered</a></router-link
 							>
 						</div>
@@ -65,7 +65,7 @@
 							<span class="icon has-text-success">
 								<i class="fas fa-users"></i>
 							</span>
-							<router-link to="/passengers">
+							<router-link to="/        ">
 								<a class="ml-3">List of Passengers</a></router-link
 							>
 						</div>
@@ -79,7 +79,7 @@
 							<span class="icon has-text-success">
 								<i class="fas fa-users"></i>
 							</span>
-							<router-link to="/accounts/auth/dashboard/">
+							<router-link to="/establishment/auth/dashboard">
 								<a class="ml-3">List of Individuals</a></router-link
 							>
 						</div>
@@ -88,7 +88,9 @@
 							<span class="icon has-text-success">
 								<i class="fas fa-users"></i>
 							</span>
-							<router-link to="/establishment/entrypoints/">
+							<router-link
+								to="/establishment/auth/dashboard/establishment/entrypoints"
+							>
 								<a class="ml-3">List of Employees</a></router-link
 							>
 						</div>
@@ -110,11 +112,10 @@
 				</div>
 			</div>
 			<transition name="slide">
-				<div
-					v-if="this.$store.state.sideBarOpen"
-					class="sidebar-panel is-overlay"
-				>
-					<sidebar />
+				<div v-if="this.$store.state.sideBarOpen" class="is-overlay ">
+					<div class="column   is-12">
+						<sidebar />
+					</div>
 				</div>
 			</transition>
 		</nav>

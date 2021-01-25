@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div class="main-view">
 		<dashboard-nav />
 		<router-view />
 	</div>
@@ -24,4 +24,8 @@ export default {
 	},
 }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.main-view {
+	overflow: hidden !important;
+}
+</style>

@@ -1,12 +1,22 @@
 <script>
-import edit from '../../sidebar/edit-profile.vue'
+import edit from '../../sidebar/edit-profile'
+import DriverIndiProfile from '../../sidebar/driver-indiv-profile'
+import EstProfile from '../../sidebar/est-profile'
 
 export default {
-	components: { 'edit-profile': edit },
+	components: {
+		'edit-profile': edit,
+		'driver-indiv-profile': DriverIndiProfile,
+		'est-profile': EstProfile,
+	},
 
 	computed: {
 		authProfile() {
 			return this.$store.state.userProfile
+		},
+
+		stateVar() {
+			return this.$store.state
 		},
 	},
 
@@ -21,6 +31,7 @@ export default {
 		},
 
 		toggleEditForm() {
+			console.log(this.stateVar.editProfileOpen)
 			return this.$store.commit('toggleEditForm')
 		},
 

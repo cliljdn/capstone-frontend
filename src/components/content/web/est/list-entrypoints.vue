@@ -48,7 +48,7 @@
 		<p class="panel-tabs m-3 is-centered entry-tabs">
 			<a>View:</a>
 
-			<router-link to="/establishment/entrypoints/">
+			<router-link to="/establishment/auth/dashboard/establishment/entrypoints">
 				<a @click="switchActive" :class="{ 'is-active': switchTabs }"
 					>Active Employees</a
 				>
@@ -56,7 +56,9 @@
 
 			<a>Or</a>
 
-			<router-link to="/establishment/entrypoints/inactive">
+			<router-link
+				to="/establishment/auth/dashboard/establishment/entrypoints/inactive"
+			>
 				<a @click="switchInactive" :class="{ 'is-active': !switchTabs }"
 					>Inactive Employees</a
 				>

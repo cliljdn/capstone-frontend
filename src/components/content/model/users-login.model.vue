@@ -45,8 +45,7 @@ export default {
 
 						this.$store.dispatch('setCookie', auth)
 						this.$store.dispatch('isAuth', true)
-
-						this.$router.push({ name: 'travelHistory' })
+						this.isUserAuth(auth.accType)
 					}
 				}
 			} catch (err) {
@@ -74,6 +73,24 @@ export default {
 						})
 					}
 				}
+			}
+		},
+
+		isUserAuth(accType) {
+			switch (accType) {
+				case 'Individual':
+					this.$router.push({ name: 'travelHistory' })
+					break
+				case 'Driver':
+					this.$router.push({ name: 'listPassengers' })
+					break
+
+				case 'Establishment':
+					this.$router.push({ name: 'listEntered' })
+					break
+				default:
+					this.$router.push({ name: 'usersLogin' })
+					break
 			}
 		},
 
