@@ -33,6 +33,22 @@ export default {
 		return {
 			betweenTime: true,
 			byDetails: false,
+			monthValues: [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December',
+			],
+			daysValue: 31,
+			timeFormat: 24,
 
 			payload: {
 				page: 0,
@@ -41,15 +57,15 @@ export default {
 				order: '',
 				startDate: '',
 				search: '',
+				filterDay: '',
+				filterMonth: '',
+				filterYear: '',
 			},
 
 			formErrors: {
 				search: 'No Results found',
 				general: '',
 			},
-
-			daysValue: 31,
-			timeFormat: 24,
 		}
 	},
 
@@ -69,23 +85,10 @@ export default {
 			this.$store.dispatch('enteredIndividuals', payload)
 		},
 
-		changeSelectValue(selectList) {
-			switch (selectList) {
-				case 'Date Entered':
-					return selectList
-						.split(' ')
-						.join('_')
-						.toLowerCase()
+		filterListDate(payload) {
+			console.log(payload)
 
-				case 'Time Entered':
-					return selectList
-						.split(' ')
-						.join('_')
-						.toLowerCase()
-
-				default:
-					return selectList.toLowerCase()
-			}
+			this.$store.dispatch('enteredIndividuals', payload)
 		},
 
 		openModal() {
@@ -106,7 +109,6 @@ export default {
 		}, 300),
 
 		sortList(obj) {
-			this.payload.order = this.changeSelectValue(this.payload.order)
 			this.$store.dispatch('enteredIndividuals', obj)
 		},
 
@@ -118,6 +120,16 @@ export default {
 		switchPanelTime() {
 			this.byDetails = false
 			this.betweenTime = true
+		},
+
+		yearValue() {
+			let currentYear = new Date().getFullYear(),
+				years = [],
+				startYear = 1960
+			while (startYear <= currentYear) {
+				years.push(startYear++)
+			}
+			return years.reverse()
 		},
 	},
 

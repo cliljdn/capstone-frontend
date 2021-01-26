@@ -108,9 +108,73 @@
 					</div>
 				</div>
 
-				<div class="columns-error-all" v-if="formErrors.general !== ''">
-					<div class="column is-flex is-justify-content-center">
-						<span class="has-text-danger">{{ formErrors.general }}</span>
+				<div class="columns" v-if="byDetails">
+					<div class="column is-one-fifth">
+						<strong class="select-labels">Filter by Month: </strong>
+						<div class="field mt-3">
+							<div class="control has-icons-left">
+								<div class="select is-rounded is-primary">
+									<select
+										v-model="payload.filterMonth"
+										@change="filterListDate(payload)"
+									>
+										<option value="" seleted>Select Month</option>
+										<option
+											v-for="(month, index) in monthValues"
+											:key="index"
+											>{{ month }}</option
+										>
+									</select>
+								</div>
+								<div class="icon is-small is-left has-text-success">
+									<i class="fas fa-globe"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="column is-one-fifth">
+						<strong class="select-labels">Day</strong>
+						<div class="field mt-3">
+							<div class="control has-icons-left">
+								<div class="select is-rounded is-primary">
+									<select
+										v-model="payload.filterDay"
+										@change="filterListDate(payload)"
+									>
+										<option value="" seleted>Select Day</option>
+										<option v-for="(day, index) in daysValue" :key="index">{{
+											day
+										}}</option>
+									</select>
+								</div>
+								<div class="icon is-small is-left has-text-success">
+									<i class="fas fa-globe"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="column is-one-fifth">
+						<strong class="select-labels">Year</strong>
+						<div class="field mt-3">
+							<div class="control has-icons-left">
+								<div class="select is-rounded is-primary">
+									<select
+										v-model="payload.filterYear"
+										@change="filterListDate(payload)"
+									>
+										<option value="" selected>Select Year</option>
+										<option v-for="(year, index) in yearValue()" :key="index">{{
+											year
+										}}</option>
+									</select>
+								</div>
+								<div class="icon is-small is-left has-text-success">
+									<i class="fas fa-globe"></i>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -224,6 +288,12 @@
 				<div class="columns-error" v-if="listIndiv.length === 0">
 					<div class="column is-flex is-justify-content-center">
 						<span class="has-text-danger">{{ formErrors.search }}</span>
+					</div>
+				</div>
+
+				<div class="columns-error" v-if="formErrors.general !== ''">
+					<div class="column is-flex is-justify-content-center">
+						<span class="has-text-danger">{{ formErrors.general }}</span>
 					</div>
 				</div>
 
