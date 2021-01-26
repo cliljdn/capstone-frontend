@@ -1,10 +1,13 @@
 <script>
 import personal from '../../sidebar/personal-info.vue'
 import account from '../../sidebar/account-info.vue'
+import PopModal from '../../../msgmodal/pop-modal'
+
 export default {
 	components: {
 		'personal-info': personal,
 		'account-info': account,
+		'pop-modal': PopModal,
 	},
 
 	data() {

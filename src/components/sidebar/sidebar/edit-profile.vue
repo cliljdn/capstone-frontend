@@ -45,6 +45,7 @@
 				</div>
 			</main>
 		</div>
+		<pop-modal />
 	</div>
 </template>
 <script>

@@ -20,8 +20,7 @@
 											<p class="control has-icons-left has-icons-right">
 												<input
 													v-model="payload.account.email"
-													@click="payloadErrors.email = ''"
-													@blur="validate('email')"
+													@click="clearErrors('email')"
 													@input="validate('email')"
 													class="input"
 													type="email"
@@ -46,8 +45,7 @@
 											<p class="control has-icons-left has-icons-right">
 												<input
 													v-model="payload.account.password"
-													@click="payloadErrors.password = ''"
-													@blur="validate('password')"
+													@click="clearErrors('password')"
 													@input="validate('password')"
 													class="input"
 													type="password"
@@ -69,8 +67,7 @@
 											<p class="control has-icons-left has-icons-right">
 												<input
 													v-model="payload.account.confirm"
-													@click="payloadErrors.confirm = ''"
-													@blur="validate('confirm')"
+													@click="clearErrors('confirm')"
 													@input="validate('confirm')"
 													class="input"
 													type="password"
@@ -141,32 +138,22 @@ export default {
 
 	methods: {
 		sendDispatch(params) {
-			const { updateValidation } = yup
-			try {
-				if (this.payload.account.email || this.payload.account.password) {
-					Object.keys(this.payload.account).forEach(async (key) => {
-						try {
-							await updateValidation.validateAt(
-								key,
-								this.payload.account,
-								this.yupOptions
-							)
-						} catch (err) {
-							err.inner.forEach((error) => {
-								this.payloadErrors[error.path] = error.message
-							})
-						}
-					})
-				} else {
-					this.payloadErrors.all = 'There is nothing to update'
-					return true
-				}
+			const checkErrorLength = []
+			// const { updateValidation } = yup
+			if (!this.payload.account.email && !this.payload.account.password) {
+				this.payloadErrors.all = 'Please Fill up some Field'
+			} else {
+				this.payloadErrors.all = ''
+			}
 
+			Object.values(this.payloadErrors).forEach((val) => {
+				val === '' ? checkErrorLength.push(val) : false
+			})
+
+			if (checkErrorLength.length === 4) {
 				this.$store.dispatch('updateProfile', params)
-			} catch (err) {
-				err.inner.forEach((error) => {
-					this.payloadErrors[error.path] = error.message
-				})
+			} else {
+				return false
 			}
 		},
 
@@ -184,6 +171,11 @@ export default {
 					this.payloadErrors[error.path] = error.message
 				})
 			}
+		},
+
+		clearErrors(field) {
+			this.payloadErrors[field] = ''
+			this.payloadErrors.all = ''
 		},
 	},
 }

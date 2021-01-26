@@ -281,7 +281,7 @@ export default new Vuex.Store({
 
 		async updateProfile({ commit, state, dispatch }, payload) {
 			const { profile, address, account } = payload
-			console.log(account)
+			console.log(account, 'account')
 			try {
 				const profileUpdate = await axios.patch(
 					`${state.baseURL}/accounts/update/profile`,

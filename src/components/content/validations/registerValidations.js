@@ -90,7 +90,8 @@ export default {
 				errors.email
 			)
 			.strict(true)
-			.nullable(true),
+			.nullable(true)
+			.notRequired(),
 
 		password: yup
 			.string()
@@ -100,7 +101,8 @@ export default {
 				errors.password
 			)
 			.strict(true)
-			.nullable(true),
+			.nullable(true)
+			.notRequired(),
 
 		confirm: yup
 			.string()

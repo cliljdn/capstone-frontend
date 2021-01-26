@@ -29,8 +29,6 @@
 
 				<personal-est v-if="this.$store.state.accType === 'Establishment'" />
 			</div>
-
-			<pop-modal />
 		</div>
 	</div>
 </template>
@@ -38,12 +36,10 @@
 <script>
 import PersonalIndiv from './personal-indiv'
 import PersonalEst from './personal-est'
-import PopModal from '../../msgmodal/pop-modal'
 export default {
 	components: {
 		'personal-indiv': PersonalIndiv,
 		'personal-est': PersonalEst,
-		'pop-modal': PopModal,
 	},
 }
 </script>
