@@ -5,20 +5,6 @@
 				Personal Information
 			</p>
 
-			<div class="columns is-vcentered is-horizontal-center">
-				<figure class="image is-128x128">
-					<article class="media">
-						<div class="column">
-							<img
-								class="is-rounded"
-								src="https://i.imgur.com/bCOd9N0.jpg"
-								alt="Image"
-							/>
-						</div>
-					</article>
-				</figure>
-			</div>
-
 			<div class="media-content">
 				<personal-indiv
 					v-if="

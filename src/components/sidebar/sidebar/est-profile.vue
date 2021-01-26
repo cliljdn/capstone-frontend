@@ -4,14 +4,14 @@
 			<div class="column is-full">
 				<div class="icon-text mb-1 level-left level-item">
 					<span class="icon has-text-primary">
-						<i class="fas fa-info"></i>
+						<i class="fas fa-address-card"></i>
 					</span>
 					<strong class="ml-1 tvl-info">
 						Establishment Name:
 					</strong>
 
 					<span class="ml-1 tvl-info">
-						Calil
+						{{ authProfile.name }}
 					</span>
 				</div>
 			</div>
@@ -19,14 +19,14 @@
 			<div class="column is-full">
 				<div class="icon-text mb-1 level-left level-item">
 					<span class="icon has-text-primary">
-						<i class="fas fa-info"></i>
+						<i class="fas fa-road"></i>
 					</span>
 					<strong class="ml-1 tvl-info">
 						Street:
 					</strong>
 
 					<span class="ml-1 tvl-info">
-						Jaudian
+						{{ authProfile.street }}
 					</span>
 				</div>
 			</div>
@@ -34,14 +34,14 @@
 			<div class="column is-full">
 				<div class="icon-text mb-1 level-left level-item">
 					<span class="icon has-text-primary">
-						<i class="fas fa-info"></i>
+						<i class="fas fa-phone"></i>
 					</span>
 					<strong class="ml-1 tvl-info">
 						Telephone #:
 					</strong>
 
 					<span class="ml-1 tvl-info">
-						Christopher
+						{{ authProfile.telephone_number }}
 					</span>
 				</div>
 			</div>
@@ -49,14 +49,14 @@
 			<div class="column is-full">
 				<div class="icon-text mb-1 level-left level-item">
 					<span class="icon has-text-primary">
-						<i class="fas fa-info"></i>
+						<i class="fas fa-user"></i>
 					</span>
 					<strong class="ml-1 tvl-info">
 						Establishment Owner:
 					</strong>
 
 					<span class="ml-1 tvl-info">
-						Sto.tomas
+						{{ authProfile.est_owner }}
 					</span>
 				</div>
 			</div>
@@ -64,7 +64,7 @@
 			<div class="column is-full">
 				<div class="icon-text mb-1 level-left level-item">
 					<span class="icon has-text-primary">
-						<i class="fas fa-info"></i>
+						<i class="fas fa-university"></i>
 					</span>
 					<strong class="ml-1 tvl-info">
 						City:
@@ -78,3 +78,17 @@
 		</div>
 	</div>
 </template>
+
+<script>
+export default {
+	computed: {
+		authProfile() {
+			return this.$store.state.userProfile
+		},
+	},
+
+	mounted() {
+		this.$store.dispatch('getProfile')
+	},
+}
+</script>

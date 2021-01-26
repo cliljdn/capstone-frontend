@@ -25,6 +25,9 @@ export default {
 }
 </script>
 <style lang="scss">
+html {
+	overflow-x: hidden !important;
+}
 .main-view {
 	overflow: hidden !important;
 }

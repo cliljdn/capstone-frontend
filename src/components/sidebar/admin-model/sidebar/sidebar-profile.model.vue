@@ -27,6 +27,7 @@ export default {
 	methods: {
 		// hide and show the sidebar profile
 		toggleSideBar() {
+			console.log(this.authProfile)
 			return this.$store.commit('toggleSideBar')
 		},
 

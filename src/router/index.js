@@ -10,6 +10,20 @@ const routes = [
 		//index page
 		path: '/',
 		component: view('index-view'),
+		beforeEnter(to, from, next) {
+			if (store.state.accType === 'Individual' && store.state.isAuth) {
+				next({ name: 'travelHistory' })
+			} else if (store.state.accType === 'Driver' && store.state.isAuth) {
+				next({ name: 'listPassengers' })
+			} else if (
+				store.state.accType === 'Establishment' &&
+				store.state.isAuth
+			) {
+				next({ name: 'listEntered' })
+			} else {
+				next()
+			}
+		},
 		children: [
 			{
 				path: '',
@@ -34,6 +48,7 @@ const routes = [
 	{
 		path: '/accounts/verify/:token',
 		component: view('verify-accounts-view'),
+
 		children: [
 			{
 				path: '',

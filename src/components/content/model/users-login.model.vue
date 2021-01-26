@@ -35,7 +35,6 @@ export default {
 
 					if (res.status === 201) {
 						state.TOKEN_NAME = res.data.name
-						console.log(res.data)
 						//stores token on cookies
 						let auth = {
 							name: res.data.name,
@@ -105,10 +104,6 @@ export default {
 				})
 			}
 		},
-	},
-
-	mounted() {
-		console.log(this.$store.state.ACCESS_TOKEN)
 	},
 }
 </script>

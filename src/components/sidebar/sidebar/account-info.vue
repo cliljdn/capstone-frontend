@@ -74,7 +74,7 @@
 													placeholder="Re-type Password"
 												/>
 												<span class="icon is-small is-left">
-													<i class="fas fa-key"></i>
+													<i class="fas fa-lock"></i>
 												</span>
 											</p>
 										</div>

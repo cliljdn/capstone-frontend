@@ -5,6 +5,7 @@ import jsPdf from 'jspdf'
 import 'jspdf-autotable'
 export default {
 	components: { 'est-entered-modal': EstEnteredModal },
+
 	computed: {
 		estEntered() {
 			const { estEntered } = this.$store.state.individual

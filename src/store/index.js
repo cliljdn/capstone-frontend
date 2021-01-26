@@ -60,6 +60,12 @@ export default new Vuex.Store({
 			estEnteredPages: 0,
 			estEnteredCompanions: [],
 		},
+
+		est: {
+			enteredIndividuals: [],
+			enteredPages: 0,
+			enteredDates: [],
+		},
 	},
 
 	getters: {
@@ -91,6 +97,18 @@ export default new Vuex.Store({
 	mutations: {
 		assignToken(state) {
 			state.headers.Authorization = state.ACCESS_TOKEN
+		},
+
+		enteredIndividuals(state, payload) {
+			state.est.enteredIndividuals = payload
+		},
+
+		enteredPages(state, payload) {
+			state.est.enteredPages = payload
+		},
+
+		enteredDates(state, payload) {
+			state.est.enteredDates = payload
 		},
 
 		estEnteredDates(state, payload) {
@@ -195,6 +213,24 @@ export default new Vuex.Store({
 			commit('isAuth', auth)
 		},
 
+		async enteredIndividuals({ commit, state }, payload) {
+			try {
+				const responseData = await axios.get(
+					`${state.baseURL}/accounts/est/scanned`,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+						params: { ...payload },
+					}
+				)
+				console.log(responseData.data.scannedIndiv.results)
+				commit('enteredDates', responseData.data.dates)
+				commit('enteredPages', responseData.data.scannedIndiv.total)
+				commit('enteredIndividuals', responseData.data.scannedIndiv.results)
+			} catch (err) {
+				console.log(err.reponse)
+			}
+		},
+
 		async estEntered({ commit, state }, payload) {
 			try {
 				const estEntered = await axios.get(
@@ -281,7 +317,7 @@ export default new Vuex.Store({
 
 		async updateProfile({ commit, state, dispatch }, payload) {
 			const { profile, address, account } = payload
-			console.log(account, 'account')
+
 			try {
 				const profileUpdate = await axios.patch(
 					`${state.baseURL}/accounts/update/profile`,
@@ -318,7 +354,7 @@ export default new Vuex.Store({
 					dispatch('getProfile')
 				}
 			} catch (error) {
-				console.log(error.response)
+				return error
 			}
 		},
 	},

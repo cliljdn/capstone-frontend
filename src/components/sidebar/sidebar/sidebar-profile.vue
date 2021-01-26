@@ -31,8 +31,14 @@
 								</figure>
 							</div>
 							<div class="media-content ml-5">
-								<p class="title is-4">John Smith</p>
-								<p class="subtitle is-6">@johnsmith</p>
+								<p class="title is-4">
+									{{
+										authProfile.firstname
+											? authProfile.firstname + ' ' + authProfile.lastname
+											: authProfile.est_owner
+									}}
+								</p>
+								<p class="subtitle is-6">{{ authProfile.email }}</p>
 
 								<button
 									@click="toggleEditForm"
