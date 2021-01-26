@@ -32,7 +32,10 @@
 										<div class="field mt-3">
 											<div class="control has-icons-left">
 												<div class="select  is-rounded is-primary">
-													<select v-model="payload.startDate">
+													<select
+														@change="filterDate(payload)"
+														v-model="payload.startDate"
+													>
 														<option value="" selected>Select Date</option>
 														<option
 															v-for="(date, index) in getTravelData"

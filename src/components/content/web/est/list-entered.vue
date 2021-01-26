@@ -24,8 +24,11 @@
 						<strong class="select-labels">Date </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
-								<div class="select is-primary">
-									<select v-model="payload.startDate">
+								<div class="select is-rounded is-primary">
+									<select
+										@change="btwnTime(payload)"
+										v-model="payload.startDate"
+									>
 										<option value="" selected> Choose Date </option>
 										<option v-for="(date, index) in dates" :key="index"
 											>{{ date.date_entered }}
@@ -43,7 +46,7 @@
 						<strong class="select-labels">Start Time: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
-								<div class="select is-primary">
+								<div class="select is-rounded is-primary">
 									<select v-model="payload.start">
 										<option value="" selected> Select Time </option>
 										<option v-for="(time, index) in timeFormat" :key="index"
@@ -62,7 +65,7 @@
 						<strong class="select-labels"> End Time: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
-								<div class="select is-primary">
+								<div class="select is-rounded is-primary">
 									<select
 										:disabled="!payload.start && !payload.startDate"
 										@change="btwnTime(payload)"
@@ -87,9 +90,9 @@
 						<strong class="select-labels">Sort List: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
-								<div class="select is-primary">
-									<select>
-										<option value="" selected>Country</option>
+								<div class="select is-rounded is-primary">
+									<select @change="sortList(payload)" v-model="payload.order">
+										<option value="" selected> Select Details </option>
 										<option>Firstname</option>
 										<option>Middlename</option>
 										<option>Lastname</option>
@@ -143,7 +146,7 @@
 								<input
 									v-model="payload.search"
 									@input="searchList(payload)"
-									class="input is-primary"
+									class="input is-rounded is-primary"
 									type="text"
 									placeholder="Search"
 								/>

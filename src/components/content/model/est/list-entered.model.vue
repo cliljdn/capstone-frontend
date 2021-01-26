@@ -69,6 +69,25 @@ export default {
 			this.$store.dispatch('enteredIndividuals', payload)
 		},
 
+		changeSelectValue(selectList) {
+			switch (selectList) {
+				case 'Date Entered':
+					return selectList
+						.split(' ')
+						.join('_')
+						.toLowerCase()
+
+				case 'Time Entered':
+					return selectList
+						.split(' ')
+						.join('_')
+						.toLowerCase()
+
+				default:
+					return selectList.toLowerCase()
+			}
+		},
+
 		openModal() {
 			return this.$store.commit('modalListEntered')
 		},
@@ -85,6 +104,11 @@ export default {
 			this.$store.dispatch('enteredIndividuals', searchParams)
 			console.log(this.listIndiv.length)
 		}, 300),
+
+		sortList(obj) {
+			this.payload.order = this.changeSelectValue(this.payload.order)
+			this.$store.dispatch('enteredIndividuals', obj)
+		},
 
 		switchPanelDetails() {
 			this.byDetails = true
