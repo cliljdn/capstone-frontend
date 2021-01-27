@@ -1,6 +1,8 @@
 <script>
 import ListEnteredModal from '../../modals/est/list-entered-modal'
 import _debounce from 'lodash.debounce'
+import jsPdf from 'jspdf'
+import 'jspdf-autotable'
 export default {
 	components: { 'list-entered-modal': ListEnteredModal },
 
@@ -91,8 +93,34 @@ export default {
 			this.$store.dispatch('enteredIndividuals', payload)
 		},
 
-		openModal() {
-			return this.$store.commit('modalListEntered')
+		openModal(batch) {
+			return this.$store.dispatch('enteredIndivCompanions', batch)
+		},
+
+		printInfo() {
+			const doc = new jsPdf()
+			const { userProfile } = this.$store.state
+			const { enteredIndividuals } = this.$store.state.est
+			const printList = []
+			Object.values(enteredIndividuals).forEach((el) => {
+				printList.push({
+					indivname: el.scannedIndiv.firstname + ' ' + el.scannedIndiv.lastname,
+					time_entered: el.time_entered,
+					date_entered: el.date_entered,
+				})
+			})
+
+			doc.autoTable({
+				columnStyles: { halign: 'center' }, // European countries centered
+				body: printList,
+				columns: [
+					{ header: 'Individual Name', dataKey: 'indivname' },
+					{ header: 'Time Entered', dataKey: 'time_entered' },
+					{ header: 'Date Entered', dataKey: 'date_entered' },
+				],
+			})
+
+			doc.save(`${userProfile.name} list-of-individuals.pdf`)
 		},
 
 		resetPayload() {

@@ -192,6 +192,7 @@
 
 							<div class="column">
 								<button
+									@click="printInfo"
 									:disabled="listIndiv.length === 0"
 									class="button is-rounded  column-buttons is-ghost is-rounded"
 								>
@@ -199,6 +200,12 @@
 								</button>
 							</div>
 						</div>
+					</div>
+				</div>
+
+				<div class="columns-error-all" v-if="formErrors.general !== ''">
+					<div class="column is-flex is-justify-content-center">
+						<span class="has-text-danger">{{ formErrors.general }}</span>
 					</div>
 				</div>
 
@@ -228,7 +235,7 @@
 						v-for="indiv in listIndiv"
 						:key="indiv.batch"
 					>
-						<div class="card" @click="openModal">
+						<div class="card" @click="openModal(indiv.batch)">
 							<div class="card-content">
 								<div class="media">
 									<div class="media-left">
@@ -288,12 +295,6 @@
 				<div class="columns-error" v-if="listIndiv.length === 0">
 					<div class="column is-flex is-justify-content-center">
 						<span class="has-text-danger">{{ formErrors.search }}</span>
-					</div>
-				</div>
-
-				<div class="columns-error" v-if="formErrors.general !== ''">
-					<div class="column is-flex is-justify-content-center">
-						<span class="has-text-danger">{{ formErrors.general }}</span>
 					</div>
 				</div>
 

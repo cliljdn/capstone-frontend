@@ -231,6 +231,21 @@ export default new Vuex.Store({
 			}
 		},
 
+		async enteredIndivCompanions({ commit, state }, batchNum) {
+			try {
+				const responseData = await axios.get(
+					`${state.baseURL}/accounts/est/scanned/${batchNum}`,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+					}
+				)
+				console.log(responseData)
+				commit('modalListEntered')
+			} catch (err) {
+				console.log(err.reponse)
+			}
+		},
+
 		async estEntered({ commit, state }, payload) {
 			try {
 				const estEntered = await axios.get(
