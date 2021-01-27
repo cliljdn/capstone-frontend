@@ -21,7 +21,7 @@
 							</span>
 
 							<span class="ml-1 user-info">
-								Sm City
+								{{ this.$store.state.userProfile.name }}
 							</span>
 						</div>
 
@@ -33,9 +33,9 @@
 								Date Entered:
 							</span>
 
-							<span class="ml-1 user-info">
-								1997-12-23
-							</span>
+							<span class="ml-1 user-info">{{
+								info ? info.date_entered : ''
+							}}</span>
 						</div>
 
 						<div class="icon-text mb-1 level-left level-item">
@@ -46,8 +46,8 @@
 								Time Entered:
 							</span>
 
-							<span class="ml-1 user-info">
-								11:50
+							<span class="ml-1 user-info"
+								>{{ info ? info.time_entered : '' }}
 							</span>
 						</div>
 					</div>
@@ -70,7 +70,9 @@
 							</strong>
 
 							<span class="ml-1 user-info">
-								Carlito Manuel
+								{{
+									employee ? employee.firstname + ' ' + employee.lastname : ''
+								}}
 							</span>
 						</div>
 
@@ -83,7 +85,7 @@
 							</strong>
 
 							<span class="ml-1 user-info">
-								smolongapo@gmail.com
+								{{ this.$store.state.userProfile.email }}
 							</span>
 						</div>
 
@@ -96,7 +98,7 @@
 							</strong>
 
 							<span class="ml-1 user-info">
-								223-123
+								{{ this.$store.state.userProfile.telephone_number }}
 							</span>
 						</div>
 					</div>
@@ -117,8 +119,24 @@
 
 				<div class="columns companion-information">
 					<div class="column">
-						<div class="box is-flex is-justify-content-center">
-							<article class="media">
+						<div
+							:class="{
+								'remove-shadow ':
+									companion.firstname === null && companion.lastname === null,
+							}"
+							class="box"
+							v-for="(companion, index) in companions"
+							:key="index"
+						>
+							<span
+								v-if="
+									companion.firstname === null && companion.lastname === null
+								"
+								class="has-text-danger is-flex is-justify-content-center"
+								>No Companions</span
+							>
+
+							<article class="media" v-else>
 								<div class="media-left mt-4">
 									<figure class="image is-96x96">
 										<img src="https://i.imgur.com/bCOd9N0.jpg" alt="Image" />
@@ -138,7 +156,7 @@
 													</small>
 
 													<small class="ml-1 user-info">
-														Calil
+														{{ companion.firstname }}
 													</small>
 												</p>
 												<p class="icon-text  level-left level-item">
@@ -150,7 +168,7 @@
 													</small>
 
 													<small class="ml-1 user-info">
-														Jaudian
+														{{ companion.lastname }}
 													</small>
 												</p>
 												<p class="icon-text  level-left level-item">
@@ -158,11 +176,15 @@
 														<i class="fas fa-tasks"></i>
 													</span>
 													<small class="ml-1 tvl-info">
-														Middlename:
+														Contact Number:
 													</small>
 
 													<small class="ml-1 user-info">
-														Christopher
+														{{
+															companion.contact
+																? companion.contact
+																: 'No Contact Info'
+														}}
 													</small>
 												</p>
 											</div>
@@ -170,60 +192,7 @@
 									</div>
 								</div>
 							</article>
-						</div>
-
-						<div class="box is-flex is-justify-content-center">
-							<article class="media">
-								<div class="media-left mt-4">
-									<figure class="image is-96x96">
-										<img src="https://i.imgur.com/bCOd9N0.jpg" alt="Image" />
-									</figure>
-								</div>
-								<div class="media-content level">
-									<div class="content">
-										<div class="columns">
-											<div class="column">
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Firstname:
-													</small>
-
-													<small class="ml-1 user-info">
-														Calil
-													</small>
-												</p>
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Lastname:
-													</small>
-
-													<small class="ml-1 user-info">
-														Jaudian
-													</small>
-												</p>
-												<p class="icon-text  level-left level-item">
-													<span class="icon has-text-info">
-														<i class="fas fa-tasks"></i>
-													</span>
-													<small class="ml-1 tvl-info">
-														Middlename:
-													</small>
-
-													<small class="ml-1 user-info">
-														Christopher
-													</small>
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
+							<!-- errors -->
 						</div>
 					</div>
 				</div>
@@ -237,11 +206,39 @@
 
 <script>
 export default {
+	computed: {
+		employee() {
+			const { employee } = this.$store.state.est.enteredIndivCompanions
+			return employee
+		},
+
+		companions() {
+			const { scannedIndiv } = this.$store.state.est.enteredIndivCompanions
+			const listComps = []
+
+			if (scannedIndiv) {
+				for (const indiv of scannedIndiv) {
+					listComps.push(indiv)
+				}
+			}
+
+			return listComps
+		},
+
+		info() {
+			const { info } = this.$store.state.est.enteredIndivCompanions
+
+			return info
+		},
+	},
+
 	methods: {
 		closeModal() {
 			this.$store.commit('modalListEntered')
 		},
 	},
+
+	mounted() {},
 }
 </script>
 

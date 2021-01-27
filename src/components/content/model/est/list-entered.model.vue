@@ -16,7 +16,7 @@ export default {
 			const { enteredPages } = this.$store.state.est
 			const pages = []
 
-			for (let i = 1; i < Math.ceil(enteredPages / 6); i++) {
+			for (let i = 0; i < Math.ceil(enteredPages / 6); i++) {
 				pages.push(i)
 			}
 
@@ -87,11 +87,33 @@ export default {
 			this.$store.dispatch('enteredIndividuals', payload)
 		},
 
-		filterListDate(payload) {
-			console.log(payload)
+		decPage: _debounce(function() {
+			if (this.payload.page === 0) {
+				return true
+			} else {
+				this.payload.page--
+				this.$store.dispatch('enteredIndividuals', this.payload)
+			}
+		}, 300),
 
+		filterListDate(payload) {
 			this.$store.dispatch('enteredIndividuals', payload)
 		},
+
+		gotoPage(page) {
+			this.payload.page = page
+			this.$store.dispatch('enteredIndividuals', this.payload)
+		},
+
+		incPage: _debounce(function() {
+			if (this.pages[this.pages.length - 1] === this.payload.page) {
+				return true
+			} else {
+				this.payload.page++
+
+				this.$store.dispatch('enteredIndividuals', this.payload)
+			}
+		}, 300),
 
 		openModal(batch) {
 			return this.$store.dispatch('enteredIndivCompanions', batch)

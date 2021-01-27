@@ -65,6 +65,7 @@ export default new Vuex.Store({
 			enteredIndividuals: [],
 			enteredPages: 0,
 			enteredDates: [],
+			enteredIndivCompanions: [],
 		},
 	},
 
@@ -97,6 +98,10 @@ export default new Vuex.Store({
 	mutations: {
 		assignToken(state) {
 			state.headers.Authorization = state.ACCESS_TOKEN
+		},
+
+		enteredIndivCompanions(state, payload) {
+			state.est.enteredIndivCompanions = payload
 		},
 
 		enteredIndividuals(state, payload) {
@@ -222,7 +227,8 @@ export default new Vuex.Store({
 						params: { ...payload },
 					}
 				)
-				console.log(responseData.data.scannedIndiv.results)
+
+				console.log(responseData.data.scannedIndiv.total)
 				commit('enteredDates', responseData.data.dates)
 				commit('enteredPages', responseData.data.scannedIndiv.total)
 				commit('enteredIndividuals', responseData.data.scannedIndiv.results)
@@ -239,10 +245,11 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
-				console.log(responseData)
+
+				commit('enteredIndivCompanions', responseData.data)
 				commit('modalListEntered')
 			} catch (err) {
-				console.log(err.reponse)
+				console.log(err)
 			}
 		},
 

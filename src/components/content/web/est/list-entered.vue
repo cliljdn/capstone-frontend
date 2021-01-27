@@ -299,36 +299,107 @@
 				</div>
 
 				<div class="columns">
-					<div class="column">
+					<div class="column is-flex is-justify-content-center">
 						<nav
 							class="pagination is-centered"
 							role="navigation"
 							aria-label="pagination"
 						>
-							<a class="pagination-previous">Previous</a>
-							<a class="pagination-next">Next page</a>
-							<ul class="pagination-list">
-								<li>
-									<a class="pagination-link" aria-label="Goto page 1">1</a>
-								</li>
-								<li><span class="pagination-ellipsis">&hellip;</span></li>
-								<li>
-									<a class="pagination-link" aria-label="Goto page 45">45</a>
-								</li>
+							<a
+								:disabled="
+									payload.page === 0 ||
+										listIndiv.length === 0 ||
+										pages.length <= 1
+								"
+								@click="decPage"
+								class="pagination-previous"
+								>Previous</a
+							>
+							<a
+								:disabled="
+									payload.page === pages[pages.length - 1] ||
+										listIndiv.length === 0 ||
+										pages.length <= 1
+								"
+								@click="incPage"
+								class="pagination-next"
+								>Next page</a
+							>
+							<ul class="pagination-list" v-if="pages.length > 1">
 								<li>
 									<a
-										class="pagination-link is-current"
-										aria-label="Page 46"
-										aria-current="page"
-										>46</a
+										:class="{
+											'is-current': payload.page === pages.indexOf(pages[0]),
+										}"
+										@click="gotoPage(pages[0])"
+										class="pagination-link"
+										aria-label="Goto page 1"
+										>{{ pages[0] === 0 ? '1' : '' }}</a
+									>
+								</li>
+								<li><span class="pagination-ellipsis">&hellip;</span></li>
+								<li v-if="pages.length > 3">
+									<a
+										:class="{
+											'is-current':
+												payload.page ===
+												pages.indexOf(
+													pages[Math.round((pages.length - 1) / 2) - 1]
+												),
+										}"
+										@click="
+											gotoPage(pages[Math.round((pages.length - 1) / 2) - 1])
+										"
+										class="pagination-link"
+										aria-label="Goto page 45"
+										>{{ pages[Math.round((pages.length - 1) / 2) - 1] }}</a
 									>
 								</li>
 								<li>
-									<a class="pagination-link" aria-label="Goto page 47">47</a>
+									<a
+										:class="{
+											'is-current':
+												payload.page ===
+												pages.indexOf(
+													pages[Math.round((pages.length - 1) / 2)]
+												),
+										}"
+										@click="gotoPage(pages[Math.round((pages.length - 1) / 2)])"
+										class="pagination-link"
+										aria-label="Page 46"
+										aria-current="page"
+										>{{ pages[Math.round((pages.length - 1) / 2)] }}</a
+									>
+								</li>
+								<li v-if="pages.length > 4">
+									<a
+										:class="{
+											'is-current':
+												payload.page ===
+												pages.indexOf(
+													pages[Math.round((pages.length - 1) / 2) + 1]
+												),
+										}"
+										@click="
+											gotoPage(pages[Math.round((pages.length - 1) / 2) + 1])
+										"
+										class="pagination-link"
+										aria-label="Goto page 47"
+										>{{ pages[Math.round((pages.length - 1) / 2) + 1] }}</a
+									>
 								</li>
 								<li><span class="pagination-ellipsis">&hellip;</span></li>
 								<li>
-									<a class="pagination-link" aria-label="Goto page 86">86</a>
+									<a
+										:class="{
+											'is-current':
+												payload.page === pages.indexOf(pages[pages.length - 1]),
+										}"
+										@click="gotoPage(pages[pages.length - 1])"
+										class="pagination-link"
+										aria-label="Goto page 86"
+										>{{ pages[pages.length - 1] }}</a
+									>
 								</li>
 							</ul>
 						</nav>

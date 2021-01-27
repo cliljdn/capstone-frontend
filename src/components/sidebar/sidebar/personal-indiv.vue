@@ -166,6 +166,13 @@
 
 <script>
 export default {
+	computed: {
+		auth() {
+			const { userProfile } = this.$store.state
+			return userProfile
+		},
+	},
+
 	data() {
 		return {
 			payload: {

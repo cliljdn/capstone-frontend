@@ -27,7 +27,7 @@
 							v-model="payload.profile.name"
 							class="input"
 							type="text"
-							placeholder="Middle name"
+							placeholder="Establishment Name"
 						/>
 						<span class="icon is-small is-left">
 							<i class="fas fa-building"></i>
@@ -84,7 +84,7 @@
 							v-model="payload.profile.street"
 							class="input"
 							type="text"
-							placeholder="Contact #"
+							placeholder="Street"
 						/>
 						<span class="icon is-small is-left">
 							<i class="fas fa-road"></i>
@@ -113,6 +113,13 @@
 
 <script>
 export default {
+	computed: {
+		profile() {
+			const { userProfile } = this.$store.state
+			return userProfile
+		},
+	},
+
 	data() {
 		return {
 			payload: {
