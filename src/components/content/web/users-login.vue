@@ -16,20 +16,22 @@
 					<div class="columns mt-3">
 						<div class="column">
 							<span class="">Email:</span>
-							<div class="field mt-3">
-								<p class="control has-icons-left has-icons-right">
+							<div class="field mt-3 ">
+								<p class="control  has-icons-left has-icons-right">
 									<input
 										@input="validateProfile('email')"
 										@blur="validateProfile('email')"
 										v-model="body.email"
-										class="input is-medium"
+										class="input dropdown is-active is-primary is-medium"
 										type="email"
 										placeholder="Email"
 									/>
+
 									<span class="icon is-small is-left">
 										<i class="fas fa-envelope"></i>
 									</span>
 								</p>
+
 								<span class="mt-1 has-text-danger">{{ errors.email }}</span>
 							</div>
 
@@ -40,10 +42,11 @@
 										@input="validateProfile('password')"
 										@blur="validateProfile('password')"
 										v-model="body.password"
-										class="input is-medium"
+										class="input is-primary is-medium"
 										type="password"
 										placeholder="Password"
 									/>
+
 									<span class="icon is-small is-left">
 										<i class="fas fa-key"></i>
 									</span>

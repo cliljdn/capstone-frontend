@@ -9,7 +9,7 @@ export default {
 	computed: {
 		estEntered() {
 			const { estEntered } = this.$store.state.individual
-			return estEntered ? estEntered : ''
+			return estEntered
 		},
 
 		estEnteredPages() {
@@ -179,6 +179,7 @@ export default {
 					: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
 				filterDay: this.sendFilter.filterDay,
 			}
+
 			this.$store.dispatch('estEntered', payload)
 		},
 

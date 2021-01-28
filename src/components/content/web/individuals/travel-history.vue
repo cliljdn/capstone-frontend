@@ -276,7 +276,7 @@
 
 									<div
 										class="columns columns-error"
-										v-if="payloadErrors.search !== ''"
+										v-if="userTravelHistory.length === 0"
 									>
 										<div class="column is-flex is-justify-content-center">
 											<span class="has-text-danger">{{

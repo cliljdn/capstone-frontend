@@ -21,7 +21,7 @@
 						</div>
 
 						<div
-							class="has-text-black-bis"
+							class="has-text-black-bis is-flex is-justify-content-center"
 							v-if="this.$store.state.accountsMsg.isProfileUpdated"
 						>
 							<h1 class="title">Profile Updated</h1>

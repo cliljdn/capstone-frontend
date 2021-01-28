@@ -8,9 +8,9 @@
 						<div class="columns is-full has-text-centered">
 							<div class="column mt-5">
 								<h1 class="title">
-									SCAN OlONGAPO
+									Scan Olongapo
 								</h1>
-								<h2 class="subtitle"></h2>
+								<h2 class="subtitle">Keeping tracks of your ventures</h2>
 							</div>
 						</div>
 						<div class="hero-body">

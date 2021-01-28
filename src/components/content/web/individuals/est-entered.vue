@@ -257,9 +257,14 @@
 					</div>
 				</div>
 
-				<div class="columns is-multiline" v-if="estEntered.length > 0">
-					<div class="column is-4" v-for="est in estEntered" :key="est.batch">
-						<div class="card" @click="openModal(est.batch)">
+				<div class="columns is-multiline is-flex">
+					<div v-for="est in estEntered" class="column is-4" :key="est.batch">
+						<div
+							v-for="(list, index) in est.estList"
+							class="card"
+							@click="openModal(est.batch)"
+							:key="index"
+						>
 							<div class="card-content">
 								<div class="media">
 									<div class="media-left">
@@ -271,8 +276,12 @@
 										</figure>
 									</div>
 									<div class="media-content">
-										<p class="title is-4 menu-label">{{ est.estList.name }}</p>
-										<p class="subtitle is-6">{{ est.estList.street }}</p>
+										<p class="title is-4 menu-label">
+											{{ list.name }}
+										</p>
+										<p class="subtitle is-6">
+											{{ list.street }}
+										</p>
 									</div>
 								</div>
 

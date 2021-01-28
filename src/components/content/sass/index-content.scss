@@ -6,16 +6,27 @@
 	margin: 0 !important;
 	height: auto;
 	width: auto;
+	background-image: url('https://i.imgur.com/fvnxvpK.jpg');
+	box-shadow: none !important;
+	border: none !important;
+
+	.card {
+		border: none;
+		background-color: transparent !important;
+		.card-content {
+		}
+	}
 
 	.column-main {
 		margin: 0 !important;
 		padding: 0 !important;
 		position: relative;
+		border: none;
 		.hero {
-			background-image: url('https://i.imgur.com/KkBjS9g.jpg');
+			background-image: url('https://i.imgur.com/KkBjS9g.jpg') !important;
 			background-repeat: no-repeat;
 			background-size: cover;
-			background-position: top;
+			background-position: center;
 
 			.hero-body {
 				margin-top: 130px;

@@ -23,6 +23,7 @@ export default new Vuex.Store({
 		TOKEN_NAME: '',
 		isAuth: false,
 		accType: '',
+		// baseURL: 'http://scanolongapo-api.com/api/v1',
 		baseURL: 'http://192.168.1.11:6060/api/v1',
 
 		//dashboard
@@ -67,6 +68,13 @@ export default new Vuex.Store({
 			enteredDates: [],
 			enteredIndivCompanions: [],
 		},
+
+		driver: {
+			passengers: [],
+			travelDates: [],
+			pages: 0,
+			passengersInfo: [],
+		},
 	},
 
 	getters: {
@@ -82,16 +90,23 @@ export default new Vuex.Store({
 			return state.baseURL
 		},
 
+		//to remove duplicates
 		getTravelHistoryDate: (state) => {
 			return state.individual.travelDates.map(
 				({ date_boarded }) => date_boarded
 			)
 		},
 
+		//to remove duplicates
 		getEstEnteredDates: (state) => {
 			return state.individual.estEnteredDates.map(
 				({ date_entered }) => date_entered
 			)
+		},
+
+		//to remove duplicates
+		getPassengerDates: (state) => {
+			return state.driver.travelDates.map(({ date_boarded }) => date_boarded)
 		},
 	},
 
@@ -164,6 +179,17 @@ export default new Vuex.Store({
 			state.dashboardModal.listEntered = !state.dashboardModal.listEntered
 		},
 
+		passengers(state, payload) {
+			state.driver.passengers = payload.passengers.results
+			state.driver.pages = payload.passengers.total
+			state.driver.travelDates = payload.dates
+		},
+
+		passengersInfo(state, payload) {
+			console.log(payload)
+			state.driver.passengersInfo = payload
+		},
+
 		showPopOut(state) {
 			state.openPopOut = !state.openPopOut
 		},
@@ -228,7 +254,6 @@ export default new Vuex.Store({
 					}
 				)
 
-				console.log(responseData.data.scannedIndiv.total)
 				commit('enteredDates', responseData.data.dates)
 				commit('enteredPages', responseData.data.scannedIndiv.total)
 				commit('enteredIndividuals', responseData.data.scannedIndiv.results)
@@ -262,11 +287,12 @@ export default new Vuex.Store({
 						params: { ...payload },
 					}
 				)
+
 				commit('estEnteredPages', estEntered.data.listEmployees.total)
 				commit('estEntered', estEntered.data.listEmployees.results)
 				commit('estEnteredDates', estEntered.data.dates)
 			} catch (err) {
-				return err.reponse
+				console.log(err)
 			}
 		},
 
@@ -296,6 +322,37 @@ export default new Vuex.Store({
 				commit('getProfile', profile.data)
 			} catch (error) {
 				return error.response
+			}
+		},
+
+		async passengers({ commit, state }, payload) {
+			try {
+				const passengers = await axios.get(
+					`${state.baseURL}/accounts/driver/passenger`,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+						params: { ...payload },
+					}
+				)
+				commit('passengers', passengers.data)
+			} catch (err) {
+				console.log(err.response)
+			}
+		},
+
+		async passengersInfo({ commit, state }, batchParams) {
+			try {
+				const passengers = await axios.get(
+					`${state.baseURL}/accounts/driver/passenger/${batchParams}`,
+					{
+						headers: { Authorization: this.getters.isLoggedIn },
+					}
+				)
+
+				commit('modalPassengers')
+				commit('passengersInfo', passengers.data)
+			} catch (err) {
+				console.log(err.response)
 			}
 		},
 
