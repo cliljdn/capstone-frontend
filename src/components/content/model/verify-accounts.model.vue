@@ -4,51 +4,45 @@ export default {
 		return {
 			msg: '',
 			isType: '',
+			isAuth: false,
 		}
 	},
+
+	methods: {
+		gotoForm() {
+			if (this.isAuth) {
+				this.$router.push({ name: 'create-profile' })
+				this.isAuth = false
+			}
+		},
+	},
+
 	async mounted() {
 		let { token } = this.$route.params,
 			{ state } = this.$store
 
 		try {
 			const res = await this.$axios.get(
-				`${state.BASE_URL}/accounts/verify/${token}`
+				`${state.baseURL}/accounts/verify/${token}`
 			)
-
-			if (res.status === 200) {
+			if (res.data.verified) {
 				this.msg = `Your email ${res.data.email} has been Verified`
-				this.isType = res.data.account_type
-				state.ACCESS_TOKEN = token
 				state.accountsMsg.isRegistered = true
-				this.$store.commit('assignToken')
+				const auth = {
+					token: token,
+					name: res.data.name,
+					accType: res.data.account_type,
+				}
+				console.log(auth)
+				this.$store.dispatch('setCookie', auth)
+				this.isAuth = true
 			}
 		} catch (err) {
+			console.log(err.response.status)
 			if (err.response.status === 500) {
 				this.$router.push({ path: '/' })
 			}
 		}
-	},
-
-	methods: {
-		getAccType(value) {
-			switch (value) {
-				case 'User':
-					this.$router.push({ name: 'user-driver-creation' })
-					break
-				case 'Employee':
-					this.$router.push({ name: 'employee-creation' })
-					break
-				case 'Driver':
-					this.$router.push({ name: 'user-driver-creation' })
-					break
-				default:
-					break
-			}
-		},
-
-		gotoForm() {
-			this.getAccType(this.isType)
-		},
 	},
 }
 </script>

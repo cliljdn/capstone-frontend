@@ -111,10 +111,6 @@ export default new Vuex.Store({
 	},
 
 	mutations: {
-		assignToken(state) {
-			state.headers.Authorization = state.ACCESS_TOKEN
-		},
-
 		enteredIndivCompanions(state, payload) {
 			state.est.enteredIndivCompanions = payload
 		},

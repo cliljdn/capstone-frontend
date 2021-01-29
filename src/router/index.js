@@ -47,7 +47,7 @@ const routes = [
 
 	{
 		path: '/accounts/verify/:token',
-		component: view('verify-accounts-view'),
+		component: view('index-view'),
 
 		children: [
 			{
@@ -61,7 +61,7 @@ const routes = [
 
 			{
 				path: '/profile/create',
-				name: 'user-driver-creation',
+				name: 'create-profile',
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/form-fillup'

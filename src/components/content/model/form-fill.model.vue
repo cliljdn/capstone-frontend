@@ -2,13 +2,11 @@
 import VueFlatpickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
 import form from '../validations/fillup-validations'
-import qs from 'querystring'
-import PopModal from '../../msgmodal/pop-modal'
 
+import qs from 'querystring'
 export default {
 	components: {
 		FlatPickr: VueFlatpickr,
-		'pop-modal': PopModal,
 	},
 
 	data() {
@@ -22,7 +20,7 @@ export default {
 				birthday: null,
 			},
 
-			imgRef: '',
+			imgRef: null,
 
 			address: {
 				lotNumber: '',
@@ -56,12 +54,6 @@ export default {
 			let { formValidate, addressValidate } = form,
 				{ state, commit } = this.$store
 			try {
-				let blob = new Blob([this.profileBody.image], { type: 'image/png' })
-
-				let img = await this.blobToData(blob)
-
-				this.profileBody.image = img
-
 				let validateProfile = await formValidate.validate(
 					this.profileBody,
 					this.yupOptions
@@ -73,35 +65,34 @@ export default {
 
 				if (validateProfile && validateAddress) {
 					const res = await this.$axios.post(
-						`${state.BASE_URL}/accounts/create/profile`,
+						`${state.baseURL}/accounts/create/profile`,
 						qs.stringify(this.profileBody),
 						{
 							headers: {
-								Authorization: state.headers.Authorization,
+								Authorization: this.$store.getters.isLoggedIn,
 							},
 						}
 					)
 
-					if (res.status === 201) {
-						const resAddress = await this.$axios.post(
-							`${state.BASE_URL}/account/create/address`,
-							qs.stringify(this.address),
-							{
-								headers: {
-									Authorization: state.headers.Authorization,
-								},
-							}
-						)
-
-						if (resAddress.status === 201) {
-							state.accountsMsg.isRegistered = false
-							state.accountsMsg.isProfileCreated = true
-							return commit('showPopOut')
+					const resAddress = await this.$axios.post(
+						`${state.baseURL}/account/create/address`,
+						qs.stringify(this.address),
+						{
+							headers: {
+								Authorization: this.$store.getters.isLoggedIn,
+							},
 						}
+					)
+
+					if (resAddress.status === 201 && res.status === 201) {
+						state.accountsMsg.isRegistered = false
+						state.accountsMsg.isProfileCreated = true
+						this.$store.dispatch('removeCookie')
+						return commit('showPopOut')
 					}
 				}
 			} catch (err) {
-				if (err.response !== undefined) {
+				if (!err.response) {
 					return err.response
 				} else {
 					err.inner.forEach((error) => {
@@ -114,14 +105,6 @@ export default {
 					})
 				}
 			}
-		},
-
-		blobToData: (blob) => {
-			return new Promise((resolve) => {
-				const reader = new FileReader()
-				if (blob instanceof Blob) reader.readAsDataURL(blob)
-				reader.onloadend = () => resolve(reader.result)
-			})
 		},
 
 		isNumber: function(evt) {
@@ -141,7 +124,7 @@ export default {
 		onFileChange(e) {
 			let imgFormats = ['jpg', 'jpeg', 'png']
 			const file = e.target.files[0]
-			this.imgRef = file.name
+
 			if (!file) {
 				e.preventDefault()
 				return
@@ -185,6 +168,17 @@ export default {
 				err.inner.forEach((error) => {
 					this.addressError[error.path] = error.message
 				})
+			}
+		},
+
+		imageToBase64(file) {
+			var reader = new FileReader()
+			reader.readAsDataURL(file)
+			reader.onload = () => {
+				this.profileBody.image = reader.result
+			}
+			reader.onerror = function(error) {
+				console.log('Error: ', error)
 			}
 		},
 	},

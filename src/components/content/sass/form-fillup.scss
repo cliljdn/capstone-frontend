@@ -1,8 +1,6 @@
 @import '../../../assets/sass/mixins.scss';
 
 .column-card {
-	padding: 0 !important;
-	margin: 0 !important;
 	align-items: center;
 	justify-content: center;
 	display: flex !important;
@@ -12,8 +10,8 @@
 		box-shadow: none;
 		width: 700px !important;
 		flex-direction: column !important;
-		height: 100% !important;
-
+		height: 600px !important;
+		overflow-y: auto;
 		.text-welcome {
 			font-size: 28px;
 		}
