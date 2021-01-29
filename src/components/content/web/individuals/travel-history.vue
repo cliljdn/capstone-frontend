@@ -12,20 +12,20 @@
 							<div class="tabs is-centered is-boxed">
 								<ul>
 									<li :class="{ 'is-active': !isPanelActive }" class="mr-3">
-										<a @click="isPanelActive = false">
+										<a @click="switchPanelFalse">
 											<span class="icon is-small"
 												><i class="fas fa-film" aria-hidden="true"></i
 											></span>
-											<span>Tile View</span>
+											<span>Table View</span>
 										</a>
 									</li>
 
 									<li :class="{ 'is-active': isPanelActive }">
-										<a @click="isPanelActive = true">
+										<a @click="switchPanelTrue">
 											<span class="icon is-small"
 												><i class="far fa-file-alt" aria-hidden="true"></i
 											></span>
-											<span>Table View</span>
+											<span>Tile View</span>
 										</a>
 									</li>
 								</ul>
@@ -38,6 +38,7 @@
 									<div class="field between-time mt-3">
 										<p class="control has-icons-left">
 											<flat-pickr
+												@input="btwnTime()"
 												v-model="payload.startDate"
 												class="input is-primary is-rounded"
 												placeholder="Filter Date"
@@ -54,6 +55,7 @@
 									<div class="field between-time mt-3">
 										<p class="control has-icons-left">
 											<flat-pickr
+												@input="btwnTime()"
 												v-model="payload.endDate"
 												class="input is-primary  is-rounded"
 												placeholder="Filter Date"
@@ -72,7 +74,7 @@
 									<div class="field between-time mt-3">
 										<div class="control has-icons-left">
 											<div class="select is-rounded is-primary">
-												<select v-model="payload.start">
+												<select @change="btwnTime()" v-model="payload.start">
 													<option value="" selected>Select Time</option>
 													<option
 														v-for="(time, index) in timeValue"
@@ -118,10 +120,7 @@
 									<div class="field mt-3">
 										<div class="control has-icons-left">
 											<div class="select is-rounded is-primary">
-												<select
-													@change="orderBy(payload.order)"
-													v-model="payload.order"
-												>
+												<select @change="orderBy()" v-model="payload.order">
 													<option value="" selected>Select Details</option>
 													<option>Destination</option>
 													<option>Time Boarded</option>
@@ -189,7 +188,7 @@
 										<tbody>
 											<tr
 												@click="openModal(log.batch)"
-												v-for="log in userTravelHistory"
+												v-for="log in travelHistory"
 												:key="log.batch"
 											>
 												<td>{{ log.destination }}</td>
@@ -198,16 +197,15 @@
 											</tr>
 										</tbody>
 									</table>
-
-									<div
-										class="columns columns-error"
-										v-if="userTravelHistory.length === 0"
-									>
-										<div class="column is-flex is-justify-content-center">
-											<span class="has-text-danger">{{
-												payloadErrors.search
-											}}</span>
-										</div>
+								</div>
+								<div
+									class="columns columns-error"
+									v-if="travelHistory.length === 0"
+								>
+									<div class="column is-flex is-justify-content-center">
+										<span class="has-text-danger">{{
+											payloadErrors.search
+										}}</span>
 									</div>
 								</div>
 							</main>
@@ -215,12 +213,16 @@
 
 							<!-- tile view -->
 							<div class="columns p-3 is-multiline " v-if="isPanelActive">
-								<div class="column is-4">
+								<div
+									class="column is-4"
+									v-for="list in travelHistory"
+									:key="list.batch"
+								>
 									<div class="card">
 										<div class="card-content">
 											<div class="media">
 												<div class="media-left">
-													<figure class="image is-48x48">
+													<figure class="image is-96x96">
 														<img
 															src="https://bulma.io/images/placeholders/96x96.png"
 															alt="Placeholder image"
@@ -228,8 +230,12 @@
 													</figure>
 												</div>
 												<div class="media-content">
-													<p class="title is-4 menu-label"></p>
-													<p class="subtitle is-6"></p>
+													<p class="title is-4 menu-label">
+														{{ list.destination }}
+													</p>
+													<p class="subtitle is-6">
+														{{ list.plate_number }}
+													</p>
 												</div>
 											</div>
 
@@ -239,10 +245,12 @@
 														<i class="fas fa-calendar"></i>
 													</span>
 													<span class="ml-1 tvl-info">
-														Date Entered:
+														Date Boarded:
 													</span>
 
-													<span class="ml-1 user-info"> </span>
+													<span class="ml-1 user-info">{{
+														list.date_boarded
+													}}</span>
 												</p>
 
 												<p class="icon-text  level-left level-item">
@@ -253,13 +261,25 @@
 														Time Entered:
 													</span>
 
-													<span class="ml-1 user-info"> </span>
+													<span class="ml-1 user-info"
+														>{{ list.time_entered }}
+													</span>
 												</p>
 											</div>
 										</div>
 									</div>
 								</div>
+
+								<div
+									v-if="travelHistory.length === 0"
+									class="column columns-error is-flex is-justify-content-center"
+								>
+									<span class="has-text-danger">{{
+										payloadErrors.search
+									}}</span>
+								</div>
 							</div>
+
 							<!-- tile view -->
 						</article>
 					</aside>

@@ -12,17 +12,9 @@ export default {
 	},
 
 	computed: {
-		userTravelHistory() {
+		travelHistory() {
 			const { travelHistory } = this.$store.state.individual
-
 			return travelHistory
-		},
-
-		getTravelData() {
-			const { getTravelHistoryDate } = this.$store.getters
-			return getTravelHistoryDate.filter(
-				(value, index) => getTravelHistoryDate.indexOf(value) === index
-			)
 		},
 	},
 
@@ -34,37 +26,30 @@ export default {
 			timeValue: 24,
 
 			payload: {
+				page: '',
 				start: '',
 				end: '',
 				order: '',
 				search: '',
-				startDate: '',
-				endDate: '',
+				startDate: null,
+				endDate: null,
 			},
 
 			payloadErrors: {
 				all: '',
-				search: '',
+				search: 'No Results Found',
 			},
 		}
 	},
 	methods: {
 		btwnTime() {
-			const splitStart = this.payload.start.split(':')
-			const splitEnd = this.payload.end.split(':')
-
-			this.payloadErrors['all'] = ''
-
-			if (parseInt(splitStart[0]) > parseInt(splitEnd[0])) {
-				this.payloadErrors['all'] =
-					'The start time must be less than the end time'
+			if (!this.isPanelActive) {
+				this.payload.page = ''
 			} else {
-				this.payloadErrors['all'] = ''
+				this.payload.page = 0
 			}
 
-			if (this.payload.start && this.payload.end) {
-				this.$store.dispatch('travelHistory', this.payload)
-			}
+			this.$store.dispatch('travelHistory', this.payload)
 		},
 
 		filterDate() {
@@ -74,33 +59,6 @@ export default {
 		openModal(batch) {
 			this.$store.dispatch('tvlCompanionInfo', batch)
 			this.$store.commit('modalTravel')
-		},
-
-		orderBy(order) {
-			const payload = { order: '' }
-			// let dash = '-'
-			switch (order) {
-				case 'Destination':
-					payload.order = order.toLowerCase()
-					break
-				case 'Time Boarded':
-					payload.order = order
-						.split(' ')
-						.join('_')
-						.toLowerCase()
-					break
-
-				case 'Date Boarded':
-					payload.order = order
-						.split(' ')
-						.join('_')
-						.toLowerCase()
-					break
-				default:
-					break
-			}
-
-			this.$store.dispatch('travelHistory', payload)
 		},
 
 		printInfo() {
@@ -129,43 +87,38 @@ export default {
 		},
 
 		resetDropdowns() {
-			this.$store.dispatch('travelHistory')
-
 			Object.keys(this.payload).forEach((k) => {
-				this.payload[k] = ''
+				if (k === 'page' && this.isPanelActive) {
+					this.payload[k] = 0
+				} else {
+					this.payload[k] = ''
+				}
 			})
 
-			Object.keys(this.payloadErrors).forEach((k) => {
-				this.payloadErrors[k] = ''
-			})
-		},
-
-		showBetweenTimeSort() {
-			this.isTimeActive = true
-			this.isDetailsActive = false
-		},
-
-		showDetailsSort() {
-			this.isTimeActive = false
-			this.isDetailsActive = true
+			if (!this.isPanelActive) {
+				this.$store.dispatch('travelHistory')
+			} else {
+				this.$store.dispatch('travelHistory', this.payload)
+			}
 		},
 
 		searchList: _debounce(function() {
-			this.$store.dispatch('travelHistory', this.payload)
-
-			if (this.userTravelHistory.length === 0) {
-				this.payloadErrors.search = 'No results'
-				console.log(this.payloadErrors.search)
+			if (!this.isPanelActive) {
+				this.payload.page = ''
 			} else {
-				this.payloadErrors.search = ''
+				this.payload.page = 0
 			}
+			this.$store.dispatch('travelHistory', this.payload)
 		}, 300),
 
 		switchPanelFalse() {
+			this.payload.page = ''
 			this.isPanelActive = false
 		},
 
 		switchPanelTrue() {
+			this.payload.page = 0
+			this.$store.dispatch('travelHistory', this.payload)
 			this.isPanelActive = true
 		},
 
@@ -182,6 +135,7 @@ export default {
 
 	mounted() {
 		this.yearValue()
+
 		this.$store.dispatch('travelHistory', this.payload)
 	},
 }

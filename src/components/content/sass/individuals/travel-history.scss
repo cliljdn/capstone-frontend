@@ -1,7 +1,11 @@
 @import '../../../../assets/sass/mixins.scss';
 .travel-container {
 	width: auto;
-
+	.columns-error {
+		font-size: 30px;
+		margin: 100px !important;
+		font-weight: bold;
+	}
 	.travel-columns {
 		padding: 15px !important;
 		.select-labels {
@@ -30,12 +34,6 @@
 
 			tbody tr td {
 				padding: 13px;
-			}
-
-			.columns-error {
-				font-size: 30px;
-				margin: 100px !important;
-				font-weight: bold;
 			}
 
 			.table tbody tr:nth-child(even) {

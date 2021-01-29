@@ -53,7 +53,7 @@ export default new Vuex.Store({
 
 		individual: {
 			travelHistory: [],
-			travelDates: [],
+			travelHistoryPages: 0,
 			tvlCompanionInfo: [],
 
 			estEntered: [],
@@ -88,13 +88,6 @@ export default new Vuex.Store({
 
 		getBaseURL: (state) => {
 			return state.baseURL
-		},
-
-		//to remove duplicates
-		getTravelHistoryDate: (state) => {
-			return state.individual.travelDates.map(
-				({ date_boarded }) => date_boarded
-			)
 		},
 
 		//to remove duplicates
@@ -182,7 +175,6 @@ export default new Vuex.Store({
 		},
 
 		passengersInfo(state, payload) {
-			console.log(payload)
 			state.driver.passengersInfo = payload
 		},
 
@@ -213,7 +205,8 @@ export default new Vuex.Store({
 		},
 
 		travelHistory(state, payload) {
-			state.individual.travelHistory = payload
+			state.individual.travelHistory = payload.results
+			state.individual.travelHistoryPages = payload.total
 		},
 
 		tvlCompanionInfo(state, payload) {
@@ -361,10 +354,7 @@ export default new Vuex.Store({
 						params: { ...payload },
 					}
 				)
-
-				commit('travelDates', travelHistory.data.dates)
-
-				commit('travelHistory', travelHistory.data.travelHistory)
+				commit('travelHistory', travelHistory.data)
 			} catch (err) {
 				return err.response
 			}
