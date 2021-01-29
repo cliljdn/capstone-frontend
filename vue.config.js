@@ -7,12 +7,6 @@ module.exports = {
 			args[0].title = 'Scan Olongapo'
 			return args
 		})
-
-		resolve: {
-			alias: {
-				vue: 'vue/dist/vue.esm-bundler.js'
-			}
-		}
 	},
 
 	runtimeCompiler: true,

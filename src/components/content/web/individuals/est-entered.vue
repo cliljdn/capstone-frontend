@@ -8,42 +8,7 @@
 					</p>
 				</aside>
 
-				<p class="panel-tabs is-centered est-tabs">
-					<a>Sort List by: </a>
-					<a :class="{ 'is-active': betweenTime }" @click="switchPanelTime"
-						>Between Time</a
-					>
-					<a>Or</a>
-					<a :class="{ 'is-active': byDetails }" @click="switchPanelDetails"
-						>Details</a
-					>
-				</p>
-
-				<div class="columns mt-1" v-if="betweenTime">
-					<div class="column is-one-fifth">
-						<strong class="select-labels">Choose Date: </strong>
-						<div class="field mt-3">
-							<div class="control has-icons-left">
-								<div class="select is-rounded is-primary">
-									<select
-										@change="filterDate(sendDispatch.startDate)"
-										v-model="sendDispatch.startDate"
-									>
-										<option value="" selected>Select Date</option>
-										<option
-											v-for="(date, index) in getEstEnteredDates"
-											:key="index"
-											>{{ date }}</option
-										>
-									</select>
-								</div>
-								<div class="icon is-small is-left has-text-success">
-									<i class="fas fa-globe"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-
+				<div class="columns mt-1">
 					<div class="column is-one-fifth">
 						<strong class="select-labels">Start Time: </strong>
 						<div class="field mt-3">
@@ -68,16 +33,7 @@
 						<div class="field mt-3">
 							<div class="control has-icons-left">
 								<div class="select  is-rounded is-primary">
-									<select
-										@change="
-											findBtwnTime(
-												sendDispatch.startDate,
-												sendDispatch.start,
-												sendDispatch.end
-											)
-										"
-										v-model="sendDispatch.end"
-									>
+									<select @change="findBtwnTime()" v-model="sendDispatch.end">
 										<option value="" selected>Select Time</option>
 										<option v-for="(time, index) in timeFormat" :key="index"
 											>{{ time }}:00</option
@@ -92,16 +48,13 @@
 					</div>
 				</div>
 
-				<div class="columns mt-1" v-if="byDetails">
+				<div class="columns mt-1">
 					<div class="column is-one-quarter">
 						<strong class="select-labels">Sort List by: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
-								<div
-									@change="sortList(sendDispatch.order)"
-									class="select is-rounded is-primary"
-								>
-									<select v-model="sendDispatch.order">
+								<div class="select is-rounded is-primary">
+									<select @change="sortList()" v-model="sendDispatch.order">
 										<option value="" seleted>Select Info</option>
 										<option>Establishment Name</option>
 										<option>Date Entered</option>
@@ -116,21 +69,15 @@
 					</div>
 				</div>
 
-				<div class="columns" v-if="byDetails">
+				<div class="columns">
 					<div class="column is-one-fifth">
 						<strong class="select-labels">Filter by Month: </strong>
 						<div class="field mt-3">
 							<div class="control has-icons-left">
 								<div class="select is-rounded is-primary">
 									<select
-										@change="
-											filterList(
-												sendFilter.filterYear,
-												monthValues.indexOf(sendFilter.filterMonth) + 1,
-												sendFilter.filterDay
-											)
-										"
-										v-model="sendFilter.filterMonth"
+										@change="filterList()"
+										v-model="sendDispatch.filterMonth"
 									>
 										<option value="" seleted>Select Month</option>
 										<option
@@ -153,14 +100,8 @@
 							<div class="control has-icons-left">
 								<div class="select is-rounded is-primary">
 									<select
-										@change="
-											filterList(
-												sendFilter.filterYear,
-												monthValues.indexOf(sendFilter.filterMonth) + 1,
-												sendFilter.filterDay
-											)
-										"
-										v-model="sendFilter.filterDay"
+										@change="filterList()"
+										v-model="sendDispatch.filterDay"
 									>
 										<option value="" seleted>Select Day</option>
 										<option v-for="(day, index) in daysValue" :key="index">{{
@@ -181,14 +122,8 @@
 							<div class="control has-icons-left">
 								<div class="select is-rounded is-primary">
 									<select
-										@change="
-											filterList(
-												sendFilter.filterYear,
-												monthValues.indexOf(sendFilter.filterMonth) + 1,
-												sendFilter.filterDay
-											)
-										"
-										v-model="sendFilter.filterYear"
+										@change="filterList()"
+										v-model="sendDispatch.filterYear"
 									>
 										<option value="" selected>Select Year</option>
 										<option v-for="(year, index) in yearValue()" :key="index">{{
@@ -217,7 +152,7 @@
 							<p class="control has-icons-left has-icons-right">
 								<input
 									v-model="sendDispatch.search"
-									@input="searchList(sendDispatch.search)"
+									@input="searchList()"
 									class="input is-rounded is-primary"
 									type="text"
 									placeholder="Search"
@@ -235,9 +170,6 @@
 						<div class="columns">
 							<div class="column ">
 								<button
-									@click="
-										resetDispatch(sendDispatch), resetDispatch(sendFilter)
-									"
 									class="button is-rounded column-buttons is-ghost is-rounded"
 								>
 									Refresh Dropdowns
@@ -258,13 +190,8 @@
 				</div>
 
 				<div class="columns is-multiline is-flex">
-					<div v-for="est in estEntered" class="column is-4" :key="est.batch">
-						<div
-							v-for="(list, index) in est.estList"
-							class="card"
-							@click="openModal(est.batch)"
-							:key="index"
-						>
+					<div class="column is-4">
+						<div class="card">
 							<div class="card-content">
 								<div class="media">
 									<div class="media-left">
@@ -276,12 +203,8 @@
 										</figure>
 									</div>
 									<div class="media-content">
-										<p class="title is-4 menu-label">
-											{{ list.name }}
-										</p>
-										<p class="subtitle is-6">
-											{{ list.street }}
-										</p>
+										<p class="title is-4 menu-label"></p>
+										<p class="subtitle is-6"></p>
 									</div>
 								</div>
 
@@ -294,9 +217,7 @@
 											Date Entered:
 										</span>
 
-										<span class="ml-1 user-info">
-											{{ est.date_entered }}
-										</span>
+										<span class="ml-1 user-info"> </span>
 									</p>
 
 									<p class="icon-text  level-left level-item">
@@ -307,9 +228,7 @@
 											Time Entered:
 										</span>
 
-										<span class="ml-1 user-info">
-											{{ est.time_entered }}
-										</span>
+										<span class="ml-1 user-info"> </span>
 									</p>
 								</div>
 							</div>
@@ -319,7 +238,7 @@
 
 				<div class="columns-error" v-if="estEntered.length === 0">
 					<div class="column is-flex is-justify-content-center">
-						<span class="has-text-danger">{{ estErrors.search }}</span>
+						<span class="has-text-danger"></span>
 					</div>
 				</div>
 

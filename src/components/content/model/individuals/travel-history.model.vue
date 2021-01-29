@@ -2,17 +2,20 @@
 import TravelHistoryModal from '../../modals/individuals/travel-history-modal'
 import jsPdf from 'jspdf'
 import 'jspdf-autotable'
+import _debounce from 'lodash.debounce'
+import VueFlatpickr from 'vue-flatpickr-component'
+import 'flatpickr/dist/flatpickr.css'
 export default {
 	components: {
 		'travel-history-modal': TravelHistoryModal,
+		FlatPickr: VueFlatpickr,
 	},
 
 	computed: {
 		userTravelHistory() {
 			const { travelHistory } = this.$store.state.individual
-			return travelHistory.filter(
-				(value, index) => travelHistory.indexOf(value) === index
-			)
+
+			return travelHistory
 		},
 
 		getTravelData() {
@@ -27,33 +30,17 @@ export default {
 		return {
 			isTimeActive: true,
 			isDetailsActive: false,
+			isPanelActive: false,
 			timeValue: 24,
+
 			payload: {
 				start: '',
 				end: '',
 				order: '',
-				startDate: '',
 				search: '',
-				filterMonth: '',
-				filterDay: '',
-				filterYear: '',
+				startDate: '',
+				endDate: '',
 			},
-
-			monthValues: [
-				'January',
-				'February',
-				'March',
-				'April',
-				'May',
-				'June',
-				'July',
-				'August',
-				'September',
-				'October',
-				'November',
-				'December',
-			],
-			daysValue: 31,
 
 			payloadErrors: {
 				all: '',
@@ -62,14 +49,11 @@ export default {
 		}
 	},
 	methods: {
-		btwnTime(startDate, start, end) {
-			const splitStart = start.split(':')
-			const splitEnd = end.split(':')
+		btwnTime() {
+			const splitStart = this.payload.start.split(':')
+			const splitEnd = this.payload.end.split(':')
 
 			this.payloadErrors['all'] = ''
-			if (startDate === 'Select Date') {
-				startDate = ''
-			}
 
 			if (parseInt(splitStart[0]) > parseInt(splitEnd[0])) {
 				this.payloadErrors['all'] =
@@ -78,32 +62,13 @@ export default {
 				this.payloadErrors['all'] = ''
 			}
 
-			const sendDispatch = {
-				startDate: startDate,
-				start: start,
-				end: end,
-			}
-
-			if ((startDate && start && end) || (start && end)) {
-				this.$store.dispatch('travelHistory', sendDispatch)
+			if (this.payload.start && this.payload.end) {
+				this.$store.dispatch('travelHistory', this.payload)
 			}
 		},
 
-		filterDate(obj) {
-			const payload = {
-				start: obj.start,
-				end: obj.end,
-				order: obj.order,
-				startDate: obj.startDate,
-				search: obj.search,
-				filterMonth: !obj.filterMonth
-					? ''
-					: this.monthValues.indexOf(obj.filterMonth) + 1,
-				filterDay: obj.filterDay,
-				filterYear: obj.filterYear,
-			}
-
-			this.$store.dispatch('travelHistory', payload)
+		filterDate() {
+			this.$store.dispatch('travelHistory', this.payload)
 		},
 
 		openModal(batch) {
@@ -185,17 +150,23 @@ export default {
 			this.isDetailsActive = true
 		},
 
-		searchList(searchParams) {
-			const sendDispatch = {
-				search: searchParams,
-			}
+		searchList: _debounce(function() {
+			this.$store.dispatch('travelHistory', this.payload)
 
-			this.$store.dispatch('travelHistory', sendDispatch)
-			if (this.$store.state.individual.travelHistory.length === 0) {
-				this.payloadErrors['search'] = 'No results'
+			if (this.userTravelHistory.length === 0) {
+				this.payloadErrors.search = 'No results'
+				console.log(this.payloadErrors.search)
 			} else {
-				this.payloadErrors['search'] = ''
+				this.payloadErrors.search = ''
 			}
+		}, 300),
+
+		switchPanelFalse() {
+			this.isPanelActive = false
+		},
+
+		switchPanelTrue() {
+			this.isPanelActive = true
 		},
 
 		yearValue() {

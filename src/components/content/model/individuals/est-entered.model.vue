@@ -59,90 +59,35 @@ export default {
 				search: 'No Results Found',
 			},
 
-			sendFilter: {
-				filterYear: '',
-				filterMonth: '',
-				filterDay: '',
-			},
+			sendFilter: {},
 
 			sendDispatch: {
 				page: '',
 				start: '',
 				end: '',
 				order: '',
-				startDate: '',
 				search: '',
+				filterYear: '',
+				filterMonth: '',
+				filterDay: '',
 			},
 		}
 	},
 
 	methods: {
-		changeSelectValue(selectList) {
-			switch (selectList) {
-				case 'Establishment Name':
-					selectList = selectList.split(' ')[1].toLowerCase()
-
-					return selectList
-				case 'Time Entered':
-					selectList = selectList
-						.split(' ')
-						.join('_')
-						.toLowerCase()
-					return selectList
-
-				case 'Date Entered':
-					selectList = selectList
-						.split(' ')
-						.join('_')
-						.toLowerCase()
-					return selectList
-				default:
-					break
-			}
-		},
-
 		decPage() {
 			if (this.currentPage < 1) {
 				return true
 			} else {
 				this.currentPage--
 
-				const payload = {
-					order: this.changeSelectValue(this.sendDispatch.order),
-					page: this.currentPage,
-					filterYear: this.sendFilter.filterYear,
-					filterMonth: !this.sendFilter.filterMonth
-						? ''
-						: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
-					filterDay: this.sendFilter.filterDay,
-				}
-
-				this.$store.dispatch('estEntered', payload)
+				this.$store.dispatch('estEntered', this.sendDispatch)
 			}
 		},
 
-		//date on the db
-		filterDate(startDate) {
-			this.$store.dispatch('estEntered', { startDate: startDate })
-		},
-
-		// month day year
-		filterList(filterYear, filterMonth, filterDay) {
-			const payload = {
-				startDate: this.sendDispatch.startDate,
-				start: this.sendDispatch.start,
-				end: this.sendDispatch.end,
-				order: this.changeSelectValue(this.sendDispatch.order),
-				filterYear: filterYear,
-				filterMonth: filterMonth,
-				filterDay: filterDay,
-			}
-			this.$store.dispatch('estEntered', payload)
-		},
-
-		findBtwnTime(startDate, start, end) {
-			const splitStart = start.split(':')
-			const splitEnd = end.split(':')
+		findBtwnTime() {
+			const splitStart = this.sendDispatch.start.split(':')
+			const splitEnd = this.sendDispatch.end.split(':')
 
 			this.estErrors.all = ''
 			if (parseInt(splitStart[0]) > parseInt(splitEnd[0])) {
@@ -151,36 +96,9 @@ export default {
 				this.estErrors.all = ''
 			}
 
-			const sendDispatch = {
-				startDate: startDate,
-				start: start,
-				end: end,
-				filterYear: this.sendFilter.filterYear,
-				filterMonth: !this.sendFilter.filterMonth
-					? ''
-					: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
-				filterDay: this.sendFilter.filterDay,
-				order: this.changeSelectValue(this.sendDispatch.order),
+			if (this.sendDispatch.start && this.sendDispatch.end) {
+				this.$store.dispatch('estEntered', this.sendDispatch)
 			}
-
-			if ((startDate && start && end) || (start && end)) {
-				this.$store.dispatch('estEntered', sendDispatch)
-			}
-		},
-
-		gotoPage(page) {
-			if (page === 1) page = 0
-			const payload = {
-				order: this.changeSelectValue(this.sendDispatch.order),
-				page: page,
-				filterYear: this.sendFilter.filterYear,
-				filterMonth: !this.sendFilter.filterMonth
-					? ''
-					: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
-				filterDay: this.sendFilter.filterDay,
-			}
-
-			this.$store.dispatch('estEntered', payload)
 		},
 
 		incPage() {
@@ -191,18 +109,8 @@ export default {
 				return true
 			} else {
 				this.currentPage++
-				const payload = {
-					order: this.changeSelectValue(this.sendDispatch.order),
-					page: this.currentPage,
-					filterYear: this.sendFilter.filterYear,
-					filterMonth: !this.sendFilter.filterMonth
-						? ''
-						: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
 
-					filterDay: this.sendFilter.filterDay,
-				}
-
-				this.$store.dispatch('estEntered', payload)
+				this.$store.dispatch('estEntered', this.sendDispatch)
 			}
 		},
 
@@ -237,56 +145,26 @@ export default {
 			doc.save(`${userProfile.firstname.toLowerCase()}-estentered.pdf`)
 		},
 
-		resetDispatch(obj) {
-			if (!obj) {
-				Object.keys(this.sendDispatch).forEach((k) => {
-					this.sendDispatch[k] = ''
-				})
+		resetDispatch() {
+			Object.keys(this.sendDispatch).forEach((k) => {
+				this.sendDispatch[k] = ''
+			})
 
-				this.estErrors.all = ''
-			} else {
-				Object.keys(obj).forEach((k) => {
-					obj[k] = ''
-				})
-				this.estErrors.all = ''
-			}
-			this.$store.dispatch('estEntered', this.sendDispatch)
+			this.estErrors.all = ''
+			this.$store.dispatch('estEntered')
 		},
 
-		searchList: _debounce(function(searchParams) {
+		searchList: _debounce(function() {
 			this.currentPage = 0
-			const sendParams = { search: searchParams }
-			this.$store.dispatch('estEntered', sendParams)
-			if (this.estEntered > 0) {
+
+			this.$store.dispatch('estEntered', this.sendDispatch)
+			if (this.estEntered.length > 0) {
 				this.estErrors.search = ''
 			}
 		}, 300),
 
-		switchPanelDetails() {
-			this.byDetails = true
-			this.betweenTime = false
-		},
-
-		switchPanelTime() {
-			this.byDetails = false
-			this.betweenTime = true
-		},
-
-		sortList(order) {
-			const payload = {
-				startDate: this.sendDispatch.startDate,
-				start: this.sendDispatch.start,
-				end: this.sendDispatch.end,
-				order: '',
-				filterYear: this.sendFilter.filterYear,
-				filterMonth: !this.sendFilter.filterMonth
-					? ''
-					: this.monthValues.indexOf(this.sendFilter.filterMonth) + 1,
-				filterDay: this.sendFilter.filterDay,
-			}
-
-			payload.order = this.changeSelectValue(order)
-			this.$store.dispatch('estEntered', payload)
+		sortList() {
+			this.$store.dispatch('estEntered', this.sendDispatch)
 		},
 
 		yearValue() {
