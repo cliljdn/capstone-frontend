@@ -23,8 +23,8 @@ export default new Vuex.Store({
 		TOKEN_NAME: '',
 		isAuth: false,
 		accType: '',
-		// baseURL: 'http://scanolongapo-api.com/api/v1',
-		baseURL: 'http://192.168.1.11:6060/api/v1',
+		baseURL: 'http://scanolongapo-api.com/api/v1',
+		// baseURL: 'http://192.168.1.11:6060/api/v1',
 
 		//dashboard
 		sideBarOpen: false,
