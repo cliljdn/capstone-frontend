@@ -52,10 +52,6 @@ export default {
 			this.$store.dispatch('travelHistory', this.payload)
 		},
 
-		filterDate() {
-			this.$store.dispatch('travelHistory', this.payload)
-		},
-
 		openModal(batch) {
 			this.$store.dispatch('tvlCompanionInfo', batch)
 			this.$store.commit('modalTravel')
@@ -63,25 +59,34 @@ export default {
 
 		printInfo() {
 			const doc = new jsPdf()
-			const { travelHistory } = this.$store.state.individual
-			const printData = []
+
 			const { userProfile } = this.$store.state
-			travelHistory.forEach((el) => {
-				printData.push({
-					destination: el.destination,
-					time_boarded: el.time_boarded,
-					date_boarded: el.date_boarded,
-				})
-			})
+
+			const header = function() {
+				doc.setFontSize(12)
+				doc.setTextColor(40)
+
+				doc.getFont('normal')
+				//doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+				doc.text(
+					`Travel History Report \n Printed By: ${userProfile.firstname +
+						userProfile.lastname} \n Date Printed: ${new Date().toDateString()}`,
+					doc.internal.pageSize.getWidth() / 2,
+					7,
+					{ align: 'center' }
+				)
+			}
 
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
-				body: printData,
+				body: this.travelHistory,
 				columns: [
 					{ header: 'Destination', dataKey: 'destination' },
 					{ header: 'Time Boarded', dataKey: 'time_boarded' },
 					{ header: 'Date Boarded', dataKey: 'date_boarded' },
 				],
+				margin: { top: 20 },
+				didDrawPage: header,
 			})
 			doc.save(`${userProfile.firstname.toLowerCase()}-travelhistory.pdf`)
 		},

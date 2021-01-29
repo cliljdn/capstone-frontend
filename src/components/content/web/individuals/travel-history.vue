@@ -120,11 +120,12 @@
 									<div class="field mt-3">
 										<div class="control has-icons-left">
 											<div class="select is-rounded is-primary">
-												<select @change="orderBy()" v-model="payload.order">
+												<select @change="btwnTime()" v-model="payload.order">
 													<option value="" selected>Select Details</option>
 													<option>Destination</option>
 													<option>Time Boarded</option>
 													<option>Date Boarded</option>
+													<option>Plate Number</option>
 												</select>
 											</div>
 											<div class="icon is-small is-left has-text-success">
@@ -233,9 +234,9 @@
 													<p class="title is-4 menu-label">
 														{{ list.destination }}
 													</p>
-													<p class="subtitle is-6">
-														{{ list.plate_number }}
-													</p>
+													<small class="subtitle is-6">
+														Plate Number: {{ list.plate_number }}
+													</small>
 												</div>
 											</div>
 
