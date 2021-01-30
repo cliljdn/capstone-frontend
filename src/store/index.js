@@ -57,8 +57,7 @@ export default new Vuex.Store({
 			tvlCompanionInfo: [],
 
 			estEntered: [],
-			estEnteredDates: [],
-			estEnteredPages: 0,
+			estPages: 0,
 			estEnteredCompanions: [],
 		},
 
@@ -120,20 +119,14 @@ export default new Vuex.Store({
 			state.est.enteredDates = payload
 		},
 
-		estEnteredDates(state, payload) {
-			state.individual.estEnteredDates = payload
-		},
-
 		estEntered(state, payload) {
-			state.individual.estEntered = payload
+			console.log(payload)
+			state.individual.estEntered = payload.results
+			state.individual.estPages = payload.total
 		},
 
 		estEnteredCompanions(state, payload) {
 			state.individual.estEnteredCompanions = payload
-		},
-
-		estEnteredPages(state, payload) {
-			state.individual.estEnteredPages = payload
 		},
 
 		getProfile(state, payload) {
@@ -277,8 +270,7 @@ export default new Vuex.Store({
 					}
 				)
 
-				commit('estEnteredPages', estEntered.data.listEmployees.total)
-				commit('estEntered', estEntered.data.listEmployees.results)
+				commit('estEntered', estEntered.data)
 			} catch (err) {
 				console.log(err)
 			}
@@ -293,6 +285,7 @@ export default new Vuex.Store({
 					}
 				)
 				commit('estEnteredCompanions', companions.data)
+				commit('modalEntered')
 			} catch (err) {
 				return err.response
 			}

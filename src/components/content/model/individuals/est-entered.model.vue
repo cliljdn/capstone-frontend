@@ -9,16 +9,16 @@ export default {
 	components: { 'est-entered-modal': EstEnteredModal, FlatPickr: VueFlatpickr },
 
 	computed: {
-		estEntered() {
+		estList() {
 			const { estEntered } = this.$store.state.individual
 			return estEntered
 		},
 
 		pages() {
-			const { estEnteredPages } = this.$store.state.individual
+			const { estPages } = this.$store.state.individual
 			const pages = []
 
-			for (let i = 1; i < Math.ceil(estEnteredPages / 6); i++) {
+			for (let i = 1; i < Math.ceil(estPages / 6) + 1; i++) {
 				pages.push(i)
 			}
 			return pages
@@ -55,36 +55,29 @@ export default {
 	},
 
 	methods: {
-		decPage() {
-			if (this.currentPage < 1) {
+		decrementPage() {
+			if (this.payload.page < 1) {
 				return true
-			} else {
-				this.currentPage--
-
-				this.$store.dispatch('estEntered', this.payload)
 			}
+			this.payload.page--
+			this.$store.dispatch('estEntered', this.payload)
 		},
 
 		findBtwnTime() {
 			this.$store.dispatch('estEntered', this.payload)
 		},
 
-		incPage() {
-			if (
-				this.estEnteredPages[this.estEnteredPages.length - 1] ===
-				this.currentPage
-			) {
+		incrementPage() {
+			if (this.payload.page === this.pages[this.pages.length - 1] - 1) {
 				return true
 			} else {
-				this.currentPage++
-
+				this.payload.page++
 				this.$store.dispatch('estEntered', this.payload)
 			}
 		},
 
 		openModal(batch) {
 			this.$store.dispatch('estEnteredCompanions', batch)
-			return this.$store.commit('modalEntered')
 		},
 
 		printEstList() {

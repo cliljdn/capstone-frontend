@@ -4,7 +4,7 @@
 			<div class="column">
 				<aside class="menu">
 					<p class="menu-label">
-						Travel History
+						List of Establishment Entered
 					</p>
 
 					<article class="panel">
@@ -179,24 +179,27 @@
 										<!-- Your table content -->
 										<thead>
 											<tr>
-												<th>Destination</th>
-												<th>Date Boarded</th>
-												<th>Time Boarded</th>
+												<th>Establishment Name</th>
+												<th>Address Street</th>
+												<th>Date Entered</th>
+												<th>Time Entered</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
+											<tr
+												@click="openModal(est.batch)"
+												v-for="est in estList"
+												:key="est.batch"
+											>
+												<td>{{ est.name }}</td>
+												<td>{{ est.street }}</td>
+												<td>{{ est.date_entered }}</td>
+												<td>{{ est.time_entered }}</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
-								<div
-									class="columns columns-error"
-									v-if="estEntered.length === 0"
-								>
+								<div class="columns columns-error" v-if="estList.length === 0">
 									<div class="column is-flex is-justify-content-center">
 										<span class="has-text-danger">{{
 											payloadErrors.search
@@ -208,12 +211,16 @@
 
 							<!-- tile view -->
 							<div class="columns p-3 is-multiline " v-if="isPanelActive">
-								<div class="column is-4">
-									<div class="card">
+								<div
+									class="column is-4"
+									v-for="est in estList"
+									:key="est.batch"
+								>
+									<div class="card" @click="openModal(est.batch)">
 										<div class="card-content">
 											<div class="media">
 												<div class="media-left">
-													<figure class="image is-96x96">
+													<figure class="image is-64x64">
 														<img
 															src="https://bulma.io/images/placeholders/96x96.png"
 															alt="Placeholder image"
@@ -221,8 +228,8 @@
 													</figure>
 												</div>
 												<div class="media-content">
-													<p class="title is-4 menu-label"></p>
-													<small class="subtitle is-6"> </small>
+													<p class="title is-4 menu-label">{{ est.name }}</p>
+													<small class="subtitle is-6"></small>
 												</div>
 											</div>
 
@@ -232,10 +239,23 @@
 														<i class="fas fa-calendar"></i>
 													</span>
 													<span class="ml-1 tvl-info">
-														Date Boarded:
+														Location:
 													</span>
 
-													<span class="ml-1 user-info"></span>
+													<span class="ml-1 user-info">{{ est.street }}</span>
+												</p>
+
+												<p class="icon-text  level-left level-item">
+													<span class="icon has-text-success">
+														<i class="fas fa-calendar"></i>
+													</span>
+													<span class="ml-1 tvl-info">
+														Date Entered:
+													</span>
+
+													<span class="ml-1 user-info">{{
+														est.date_entered
+													}}</span>
 												</p>
 
 												<p class="icon-text  level-left level-item">
@@ -246,7 +266,9 @@
 														Time Entered:
 													</span>
 
-													<span class="ml-1 user-info"> </span>
+													<span class="ml-1 user-info"
+														>{{ est.time_entered }}
+													</span>
 												</p>
 											</div>
 										</div>
@@ -254,7 +276,7 @@
 								</div>
 
 								<div
-									v-if="estEntered.length === 0"
+									v-if="estList.length === 0"
 									class="column columns-error is-flex is-justify-content-center"
 								>
 									<span class="has-text-danger">{{
