@@ -53,7 +53,7 @@ export default new Vuex.Store({
 
 		individual: {
 			travelHistory: [],
-			travelHistoryPages: 0,
+			tvlPages: 0,
 			tvlCompanionInfo: [],
 
 			estEntered: [],
@@ -206,7 +206,7 @@ export default new Vuex.Store({
 
 		travelHistory(state, payload) {
 			state.individual.travelHistory = payload.results
-			state.individual.travelHistoryPages = payload.total
+			state.individual.tvlPages = payload.total
 		},
 
 		tvlCompanionInfo(state, payload) {
@@ -279,7 +279,6 @@ export default new Vuex.Store({
 
 				commit('estEnteredPages', estEntered.data.listEmployees.total)
 				commit('estEntered', estEntered.data.listEmployees.results)
-				commit('estEnteredDates', estEntered.data.dates)
 			} catch (err) {
 				console.log(err)
 			}
@@ -354,6 +353,7 @@ export default new Vuex.Store({
 						params: { ...payload },
 					}
 				)
+
 				commit('travelHistory', travelHistory.data)
 			} catch (err) {
 				return err.response

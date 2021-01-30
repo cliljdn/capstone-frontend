@@ -1,176 +1,176 @@
 <template>
-	<div class="">
-		<div class="container  travel-container">
-			<div class="columns travel-columns">
-				<div class="column">
-					<aside class="menu">
-						<p class="menu-label">
-							Travel History
-						</p>
+	<div class="container  travel-container">
+		<div class="columns travel-columns">
+			<div class="column">
+				<aside class="menu">
+					<p class="menu-label">
+						Travel History
+					</p>
 
-						<article class="panel">
-							<div class="tabs is-centered is-boxed">
-								<ul>
-									<li :class="{ 'is-active': !isPanelActive }" class="mr-3">
-										<a @click="switchPanelFalse">
-											<span class="icon is-small"
-												><i class="fas fa-film" aria-hidden="true"></i
-											></span>
-											<span>Table View</span>
-										</a>
-									</li>
+					<article class="panel">
+						<!-- SORT BETWEEN TIME -->
+						<div class="columns m-3 columns-button">
+							<!-- <div class="column is-flex is-justify-content-center"></div> -->
 
-									<li :class="{ 'is-active': isPanelActive }">
-										<a @click="switchPanelTrue">
-											<span class="icon is-small"
-												><i class="far fa-file-alt" aria-hidden="true"></i
-											></span>
-											<span>Tile View</span>
-										</a>
-									</li>
-								</ul>
+							<div class="column is-12 has-text-justified-mobile">
+								<button
+									@click="printInfo"
+									class="button is-pulled-right is-small is-marginless ml-2 reset-button is-ghost"
+								>
+									<strong> Print Travel History</strong>
+								</button>
+
+								<button
+									@click="resetDropdowns"
+									class="button is-small is-marginless is-pulled-right reset-button is-ghost"
+								>
+									<strong>Reset Dropdowns</strong>
+								</button>
 							</div>
-							<!-- SORT BETWEEN TIME -->
+						</div>
 
-							<div class="columns travel-columns">
-								<div class="column is-one-fifth">
-									<span class="select-labels">Start Date:</span>
-									<div class="field between-time mt-3">
-										<p class="control has-icons-left">
-											<flat-pickr
-												@input="btwnTime()"
-												v-model="payload.startDate"
-												class="input is-primary is-rounded"
-												placeholder="Filter Date"
-											/>
-											<span class="icon is-small is-left">
-												<i class="fas fa-calendar"></i>
-											</span>
-										</p>
-									</div>
-								</div>
-
-								<div class="column is-one-fifth">
-									<span class="select-labels">End Date:</span>
-									<div class="field between-time mt-3">
-										<p class="control has-icons-left">
-											<flat-pickr
-												@input="btwnTime()"
-												v-model="payload.endDate"
-												class="input is-primary  is-rounded"
-												placeholder="Filter Date"
-											/>
-											<span class="icon is-small is-left">
-												<i class="fas fa-calendar"></i>
-											</span>
-										</p>
-									</div>
+						<div class="columns travel-columns">
+							<div class="column is-one-fifth">
+								<span class="select-labels">Start Date:</span>
+								<div class="field between-time mt-3">
+									<p class="control has-icons-left">
+										<flat-pickr
+											@input="btwnTime()"
+											v-model="payload.startDate"
+											class="input is-primary is-rounded"
+											placeholder="Filter Date"
+										/>
+										<span class="icon is-small is-left">
+											<i class="fas fa-calendar"></i>
+										</span>
+									</p>
 								</div>
 							</div>
 
-							<div class="columns travel-columns">
-								<div class="column is-one-fifth">
-									<span class="select-labels">Start Time: </span>
-									<div class="field between-time mt-3">
-										<div class="control has-icons-left">
-											<div class="select is-rounded is-primary">
-												<select @change="btwnTime()" v-model="payload.start">
-													<option value="" selected>Select Time</option>
-													<option
-														v-for="(time, index) in timeValue"
-														:key="index"
-														>{{ time }}:00</option
-													>
-												</select>
-											</div>
-											<div class="icon is-small is-left has-text-success">
-												<i class="fas fa-globe"></i>
-											</div>
-										</div>
-									</div>
+							<div class="column is-one-fifth">
+								<span class="select-labels">End Date:</span>
+								<div class="field between-time mt-3">
+									<p class="control has-icons-left">
+										<flat-pickr
+											@input="btwnTime()"
+											v-model="payload.endDate"
+											class="input is-primary  is-rounded"
+											placeholder="Filter Date"
+										/>
+										<span class="icon is-small is-left">
+											<i class="fas fa-calendar"></i>
+										</span>
+									</p>
 								</div>
+							</div>
+						</div>
 
-								<div class="column  is-one-fifth">
-									<span class="select-labels">End Time: </span>
-									<div class="field mt-3">
-										<div class="control has-icons-left">
-											<div class="select is-rounded is-primary">
-												<select
-													:disabled="!payload.start"
-													v-model="payload.end"
-													@change="btwnTime()"
+						<div class="columns travel-columns">
+							<div class="column is-one-fifth">
+								<span class="select-labels">Start Time: </span>
+								<div class="field between-time mt-3">
+									<div class="control has-icons-left">
+										<div class="select is-rounded is-primary">
+											<select @change="btwnTime()" v-model="payload.start">
+												<option value="" selected>Select Time</option>
+												<option v-for="(time, index) in timeValue" :key="index"
+													>{{ time }}:00</option
 												>
-													<option value="" selected>Select Time</option>
-													<option
-														v-for="(time, index) in timeValue"
-														:key="index"
-														>{{ time }}:00</option
-													>
-												</select>
-											</div>
-											<div class="icon is-small is-left has-text-success">
-												<i class="fas fa-globe"></i>
-											</div>
+											</select>
 										</div>
-									</div>
-								</div>
-
-								<div class="column is-one-fifth">
-									<span class="select-labels">Sort List By: </span>
-									<div class="field mt-3">
-										<div class="control has-icons-left">
-											<div class="select is-rounded is-primary">
-												<select @change="btwnTime()" v-model="payload.order">
-													<option value="" selected>Select Details</option>
-													<option>Destination</option>
-													<option>Time Boarded</option>
-													<option>Date Boarded</option>
-													<option>Plate Number</option>
-												</select>
-											</div>
-											<div class="icon is-small is-left has-text-success">
-												<i class="fas fa-globe"></i>
-											</div>
+										<div class="icon is-small is-left has-text-success">
+											<i class="fas fa-globe"></i>
 										</div>
 									</div>
 								</div>
 							</div>
 
-							<div class="panel-block">
-								<p class="control has-icons-left">
-									<input
-										v-model="payload.search"
-										@input="searchList"
-										class="input  is-rounded is-primary"
-										type="text"
-										placeholder="Search"
-									/>
-									<span class="icon is-left">
-										<i class="fas fa-search" aria-hidden="true"></i>
-									</span>
-								</p>
-							</div>
-
-							<div class="columns m-3 is-vcentered">
-								<div class="column is-flex is-justify-content-center">
-									<button
-										@click="printInfo"
-										class="button reset-button is-ghost is-rounded"
-									>
-										Print Travel History
-									</button>
-								</div>
-
-								<div class="column is-flex is-justify-content-center">
-									<button
-										@click="resetDropdowns"
-										class="button reset-button is-ghost is-rounded"
-									>
-										Reset Dropdowns
-									</button>
+							<div class="column  is-one-fifth">
+								<span class="select-labels">End Time: </span>
+								<div class="field mt-3">
+									<div class="control has-icons-left">
+										<div class="select is-rounded is-primary">
+											<select
+												:disabled="!payload.start"
+												v-model="payload.end"
+												@change="btwnTime()"
+											>
+												<option value="" selected>Select Time</option>
+												<option v-for="(time, index) in timeValue" :key="index"
+													>{{ time }}:00</option
+												>
+											</select>
+										</div>
+										<div class="icon is-small is-left has-text-success">
+											<i class="fas fa-globe"></i>
+										</div>
+									</div>
 								</div>
 							</div>
 
+							<div class="column is-one-fifth">
+								<span class="select-labels">Sort List By: </span>
+								<div class="field mt-3">
+									<div class="control has-icons-left">
+										<div class="select is-rounded is-primary">
+											<select @change="btwnTime()" v-model="payload.order">
+												<option value="" selected>Select Details</option>
+												<option>Destination</option>
+												<option>Time Boarded</option>
+												<option>Date Boarded</option>
+												<option>Plate Number</option>
+											</select>
+										</div>
+										<div class="icon is-small is-left has-text-success">
+											<i class="fas fa-globe"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel-block">
+							<p class="control has-icons-left">
+								<input
+									v-model="payload.search"
+									@input="searchList"
+									class="input  is-rounded is-primary"
+									type="text"
+									placeholder="Search"
+								/>
+								<span class="icon is-left">
+									<i class="fas fa-search" aria-hidden="true"></i>
+								</span>
+							</p>
+						</div>
+
+						<div class="tabs is-centered is-boxed">
+							<ul>
+								<li :class="{ 'is-active': !isPanelActive }" class="mr-3">
+									<a @click="switchPanelFalse">
+										<span class="icon is-small"
+											><i class="fas fa-table" aria-hidden="true"></i
+										></span>
+										<strong>Table View</strong>
+									</a>
+								</li>
+
+								<li
+									:class="{
+										'is-active': isPanelActive,
+									}"
+								>
+									<a @click="switchPanelTrue">
+										<span class="icon is-small"
+											><i class="far fa-window-restore" aria-hidden="true"></i
+										></span>
+										<strong>Tile View</strong>
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<transition name="slide">
 							<!-- table view -->
 							<main class="travel-log" v-if="!isPanelActive">
 								<div class="table-container">
@@ -280,58 +280,83 @@
 									}}</span>
 								</div>
 							</div>
+						</transition>
 
-							<div class="columns" v-if="isPanelActive">
-								<div class="column is-12 is-flex is-justify-content-center">
-									<nav
-										class="pagination is-centered"
-										role="navigation"
-										aria-label="pagination"
+						<div class="columns" v-if="isPanelActive">
+							<div class="column is-12 is-flex is-justify-content-center">
+								<nav
+									class="pagination is-centered"
+									role="navigation"
+									aria-label="pagination"
+								>
+									<a
+										:disabled="payload.page < 1"
+										@click="decrementPage()"
+										class="pagination-previous"
+										>Previous</a
 									>
-										<a class="pagination-previous">Previous</a>
-										<a class="pagination-next">Next page</a>
-										<ul class="pagination-list">
-											<li>
-												<a class="pagination-link" aria-label="Goto page 1"
-													>1</a
-												>
-											</li>
-											<li><span class="pagination-ellipsis">&hellip;</span></li>
-											<li>
-												<a class="pagination-link" aria-label="Goto page 45"
-													>45</a
-												>
-											</li>
-											<li>
-												<a
-													class="pagination-link is-current"
-													aria-label="Page 46"
-													aria-current="page"
-													>46</a
-												>
-											</li>
-											<li>
-												<a class="pagination-link" aria-label="Goto page 47"
-													>47</a
-												>
-											</li>
-											<li><span class="pagination-ellipsis">&hellip;</span></li>
-											<li>
-												<a class="pagination-link" aria-label="Goto page 86"
-													>86</a
-												>
-											</li>
-										</ul>
-									</nav>
-								</div>
+									<a
+										:disabled="payload.page === pages[pages.length - 1] - 1"
+										@click="incrementPage()"
+										class="pagination-next"
+										>Next page</a
+									>
+									<ul
+										class="pagination-list"
+										v-for="(page, index) in pages"
+										:key="index"
+									>
+										<li v-if="page === 1">
+											<a
+												@click="gotoPage(index)"
+												:class="{
+													'is-current': payload.page === index,
+												}"
+												class="pagination-link"
+												aria-label="Goto page 1"
+												>{{ page }}</a
+											>
+										</li>
+										<li v-if="page === 2">
+											<span class="pagination-ellipsis">&hellip;</span>
+										</li>
+										<!-- middle page -->
+										<li v-if="page > 1 && page !== pages[pages.length - 1]">
+											<a
+												@click="gotoPage(index)"
+												:class="{
+													'is-current': payload.page === index,
+												}"
+												class="pagination-link"
+												aria-label="Goto page 1"
+												>{{ page }}</a
+											>
+										</li>
+
+										<!-- end page -->
+										<li v-if="page === pages[pages.length - 1]">
+											<span class="pagination-ellipsis">&hellip;</span>
+										</li>
+										<li v-if="page === pages[pages.length - 1]">
+											<a
+												@click="gotoPage(index)"
+												:class="{
+													'is-current': payload.page === index,
+												}"
+												class="pagination-link"
+												aria-label="Goto page 1"
+												>{{ page }}</a
+											>
+										</li>
+									</ul>
+								</nav>
 							</div>
-							<!-- tile view -->
-						</article>
-					</aside>
-				</div>
+						</div>
+						<!-- tile view -->
+					</article>
+				</aside>
 			</div>
 		</div>
-
 		<travel-history-modal />
 	</div>
 </template>

@@ -3,8 +3,10 @@ import EstEnteredModal from '../../modals/individuals/est-entered-modal'
 import _debounce from 'lodash.debounce'
 import jsPdf from 'jspdf'
 import 'jspdf-autotable'
+import VueFlatpickr from 'vue-flatpickr-component'
+import 'flatpickr/dist/flatpickr.css'
 export default {
-	components: { 'est-entered-modal': EstEnteredModal },
+	components: { 'est-entered-modal': EstEnteredModal, FlatPickr: VueFlatpickr },
 
 	computed: {
 		estEntered() {
@@ -12,7 +14,7 @@ export default {
 			return estEntered
 		},
 
-		estEnteredPages() {
+		pages() {
 			const { estEnteredPages } = this.$store.state.individual
 			const pages = []
 
@@ -21,55 +23,33 @@ export default {
 			}
 			return pages
 		},
-
-		getEstEnteredDates() {
-			const { getEstEnteredDates } = this.$store.getters
-			return getEstEnteredDates.filter(
-				(value, index) => getEstEnteredDates.indexOf(value) === index
-			)
-		},
 	},
+
 	data() {
 		return {
 			betweenTime: true,
 			byDetails: false,
-			pages: [],
-			monthValues: [
-				'January',
-				'February',
-				'March',
-				'April',
-				'May',
-				'June',
-				'July',
-				'August',
-				'September',
-				'October',
-				'November',
-				'December',
-			],
-			daysValue: 31,
 
-			currentPage: 0,
+			daysValue: 31,
+			isPanelActive: false,
+
 			isCurrentActive: false,
 			timeFormat: 24,
 
-			estErrors: {
-				all: '',
+			payloadErrors: {
 				search: 'No Results Found',
 			},
 
 			sendFilter: {},
 
-			sendDispatch: {
+			payload: {
 				page: '',
 				start: '',
 				end: '',
 				order: '',
 				search: '',
-				filterYear: '',
-				filterMonth: '',
-				filterDay: '',
+				startDate: '',
+				endDate: '',
 			},
 		}
 	},
@@ -81,24 +61,12 @@ export default {
 			} else {
 				this.currentPage--
 
-				this.$store.dispatch('estEntered', this.sendDispatch)
+				this.$store.dispatch('estEntered', this.payload)
 			}
 		},
 
 		findBtwnTime() {
-			const splitStart = this.sendDispatch.start.split(':')
-			const splitEnd = this.sendDispatch.end.split(':')
-
-			this.estErrors.all = ''
-			if (parseInt(splitStart[0]) > parseInt(splitEnd[0])) {
-				this.estErrors.all = 'The start time must be less than the end time'
-			} else {
-				this.estErrors.all = ''
-			}
-
-			if (this.sendDispatch.start && this.sendDispatch.end) {
-				this.$store.dispatch('estEntered', this.sendDispatch)
-			}
+			this.$store.dispatch('estEntered', this.payload)
 		},
 
 		incPage() {
@@ -110,7 +78,7 @@ export default {
 			} else {
 				this.currentPage++
 
-				this.$store.dispatch('estEntered', this.sendDispatch)
+				this.$store.dispatch('estEntered', this.payload)
 			}
 		},
 
@@ -146,25 +114,37 @@ export default {
 		},
 
 		resetDispatch() {
-			Object.keys(this.sendDispatch).forEach((k) => {
-				this.sendDispatch[k] = ''
+			Object.keys(this.payload).forEach((k) => {
+				this.payload[k] = ''
 			})
 
-			this.estErrors.all = ''
+			this.payloadErrors.all = ''
 			this.$store.dispatch('estEntered')
 		},
 
 		searchList: _debounce(function() {
 			this.currentPage = 0
 
-			this.$store.dispatch('estEntered', this.sendDispatch)
+			this.$store.dispatch('estEntered', this.payload)
 			if (this.estEntered.length > 0) {
-				this.estErrors.search = ''
+				this.payloadErrors.search = ''
 			}
 		}, 300),
 
 		sortList() {
-			this.$store.dispatch('estEntered', this.sendDispatch)
+			this.$store.dispatch('estEntered', this.payload)
+		},
+
+		switchPanelFalse() {
+			this.payload.page = ''
+			this.isPanelActive = false
+			this.$store.dispatch('estEntered', this.payload)
+		},
+
+		switchPanelTrue() {
+			this.payload.page = 0
+			this.$store.dispatch('estEntered', this.payload)
+			this.isPanelActive = true
 		},
 
 		yearValue() {
@@ -181,7 +161,7 @@ export default {
 	mounted() {
 		this.yearValue()
 
-		this.$store.dispatch('estEntered', this.sendDispatch)
+		this.$store.dispatch('estEntered', this.payload)
 	},
 }
 </script>

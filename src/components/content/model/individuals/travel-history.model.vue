@@ -16,6 +16,16 @@ export default {
 			const { travelHistory } = this.$store.state.individual
 			return travelHistory
 		},
+
+		pages() {
+			const { tvlPages } = this.$store.state.individual
+			const pages = []
+			for (let i = 1; i < Math.ceil(tvlPages / 6) + 1; i++) {
+				pages.push(i)
+			}
+			console.log(pages)
+			return pages
+		},
 	},
 
 	data() {
@@ -52,6 +62,29 @@ export default {
 			this.$store.dispatch('travelHistory', this.payload)
 		},
 
+		decrementPage() {
+			if (this.payload.page < 1) {
+				return true
+			}
+			this.payload.page--
+			this.$store.dispatch('travelHistory', this.payload)
+		},
+
+		gotoPage(index) {
+			this.payload.page = index
+			this.$store.dispatch('travelHistory', this.payload)
+		},
+
+		incrementPage() {
+			if (this.payload.page === this.pages[this.pages.length - 1] - 1) {
+				return true
+			} else {
+				this.payload.page++
+				console.log(this.payload.page)
+				this.$store.dispatch('travelHistory', this.payload)
+			}
+		},
+
 		openModal(batch) {
 			this.$store.dispatch('tvlCompanionInfo', batch)
 			this.$store.commit('modalTravel')
@@ -70,6 +103,7 @@ export default {
 				//doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
 				doc.text(
 					`Travel History Report \n Printed By: ${userProfile.firstname +
+						' ' +
 						userProfile.lastname} \n Date Printed: ${new Date().toDateString()}`,
 					doc.internal.pageSize.getWidth() / 2,
 					7,
@@ -119,6 +153,7 @@ export default {
 		switchPanelFalse() {
 			this.payload.page = ''
 			this.isPanelActive = false
+			this.$store.dispatch('travelHistory', this.payload)
 		},
 
 		switchPanelTrue() {
