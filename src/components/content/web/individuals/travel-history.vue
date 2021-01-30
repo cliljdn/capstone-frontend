@@ -219,7 +219,7 @@
 									v-for="list in travelHistory"
 									:key="list.batch"
 								>
-									<div class="card">
+									<div class="card" @click="openModal(list.batch)">
 										<div class="card-content">
 											<div class="media">
 												<div class="media-left">
@@ -263,7 +263,7 @@
 													</span>
 
 													<span class="ml-1 user-info"
-														>{{ list.time_entered }}
+														>{{ list.time_boarded }}
 													</span>
 												</p>
 											</div>
@@ -281,6 +281,50 @@
 								</div>
 							</div>
 
+							<div class="columns" v-if="isPanelActive">
+								<div class="column is-12 is-flex is-justify-content-center">
+									<nav
+										class="pagination is-centered"
+										role="navigation"
+										aria-label="pagination"
+									>
+										<a class="pagination-previous">Previous</a>
+										<a class="pagination-next">Next page</a>
+										<ul class="pagination-list">
+											<li>
+												<a class="pagination-link" aria-label="Goto page 1"
+													>1</a
+												>
+											</li>
+											<li><span class="pagination-ellipsis">&hellip;</span></li>
+											<li>
+												<a class="pagination-link" aria-label="Goto page 45"
+													>45</a
+												>
+											</li>
+											<li>
+												<a
+													class="pagination-link is-current"
+													aria-label="Page 46"
+													aria-current="page"
+													>46</a
+												>
+											</li>
+											<li>
+												<a class="pagination-link" aria-label="Goto page 47"
+													>47</a
+												>
+											</li>
+											<li><span class="pagination-ellipsis">&hellip;</span></li>
+											<li>
+												<a class="pagination-link" aria-label="Goto page 86"
+													>86</a
+												>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
 							<!-- tile view -->
 						</article>
 					</aside>
