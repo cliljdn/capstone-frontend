@@ -34,7 +34,13 @@ export default {
 			isDetailsActive: false,
 			isPanelActive: false,
 			timeValue: 24,
-
+			timeConfig: {
+				enableTime: true,
+				noCalendar: true,
+				dateFormat: 'H:i',
+				time_24hr: true,
+				defaultDate: '00:00',
+			},
 			payload: {
 				page: '',
 				start: '',
@@ -52,7 +58,7 @@ export default {
 		}
 	},
 	methods: {
-		btwnTime() {
+		btwnRanges() {
 			if (!this.isPanelActive) {
 				this.payload.page = ''
 			} else {

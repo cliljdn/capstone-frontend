@@ -34,7 +34,6 @@ export default {
 				noCalendar: true,
 				dateFormat: 'H:i',
 				time_24hr: true,
-				defaultDate: '00:00',
 			},
 
 			config: {
@@ -75,7 +74,6 @@ export default {
 		},
 
 		btwnRanges() {
-			console.log(this.payload.startDate)
 			this.$store.dispatch('estEntered', this.payload)
 		},
 
@@ -94,28 +92,38 @@ export default {
 
 		printEstList() {
 			const doc = new jsPdf()
+
 			const { userProfile } = this.$store.state
-			const printList = []
-			this.estEntered.forEach((el) => {
-				printList.push({
-					time_entered: el.time_entered,
-					date_entered: el.date_entered,
-					...el.estList,
-				})
-			})
+
+			const header = function() {
+				doc.setFontSize(12)
+				doc.setTextColor(40)
+
+				doc.getFont('normal')
+				//doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+				doc.text(
+					`Establishment Entered Report \n Printed By: ${userProfile.firstname +
+						' ' +
+						userProfile.lastname} \n Date Printed: ${new Date().toDateString()}`,
+					doc.internal.pageSize.getWidth() / 2,
+					7,
+					{ align: 'center' }
+				)
+			}
 
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
-				body: printList,
+				body: this.estList,
 				columns: [
 					{ header: 'Establishment Name', dataKey: 'name' },
-					{ header: 'Street Address', dataKey: 'street' },
-					{ header: 'Time Entered', dataKey: 'time_entered' },
+					{ header: 'Address Street', dataKey: 'street' },
 					{ header: 'Date Entered', dataKey: 'date_entered' },
+					{ header: 'Time Entered', dataKey: 'time_entered' },
 				],
+				margin: { top: 20 },
+				didDrawPage: header,
 			})
-
-			doc.save(`${userProfile.firstname.toLowerCase()}-estentered.pdf`)
+			doc.save(`${userProfile.firstname.toLowerCase()}-EstList.pdf`)
 		},
 
 		resetDispatch() {

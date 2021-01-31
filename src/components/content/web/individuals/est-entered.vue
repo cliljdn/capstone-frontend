@@ -14,9 +14,10 @@
 
 							<div class="column is-12 has-text-justified-mobile">
 								<button
+									@click="printEstList"
 									class="button is-pulled-right is-small is-marginless ml-2 reset-button is-ghost"
 								>
-									<strong> Print Travel History</strong>
+									<strong> Print Est List</strong>
 								</button>
 
 								<button
@@ -42,7 +43,6 @@
 										<span class="icon is-small is-left">
 											<i class="fas fa-calendar"></i>
 										</span>
-										{{ payload.startDate }}
 									</p>
 								</div>
 							</div>

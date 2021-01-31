@@ -95,7 +95,7 @@
 				<div class="columns companion-information">
 					<div class="column">
 						<div class="box" v-for="(comp, index) in companions" :key="index">
-							<article class="media">
+							<article class="media" v-if="comp.firstname && comp.lastname">
 								<div class="media-left mt-4">
 									<figure class="image is-64x64">
 										<img src="https://i.imgur.com/bCOd9N0.jpg" alt="Image" />
@@ -152,6 +152,12 @@
 									</div>
 								</div>
 							</article>
+							<div
+								v-else
+								class="column m-5 is-12 is-flex is-justify-content-center"
+							>
+								<strong class="has-text-danger">No Companions</strong>
+							</div>
 						</div>
 					</div>
 				</div>

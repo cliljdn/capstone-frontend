@@ -94,7 +94,8 @@
 
 								<a class="ml-3">
 									{{ authUser.firstname ? authUser.firstname : authUser.name }}
-									{{ authUser.lastname }}
+									{{ authUser.lastname }} /
+									{{ this.$store.state.accType }}
 								</a>
 							</div>
 						</div>

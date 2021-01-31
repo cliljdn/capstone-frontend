@@ -2,21 +2,26 @@
 export default {
 	computed: {
 		companions() {
-			const { estEnteredCompanions } = this.$store.state.individual
-
-			return estEnteredCompanions.companionList
+			const {
+				companionList,
+			} = this.$store.state.individual.estEnteredCompanions
+			return companionList ? companionList : ''
 		},
 
 		estInfo() {
-			const { estEnteredCompanions } = this.$store.state.individual
+			const {
+				estInformation,
+			} = this.$store.state.individual.estEnteredCompanions
 
-			return estEnteredCompanions.estInformation
+			return estInformation ? estInformation : ''
 		},
 
 		empInfo() {
-			const { estEnteredCompanions } = this.$store.state.individual
+			const {
+				employeeProfile,
+			} = this.$store.state.individual.estEnteredCompanions
 
-			return estEnteredCompanions.employeeProfile
+			return employeeProfile ? employeeProfile : ''
 		},
 	},
 

@@ -120,7 +120,6 @@ export default new Vuex.Store({
 		},
 
 		estEntered(state, payload) {
-			console.log(payload)
 			state.individual.estEntered = payload.results
 			state.individual.estPages = payload.total
 		},
@@ -240,7 +239,7 @@ export default new Vuex.Store({
 				commit('enteredPages', responseData.data.scannedIndiv.total)
 				commit('enteredIndividuals', responseData.data.scannedIndiv.results)
 			} catch (err) {
-				console.log(err.reponse)
+				return err
 			}
 		},
 
@@ -256,7 +255,7 @@ export default new Vuex.Store({
 				commit('enteredIndivCompanions', responseData.data)
 				commit('modalListEntered')
 			} catch (err) {
-				console.log(err)
+				return err
 			}
 		},
 
@@ -272,7 +271,7 @@ export default new Vuex.Store({
 
 				commit('estEntered', estEntered.data)
 			} catch (err) {
-				console.log(err)
+				return err
 			}
 		},
 
@@ -284,6 +283,7 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
+
 				commit('estEnteredCompanions', companions.data)
 				commit('modalEntered')
 			} catch (err) {
@@ -317,7 +317,7 @@ export default new Vuex.Store({
 				)
 				commit('passengers', passengers.data)
 			} catch (err) {
-				console.log(err.response)
+				return err
 			}
 		},
 
@@ -333,7 +333,7 @@ export default new Vuex.Store({
 				commit('modalPassengers')
 				commit('passengersInfo', passengers.data)
 			} catch (err) {
-				console.log(err.response)
+				return err
 			}
 		},
 

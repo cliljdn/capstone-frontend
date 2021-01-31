@@ -28,6 +28,7 @@ export default {
 html {
 	overflow-x: hidden !important;
 }
+
 .main-view {
 	overflow: hidden !important;
 }

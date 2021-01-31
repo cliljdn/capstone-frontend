@@ -58,7 +58,7 @@
 								<i class="fas fa-info"></i>
 							</span>
 							<strong class="ml-1 tvl-info">
-								Establishment Information:
+								{{ stateVar.accType }} Information:
 							</strong>
 						</div>
 					</div>

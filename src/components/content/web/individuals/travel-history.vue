@@ -9,10 +9,10 @@
 
 					<article class="panel">
 						<!-- SORT BETWEEN TIME -->
-						<div class="columns m-3 columns-button">
+						<div class="columns m-3  columns-button">
 							<!-- <div class="column is-flex is-justify-content-center"></div> -->
 
-							<div class="column is-12 has-text-justified-mobile">
+							<div class="column is-12 p-3 has-text-justified-mobile">
 								<button
 									@click="printInfo"
 									class="button is-pulled-right is-small is-marginless ml-2 reset-button is-ghost"
@@ -35,7 +35,7 @@
 								<div class="field between-time mt-3">
 									<p class="control has-icons-left">
 										<flat-pickr
-											@input="btwnTime()"
+											@input="btwnRanges()"
 											v-model="payload.startDate"
 											class="input is-primary is-rounded"
 											placeholder="Filter Date"
@@ -52,7 +52,7 @@
 								<div class="field between-time mt-3">
 									<p class="control has-icons-left">
 										<flat-pickr
-											@input="btwnTime()"
+											@input="btwnRanges()"
 											v-model="payload.endDate"
 											class="input is-primary  is-rounded"
 											placeholder="Filter Date"
@@ -69,42 +69,36 @@
 							<div class="column is-one-fifth">
 								<span class="select-labels">Start Time: </span>
 								<div class="field between-time mt-3">
-									<div class="control has-icons-left">
-										<div class="select is-rounded is-primary">
-											<select @change="btwnTime()" v-model="payload.start">
-												<option value="" selected>Select Time</option>
-												<option v-for="(time, index) in timeValue" :key="index"
-													>{{ time }}:00</option
-												>
-											</select>
-										</div>
-										<div class="icon is-small is-left has-text-success">
-											<i class="fas fa-globe"></i>
-										</div>
-									</div>
+									<p class="control has-icons-left">
+										<flat-pickr
+											@input="btwnRanges()"
+											v-model="payload.start"
+											class="input is-primary  is-rounded"
+											placeholder="Enter Start Date"
+											:config="timeConfig"
+										/>
+										<span class="icon is-small is-left">
+											<i class="fas fa-calendar"></i>
+										</span>
+									</p>
 								</div>
 							</div>
 
 							<div class="column  is-one-fifth">
 								<span class="select-labels">End Time: </span>
-								<div class="field mt-3">
-									<div class="control has-icons-left">
-										<div class="select is-rounded is-primary">
-											<select
-												:disabled="!payload.start"
-												v-model="payload.end"
-												@change="btwnTime()"
-											>
-												<option value="" selected>Select Time</option>
-												<option v-for="(time, index) in timeValue" :key="index"
-													>{{ time }}:00</option
-												>
-											</select>
-										</div>
-										<div class="icon is-small is-left has-text-success">
-											<i class="fas fa-globe"></i>
-										</div>
-									</div>
+								<div class="field between-time mt-3">
+									<p class="control has-icons-left">
+										<flat-pickr
+											@input="btwnRanges()"
+											v-model="payload.end"
+											class="input is-primary  is-rounded"
+											placeholder="Enter End Time"
+											:config="timeConfig"
+										/>
+										<span class="icon is-small is-left">
+											<i class="fas fa-calendar"></i>
+										</span>
+									</p>
 								</div>
 							</div>
 
@@ -113,7 +107,7 @@
 								<div class="field mt-3">
 									<div class="control has-icons-left">
 										<div class="select is-rounded is-primary">
-											<select @change="btwnTime()" v-model="payload.order">
+											<select @change="btwnRanges()" v-model="payload.order">
 												<option value="" selected>Select Details</option>
 												<option>Destination</option>
 												<option>Time Boarded</option>
