@@ -29,6 +29,17 @@ export default {
 		return {
 			betweenTime: true,
 			byDetails: false,
+			timeConfig: {
+				enableTime: true,
+				noCalendar: true,
+				dateFormat: 'H:i',
+				time_24hr: true,
+				defaultDate: '00:00',
+			},
+
+			config: {
+				mode: 'range',
+			},
 
 			daysValue: 31,
 			isPanelActive: false,
@@ -44,12 +55,12 @@ export default {
 
 			payload: {
 				page: '',
-				start: '',
-				end: '',
+				start: null,
+				end: null,
 				order: '',
 				search: '',
-				startDate: '',
-				endDate: '',
+				startDate: null,
+				endDate: null,
 			},
 		}
 	},
@@ -63,7 +74,8 @@ export default {
 			this.$store.dispatch('estEntered', this.payload)
 		},
 
-		findBtwnTime() {
+		btwnRanges() {
+			console.log(this.payload.startDate)
 			this.$store.dispatch('estEntered', this.payload)
 		},
 
@@ -111,8 +123,11 @@ export default {
 				this.payload[k] = ''
 			})
 
-			this.payloadErrors.all = ''
-			this.$store.dispatch('estEntered')
+			if (!this.isPanelActive) {
+				this.$store.dispatch('estEntered')
+			} else {
+				this.$store.dispatch('estEntered', this.payload)
+			}
 		},
 
 		searchList: _debounce(function() {
@@ -139,21 +154,9 @@ export default {
 			this.$store.dispatch('estEntered', this.payload)
 			this.isPanelActive = true
 		},
-
-		yearValue() {
-			let currentYear = new Date().getFullYear(),
-				years = [],
-				startYear = 1960
-			while (startYear <= currentYear) {
-				years.push(startYear++)
-			}
-			return years
-		},
 	},
 
 	mounted() {
-		this.yearValue()
-
 		this.$store.dispatch('estEntered', this.payload)
 	},
 }

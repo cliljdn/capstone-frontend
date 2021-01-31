@@ -20,6 +20,7 @@
 								</button>
 
 								<button
+									@click="resetDispatch"
 									class="button is-small is-marginless is-pulled-right reset-button is-ghost"
 								>
 									<strong>Reset Dropdowns</strong>
@@ -33,7 +34,7 @@
 								<div class="field between-time mt-3">
 									<p class="control has-icons-left">
 										<flat-pickr
-											@input="btwnTime()"
+											@onClose="btwnRanges()"
 											v-model="payload.startDate"
 											class="input is-primary is-rounded"
 											placeholder="Filter Date"
@@ -41,6 +42,7 @@
 										<span class="icon is-small is-left">
 											<i class="fas fa-calendar"></i>
 										</span>
+										{{ payload.startDate }}
 									</p>
 								</div>
 							</div>
@@ -50,7 +52,7 @@
 								<div class="field between-time mt-3">
 									<p class="control has-icons-left">
 										<flat-pickr
-											@input="btwnTime()"
+											@input="btwnRanges()"
 											v-model="payload.endDate"
 											class="input is-primary  is-rounded"
 											placeholder="Filter Date"
@@ -67,42 +69,36 @@
 							<div class="column is-one-fifth">
 								<span class="select-labels">Start Time: </span>
 								<div class="field between-time mt-3">
-									<div class="control has-icons-left">
-										<div class="select is-rounded is-primary">
-											<select @change="btwnTime()" v-model="payload.start">
-												<option value="" selected>Select Time</option>
-												<option v-for="(time, index) in timeFormat" :key="index"
-													>{{ time }}:00</option
-												>
-											</select>
-										</div>
-										<div class="icon is-small is-left has-text-success">
-											<i class="fas fa-globe"></i>
-										</div>
-									</div>
+									<p class="control has-icons-left">
+										<flat-pickr
+											@input="btwnRanges"
+											v-model="payload.start"
+											class="input is-primary is-rounded"
+											placeholder="Select Start Time"
+											:config="timeConfig"
+										/>
+										<span class="icon is-small is-left">
+											<i class="fas fa-clock"></i>
+										</span>
+									</p>
 								</div>
 							</div>
 
 							<div class="column  is-one-fifth">
 								<span class="select-labels">End Time: </span>
-								<div class="field mt-3">
-									<div class="control has-icons-left">
-										<div class="select is-rounded is-primary">
-											<select
-												:disabled="!payload.start"
-												v-model="payload.end"
-												@change="btwnTime()"
-											>
-												<option value="" selected>Select Time</option>
-												<option v-for="(time, index) in timeFormat" :key="index"
-													>{{ time }}:00</option
-												>
-											</select>
-										</div>
-										<div class="icon is-small is-left has-text-success">
-											<i class="fas fa-globe"></i>
-										</div>
-									</div>
+								<div class="field between-time mt-3">
+									<p class="control has-icons-left">
+										<flat-pickr
+											@input="btwnRanges"
+											v-model="payload.end"
+											class="input is-primary is-rounded"
+											placeholder="Select End Time"
+											:config="timeConfig"
+										/>
+										<span class="icon is-small is-left">
+											<i class="fas fa-clock"></i>
+										</span>
+									</p>
 								</div>
 							</div>
 
@@ -111,12 +107,11 @@
 								<div class="field mt-3">
 									<div class="control has-icons-left">
 										<div class="select is-rounded is-primary">
-											<select @change="btwnTime()" v-model="payload.order">
+											<select @change="sortList()" v-model="payload.order">
 												<option value="" selected>Select Details</option>
-												<option>Destination</option>
-												<option>Time Boarded</option>
-												<option>Date Boarded</option>
-												<option>Plate Number</option>
+												<option>Time Entered</option>
+												<option>Date Entered</option>
+												<option>Establishment Name</option>
 											</select>
 										</div>
 										<div class="icon is-small is-left has-text-success">
@@ -338,10 +333,18 @@
 										</li>
 
 										<!-- end page -->
-										<li v-if="page === pages[pages.length - 1]">
+										<li
+											v-if="
+												page === pages[pages.length - 1] && pages.length > 1
+											"
+										>
 											<span class="pagination-ellipsis">&hellip;</span>
 										</li>
-										<li v-if="page === pages[pages.length - 1]">
+										<li
+											v-if="
+												page === pages[pages.length - 1] && pages.length > 1
+											"
+										>
 											<a
 												@click="gotoPage(index)"
 												:class="{
