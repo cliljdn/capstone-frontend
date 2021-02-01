@@ -36,10 +36,6 @@ export default {
 				time_24hr: true,
 			},
 
-			config: {
-				mode: 'range',
-			},
-
 			daysValue: 31,
 			isPanelActive: false,
 
@@ -74,6 +70,11 @@ export default {
 		},
 
 		btwnRanges() {
+			this.$store.dispatch('estEntered', this.payload)
+		},
+
+		gotoPage(indexofArr) {
+			this.payload.page = indexofArr
 			this.$store.dispatch('estEntered', this.payload)
 		},
 

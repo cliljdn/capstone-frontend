@@ -161,9 +161,8 @@ export default new Vuex.Store({
 		},
 
 		passengers(state, payload) {
-			state.driver.passengers = payload.passengers.results
-			state.driver.pages = payload.passengers.total
-			state.driver.travelDates = payload.dates
+			state.driver.passengers = payload.results
+			state.driver.pages = payload.total
 		},
 
 		passengersInfo(state, payload) {

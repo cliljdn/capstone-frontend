@@ -3,41 +3,30 @@ import ListPassengersModal from '../../modals/driver/list-passengers-modal'
 import _debounce from 'lodash.debounce'
 import jsPdf from 'jspdf'
 import 'jspdf-autotable'
+import VueFlatpickr from 'vue-flatpickr-component'
+import 'flatpickr/dist/flatpickr.css'
 export default {
-	components: { 'list-passengers-modal': ListPassengersModal },
+	components: {
+		'list-passengers-modal': ListPassengersModal,
+		FlatPickr: VueFlatpickr,
+	},
 
 	computed: {
 		passengers() {
 			const { passengers } = this.$store.state.driver
-			const list = []
-			for (const passenger of passengers) {
-				list.push({
-					batch: passenger.batch,
-					destination: passenger.destination,
-					time_boarded: passenger.time_boarded,
-					date_boarded: passenger.date_boarded,
-					...passenger.passengerInfo,
-				})
-			}
 
-			console.log(list, 'list')
-			return list
-		},
-
-		travelDates() {
-			const { getPassengerDates } = this.$store.getters
-			return getPassengerDates.filter(
-				(value, index) => getPassengerDates.indexOf(value) === index
-			)
+			return passengers
 		},
 
 		pages() {
 			const { pages } = this.$store.state.driver
 			const pageTotal = []
 
-			for (let i = 0; i < Math.ceil(pages / 6); i++) {
+			for (let i = 1; i < Math.ceil(pages / 6) + 1; i++) {
 				pageTotal.push(i)
 			}
+
+			console.log(pageTotal)
 			return pageTotal
 		},
 	},
@@ -52,44 +41,37 @@ export default {
 				all: '',
 			},
 
+			isPanelActive: false,
+
 			payload: {
-				page: 0,
+				page: '',
 				start: '',
 				end: '',
 				order: '',
-				startDate: '',
+				startDate: null,
 				search: '',
-				filterDay: '',
-				filterMonth: '',
-				filterYear: '',
+				endDate: null,
 			},
 
-			monthValues: [
-				'January',
-				'February',
-				'March',
-				'April',
-				'May',
-				'June',
-				'July',
-				'August',
-				'September',
-				'October',
-				'November',
-				'December',
-			],
-			daysValue: 31,
-			timeFormat: 24,
+			timeConfig: {
+				enableTime: true,
+				noCalendar: true,
+				dateFormat: 'H:i',
+				time_24hr: true,
+			},
 		}
 	},
 
 	methods: {
-		decPage() {
+		btwnRanges() {
+			this.$store.dispatch('passengers', this.payload)
+		},
+
+		decrementPage() {
 			if (this.payload.page < 1) {
 				return true
 			} else {
 				this.payload.page--
-				console.log(this.payload.page)
 				this.$store.dispatch('passengers', this.payload)
 			}
 		},
@@ -99,91 +81,89 @@ export default {
 			this.$store.dispatch('passengers', this.payload)
 		},
 
-		incPage() {
-			if (this.payload.page === this.pages[this.pages.length - 1]) {
+		incrementPage() {
+			if (this.payload.page === this.pages[this.pages.length - 1] - 1) {
 				return true
 			} else {
 				this.payload.page++
 				console.log(this.payload.page)
+
 				this.$store.dispatch('passengers', this.payload)
 			}
 		},
-
-		filterList: _debounce(function() {
-			const splitStart = this.payload.start.split(':')
-			const splitEnd = this.payload.end.split(':')
-
-			if (parseInt(splitStart) > parseInt(splitEnd)) {
-				this.formError.all = 'The start time must be less than the end time'
-			}
-
-			this.$store.dispatch('passengers', this.payload)
-		}, 300),
 
 		openModal(batch) {
 			return this.$store.dispatch('passengersInfo', batch)
 		},
 
-		printInfo() {
+		printList() {
 			const doc = new jsPdf()
-			const { userProfile } = this.$store.state
-			const printList = []
 
-			Object.values(this.passengers).forEach((el) => {
-				printList.push({
-					indiv_name: el.firstname + ' ' + el.lastname,
-					destination: el.destination,
-					time_boarded: el.time_boarded,
-					date_boarded: el.date_boarded,
-				})
-			})
+			const { userProfile } = this.$store.state
+
+			const header = function() {
+				doc.setFontSize(12)
+				doc.setTextColor(40)
+
+				doc.getFont('normal')
+				//doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+				doc.text(
+					`Establishment Entered Report \n Printed By: ${userProfile.firstname +
+						' ' +
+						userProfile.lastname} \n Date Printed: ${new Date().toDateString()}`,
+					doc.internal.pageSize.getWidth() / 2,
+					7,
+					{ align: 'center' }
+				)
+			}
 
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
-				body: printList,
+				body: this.passengers,
 				columns: [
-					{ header: 'Individual Name', dataKey: 'indiv_name' },
+					{ header: 'Plate Number', dataKey: 'plate_number' },
+					{ header: 'Vechicle Route', dataKey: 'vehicle_route' },
 					{ header: 'Destination', dataKey: 'destination' },
-					{ header: 'Time Boarded', dataKey: 'time_boarded' },
 					{ header: 'Date Boarded', dataKey: 'date_boarded' },
+					{ header: 'Time Boarded', dataKey: 'time_boarded' },
 				],
+				margin: { top: 20 },
+				didDrawPage: header,
 			})
-
-			doc.save(`${userProfile.firstname} list-of-passengers.pdf`)
+			doc.save(`${userProfile.firstname.toLowerCase()}-routehistory.pdf`)
 		},
 
 		searchList: _debounce(function() {
-			console.log(this.payload)
 			this.$store.dispatch('passengers', this.payload)
 		}, 300),
 
-		resetList() {
+		sortList() {
+			this.$store.dispatch('passengers', this.payload)
+		},
+
+		resetDispatch() {
 			Object.keys(this.payload).forEach((el) => {
 				this.payload[el] = ''
 			})
-			this.formError.search = ''
-			this.formError.all = ''
-			this.$store.dispatch('passengers')
-		},
 
-		switchPanelDetails() {
-			this.byDetails = true
-			this.betweenTime = false
-		},
-
-		switchPanelTime() {
-			this.byDetails = false
-			this.betweenTime = true
-		},
-
-		yearValue() {
-			let currentYear = new Date().getFullYear(),
-				years = [],
-				startYear = 1960
-			while (startYear <= currentYear) {
-				years.push(startYear++)
+			if (!this.isPanelActive) {
+				this.$store.dispatch('passengers')
+			} else {
+				this.$store.dispatch('passengers', this.payload)
 			}
-			return years.reverse()
+		},
+
+		switchPanelFalse() {
+			this.payload.page = ''
+			this.isPanelActive = false
+			this.$store.dispatch('passengers', this.payload)
+		},
+
+		switchPanelTrue() {
+			this.payload.page = 0
+			console.log(this.payload)
+			this.$store.dispatch('passengers', this.payload)
+			this.isPanelActive = true
 		},
 	},
 
