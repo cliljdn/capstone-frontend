@@ -129,7 +129,11 @@ export default {
 
 		resetDispatch() {
 			Object.keys(this.payload).forEach((k) => {
-				this.payload[k] = ''
+				if (k === 'page' && this.isPanelActive) {
+					this.payload[k] = 0
+				} else {
+					this.payload[k] = ''
+				}
 			})
 
 			if (!this.isPanelActive) {
