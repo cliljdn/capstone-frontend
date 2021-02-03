@@ -12,6 +12,13 @@
 		overflow-x: hidden;
 		overflow-y: auto !important;
 		height: 400px;
+
+		.profile-photo:hover {
+			border: 1px solid $primary !important;
+			cursor: pointer;
+
+			opacity: 70%;
+		}
 	}
 
 	.box-title {

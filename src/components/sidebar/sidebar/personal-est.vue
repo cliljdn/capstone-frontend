@@ -5,7 +5,7 @@
 				<article class="media">
 					<div class="column">
 						<img
-							class="is-rounded"
+							class="is-rounded profile-photo"
 							:src="
 								!payload.profile.image
 									? 'https://i.imgur.com/bCOd9N0.jpg'

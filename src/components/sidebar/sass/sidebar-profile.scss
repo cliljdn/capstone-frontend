@@ -38,6 +38,13 @@
 		display: flex !important;
 		flex-direction: column !important;
 
+		.profile-photo:hover {
+			border: 1px solid $primary !important;
+			cursor: pointer;
+
+			opacity: 70%;
+		}
+
 		.card-header {
 			box-shadow: none !important;
 			text-decoration: underline;
@@ -67,5 +74,33 @@
 		.card-footer {
 			margin-top: 0 !important;
 		}
+	}
+}
+
+@include xsm {
+	.users-profile {
+		width: 100% !important;
+		min-width: 75%;
+	}
+}
+
+@include sm {
+	.users-profile {
+		width: 100% !important;
+		min-width: 75%;
+	}
+}
+
+@include md {
+	.users-profile {
+		width: 100% !important;
+		min-width: 75%;
+	}
+}
+
+@include lg {
+	.users-profile {
+		width: 100% !important;
+		min-width: 75%;
 	}
 }
