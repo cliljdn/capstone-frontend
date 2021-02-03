@@ -35,7 +35,7 @@
 								<div class="field between-time mt-3">
 									<p class="control has-icons-left">
 										<flat-pickr
-											@onClose="btwnRanges()"
+											@input="btwnRanges()"
 											v-model="payload.startDate"
 											class="input is-primary is-rounded"
 											placeholder="Filter Date"
@@ -71,7 +71,6 @@
 								<div class="field between-time mt-3">
 									<p class="control has-icons-left">
 										<flat-pickr
-											@input="btwnRanges"
 											v-model="payload.start"
 											class="input is-primary is-rounded"
 											placeholder="Select Start Time"

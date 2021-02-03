@@ -34,6 +34,7 @@ export default {
 				noCalendar: true,
 				dateFormat: 'H:i',
 				time_24hr: true,
+				defaultDate: '00:00',
 			},
 
 			daysValue: 31,
@@ -153,6 +154,12 @@ export default {
 		}, 300),
 
 		sortList() {
+			if (!this.isPanelActive) {
+				this.payload.page = ''
+			} else {
+				this.payload.page = 0
+			}
+
 			this.$store.dispatch('estEntered', this.payload)
 		},
 

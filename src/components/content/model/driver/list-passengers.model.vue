@@ -26,7 +26,6 @@ export default {
 				pageTotal.push(i)
 			}
 
-			console.log(pageTotal)
 			return pageTotal
 		},
 	},
@@ -58,6 +57,7 @@ export default {
 				noCalendar: true,
 				dateFormat: 'H:i',
 				time_24hr: true,
+				defaultDate: '00:00',
 			},
 		}
 	},
@@ -108,7 +108,7 @@ export default {
 				doc.getFont('normal')
 				//doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
 				doc.text(
-					`Establishment Entered Report \n Printed By: ${userProfile.firstname +
+					`Passenger List Report \n Printed By: ${userProfile.firstname +
 						' ' +
 						userProfile.lastname} \n Date Printed: ${new Date().toDateString()}`,
 					doc.internal.pageSize.getWidth() / 2,

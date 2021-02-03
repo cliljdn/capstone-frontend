@@ -71,6 +71,24 @@
 				/>
 
 				<est-profile v-if="stateVar.accType === 'Establishment'" />
+
+				<div
+					class="columns columns-information"
+					v-if="stateVar.accType === 'Driver'"
+				>
+					<div class="column">
+						<div class="icon-text mb-1 level-left level-item">
+							<span class="icon has-text-primary">
+								<i class="fas fa-car"></i>
+							</span>
+							<strong class="ml-1 tvl-info">
+								Active Vehicle Information:
+							</strong>
+						</div>
+					</div>
+				</div>
+
+				<vehicle-info v-if="stateVar.accType === 'Driver'" />
 			</div>
 
 			<footer class="card-footer">

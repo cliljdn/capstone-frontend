@@ -64,7 +64,7 @@
 							</span>
 
 							<span class="ml-1 user-info">
-								{{ companions ? companions[0].time_entered : ' ' }}
+								{{ companions ? companions[0].time_boarded : ' ' }}
 							</span>
 						</div>
 					</div>
@@ -77,7 +77,7 @@
 								<span class="icon is-small"
 									><i class="fas fa-users" aria-hidden="true"></i
 								></span>
-								<span>Driver Information</span>
+								<span>Vehicle Information</span>
 							</a>
 						</li>
 					</ul>
@@ -85,19 +85,6 @@
 
 				<div class="columns travel-information level">
 					<div class="column">
-						<div class="icon-text mb-1 level-left level-item">
-							<span class="icon has-text-info">
-								<i class="fas fa-user-secret"></i>
-							</span>
-							<span class="ml-1 tvl-info">
-								Driver Name:
-							</span>
-
-							<span class="ml-1 user-info">
-								{{ driver ? driver.firstname + ' ' + driver.lastname : ' ' }}
-							</span>
-						</div>
-
 						<div class="icon-text mb-1 level-left">
 							<span class="icon has-text-info">
 								<i class="fas fa-bus"></i>
@@ -108,6 +95,19 @@
 
 							<span class="ml-1 user-info">
 								{{ vehicle ? vehicle.plate_number : ' ' }}
+							</span>
+						</div>
+
+						<div class="icon-text mb-1 level-left level-item">
+							<span class="icon has-text-info">
+								<i class="fas fa-user-secret"></i>
+							</span>
+							<span class="ml-1 tvl-info">
+								Body Number:
+							</span>
+
+							<span class="ml-1 user-info">
+								{{ vehicle ? vehicle.body_number : ' ' }}
 							</span>
 						</div>
 
@@ -142,7 +142,7 @@
 				<div class="columns companion-information">
 					<div class="column">
 						<div class="box" v-for="(comp, index) in companions" :key="index">
-							<article class="media">
+							<article class="media" v-if="comp.firstname && comp.lastname">
 								<div class="media-left mt-4">
 									<figure class="image is-96x96">
 										<img src="https://i.imgur.com/bCOd9N0.jpg" alt="Image" />
@@ -164,6 +164,7 @@
 														{{ comp.firstname }}
 													</small>
 												</p>
+
 												<p class="icon-text  level-left level-item">
 													<span class="icon has-text-info">
 														<i class="fas fa-tasks"></i>
@@ -176,7 +177,8 @@
 														{{ comp.lastname }}
 													</small>
 												</p>
-												<p class="icon-text  level-left level-item">
+
+												<p class="icon-text level-left level-item">
 													<span class="icon has-text-info">
 														<i class="fas fa-tasks"></i>
 													</span>
@@ -197,6 +199,13 @@
 									</div>
 								</div>
 							</article>
+
+							<div
+								v-else
+								class="column m-5 is-12 is-flex is-justify-content-center"
+							>
+								<strong class="has-text-danger">No Companions</strong>
+							</div>
 						</div>
 					</div>
 				</div>

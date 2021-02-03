@@ -3,31 +3,42 @@ import ListEnteredModal from '../../modals/est/list-entered-modal'
 import _debounce from 'lodash.debounce'
 import jsPdf from 'jspdf'
 import 'jspdf-autotable'
+import VueFlatpickr from 'vue-flatpickr-component'
+import 'flatpickr/dist/flatpickr.css'
 export default {
-	components: { 'list-entered-modal': ListEnteredModal },
+	components: {
+		'list-entered-modal': ListEnteredModal,
+		FlatPickr: VueFlatpickr,
+	},
 
 	computed: {
-		listIndiv() {
+		indivs() {
 			const { enteredIndividuals } = this.$store.state.est
-			return enteredIndividuals
+			const list = []
+
+			Object.values(enteredIndividuals).forEach((v) => {
+				list.push({
+					indiv_name: v.firstname + ' ' + v.lastname,
+					emp_name:
+						v.presentEmployee.firstname + ' ' + v.presentEmployee.lastname,
+					time_entered: v.time_entered,
+					date_entered: v.date_entered,
+					batch: v.batch,
+				})
+			})
+
+			return list
 		},
 
 		pages() {
 			const { enteredPages } = this.$store.state.est
 			const pages = []
 
-			for (let i = 0; i < Math.ceil(enteredPages / 6); i++) {
+			for (let i = 1; i < Math.ceil(enteredPages / 6) + 1; i++) {
 				pages.push(i)
 			}
 
 			return pages
-		},
-
-		dates() {
-			const { enteredDates } = this.$store.state.est
-			return enteredDates.filter(
-				(value, index) => enteredDates.indexOf(value) === index
-			)
 		},
 	},
 
@@ -52,134 +63,140 @@ export default {
 			daysValue: 31,
 			timeFormat: 24,
 
+			isPanelActive: false,
+
 			payload: {
-				page: 0,
+				page: '',
 				start: '',
 				end: '',
 				order: '',
-				startDate: '',
+				startDate: null,
 				search: '',
-				filterDay: '',
-				filterMonth: '',
-				filterYear: '',
+				endDate: null,
 			},
 
-			formErrors: {
+			formError: {
 				search: 'No Results found',
-				general: '',
+			},
+
+			timeConfig: {
+				enableTime: true,
+				noCalendar: true,
+				dateFormat: 'H:i',
+				time_24hr: true,
+				defaultDate: '00:00',
 			},
 		}
 	},
 
 	methods: {
-		btwnTime(payload) {
-			const splitStart = payload.start.split(':')
-			const splitEnd = payload.end.split(':')
-
-			this.formErrors.general = ''
-			if (parseInt(splitStart[0]) > parseInt(splitEnd[0])) {
-				this.formErrors.general =
-					'The start time must be less than the end time'
-			} else {
-				this.formErrors.general = ''
-			}
-
-			this.$store.dispatch('enteredIndividuals', payload)
+		btwnRanges() {
+			this.$store.dispatch('enteredIndividuals', this.payload)
 		},
 
-		decPage: _debounce(function() {
-			if (this.payload.page === 0) {
+		decrementPage() {
+			if (this.payload.page < 1) {
 				return true
 			} else {
 				this.payload.page--
 				this.$store.dispatch('enteredIndividuals', this.payload)
 			}
-		}, 300),
+		},
 
 		filterListDate(payload) {
 			this.$store.dispatch('enteredIndividuals', payload)
 		},
 
-		gotoPage(page) {
-			this.payload.page = page
-			this.$store.dispatch('enteredIndividuals', this.payload)
+		gotoPage(params) {
+			this.payload.page = params
+			this.$store.dispatch('passengers', this.payload)
 		},
 
-		incPage: _debounce(function() {
-			if (this.pages[this.pages.length - 1] === this.payload.page) {
+		incrementPage() {
+			if (this.payload.page === this.pages[this.pages.length - 1] - 1) {
 				return true
 			} else {
 				this.payload.page++
+				console.log(this.payload.page)
 
 				this.$store.dispatch('enteredIndividuals', this.payload)
 			}
-		}, 300),
+		},
 
 		openModal(batch) {
 			return this.$store.dispatch('enteredIndivCompanions', batch)
 		},
 
 		printInfo() {
+			if (this.indivs.length === 0) {
+				return true
+			}
 			const doc = new jsPdf()
 			const { userProfile } = this.$store.state
-			const { enteredIndividuals } = this.$store.state.est
-			const printList = []
-			Object.values(enteredIndividuals).forEach((el) => {
-				printList.push({
-					indivname: el.scannedIndiv.firstname + ' ' + el.scannedIndiv.lastname,
-					time_entered: el.time_entered,
-					date_entered: el.date_entered,
-				})
-			})
+
+			const header = function() {
+				doc.setFontSize(12)
+				doc.setTextColor(40)
+
+				doc.getFont('normal')
+				//doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+				doc.text(
+					`Individual List Report \n Printed By: ${
+						userProfile.est_owner
+					} \n Date Printed: ${new Date().toDateString()}`,
+					doc.internal.pageSize.getWidth() / 2,
+					7,
+					{ align: 'center' }
+				)
+			}
 
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
-				body: printList,
+				body: this.indivs,
 				columns: [
-					{ header: 'Individual Name', dataKey: 'indivname' },
-					{ header: 'Time Entered', dataKey: 'time_entered' },
+					{ header: 'Individual Name', dataKey: 'indiv_name' },
+					{ header: 'Present Employee', dataKey: 'emp_name' },
 					{ header: 'Date Entered', dataKey: 'date_entered' },
+					{ header: 'Time Entered', dataKey: 'time_entered' },
 				],
+				margin: { top: 20 },
+				didDrawPage: header,
 			})
-
-			doc.save(`${userProfile.name} list-of-individuals.pdf`)
+			doc.save(`${userProfile.name.toLowerCase()}-ListofIndividuals.pdf`)
 		},
 
-		resetPayload() {
+		resetDispatch() {
 			Object.keys(this.payload).forEach((el) => {
-				this.payload[el] = ''
+				if (el.page && !this.isPanelActive) {
+					this.payload[el] = ''
+				} else if (el.page && this.isPanelActive) {
+					this.payload[el] = 0
+				} else {
+					this.payload[el] = ''
+				}
 			})
-			this.formErrors.general = ''
+
 			this.$store.dispatch('enteredIndividuals', this.payload)
 		},
 
-		searchList: _debounce(function(searchParams) {
-			this.$store.dispatch('enteredIndividuals', searchParams)
-			console.log(this.listIndiv.length)
+		searchList: _debounce(function() {
+			this.$store.dispatch('enteredIndividuals', this.payload)
 		}, 300),
 
-		sortList(obj) {
-			this.$store.dispatch('enteredIndividuals', obj)
+		sortList() {
+			this.$store.dispatch('enteredIndividuals', this.payload)
 		},
 
-		switchPanelDetails() {
-			this.byDetails = true
-			this.betweenTime = false
+		switchPanelFalse() {
+			this.payload.page = ''
+			this.isPanelActive = false
+			this.$store.dispatch('enteredIndividuals', this.payload)
 		},
 
-		switchPanelTime() {
-			this.byDetails = false
-			this.betweenTime = true
-		},
-
-		yearValue() {
-			let currentYear = new Date().getFullYear(),
-				years = [],
-				startYear = 1960
-			while (startYear <= currentYear) {
-				years.push(startYear++)
-			}
-			return years.reverse()
+		switchPanelTrue() {
+			this.payload.page = 0
+			this.$store.dispatch('enteredIndividuals', this.payload)
+			this.isPanelActive = true
 		},
 	},
 

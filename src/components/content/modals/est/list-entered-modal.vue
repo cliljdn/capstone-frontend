@@ -17,12 +17,38 @@
 								<i class="fas fa-map-pin"></i>
 							</span>
 							<span class="ml-1 tvl-info">
-								Establishment Name:
+								Name:
 							</span>
 
 							<span class="ml-1 user-info">
-								{{ this.$store.state.userProfile.name }}
+								{{ indiv ? indiv.firstname + ' ' + indiv.lastname : '' }}
 							</span>
+						</div>
+
+						<div class="icon-text mb-1 level-left level-item">
+							<span class="icon has-text-info">
+								<i class="fas fa-calendar"></i>
+							</span>
+							<span class="ml-1 tvl-info">
+								Contact Number:
+							</span>
+
+							<span class="ml-1 user-info">{{
+								indiv ? indiv.contactnumber : 'No contact provided'
+							}}</span>
+						</div>
+
+						<div class="icon-text mb-1 level-left level-item">
+							<span class="icon has-text-info">
+								<i class="fas fa-calendar"></i>
+							</span>
+							<span class="ml-1 tvl-info">
+								Address:
+							</span>
+
+							<span class="ml-1 user-info">{{
+								indiv ? indiv.house_lot_number : ''
+							}}</span>
 						</div>
 
 						<div class="icon-text mb-1 level-left level-item">
@@ -78,29 +104,29 @@
 
 						<div class="icon-text mb-2 level-left level-item">
 							<span class="icon has-text-info">
-								<i class="fas fa-envelope-open-text"></i>
-							</span>
-							<strong class="ml-1 tvl-info">
-								Establishment Email:
-							</strong>
-
-							<span class="ml-1 user-info">
-								{{ this.$store.state.userProfile.email }}
-							</span>
-						</div>
-
-						<div class="icon-text mb-2 level-left level-item">
-							<span class="icon has-text-info">
 								<i class="fas fa-phone"></i>
 							</span>
 							<strong class="ml-1 tvl-info">
-								Est Contact Number:
+								Contact #:
 							</strong>
 
 							<span class="ml-1 user-info">
-								{{ this.$store.state.userProfile.telephone_number }}
+								{{ employee ? employee.contactnumber : 'No contact provided' }}
 							</span>
 						</div>
+
+						<!-- <div class="icon-text mb-2 level-left level-item">
+							<span class="icon has-text-info">
+								<i class="fas fa-envelope-open-text"></i>
+							</span>
+							<strong class="ml-1 tvl-info">
+								Address:
+							</strong>
+
+							<span class="ml-1 user-info">
+								{{ employee ? employee.house_lot_number : ' ' }}
+							</span>
+						</div> -->
 					</div>
 				</div>
 
@@ -128,15 +154,10 @@
 							v-for="(companion, index) in companions"
 							:key="index"
 						>
-							<span
-								v-if="
-									companion.firstname === null && companion.lastname === null
-								"
-								class="has-text-danger is-flex is-justify-content-center"
-								>No Companions</span
+							<article
+								class="media"
+								v-if="companion.firstname && companion.lastname"
 							>
-
-							<article class="media" v-else>
 								<div class="media-left mt-4">
 									<figure class="image is-96x96">
 										<img src="https://i.imgur.com/bCOd9N0.jpg" alt="Image" />
@@ -193,6 +214,12 @@
 								</div>
 							</article>
 							<!-- errors -->
+							<div
+								v-else
+								class="column m-5 is-12 is-flex is-justify-content-center"
+							>
+								<strong class="has-text-danger">No Companions</strong>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -223,6 +250,12 @@ export default {
 			}
 
 			return listComps
+		},
+
+		indiv() {
+			const { indiv } = this.$store.state.est.enteredIndivCompanions
+
+			return indiv
 		},
 
 		info() {

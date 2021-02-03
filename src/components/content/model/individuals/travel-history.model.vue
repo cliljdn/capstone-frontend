@@ -23,7 +23,6 @@ export default {
 			for (let i = 1; i < Math.ceil(tvlPages / 6) + 1; i++) {
 				pages.push(i)
 			}
-			console.log(pages)
 			return pages
 		},
 	},

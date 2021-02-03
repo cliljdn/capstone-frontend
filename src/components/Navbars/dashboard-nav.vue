@@ -56,7 +56,7 @@
 							>
 						</div>
 					</div>
-
+					<!-- 
 					<div
 						class="navbar-start"
 						v-if="this.$store.state.accType === 'Driver'"
@@ -69,7 +69,7 @@
 								<a class="ml-3">List of Passengers</a></router-link
 							>
 						</div>
-					</div>
+					</div> -->
 
 					<div
 						class="navbar-start"
@@ -94,8 +94,10 @@
 
 								<a class="ml-3">
 									{{ authUser.firstname ? authUser.firstname : authUser.name }}
-									{{ authUser.lastname }} /
-									{{ this.$store.state.accType }}
+									{{ authUser.lastname }} <br />
+									<small class="is-flex is-justify-content-center">{{
+										this.$store.state.accType
+									}}</small>
 								</a>
 							</div>
 						</div>

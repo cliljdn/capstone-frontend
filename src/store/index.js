@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
 import axios from 'axios'
-
+import router from '../router/index'
 const getDefaultState = () => {
 	return {
 		TOKEN_NAME: '',
@@ -108,15 +108,8 @@ export default new Vuex.Store({
 		},
 
 		enteredIndividuals(state, payload) {
-			state.est.enteredIndividuals = payload
-		},
-
-		enteredPages(state, payload) {
-			state.est.enteredPages = payload
-		},
-
-		enteredDates(state, payload) {
-			state.est.enteredDates = payload
+			state.est.enteredIndividuals = payload.results
+			state.est.enteredPages = payload.total
 		},
 
 		estEntered(state, payload) {
@@ -234,9 +227,7 @@ export default new Vuex.Store({
 					}
 				)
 
-				commit('enteredDates', responseData.data.dates)
-				commit('enteredPages', responseData.data.scannedIndiv.total)
-				commit('enteredIndividuals', responseData.data.scannedIndiv.results)
+				commit('enteredIndividuals', responseData.data)
 			} catch (err) {
 				return err
 			}
@@ -250,7 +241,7 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
-
+				console.log(responseData.data)
 				commit('enteredIndivCompanions', responseData.data)
 				commit('modalListEntered')
 			} catch (err) {
@@ -290,7 +281,7 @@ export default new Vuex.Store({
 			}
 		},
 
-		async getProfile({ commit, state }) {
+		async getProfile({ commit, state, dispatch }) {
 			try {
 				const profile = await this._vm.$axios.get(
 					`${state.baseURL}/list/account/login/profile`,
@@ -298,10 +289,13 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
-
+				console.log(profile.data)
 				commit('getProfile', profile.data)
-			} catch (error) {
-				return error.response
+			} catch (err) {
+				if (err) {
+					dispatch('removeCookie')
+					router.push({ name: 'usersLogin' })
+				}
 			}
 		},
 
