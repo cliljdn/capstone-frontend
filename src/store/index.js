@@ -241,7 +241,6 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
-				console.log(responseData.data)
 				commit('enteredIndivCompanions', responseData.data)
 				commit('modalListEntered')
 			} catch (err) {

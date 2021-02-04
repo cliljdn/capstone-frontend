@@ -22,7 +22,7 @@
 					</section>
 				</div>
 				<div class="column is-7 column-card">
-					<router-view />
+					<transition name="slide"> <router-view /></transition>
 				</div>
 			</div>
 		</div>
