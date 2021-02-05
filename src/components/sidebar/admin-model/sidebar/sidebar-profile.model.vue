@@ -35,7 +35,6 @@ export default {
 		},
 
 		toggleEditForm() {
-			console.log(this.stateVar.editProfileOpen)
 			return this.$store.commit('toggleEditForm')
 		},
 

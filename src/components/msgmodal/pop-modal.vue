@@ -50,6 +50,7 @@ export default {
 			if (state.accountsMsg.isProfileCreated) {
 				this.$router.push({ name: 'usersLogin' })
 			}
+
 			if (state.accountsMsg.isRegistered) {
 				this.$router.push({ name: 'usersLogin' })
 			}

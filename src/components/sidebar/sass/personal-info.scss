@@ -13,10 +13,15 @@
 		overflow-y: auto !important;
 		height: 400px;
 
+		.profile-photo {
+			height: 100px;
+			width: 100px;
+			object-fit: cover;
+		}
+
 		.profile-photo:hover {
 			border: 1px solid $primary !important;
 			cursor: pointer;
-
 			opacity: 70%;
 		}
 	}

@@ -114,6 +114,14 @@
 <script>
 import yup from '../../content/validations/registerValidations'
 export default {
+	computed: {
+		profile() {
+			const { userProfile } = this.$store.state
+
+			return userProfile
+		},
+	},
+
 	data() {
 		return {
 			payload: {
@@ -139,7 +147,6 @@ export default {
 	methods: {
 		sendDispatch(params) {
 			const checkErrorLength = []
-			// const { updateValidation } = yup
 			if (!this.payload.account.email && !this.payload.account.password) {
 				this.payloadErrors.all = 'Please Fill up some Field'
 			} else {
@@ -177,6 +184,13 @@ export default {
 			this.payloadErrors[field] = ''
 			this.payloadErrors.all = ''
 		},
+	},
+
+	mounted() {
+		Object.keys(this.profile).forEach((k) => {
+			if (k === 'password') return true
+			this.payload.account[k] = this.profile[k]
+		})
 	},
 }
 </script>

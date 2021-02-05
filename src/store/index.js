@@ -25,7 +25,7 @@ export default new Vuex.Store({
 		accType: '',
 		// baseURL: 'http://scanolongapo-api.com/api/v1',
 		baseURL: 'http://192.168.1.11:6060/api/v1',
-
+		proxyURL: 'http://192.168.1.11:8080',
 		//dashboard
 		sideBarOpen: false,
 		editProfileOpen: false,
@@ -288,7 +288,6 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
-				console.log(profile.data)
 				commit('getProfile', profile.data)
 			} catch (err) {
 				if (err) {

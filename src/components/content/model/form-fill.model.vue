@@ -63,9 +63,6 @@ export default {
 			let { formValidate, addressValidate } = form,
 				{ state, commit } = this.$store
 			try {
-				console.log(typeof this.profileBody.image)
-				console.log(this.profileBody.image)
-
 				let validateProfile = await formValidate.validate(
 					this.profileBody,
 					this.yupOptions
@@ -74,9 +71,10 @@ export default {
 					this.address,
 					this.yupOptions
 				)
+
 				if (validateProfile && validateAddress) {
 					const res = await this.$axios.post(
-						`http://192.168.1.11:8080/accounts/create/profile`,
+						`${state.proxyURL}/accounts/create/profile`,
 						qs.stringify(this.profileBody),
 						{
 							headers: {
@@ -103,7 +101,7 @@ export default {
 					}
 				}
 			} catch (err) {
-				console.log(err.response, 'error to')
+				console.log(err.response.message, 'error to')
 				if (!err.response) {
 					return err.response
 				} else {

@@ -55,6 +55,12 @@
 			flex-grow: 1;
 			overflow-y: auto;
 
+			img {
+				height: 100px;
+				width: 100px;
+				object-fit: cover;
+			}
+
 			.button-sidebar {
 				border: 1px solid hsl(171, 100%, 41%);
 			}

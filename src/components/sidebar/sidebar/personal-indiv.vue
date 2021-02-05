@@ -4,15 +4,19 @@
 			<figure class="image is-128x128">
 				<article class="media">
 					<div class="column">
+						<input
+							ref="file"
+							@change="onFileChange"
+							type="file"
+							style="display:none"
+						/>
 						<img
+							@click="$refs.file.click()"
 							class="is-rounded profile-photo"
-							:src="
-								!payload.profile.image
-									? 'https://i.imgur.com/bCOd9N0.jpg'
-									: payload.profile.image
-							"
+							:src="!imgRef ? 'https://i.imgur.com/bCOd9N0.jpg' : imgRef"
 							alt="Image"
 						/>
+						{{ profileError.image }}
 					</div>
 				</article>
 			</figure>
@@ -78,6 +82,7 @@
 					<p class="control has-icons-left has-icons-right">
 						<input
 							@click="rmError()"
+							@keypress="isNumber"
 							v-model="payload.profile.contactnumber"
 							class="input"
 							type="text"
@@ -191,31 +196,108 @@ export default {
 				},
 			},
 
+			imgRef: null,
+
 			formError: '',
+
+			profileError: {
+				image: '',
+			},
 		}
 	},
 
 	methods: {
-		patchProfile(params) {
-			const checkInput = []
-
-			Object.values(this.payload.profile).forEach((val) => {
-				val === '' ? checkInput.push(val) : false
+		encodeBase64(file) {
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader()
+				reader.readAsDataURL(file)
+				reader.onload = () => resolve(reader.result)
+				reader.onerror = (error) => reject(error)
 			})
+		},
 
-			Object.values(this.payload.address).forEach((val) => {
-				val === '' ? checkInput.push(val) : false
-			})
-			if (checkInput.length === 8) {
-				this.formError = 'Please Fill up some Field'
+		isNumber: function(evt) {
+			if (this.payload.profile.contactnumber.length > 11) {
+				evt.preventDefault()
+			}
+
+			evt = evt ? evt : window.event
+			var charCode = evt.which ? evt.which : evt.keyCode
+
+			if (
+				charCode > 31 &&
+				(charCode < 48 || charCode > 57) &&
+				charCode !== 46
+			) {
+				evt.preventDefault()
 			} else {
-				this.$store.dispatch('updateProfile', params)
+				return true
+			}
+		},
+
+		async onFileChange(e) {
+			let imgFormats = ['jpg', 'jpeg', 'png']
+			const file = e.target.files[0]
+
+			if (!file) {
+				e.preventDefault()
+				return
+			}
+
+			if (file.size > 1024 * 1024) {
+				e.preventDefault()
+				this.profileError.image = 'Image must be less than 1mb'
+				return
+			}
+			let fileFormat = file.name.split('.')[1]
+
+			if (!imgFormats.includes(fileFormat)) {
+				e.preventDefault()
+				this.profileError.image =
+					'jpg, jpeg and png are the only file supported'
+				return
+			}
+
+			this.payload.profile.image = await this.encodeBase64(file)
+			this.imgRef = URL.createObjectURL(file)
+		},
+
+		patchProfile(params) {
+			try {
+				const checkInput = []
+				console.log(this.payload.profile)
+				Object.values(this.payload.profile).forEach((val) => {
+					val === '' ? checkInput.push(val) : false
+				})
+
+				Object.values(this.payload.address).forEach((val) => {
+					val === '' ? checkInput.push(val) : false
+				})
+				if (checkInput.length === 8) {
+					this.formError = 'Please Fill up some Field'
+				} else {
+					this.$store.dispatch('updateProfile', params)
+				}
+			} catch (error) {
+				console.log(error)
 			}
 		},
 
 		rmError() {
 			this.formError = ''
 		},
+	},
+
+	mounted() {
+		this.imgRef = this.auth.image ? this.auth.image : null
+
+		Object.keys(this.payload.profile).forEach((k) => {
+			this.payload.profile[k] = this.auth[k]
+		})
+
+		Object.keys(this.payload.address).forEach((k) => {
+			this.payload.address[k] = this.auth[k]
+		})
 	},
 }
 </script>
