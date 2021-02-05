@@ -13,9 +13,9 @@
 						<div class="media-left">
 							<figure class="image is-128x128">
 								<img
-									v-if="profileBody.image"
+									v-if="imgRef"
 									class="is-rounded"
-									:src="profileBody.image"
+									:src="imgRef"
 									alt="Placeholder image"
 								/>
 								<img
@@ -252,7 +252,6 @@
 		</div>
 	</div>
 </template>
-
 
 <script>
 import app from '../model/form-fill.model'

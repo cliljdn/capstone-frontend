@@ -54,6 +54,8 @@ export default {
 			let { formValidate, addressValidate } = form,
 				{ state, commit } = this.$store
 			try {
+				console.log(this.profileBody.image)
+
 				let validateProfile = await formValidate.validate(
 					this.profileBody,
 					this.yupOptions
@@ -70,6 +72,7 @@ export default {
 						{
 							headers: {
 								Authorization: this.$store.getters.isLoggedIn,
+								'Access-Control-Allow-Origin': '*',
 							},
 						}
 					)
@@ -92,6 +95,7 @@ export default {
 					}
 				}
 			} catch (err) {
+				console.log(err.response, 'error to')
 				if (!err.response) {
 					return err.response
 				} else {
@@ -121,7 +125,7 @@ export default {
 			}
 		},
 
-		onFileChange(e) {
+		async onFileChange(e) {
 			let imgFormats = ['jpg', 'jpeg', 'png']
 			const file = e.target.files[0]
 
@@ -144,7 +148,8 @@ export default {
 				return
 			}
 
-			this.profileBody.image = URL.createObjectURL(file)
+			this.profileBody.image = JSON.parse(file)
+			this.imgRef = URL.createObjectURL(file)
 		},
 
 		validateProfile: async function(field) {
@@ -168,17 +173,6 @@ export default {
 				err.inner.forEach((error) => {
 					this.addressError[error.path] = error.message
 				})
-			}
-		},
-
-		imageToBase64(file) {
-			var reader = new FileReader()
-			reader.readAsDataURL(file)
-			reader.onload = () => {
-				this.profileBody.image = reader.result
-			}
-			reader.onerror = function(error) {
-				console.log('Error: ', error)
 			}
 		},
 	},

@@ -48,7 +48,10 @@ export default {
 		closeModal() {
 			let { commit, state } = this.$store
 			if (state.accountsMsg.isProfileCreated) {
-				this.$router.push({ name: 'registerCitizens' })
+				this.$router.push({ name: 'usersLogin' })
+			}
+			if (state.accountsMsg.isRegistered) {
+				this.$router.push({ name: 'usersLogin' })
 			}
 
 			if (state.accountsMsg.isProfileUpdated) {
@@ -59,7 +62,6 @@ export default {
 			state.accountsMsg.isProfileCreated = false
 			state.isAdminValid = false
 			state.accountsMsg.isProfileUpdated = false
-
 			return commit('showPopOut')
 		},
 	},

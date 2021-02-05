@@ -73,11 +73,7 @@
 								</p>
 								<span class="has-text-danger">{{ errors.confirm }}</span>
 							</div>
-							<div class="columns">
-								<div class="column">
-									about
-								</div>
-							</div>
+
 							<span class="">Account Type:</span>
 							<div class="control has-icons-left mt-3">
 								<div class="select is-primary">

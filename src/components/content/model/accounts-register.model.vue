@@ -72,6 +72,7 @@ export default {
 					}
 				}
 			} catch (err) {
+				console.log(err.response)
 				if (err.response !== undefined) {
 					this.errors.email = err.response.data.message
 				} else {
