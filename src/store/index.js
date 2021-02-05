@@ -403,7 +403,7 @@ export default new Vuex.Store({
 					dispatch('getProfile')
 				}
 			} catch (error) {
-				return error
+				console.log(error.response.data.message)
 			}
 		},
 	},

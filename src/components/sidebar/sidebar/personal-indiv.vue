@@ -1,9 +1,9 @@
 <template>
 	<div class="">
-		<div class="columns is-vcentered is-horizontal-center">
+		<div class="columns is-multiline is-vcentered is-horizontal-center">
 			<figure class="image is-128x128">
 				<article class="media">
-					<div class="column">
+					<div class="column is-12">
 						<input
 							ref="file"
 							@change="onFileChange"
@@ -11,15 +11,20 @@
 							style="display:none"
 						/>
 						<img
-							@click="$refs.file.click()"
+							@click="$refs.file.click(), (profileError.image = '')"
 							class="is-rounded profile-photo"
 							:src="!imgRef ? 'https://i.imgur.com/bCOd9N0.jpg' : imgRef"
 							alt="Image"
 						/>
-						{{ profileError.image }}
 					</div>
 				</article>
 			</figure>
+
+			<div class="column is-12 is-flex is-justify-content-center">
+				<span class="m-3 has-text-danger" v-if="profileError.image">
+					{{ profileError.image }}</span
+				>
+			</div>
 		</div>
 		<div class="columns">
 			<div class="column">
@@ -265,7 +270,7 @@ export default {
 		patchProfile(params) {
 			try {
 				const checkInput = []
-				console.log(this.payload.profile)
+				console.log(this.payload.profile.image.length)
 				Object.values(this.payload.profile).forEach((val) => {
 					val === '' ? checkInput.push(val) : false
 				})
@@ -278,8 +283,8 @@ export default {
 				} else {
 					this.$store.dispatch('updateProfile', params)
 				}
-			} catch (error) {
-				console.log(error)
+			} catch (err) {
+				console.log(err.response)
 			}
 		},
 
