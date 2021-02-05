@@ -8,6 +8,8 @@ module.exports = {
 			return args
 		})
 	},
-
-	runtimeCompiler: true,
+	devServer: {
+		proxy: 'https://192.168.1.11:6060/',
+	},
+	// runtimeCompiler: true,
 }

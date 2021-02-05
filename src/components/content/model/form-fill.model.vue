@@ -16,7 +16,7 @@ export default {
 				lastName: '',
 				middleName: '',
 				contact: '',
-				image: null,
+				image: '',
 				birthday: null,
 			},
 
@@ -50,10 +50,20 @@ export default {
 	},
 
 	methods: {
+		encodeBase64(file) {
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader()
+				reader.readAsDataURL(file)
+				reader.onload = () => resolve(reader.result)
+				reader.onerror = (error) => reject(error)
+			})
+		},
+
 		createProfile: async function() {
 			let { formValidate, addressValidate } = form,
 				{ state, commit } = this.$store
 			try {
+				console.log(typeof this.profileBody.image)
 				console.log(this.profileBody.image)
 
 				let validateProfile = await formValidate.validate(
@@ -64,7 +74,6 @@ export default {
 					this.address,
 					this.yupOptions
 				)
-
 				if (validateProfile && validateAddress) {
 					const res = await this.$axios.post(
 						`${state.baseURL}/accounts/create/profile`,
@@ -72,7 +81,6 @@ export default {
 						{
 							headers: {
 								Authorization: this.$store.getters.isLoggedIn,
-								'Access-Control-Allow-Origin': '*',
 							},
 						}
 					)
@@ -95,7 +103,7 @@ export default {
 					}
 				}
 			} catch (err) {
-				console.log(err.response, 'error to')
+				console.log(err, 'error to')
 				if (!err.response) {
 					return err.response
 				} else {
@@ -148,7 +156,7 @@ export default {
 				return
 			}
 
-			this.profileBody.image = JSON.parse(file)
+			this.profileBody.image = await this.encodeBase64(file)
 			this.imgRef = URL.createObjectURL(file)
 		},
 
