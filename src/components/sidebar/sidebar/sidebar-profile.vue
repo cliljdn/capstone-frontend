@@ -23,7 +23,7 @@
 									<img
 										:src="
 											authProfile.image
-												? 'data:image/jpg;base64,' + authProfile.image
+												? authProfile.image
 												: 'https://i.imgur.com/bCOd9N0.jpg'
 										"
 										alt="Placeholder image"

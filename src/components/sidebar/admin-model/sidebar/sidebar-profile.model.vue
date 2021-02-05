@@ -15,7 +15,6 @@ export default {
 	computed: {
 		authProfile() {
 			const { userProfile } = this.$store.state
-			console.log('data:image/jpg;base64,' + userProfile.image)
 			return userProfile
 		},
 

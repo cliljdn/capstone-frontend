@@ -76,7 +76,7 @@ export default {
 				)
 				if (validateProfile && validateAddress) {
 					const res = await this.$axios.post(
-						`${state.baseURL}/accounts/create/profile`,
+						`http://192.168.1.11:8080/accounts/create/profile`,
 						qs.stringify(this.profileBody),
 						{
 							headers: {
@@ -103,7 +103,7 @@ export default {
 					}
 				}
 			} catch (err) {
-				console.log(err, 'error to')
+				console.log(err.response, 'error to')
 				if (!err.response) {
 					return err.response
 				} else {
