@@ -94,6 +94,7 @@
 
 			<footer class="card-footer">
 				<a @click="logout" class="card-footer-item">Sign Out</a>
+				<a @click="openAbout" class="card-footer-item">About</a>
 			</footer>
 		</div>
 		<transition name="slide">
@@ -102,6 +103,8 @@
 				v-if="stateVar.editProfileOpen"
 			/>
 		</transition>
+
+		<about />
 	</div>
 </template>
 

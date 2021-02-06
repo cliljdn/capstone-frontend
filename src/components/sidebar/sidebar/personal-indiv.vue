@@ -270,7 +270,6 @@ export default {
 		patchProfile(params) {
 			try {
 				const checkInput = []
-				console.log(this.payload.profile.image.length)
 				Object.values(this.payload.profile).forEach((val) => {
 					val === '' ? checkInput.push(val) : false
 				})
@@ -278,6 +277,7 @@ export default {
 				Object.values(this.payload.address).forEach((val) => {
 					val === '' ? checkInput.push(val) : false
 				})
+
 				if (checkInput.length === 8) {
 					this.formError = 'Please Fill up some Field'
 				} else {
