@@ -78,7 +78,7 @@ export default new Vuex.Store({
 
 	getters: {
 		isLoggedIn: (state) => {
-			if (Cookies.get(state.TOKEN_NAME) === undefined) {
+			if (!Cookies.get(state.TOKEN_NAME)) {
 				return false
 			} else {
 				return Cookies.get(state.TOKEN_NAME)
@@ -87,18 +87,6 @@ export default new Vuex.Store({
 
 		getBaseURL: (state) => {
 			return state.baseURL
-		},
-
-		//to remove duplicates
-		getEstEnteredDates: (state) => {
-			return state.individual.estEnteredDates.map(
-				({ date_entered }) => date_entered
-			)
-		},
-
-		//to remove duplicates
-		getPassengerDates: (state) => {
-			return state.driver.travelDates.map(({ date_boarded }) => date_boarded)
 		},
 	},
 

@@ -8,7 +8,7 @@
 <script>
 import DashboardNav from '../components/Navbars/dashboard-nav'
 // import cookies from '../assets/cookies/cookies'
-
+import router from '../router/index'
 export default {
 	components: { 'dashboard-nav': DashboardNav },
 	data() {
@@ -21,6 +21,12 @@ export default {
 	mounted() {
 		this.$store.dispatch('getProfile')
 		this.$store.dispatch('travelHistory')
+
+		if (!this.$store.getters.isLoggedIn) {
+			this.$store.dispatch('removeCookie')
+			this.$store.dispatch('isAuth', false)
+			router.push({ name: 'usersLogin' })
+		}
 	},
 }
 </script>
