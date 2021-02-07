@@ -49,7 +49,7 @@ export default {
 
 	methods: {
 		closeModal() {
-			this.$store.commit('showPopOut')
+			this.$store.commit('showAbout')
 		},
 	},
 }

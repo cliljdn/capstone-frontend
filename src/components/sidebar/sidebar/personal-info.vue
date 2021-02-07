@@ -13,7 +13,7 @@
 					"
 				/>
 
-				<personal-est v-if="this.$store.state.accType === 'Establishment'" />
+				<personal-est v-else />
 			</div>
 		</div>
 	</div>

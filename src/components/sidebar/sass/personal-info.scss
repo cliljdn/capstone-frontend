@@ -11,12 +11,13 @@
 	.media-content {
 		overflow-x: hidden;
 		overflow-y: auto !important;
+
 		height: 400px;
 
 		.profile-photo {
-			height: 100px;
-			width: 100px;
-			object-fit: cover;
+			height: 100px !important;
+			width: 100px !important;
+			object-fit: cover !important;
 		}
 
 		.profile-photo:hover {
@@ -33,6 +34,7 @@
 	.is-horizontal-center {
 		justify-content: center !important;
 	}
+
 	.field .control input {
 		border-top-style: hidden;
 		border-right-style: hidden;

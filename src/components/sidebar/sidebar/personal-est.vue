@@ -1,21 +1,29 @@
 <template>
 	<div class="container m-5">
-		<div class="columns is-vcentered is-horizontal-center">
+		<div class="columns is-multiline is-vcentered is-horizontal-center">
 			<figure class="image is-128x128">
 				<article class="media">
-					<div class="column">
+					<div class="column is-12">
+						<input
+							ref="file"
+							@change="onFileChange"
+							type="file"
+							style="display:none"
+						/>
 						<img
+							@click="$refs.file.click(), (profileError.image = '')"
 							class="is-rounded profile-photo"
-							:src="
-								!payload.profile.image
-									? 'https://i.imgur.com/bCOd9N0.jpg'
-									: payload.profile.image
-							"
-							alt="Image"
+							:src="imgRef"
+							alt="image-edit"
 						/>
 					</div>
 				</article>
 			</figure>
+			<div class="column is-12 is-flex is-justify-content-center">
+				<span class="m-3 has-text-danger" v-if="profileError.image">
+					{{ profileError.image }}</span
+				>
+			</div>
 		</div>
 		<div class="columns">
 			<div class="column">
@@ -122,21 +130,64 @@ export default {
 
 	data() {
 		return {
+			defaultImg: 'https://i.imgur.com/bCOd9N0.jpg',
+
 			payload: {
 				profile: {
 					name: '',
 					street: '',
 					telephone_number: '',
 					est_owner: '',
-					image: '',
+					image: null,
 				},
 			},
 
+			profileError: {
+				image: '',
+			},
+
 			formError: '',
+			imgRef: null,
 		}
 	},
 
 	methods: {
+		encodeBase64(file) {
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader()
+				reader.readAsDataURL(file)
+				reader.onload = () => resolve(reader.result)
+				reader.onerror = (error) => reject(error)
+			})
+		},
+
+		async onFileChange(e) {
+			let imgFormats = ['jpg', 'jpeg', 'png']
+			const file = e.target.files[0]
+
+			if (!file) {
+				e.preventDefault()
+				return
+			}
+
+			if (file.size > 1024 * 1024) {
+				e.preventDefault()
+				this.profileError.image = 'Image must be less than 1mb'
+				return
+			}
+			let fileFormat = file.name.split('.')[1]
+
+			if (!imgFormats.includes(fileFormat)) {
+				e.preventDefault()
+				this.profileError.image =
+					'jpg, jpeg and png are the only file supported'
+				return
+			}
+
+			this.payload.profile.image = await this.encodeBase64(file)
+			this.imgRef = URL.createObjectURL(file)
+		},
+
 		sendDispatch(params) {
 			const checkInput = []
 
@@ -154,6 +205,18 @@ export default {
 		clearError() {
 			this.formError = ''
 		},
+	},
+
+	mounted() {
+		Object.keys(this.payload.profile).forEach((k) => {
+			this.payload.profile[k] = this.profile[k]
+		})
+
+		if (!this.profile.image) {
+			this.imgRef = this.defaultImg
+		} else {
+			this.imgRef = this.profile.image
+		}
 	},
 }
 </script>

@@ -292,9 +292,10 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
+
 				commit('getProfile', profile.data)
 			} catch (err) {
-				return err
+				console.log(err.response)
 			}
 		},
 
