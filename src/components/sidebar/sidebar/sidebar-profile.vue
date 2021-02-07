@@ -23,7 +23,7 @@
 									<img
 										class="is-rounded"
 										:src="
-											authProfile.image
+											authProfile
 												? authProfile.image
 												: 'https://i.imgur.com/bCOd9N0.jpg'
 										"

@@ -1,9 +1,11 @@
 <template>
-	<div class="modal" :class="{ 'is-active': this.$store.state.openPopOut }">
+	<div class="modal" :class="{ 'is-active': this.$store.state.showAbout }">
 		<div class="modal-background" @click="closeModal"></div>
 		<div class="modal-card">
 			<header class="modal-card-head">
-				<p class="modal-card-title is-justify-content-center is-flex">About</p>
+				<p class="modal-card-title is-bold is-justify-content-center is-flex">
+					About
+				</p>
 				<button @click="closeModal" class="delete" aria-label="close"></button>
 			</header>
 			<section class="modal-card-body">

@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
 import axios from 'axios'
-import router from '../router/index'
 const getDefaultState = () => {
 	return {
 		TOKEN_NAME: '',
@@ -33,6 +32,7 @@ export default new Vuex.Store({
 		//message box
 		isEmpSuccess: false,
 		openPopOut: false,
+		showAbout: false,
 		accountsMsg: {
 			isRegistered: false,
 			isProfileCreated: false,
@@ -162,6 +162,10 @@ export default new Vuex.Store({
 			state.driver.passengersInfo = payload
 		},
 
+		showAbout(state) {
+			state.showAbout = !state.showAbout
+		},
+
 		showPopOut(state) {
 			state.openPopOut = !state.openPopOut
 		},
@@ -280,7 +284,7 @@ export default new Vuex.Store({
 			}
 		},
 
-		async getProfile({ commit, state, dispatch }) {
+		async getProfile({ commit, state }) {
 			try {
 				const profile = await this._vm.$axios.get(
 					`${state.baseURL}/list/account/login/profile`,
@@ -290,10 +294,7 @@ export default new Vuex.Store({
 				)
 				commit('getProfile', profile.data)
 			} catch (err) {
-				if (err) {
-					dispatch('removeCookie')
-					router.push({ name: 'usersLogin' })
-				}
+				return err
 			}
 		},
 

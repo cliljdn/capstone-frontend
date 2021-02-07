@@ -284,7 +284,7 @@ export default {
 					this.$store.dispatch('updateProfile', params)
 				}
 			} catch (err) {
-				console.log(err.response)
+				return err
 			}
 		},
 
