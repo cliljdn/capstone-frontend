@@ -14,7 +14,7 @@
 						<article class="media-left">
 							<div class="media-content">
 								<div class="columns">
-									<div class="column">
+									<div class="column is-12">
 										<p class="mb-2">Email:</p>
 										<div class="field">
 											<p class="control has-icons-left has-icons-right">
@@ -32,8 +32,20 @@
 											</p>
 										</div>
 
-										<span class="m-3 has-text-danger">
-											{{ payloadErrors.email }}</span
+										<span
+											class="m-3 has-text-danger"
+											v-if="
+												$store.state.formError.updateError ||
+													payloadErrors.email
+											"
+										>
+											{{
+												$store.state.formError.updateError
+													? $store.state.formError.updateError
+													: payloadErrors.email
+													? payloadErrors.email
+													: ''
+											}}</span
 										>
 									</div>
 								</div>
@@ -183,6 +195,12 @@ export default {
 		clearErrors(field) {
 			this.payloadErrors[field] = ''
 			this.payloadErrors.all = ''
+			this.$store.commit('formError', '')
+			if (this.payload.account.email === this.profile.email) {
+				this.payload.account.email = ''
+			} else {
+				return true
+			}
 		},
 	},
 

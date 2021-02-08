@@ -43,6 +43,7 @@
 					</p>
 				</div>
 			</div>
+
 			<div class="column">
 				<p class="mb-2">Establishment Owner:</p>
 				<div class="field">
@@ -144,6 +145,7 @@ export default {
 
 			profileError: {
 				image: '',
+				exist: '',
 			},
 
 			formError: '',
@@ -170,7 +172,7 @@ export default {
 				return
 			}
 
-			if (file.size > 1024 * 1024) {
+			if (file.size > 600 * 600) {
 				e.preventDefault()
 				this.profileError.image = 'Image must be less than 1mb'
 				return
@@ -189,17 +191,14 @@ export default {
 		},
 
 		sendDispatch(params) {
-			const checkInput = []
-
-			Object.values(this.payload.profile).forEach((val) => {
-				val === '' ? checkInput.push(val) : false
+			Object.keys(this.payload.profile).forEach((k) => {
+				if (this.payload.profile[k] === this.profile[k]) {
+					this.formError = 'Profile is up to date'
+					return true
+				} else {
+					this.$store.dispatch('updateProfile', params)
+				}
 			})
-
-			if (checkInput.length === 5) {
-				this.formError = 'Please Fill up some Field'
-			} else {
-				this.$store.dispatch('updateProfile', params)
-			}
 		},
 
 		clearError() {

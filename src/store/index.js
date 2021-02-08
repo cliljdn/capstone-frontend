@@ -74,6 +74,10 @@ export default new Vuex.Store({
 			pages: 0,
 			passengersInfo: [],
 		},
+
+		formError: {
+			updateError: '',
+		},
 	},
 
 	getters: {
@@ -115,6 +119,10 @@ export default new Vuex.Store({
 
 		isAuth(state, auth) {
 			state.isAuth = auth
+		},
+
+		formError(state, payload) {
+			state.formError.updateError = payload
 		},
 
 		isProfileUpdated(state) {
@@ -393,7 +401,8 @@ export default new Vuex.Store({
 					dispatch('getProfile')
 				}
 			} catch (error) {
-				console.log(error.response.data.message)
+				commit('formError', error.response.data.message)
+				// console.log(error.response.data.message)
 			}
 		},
 	},
