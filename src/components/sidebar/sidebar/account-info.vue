@@ -21,6 +21,7 @@
 												<input
 													v-model="payload.account.email"
 													@click="clearErrors('email')"
+													@blur="updateValue()"
 													@input="validate('email')"
 													class="input"
 													type="email"
@@ -107,7 +108,7 @@
 								<div class="columns">
 									<div class="column is-flex is-justify-content-center">
 										<button
-											@click="sendDispatch(payload)"
+											@click="sendDispatch()"
 											class="is-pulled-right button is-success"
 										>
 											Save
@@ -157,23 +158,20 @@ export default {
 	},
 
 	methods: {
-		sendDispatch(params) {
-			const checkErrorLength = []
+		sendDispatch() {
 			if (!this.payload.account.email && !this.payload.account.password) {
 				this.payloadErrors.all = 'Please Fill up some Field'
+				return this.payloadErrors.all
 			} else {
 				this.payloadErrors.all = ''
 			}
 
-			Object.values(this.payloadErrors).forEach((val) => {
-				val === '' ? checkErrorLength.push(val) : false
-			})
-
-			if (checkErrorLength.length === 4) {
-				this.$store.dispatch('updateProfile', params)
-			} else {
-				return false
+			if (this.payload.account.email === this.profile.email) {
+				this.payloadErrors.all = 'Account Info is up to date'
+				return this.payloadErrors.all
 			}
+
+			this.$store.dispatch('updateProfile', this.payload)
 		},
 
 		validate: async function(field) {
@@ -195,20 +193,28 @@ export default {
 		clearErrors(field) {
 			this.payloadErrors[field] = ''
 			this.payloadErrors.all = ''
-			this.$store.commit('formError', '')
-			if (this.payload.account.email === this.profile.email) {
-				this.payload.account.email = ''
-			} else {
-				return true
+			if (field === 'email') {
+				this.$store.commit('formError', '')
+				if (this.payload.account.email === this.profile.email) {
+					this.payload.account.email = ''
+				} else {
+					return true
+				}
+			}
+		},
+
+		updateValue() {
+			this.payloadErrors['email'] = ''
+			this.payloadErrors.all = ''
+			if (!this.payload.account.email) {
+				console.log('haahah')
+				this.payload.account.email = this.profile.email
 			}
 		},
 	},
 
 	mounted() {
-		Object.keys(this.profile).forEach((k) => {
-			if (k === 'password') return true
-			this.payload.account[k] = this.profile[k]
-		})
+		this.payload.account.email = this.profile.email
 	},
 }
 </script>

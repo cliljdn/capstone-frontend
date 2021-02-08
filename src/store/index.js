@@ -364,7 +364,6 @@ export default new Vuex.Store({
 
 		async updateProfile({ commit, state, dispatch }, payload) {
 			const { profile, address, account } = payload
-
 			try {
 				const profileUpdate = await axios.patch(
 					`${state.baseURL}/accounts/update/profile`,
@@ -402,7 +401,7 @@ export default new Vuex.Store({
 				}
 			} catch (error) {
 				commit('formError', error.response.data.message)
-				// console.log(error.response.data.message)
+				console.log(error.response.data.message)
 			}
 		},
 	},
