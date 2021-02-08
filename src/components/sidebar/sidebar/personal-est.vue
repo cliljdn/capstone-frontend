@@ -31,7 +31,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="clearError"
+							@click="clearError('name')"
+							@blur="rebirthComputedValue('name')"
 							v-model="payload.profile.name"
 							class="input"
 							type="text"
@@ -49,7 +50,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="clearError"
+							@click="clearError('est_owner')"
+							@blur="rebirthComputedValue('est_owner')"
 							v-model="payload.profile.est_owner"
 							class="input"
 							type="text"
@@ -69,7 +71,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="clearError"
+							@click="clearError('telephone_number')"
+							@blur="rebirthComputedValue('telephone_number')"
 							v-model="payload.profile.telephone_number"
 							class="input"
 							type="text"
@@ -89,7 +92,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="clearError"
+							@click="clearError('street')"
+							@blur="rebirthComputedValue('street')"
 							v-model="payload.profile.street"
 							class="input"
 							type="text"
@@ -110,10 +114,7 @@
 			</div>
 		</div>
 		<div class="is-flex is-justify-content-center">
-			<button
-				@click="sendDispatch(payload)"
-				class="is-pulled-right button is-success"
-			>
+			<button @click="sendDispatch()" class="is-pulled-right button is-success">
 				Save
 			</button>
 		</div>
@@ -190,19 +191,34 @@ export default {
 			this.imgRef = URL.createObjectURL(file)
 		},
 
-		sendDispatch(params) {
-			Object.keys(this.payload.profile).forEach((k) => {
-				if (this.payload.profile[k] === this.profile[k]) {
-					this.formError = 'Profile is up to date'
-					return true
-				} else {
-					this.$store.dispatch('updateProfile', params)
-				}
-			})
+		sendDispatch() {
+			var result = Object.keys(this.payload.profile).map(
+				(key) => this.profile[key]
+			)
+
+			const checkIfChange = Object.values(this.payload.profile).every((v) =>
+				result.includes(v)
+			)
+
+			if (!checkIfChange) {
+				this.$store.dispatch('updateProfile', this.payload)
+			} else {
+				this.formError = 'Profile Info is up to date'
+			}
 		},
 
-		clearError() {
+		clearError(field) {
 			this.formError = ''
+
+			if (this.payload.profile[field] === this.profile[field]) {
+				this.payload.profile[field] = ''
+			}
+		},
+
+		rebirthComputedValue(field) {
+			if (!this.payload.profile[field]) {
+				this.payload.profile[field] = this.profile[field]
+			}
 		},
 	},
 
