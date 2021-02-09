@@ -192,7 +192,7 @@ export default {
 		},
 
 		sendDispatch() {
-			var result = Object.keys(this.payload.profile).map(
+			const result = Object.keys(this.payload.profile).map(
 				(key) => this.profile[key]
 			)
 

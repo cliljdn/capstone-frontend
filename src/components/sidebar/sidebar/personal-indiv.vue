@@ -32,7 +32,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="rmError()"
+							@click="rmError('firstname')"
+							@blur="changeBackState('firstname')"
 							v-model="payload.profile.firstname"
 							class="input"
 							type="text"
@@ -49,7 +50,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="rmError()"
+							@click="rmError('middlename')"
+							@blur="changeBackState('middlename')"
 							v-model="payload.profile.middlename"
 							class="input"
 							type="text"
@@ -66,7 +68,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="rmError()"
+							@click="rmError('lastname')"
+							@blur="changeBackState('lastname')"
 							v-model="payload.profile.lastname"
 							class="input"
 							type="text"
@@ -86,7 +89,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="rmError()"
+							@click="rmError('contactnumber')"
+							@blur="changeBackState('contactnumber')"
 							@keypress="isNumber"
 							v-model="payload.profile.contactnumber"
 							class="input"
@@ -107,7 +111,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="rmError()"
+							@click="rmError('house_lot_number')"
+							@blur="changeBackState('house_lot_number')"
 							v-model="payload.address.house_lot_number"
 							class="input"
 							type="text"
@@ -125,7 +130,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="rmError()"
+							@click="rmError('barangay')"
+							@blur="changeBackState('barangay')"
 							v-model="payload.address.barangay"
 							class="input"
 							type="text"
@@ -143,7 +149,8 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
-							@click="rmError()"
+							@click="rmError('city')"
+							@blur="changeBackState('city')"
 							v-model="payload.address.city"
 							class="input"
 							type="text"
@@ -268,28 +275,45 @@ export default {
 		},
 
 		patchProfile(params) {
-			try {
-				const checkInput = []
-				Object.values(this.payload.profile).forEach((val) => {
-					val === '' ? checkInput.push(val) : false
-				})
+			const result = Object.keys(this.payload.profile).map(
+				(key) => this.auth[key]
+			)
 
-				Object.values(this.payload.address).forEach((val) => {
-					val === '' ? checkInput.push(val) : false
-				})
+			const checkIfChange = Object.values(this.payload.profile).every((v) =>
+				result.includes(v)
+			)
 
-				if (checkInput.length === 8) {
-					this.formError = 'Please Fill up some Field'
-				} else {
-					this.$store.dispatch('updateProfile', params)
-				}
-			} catch (err) {
-				return err
+			if (!checkIfChange) {
+				this.$store.dispatch('updateProfile', params)
+			} else {
+				this.formError = 'Profile Info is up to date'
 			}
 		},
 
-		rmError() {
+		rmError(field) {
 			this.formError = ''
+
+			if (field in this.payload.profile) {
+				if (this.payload.profile[field] === this.auth[field]) {
+					this.payload.profile[field] = ''
+				}
+			} else {
+				if (this.payload.address[field] === this.auth[field]) {
+					this.payload.address[field] = ''
+				}
+			}
+		},
+
+		changeBackState(field) {
+			if (field in this.payload.profile) {
+				if (!this.payload.profile[field]) {
+					this.payload.profile[field] = this.auth[field]
+				}
+			} else {
+				if (!this.payload.address[field]) {
+					this.payload.address[field] = this.auth[field]
+				}
+			}
 		},
 	},
 

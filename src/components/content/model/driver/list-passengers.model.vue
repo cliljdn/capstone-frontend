@@ -86,7 +86,6 @@ export default {
 				return true
 			} else {
 				this.payload.page++
-				console.log(this.payload.page)
 
 				this.$store.dispatch('passengers', this.payload)
 			}
@@ -134,6 +133,11 @@ export default {
 		},
 
 		searchList: _debounce(function() {
+			if (!this.isPanelActive) {
+				this.payload.page = ''
+			} else {
+				this.payload.page = 0
+			}
 			this.$store.dispatch('passengers', this.payload)
 		}, 300),
 
@@ -151,7 +155,7 @@ export default {
 			})
 
 			if (!this.isPanelActive) {
-				this.$store.dispatch('passengers')
+				this.$store.dispatch('passengers', this.payload)
 			} else {
 				this.$store.dispatch('passengers', this.payload)
 			}
