@@ -113,6 +113,7 @@
 								<input
 									@input="validateForm('telephone_number')"
 									@blur="validateForm('telephone_number')"
+									@keypress="isNumber"
 									v-model="payload.telephone_number"
 									class="input"
 									type="text"

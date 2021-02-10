@@ -32,24 +32,34 @@ export default {
 
 	methods: {
 		async createProfile() {
+			let { formEst } = yup
 			const { state, commit, dispatch } = this.$store
 			try {
-				const res = await this.$axios.post(
-					`${state.baseURL}/accounts/create/profile`,
-					qs.stringify(this.payload),
-					{
-						headers: {
-							Authorization: this.$store.getters.isLoggedIn,
-						},
-					}
+				const isFormValid = await formEst.validate(
+					this.payload,
+					this.yupOptions
 				)
 
-				if (res.status === 201) {
-					dispatch('verifyAccount')
-					state.accountsMsg.isRegistered = false
-					state.accountsMsg.isProfileCreated = true
-					this.$store.dispatch('removeCookie')
-					return commit('showPopOut')
+				if (isFormValid) {
+					const res = await this.$axios.post(
+						`${state.baseURL}/accounts/create/profile`,
+						qs.stringify(this.payload),
+						{
+							headers: {
+								Authorization: this.$store.getters.isLoggedIn,
+							},
+						}
+					)
+
+					if (res.status === 201) {
+						dispatch('verifyAccount')
+						state.accountsMsg.isRegistered = false
+						state.accountsMsg.isProfileCreated = true
+						this.$store.dispatch('removeCookie')
+						return commit('showPopOut')
+					}
+				} else {
+					return
 				}
 			} catch (error) {
 				console.log(error.response)
@@ -63,6 +73,20 @@ export default {
 				reader.onload = () => resolve(reader.result)
 				reader.onerror = (error) => reject(error)
 			})
+		},
+
+		isNumber: function(evt) {
+			evt = evt ? evt : window.event
+			var charCode = evt.which ? evt.which : evt.keyCode
+			if (
+				charCode > 31 &&
+				(charCode < 48 || charCode > 57) &&
+				charCode !== 46
+			) {
+				evt.preventDefault()
+			} else {
+				return true
+			}
 		},
 
 		async onFileChange(e) {
