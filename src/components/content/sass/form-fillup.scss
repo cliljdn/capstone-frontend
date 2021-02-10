@@ -38,6 +38,12 @@
 			img {
 				border-bottom: 1px solid black;
 			}
+
+		img:hover {
+				border: 5px solid $primary !important;
+				cursor: pointer !important;
+				opacity: 40% !important;
+			}
 		}
 	}
 }

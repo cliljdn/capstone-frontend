@@ -1,53 +1,36 @@
 <template>
 	<div class="card-content">
 		<div class="content">
-			<div class="columns ">
+			<div class="columns">
 				<div class="column text-welcome">
 					<span>Personal Information</span>
 				</div>
 			</div>
 
-			<div class="columns  columns-img	is-mobile ">
+			<div class="columns  columns-img">
 				<div class="column is-flex is-justify-content-center">
 					<div class="media media-image">
 						<div class="media-left">
 							<figure class="image is-128x128">
-								<img
-									v-if="payload.image"
-									class="is-rounded"
-									:src="payload.image"
-									alt="Placeholder image"
+								<input
+									ref="file"
+									@change="onFileChange"
+									class="file-input"
+									type="file"
+									name="resume"
 								/>
 								<img
-									v-if="!payload.image"
-									class="is-rounded"
-									src="https://i.imgur.com/bCOd9N0.jpg"
+									@click="$refs.file.click(), (profileError.image = '')"
+									class="is-rounded img-user"
+									:src="!imgRef ? 'https://i.imgur.com/bCOd9N0.jpg' : imgRef"
 									alt="Placeholder image"
 								/>
 							</figure>
 
-							<div class="columns">
-								<div class="media-content m-2">
-									<div class="file has-name">
-										<label class="file-label">
-											<input
-												@change="onFileChange"
-												class="file-input"
-												type="file"
-												name="resume"
-											/>
-											<span class="file-cta">
-												<span class="file-icon">
-													<i class="fas fa-upload"></i>
-												</span>
-												<span class="file-label">
-													Choose a file…
-												</span>
-											</span>
-										</label>
-									</div>
-								</div>
-								<span class="has-text-danger block mt-3"></span>
+							<div class="column is-12 is-flex is-justify-content-center">
+								<span class="m-1 has-text-danger" v-if="profileError.image">
+									{{ profileError.image }}</span
+								>
 							</div>
 						</div>
 					</div>
@@ -61,6 +44,8 @@
 						<div class="field mt-2">
 							<p class="control has-icons-left has-icons-right">
 								<input
+									@input="validateForm('name')"
+									@blur="validateForm('name')"
 									v-model="payload.name"
 									class="input"
 									type="email"
@@ -70,7 +55,7 @@
 									<i class="fas fa-user"></i>
 								</span>
 							</p>
-							<span class="mt-1 has-text-danger"></span>
+							<span class="mt-1 has-text-danger">{{ formError.name }}</span>
 						</div>
 					</div>
 				</div>
@@ -81,6 +66,8 @@
 						<div class="field mt-2">
 							<p class="control has-icons-left">
 								<input
+									@input="validateForm('est_owner')"
+									@blur="validateForm('est_owner')"
 									v-model="payload.est_owner"
 									class="input"
 									type="text"
@@ -91,7 +78,9 @@
 								</span>
 							</p>
 
-							<span class="mt-1 has-text-danger"></span>
+							<span class="mt-1 has-text-danger">{{
+								formError.est_owner
+							}}</span>
 						</div>
 					</div>
 
@@ -100,6 +89,8 @@
 						<div class="field mt-2">
 							<p class="control has-icons-left">
 								<input
+									@input="validateForm('street')"
+									@blur="validateForm('street')"
 									v-model="payload.street"
 									class="input"
 									type="text"
@@ -109,7 +100,7 @@
 									<i class="fas fa-user"></i>
 								</span>
 							</p>
-							<span class="mt-1 has-text-danger"></span>
+							<span class="mt-1 has-text-danger">{{ formError.street }}</span>
 						</div>
 					</div>
 				</div>
@@ -120,6 +111,8 @@
 						<div class="field mt-2">
 							<p class="control has-icons-left">
 								<input
+									@input="validateForm('telephone_number')"
+									@blur="validateForm('telephone_number')"
 									v-model="payload.telephone_number"
 									class="input"
 									type="text"
@@ -131,17 +124,21 @@
 								</span>
 							</p>
 
-							<span class="mt-1 has-text-danger"></span>
+							<span class="mt-1 has-text-danger">{{
+								formError.telephone_number
+							}}</span>
 						</div>
 					</div>
 				</div>
 			</form>
-			<button
-				@click="createProfile"
-				class="button is-success is-pulled-right is-medium is-center mt-3"
-			>
-				Create Profile
-			</button>
+			<div class="is-flex is-justify-content-center ">
+				<button
+					@click="createProfile"
+					class="button is-success is-medium is-center mt-3"
+				>
+					Create Profile
+				</button>
+			</div>
 		</div>
 	</div>
 </template>

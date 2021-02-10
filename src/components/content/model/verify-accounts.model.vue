@@ -1,48 +1,26 @@
 <script>
 export default {
+	computed: {
+		accountInfo() {
+			const { userProfile } = this.$store.state
+			return userProfile
+		},
+	},
+
 	data() {
-		return {
-			msg: '',
-			isType: '',
-			isAuth: false,
-		}
+		return {}
 	},
 
 	methods: {
 		gotoForm() {
-			if (this.isAuth) {
+			if (this.accountInfo) {
 				this.$router.push({ name: 'create-profile' })
-				this.isAuth = false
 			}
 		},
 	},
 
-	async mounted() {
-		let { token } = this.$route.params,
-			{ state } = this.$store
-
-		try {
-			const res = await this.$axios.get(
-				`${state.baseURL}/accounts/verify/${token}`
-			)
-			if (res.data.verified) {
-				this.msg = `Your email ${res.data.email} has been Verified`
-				state.accountsMsg.isRegistered = true
-				const auth = {
-					token: token,
-					name: res.data.name,
-					accType: res.data.account_type,
-				}
-				console.log(auth)
-				this.$store.dispatch('setCookie', auth)
-				this.isAuth = true
-			}
-		} catch (err) {
-			console.log(err.response.status)
-			if (err.response.status === 500) {
-				this.$router.push({ path: '/' })
-			}
-		}
+	mounted() {
+		this.$store.dispatch('getAccount', this.$route.params.token)
 	},
 }
 </script>

@@ -46,38 +46,26 @@ export default {
 			.required('City is a required Field'),
 	}),
 
-	employeeValidate: yup.object().shape({
-		firstName: yup
+	formEst: yup.object().shape({
+		name: yup
 			.string()
 			.trim()
-			.required('Firstname Field is required'),
+			.required('Establishment Name Field is required'),
 
-		lastName: yup
+		street: yup
 			.string()
 			.trim()
-			.required('Lastname Field is required'),
+			.required('Street Address Field is required'),
 
-		middleName: yup.string().trim(),
+		est_owner: yup
+			.string()
+			.trim()
+			.required('Establishment Owner Field is required'),
 
-		birthday: yup
-			.date()
-			.max(
-				new Date(),
-				'The year value cannot be on present and greater than present year!'
-			)
-			.typeError('Select a date')
-			.nullable(true)
-			.required('Birthday Field is required '),
-
-		contact: yup
+		telephone_number: yup
 			.string()
 			.trim()
 			.min(11, 'Contact number must a 11 characters length')
 			.required('Contact Field is required'),
-
-		position: yup
-			.string()
-			.trim()
-			.required('Company Position Field is required'),
 	}),
 }

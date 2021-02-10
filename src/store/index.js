@@ -280,6 +280,22 @@ export default new Vuex.Store({
 			}
 		},
 
+		async getAccount({ commit, state }, token) {
+			try {
+				const account = await this._vm.$axios.get(
+					`${state.baseURL}/list/user/account`,
+					{
+						headers: { Authorization: token },
+					}
+				)
+
+				commit('getProfile', account.data)
+				commit('setCookie', account.data)
+			} catch (err) {
+				console.log(err.response)
+			}
+		},
+
 		async getProfile({ commit, state }) {
 			try {
 				const profile = await this._vm.$axios.get(
@@ -402,6 +418,16 @@ export default new Vuex.Store({
 			} catch (error) {
 				commit('formError', error.response.data.message)
 				console.log(error.response.data.message)
+			}
+		},
+
+		async verifyAccount({ state }) {
+			try {
+				await axios.get(
+					`${state.baseURL}/accounts/verify/${this.getters.isLoggedIn}`
+				)
+			} catch (err) {
+				return err
 			}
 		},
 	},

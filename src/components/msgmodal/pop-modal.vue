@@ -13,6 +13,7 @@
 							<h1>Successfully Registered</h1>
 							<h1>We Sent a Verification Link to your E-mail address</h1>
 						</div>
+
 						<div class="" v-if="this.$store.state.accountsMsg.isProfileCreated">
 							<h1>Profile Created</h1>
 							<h1>
@@ -61,7 +62,6 @@ export default {
 			}
 
 			state.accountsMsg.isProfileCreated = false
-			state.isAdminValid = false
 			state.accountsMsg.isProfileUpdated = false
 			return commit('showPopOut')
 		},

@@ -4,13 +4,15 @@
 			<div class="hero-body">
 				<div class="container">
 					<h1 class="title">
-						{{ msg }}
+						your E-mail {{ accountInfo ? accountInfo.email : '' }} is Ready for
+						Verification
 					</h1>
 					<h2 class="subtitle">
-						Click the button to proceed in profile creation
+						Click the button to proceed in
+						{{ accountInfo ? accountInfo.accType : '' }} Profile Creation
 					</h2>
 					<button @click="gotoForm" class="button is-medium is-success">
-						Proceed to Profile Creation
+						Proceed
 					</button>
 				</div>
 			</div>

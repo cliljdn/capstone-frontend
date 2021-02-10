@@ -1,4 +1,6 @@
 <script>
+import qs from 'querystring'
+import yup from '../validations/fillup-validations'
 export default {
 	data() {
 		return {
@@ -9,16 +11,32 @@ export default {
 				est_owner: '',
 				image: null,
 			},
+
+			formError: {
+				name: '',
+				street: '',
+				telephone_number: '',
+				est_owner: '',
+				image: null,
+			},
+
+			imgRef: null,
+
+			profileError: {
+				image: '',
+			},
+
+			yupOptions: { abortEarly: false, strict: false },
 		}
 	},
 
 	methods: {
 		async createProfile() {
-			const { state, commit } = this.$store
+			const { state, commit, dispatch } = this.$store
 			try {
 				const res = await this.$axios.post(
 					`${state.baseURL}/accounts/create/profile`,
-					this.payload,
+					qs.stringify(this.payload),
 					{
 						headers: {
 							Authorization: this.$store.getters.isLoggedIn,
@@ -27,6 +45,7 @@ export default {
 				)
 
 				if (res.status === 201) {
+					dispatch('verifyAccount')
 					state.accountsMsg.isRegistered = false
 					state.accountsMsg.isProfileCreated = true
 					this.$store.dispatch('removeCookie')
@@ -37,8 +56,17 @@ export default {
 			}
 		},
 
-		onFileChange(e) {
-			// let imgFormats = ['jpg', 'jpeg', 'png']
+		encodeBase64(file) {
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader()
+				reader.readAsDataURL(file)
+				reader.onload = () => resolve(reader.result)
+				reader.onerror = (error) => reject(error)
+			})
+		},
+
+		async onFileChange(e) {
+			let imgFormats = ['jpg', 'jpeg', 'png']
 			const file = e.target.files[0]
 
 			if (!file) {
@@ -46,21 +74,34 @@ export default {
 				return
 			}
 
-			// if (file.size > 1024 * 1024) {
-			// 	e.preventDefault()
-			// 	this.profileError.image = 'Image must be less than 1mb'
-			// 	return
-			// }
-			// let fileFormat = file.name.split('.')[1]
+			if (file.size > 600 * 600) {
+				e.preventDefault()
+				this.profileError.image = 'Image must be less than 1mb'
+				return
+			}
+			let fileFormat = file.name.split('.')[1]
 
-			// if (!imgFormats.includes(fileFormat)) {
-			// 	e.preventDefault()
-			// 	this.profileError.image =
-			// 		'jpg, jpeg and png are the only file supported'
-			// 	return
-			// }
+			if (!imgFormats.includes(fileFormat)) {
+				e.preventDefault()
+				this.profileError.image =
+					'jpg, jpeg and png are the only file supported'
+				return
+			}
 
-			this.payload.image = URL.createObjectURL(file)
+			this.payload.image = await this.encodeBase64(file)
+			this.imgRef = URL.createObjectURL(file)
+		},
+
+		async validateForm(field) {
+			let { formEst } = yup
+			try {
+				await formEst.validateAt(field, this.payload, this.yupOptions)
+				this.formError[field] = ''
+			} catch (err) {
+				err.inner.forEach((error) => {
+					this.formError[error.path] = error.message
+				})
+			}
 		},
 	},
 }
