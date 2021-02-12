@@ -36,9 +36,13 @@
 		// background-size: cover;
 		// margin: 0 auto !important;
 		// background-repeat: no-repeat;
-		.hero {
-			.hero-body {
-			}
+		.has-equal-height {
+			border: none !important;
+			box-shadow: none;
+			width: 700px !important;
+			height: 100% !important;
+			display: block;
+			justify-items: center;
 		}
 	}
 }
