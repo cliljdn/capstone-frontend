@@ -36,6 +36,10 @@ html {
 }
 
 .main-view {
+	background-image: url('https://i.imgur.com/fvnxvpK.jpg') !important;
+	background-position: center !important;
+	// background-size: cover;
+	background-attachment: fixed;
 	overflow: hidden !important;
 }
 </style>

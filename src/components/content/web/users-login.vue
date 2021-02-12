@@ -32,7 +32,7 @@
 									</span>
 								</p>
 
-								<span class="mt-1 has-text-danger">{{ errors.email }}</span>
+								<span class="has-text-danger">{{ errors.email }}</span>
 							</div>
 
 							<span class="">Password:</span>
@@ -51,7 +51,7 @@
 										<i class="fas fa-key"></i>
 									</span>
 								</p>
-								<span class="mt-1 has-text-danger">{{ errors.password }}</span>
+								<span class="has-text-danger">{{ errors.password }}</span>
 							</div>
 							<div class="">
 								<span

@@ -175,7 +175,7 @@
 				@click="patchProfile(payload)"
 				class="is-pulled-right button is-success"
 			>
-				Save
+				Update
 			</button>
 		</div>
 	</div>

@@ -9,8 +9,8 @@
 				</div>
 				<span>This is a registration for a citizen Monitoring </span>
 
-				<div class="columns mt-3">
-					<div class="column">
+				<div class="columns is-multiline mt-3">
+					<div class="column is-12">
 						<form action="" @click.prevent method="post">
 							<span class="">Email:</span>
 							<div class="field mt-3">
@@ -20,7 +20,7 @@
 										@focus="errors.email = ''"
 										@blur="validate('email')"
 										@input="validate('email')"
-										class="input is-primary"
+										class="input mb-3 is-primary"
 										type="email"
 										placeholder="Email"
 										required
@@ -29,15 +29,15 @@
 										<i class="fas fa-envelope"></i>
 									</span>
 								</p>
-								<span class="has-text-danger">{{ errors.email }}</span>
 							</div>
+							<span class="has-text-danger">{{ errors.email }}</span>
 
-							<span class="">Password:</span>
+							<span class="is-block mt-3">Password:</span>
 							<div class="field mt-3">
 								<p class="control has-icons-left">
 									<input
 										v-model="values.password"
-										class="input is-primary"
+										class="input mb-3 is-primary"
 										type="password"
 										@focus="errors.password = ''"
 										@blur="validate('password')"
@@ -51,10 +51,10 @@
 										<i class="fas fa-key"></i>
 									</span>
 								</p>
-								<span class="has-text-danger">{{ errors.password }}</span>
 							</div>
+							<span class="has-text-danger">{{ errors.password }}</span>
 
-							<span class="">Confirm Password:</span>
+							<span class="is-block mt-3">Confirm Password:</span>
 							<div class="field mt-3">
 								<p class="control has-icons-left">
 									<input
@@ -66,15 +66,16 @@
 										type="password"
 										placeholder="Confirm Password"
 										required
+										:disabled="values.password === ''"
 									/>
 									<span class="icon is-small is-left">
 										<i class="fas fa-lock"></i>
 									</span>
 								</p>
-								<span class="has-text-danger">{{ errors.confirm }}</span>
 							</div>
+							<span class="has-text-danger">{{ errors.confirm }}</span>
 
-							<span class="">Account Type:</span>
+							<span class="is-block mt-3">Account Type:</span>
 							<div class="control has-icons-left mt-3">
 								<div class="select is-primary">
 									<select

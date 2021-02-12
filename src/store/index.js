@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
 import axios from 'axios'
+import router from '../router/index'
 const getDefaultState = () => {
 	return {
 		TOKEN_NAME: '',
@@ -292,7 +293,9 @@ export default new Vuex.Store({
 				commit('getProfile', account.data)
 				commit('setCookie', account.data)
 			} catch (err) {
-				console.log(err.response)
+				if (err) {
+					router.push({ name: 'usersLogin' })
+				}
 			}
 		},
 

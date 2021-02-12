@@ -1,5 +1,5 @@
 <template>
-	<div class="is-pulled-right columns is-multiline users-profile">
+	<div class="is-pulled-right columns is-multiline users-profile ">
 		<div class="card column is-12">
 			<header class="card-header">
 				<div class="column is-6">

@@ -1,26 +1,21 @@
 @import '../../../assets/sass/mixins.scss';
 
-.account-sidebar {
+.columns-account {
 	font-weight: bold;
-	overflow: hidden !important;
-	margin: 0 !important;
-	padding: 0 !important;
-	height: auto;
+	width: auto !important;
 	right: 0 !important;
 
-	.box-title {
-		margin-top: 0px;
-		padding-bottom: 50px;
+	.account-form {
+		overflow-y: auto !important;
+		height: 400px !important;
+		.field .control input {
+			border-top-style: hidden;
+			border-right-style: hidden;
+			border-left-style: hidden;
+			border-bottom: 1px solid $primary !important;
+			box-shadow: none;
+		}
 	}
-
-	.field .control input {
-		border-top-style: hidden;
-		border-right-style: hidden;
-		border-left-style: hidden;
-		border-bottom: 1px solid $primary !important;
-		box-shadow: none;
-	}
-
 	input:focus {
 		outline: none !important;
 		box-shadow: none;

@@ -1,48 +1,63 @@
 @import '../../../assets/sass/mixins.scss';
 
-.columns-main {
-	color: #ffffff !important;
-	font-weight: bold;
-	margin: 0 !important;
-	padding: 0 !important;
+.main-index {
+	background-image: url('https://i.imgur.com/fvnxvpK.jpg') !important;
+	background-position: center !important;
+	// background-size: cover;
 	height: 100% !important;
-	width: auto;
-	box-shadow: none !important;
-	border: none !important;
+	background-attachment: fixed;
 
-	.slide-enter-active,
-	.slide-leave-active {
-		transition: transform 0.3s ease;
-	}
-
-	.slide-enter,
-	.slide-leave-to {
-		transform: translateX(100%);
-		transition: all 120ms ease-in 0s;
-	}
-
-	.card {
-		border: none;
-		background-color: transparent !important;
-		.card-content {
-		}
-	}
-
-	.column-main {
+	.columns-main {
+		color: #ffffff !important;
+		font-weight: bold;
+		margin: 0 !important;
 		padding: 0 !important;
+		// height: 100% !important;
+		box-shadow: none !important;
+		border: none !important;
 
-		// background-image: url('https://i.imgur.com/KkBjS9g.jpg') !important;
-		// background-position: left !important;
-		// background-size: cover;
-		// margin: 0 auto !important;
-		// background-repeat: no-repeat;
-		.has-equal-height {
-			border: none !important;
-			box-shadow: none;
-			width: 700px !important;
+		.slide-enter-active,
+		.slide-leave-active {
+			transition: transform 0.3s ease;
+		}
+
+		.slide-enter,
+		.slide-leave-to {
+			transform: translateX(100%);
+			transition: all 120ms ease-in 0s;
+		}
+		.column-card {
+			background-image: url('https://i.imgur.com/fvnxvpK.jpg') !important;
+			background-position: center !important;
+			// background-size: cover;
 			height: 100% !important;
-			display: block;
-			justify-items: center;
+			background-attachment: fixed;
+			.card {
+				border: none;
+				background-color: transparent !important;
+			}
+		}
+
+		.column-main {
+			padding: 0 !important;
+
+			.has-equal-height {
+				// card full heigth op
+				border: none !important;
+				box-shadow: none;
+				width: 700px !important;
+				height: 100% !important;
+				display: block;
+				justify-items: center;
+
+				.card-content {
+					background-image: url('https://i.imgur.com/fvnxvpK.jpg') !important;
+					background-position: center !important;
+					// background-size: cover;
+					height: 100% !important;
+					background-attachment: fixed;
+				}
+			}
 		}
 	}
 }

@@ -1,11 +1,14 @@
 <template>
 	<div class="">
 		<index-nav />
-		<div class="is-overlay">
-			<div class="columns is-multiline  columns-main ">
-				<div class="column column-main is-5 is-hidden-mobile is-5">
-					<div class="card is-fullheight has-equal-height">
+		<div class="is-overlay main-index">
+			<div class="columns is-multiline  columns-main">
+				<div class="column column-main is-5 is-hidden-mobile">
+					<div class="card has-equal-height">
 						<div class="card-content">
+							<p class="title mt-5 is-flex is-justify-content-center">
+								Scan-Olongapo
+							</p>
 							<div class="content">
 								Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at
 								eros. Donec id elit non mi porta gravida at eget metus. Cum

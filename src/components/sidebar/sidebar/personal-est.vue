@@ -115,7 +115,7 @@
 		</div>
 		<div class="is-flex is-justify-content-center">
 			<button @click="sendDispatch()" class="is-pulled-right button is-success">
-				Save
+				Update
 			</button>
 		</div>
 	</div>

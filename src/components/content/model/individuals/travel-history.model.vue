@@ -166,22 +166,11 @@ export default {
 			this.$store.dispatch('travelHistory', this.payload)
 			this.isPanelActive = true
 		},
-
-		yearValue() {
-			let currentYear = new Date().getFullYear(),
-				years = [],
-				startYear = 1960
-			while (startYear <= currentYear) {
-				years.push(startYear++)
-			}
-			return years
-		},
 	},
 
 	mounted() {
-		this.yearValue()
-
 		this.$store.dispatch('travelHistory', this.payload)
+		console.log(this.pages)
 	},
 }
 </script>

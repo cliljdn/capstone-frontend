@@ -328,10 +328,18 @@
 										</li>
 
 										<!-- end page -->
-										<li v-if="page === pages[pages.length - 1]">
+										<li
+											v-if="
+												page === pages[pages.length - 1] && pages.length > 1
+											"
+										>
 											<span class="pagination-ellipsis">&hellip;</span>
 										</li>
-										<li v-if="page === pages[pages.length - 1]">
+										<li
+											v-if="
+												page === pages[pages.length - 1] && pages.length > 1
+											"
+										>
 											<a
 												@click="gotoPage(index)"
 												:class="{
