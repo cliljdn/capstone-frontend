@@ -33,7 +33,7 @@
 			</li>
 		</ul>
 
-		<h4>Print Report (Route History)</h4>
+		<h4>Print Report (Travel History)</h4>
 		<ul class="is-justify-content-center">
 			<li>
 				You can Print the List of Travel History by clicking the Print Button on
