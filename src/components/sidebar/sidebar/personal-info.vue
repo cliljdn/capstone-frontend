@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="box personal-info-container  is-flex">
-			<p class="box-title is-pulled-left is-fixed-top">
+			<p class="title box-title is-pulled-left is-fixed-top">
 				Personal Information
 			</p>
 
