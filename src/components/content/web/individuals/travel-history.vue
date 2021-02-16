@@ -128,9 +128,10 @@
 								<input
 									v-model="payload.search"
 									@input="searchList"
-									class="input  is-rounded is-primary"
+									class="input  is-rounded is-primary has-tooltip-multiline"
 									type="text"
 									placeholder="Search"
+									data-tooltip="Tooltip with a long Text. So we use has-tooltip-multiline modifier to force multiline display."
 								/>
 								<span class="icon is-left">
 									<i class="fas fa-search" aria-hidden="true"></i>
