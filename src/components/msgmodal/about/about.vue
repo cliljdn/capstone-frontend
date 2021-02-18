@@ -1,5 +1,10 @@
 <template>
-	<div class="modal" :class="{ 'is-active': this.$store.state.showAbout }">
+	<div
+		class="modal"
+		:class="{
+			'is-active': this.$store.state.showAbout,
+		}"
+	>
 		<div class="modal-background" @click="closeModal"></div>
 		<div class="modal-card">
 			<header class="modal-card-head">
@@ -8,7 +13,10 @@
 				</p>
 				<button @click="closeModal" class="delete" aria-label="close"></button>
 			</header>
-			<section class="modal-card-body">
+			<section
+				class="modal-card-body"
+				:class="{ 'indiv-bg': accType === 'Individual' }"
+			>
 				<div class="content is-medium">
 					<driver-about v-if="accType === 'Driver'" />
 					<indiv-about v-else-if="accType === 'Individual'" />
@@ -56,6 +64,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// .indiv-bg {
+// 	background-image: url('https://i.imgur.com/ftTGPsw.jpg') !important;
+// 	background-size: cover !important;
+// 	opacity: 70% !important;
+// }
+
 .modal-card-body {
+	font-weight: bold !important;
 }
 </style>

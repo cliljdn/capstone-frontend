@@ -258,7 +258,6 @@ export default new Vuex.Store({
 						params: { ...payload },
 					}
 				)
-
 				commit('estEntered', estEntered.data)
 			} catch (err) {
 				return err

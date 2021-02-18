@@ -58,6 +58,8 @@ export default {
 				startDate: null,
 				endDate: null,
 			},
+
+			defImage: 'https://bulma.io/images/placeholders/96x96.png',
 		}
 	},
 
