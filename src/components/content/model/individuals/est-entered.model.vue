@@ -147,6 +147,8 @@ export default {
 		},
 
 		searchList: _debounce(function() {
+			const { state } = this.$store
+			state.isLoading = true
 			this.currentPage = 0
 
 			this.$store.dispatch('estEntered', this.payload)

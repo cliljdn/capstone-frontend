@@ -34,7 +34,11 @@
 							</strong>
 
 							<span class="ml-1 user-info">
-								{{ companions ? companions[0].date_entered : '' }}
+								{{
+									companions
+										? new Date(companions[0].date_entered).toDateString()
+										: ''
+								}}
 							</span>
 						</div>
 

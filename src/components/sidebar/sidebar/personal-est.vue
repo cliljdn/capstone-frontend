@@ -114,7 +114,12 @@
 			</div>
 		</div>
 		<div class="is-flex is-justify-content-center">
-			<button @click="sendDispatch()" class="is-pulled-right button is-success">
+			<button
+				@click="sendDispatch()"
+				:disabled="$store.state.isLoading"
+				:class="{ 'is-loading': $store.state.isLoading }"
+				class="is-pulled-right button is-success"
+			>
 				Update
 			</button>
 		</div>
@@ -192,6 +197,7 @@ export default {
 		},
 
 		sendDispatch() {
+			const { state } = this.$$store
 			const result = Object.keys(this.payload.profile).map(
 				(key) => this.profile[key]
 			)
@@ -201,6 +207,7 @@ export default {
 			)
 
 			if (!checkIfChange) {
+				state.isLoading = true
 				this.$store.dispatch('updateProfile', this.payload)
 			} else {
 				this.formError = 'Profile Info is up to date'

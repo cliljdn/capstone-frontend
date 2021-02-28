@@ -94,6 +94,8 @@
 			<div class="column is-12 is-flex is-justify-content-center">
 				<button
 					@click="sendDispatch()"
+					:disabled="$store.state.isLoading"
+					:class="{ 'is-loading': $store.state.isLoading }"
 					class="is-pulled-right button is-success"
 				>
 					Update
@@ -138,6 +140,7 @@ export default {
 
 	methods: {
 		sendDispatch() {
+			const { state } = this.$store
 			if (!this.payload.account.email && !this.payload.account.password) {
 				this.payloadErrors.all = 'Please Fill up some Field'
 				return this.payloadErrors.all
@@ -150,6 +153,7 @@ export default {
 				return this.payloadErrors.all
 			}
 
+			state.isLoading = true
 			this.$store.dispatch('updateProfile', this.payload)
 		},
 

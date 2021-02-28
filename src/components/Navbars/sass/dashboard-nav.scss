@@ -11,8 +11,13 @@ nav {
 		border-bottom: 1px solid lightgreen;
 	}
 
+	.navbar-start a {
+		font-weight: bold;
+	}
+
 	.navbar-end a {
 		font-size: 18px !important;
+		font-weight: bold;
 	}
 
 	.text-underline {

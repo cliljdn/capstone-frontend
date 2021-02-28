@@ -1,7 +1,9 @@
 <template>
 	<div class="main-view">
 		<dashboard-nav />
-		<router-view />
+		<transition name="slide">
+			<router-view />
+		</transition>
 	</div>
 </template>
 
@@ -33,6 +35,17 @@ export default {
 <style lang="scss">
 html {
 	overflow-x: hidden !important;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+	transition: transform 0.3s ease;
+}
+
+.slide-enter,
+.slide-leave-to {
+	transform: translateY(100%);
+	transition: all 120ms ease-in 0s;
 }
 
 .main-view {

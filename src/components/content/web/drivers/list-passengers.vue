@@ -184,9 +184,9 @@
 										</thead>
 										<tbody>
 											<tr
-												@click="openModal(pass.batch)"
 												v-for="pass in passengers"
 												:key="pass.batch"
+												@click="openModal(pass.batch)"
 											>
 												<td>{{ pass.plate_number }}</td>
 												<td>{{ pass.vehicle_route }}</td>

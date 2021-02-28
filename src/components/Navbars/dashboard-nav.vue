@@ -56,20 +56,6 @@
 							>
 						</div>
 					</div>
-					<!-- 
-					<div
-						class="navbar-start"
-						v-if="this.$store.state.accType === 'Driver'"
-					>
-						<div class="icon-text navbar-item">
-							<span class="icon has-text-success">
-								<i class="fas fa-users"></i>
-							</span>
-							<router-link to="/driver/auth/dashboard">
-								<a class="ml-3">List of Passengers</a></router-link
-							>
-						</div>
-					</div> -->
 
 					<div
 						class="navbar-start"

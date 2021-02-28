@@ -124,7 +124,10 @@
 						</div>
 
 						<div class="panel-block">
-							<p class="control has-icons-left">
+							<p
+								class="control  has-icons-left"
+								:class="{ 'is-loading': $store.state.isLoading }"
+							>
 								<input
 									v-model="payload.search"
 									@input="searchList"
@@ -188,17 +191,19 @@
 												:key="log.batch"
 											>
 												<td>{{ log.destination }}</td>
-												<td>{{ log.date_boarded }}</td>
+												<td>
+													{{ new Date(log.date_boarded).toDateString() }}
+												</td>
 												<td>{{ log.time_boarded }}</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
 								<div
-									class="columns columns-error"
+									class="columns columns-error is-loading"
 									v-if="travelHistory.length === 0"
 								>
-									<div class="column is-flex is-justify-content-center">
+									<div class="column is-flex is-justify-content-center ">
 										<span class="has-text-danger">{{
 											payloadErrors.search
 										}}</span>
@@ -245,7 +250,7 @@
 													</span>
 
 													<span class="ml-1 user-info">{{
-														list.date_boarded
+														new Date(list.date_boarded).toDateString()
 													}}</span>
 												</p>
 

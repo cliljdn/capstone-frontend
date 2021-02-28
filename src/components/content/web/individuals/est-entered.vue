@@ -122,7 +122,10 @@
 						</div>
 
 						<div class="panel-block">
-							<p class="control has-icons-left">
+							<p
+								class="control has-icons-left"
+								:class="{ 'is-loading': $store.state.isLoading }"
+							>
 								<input
 									v-model="payload.search"
 									@input="searchList"
@@ -187,7 +190,7 @@
 											>
 												<td>{{ est.name }}</td>
 												<td>{{ est.street }}</td>
-												<td>{{ est.date_entered }}</td>
+												<td>{{ new Date(est.date_entered).toDateString() }}</td>
 												<td>{{ est.time_entered }}</td>
 											</tr>
 										</tbody>
@@ -248,7 +251,7 @@
 													</span>
 
 													<span class="ml-1 user-info">{{
-														est.date_entered
+														new Date(est.date_entered).toDateString()
 													}}</span>
 												</p>
 

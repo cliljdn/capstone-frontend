@@ -14,6 +14,7 @@ export default {
 	computed: {
 		travelHistory() {
 			const { travelHistory } = this.$store.state.individual
+
 			return travelHistory
 		},
 
@@ -40,6 +41,7 @@ export default {
 				time_24hr: true,
 				defaultDate: '00:00',
 			},
+
 			payload: {
 				page: '',
 				start: '',
@@ -147,6 +149,8 @@ export default {
 		},
 
 		searchList: _debounce(function() {
+			const { state } = this.$store
+			state.isLoading = true
 			if (!this.isPanelActive) {
 				this.payload.page = ''
 			} else {
@@ -170,7 +174,6 @@ export default {
 
 	mounted() {
 		this.$store.dispatch('travelHistory', this.payload)
-		console.log(this.pages)
 	},
 }
 </script>

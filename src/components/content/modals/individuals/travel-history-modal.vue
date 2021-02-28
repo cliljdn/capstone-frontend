@@ -34,7 +34,11 @@
 							</span>
 
 							<span class="ml-1 user-info">
-								{{ travelInfo ? travelInfo[0].date_boarded : '' }}
+								{{
+									travelInfo
+										? new Date(travelInfo[0].date_boarded).toDateString()
+										: ''
+								}}
 							</span>
 						</div>
 

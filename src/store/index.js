@@ -23,12 +23,14 @@ export default new Vuex.Store({
 		TOKEN_NAME: '',
 		isAuth: false,
 		accType: '',
-		// baseURL: 'http://scanolongapo-api.com/api/v1',
-		baseURL: 'http://192.168.1.11:6060/api/v1',
-		proxyURL: 'http://192.168.1.11:8080',
+		baseURL: 'https://capstone.scanolongapo-api.com/api/v1',
+		// baseURL: 'http://192.168.1.11:6060/api/v1',
+		// proxyURL: 'http://192.168.1.11:8080',
 		//dashboard
 		sideBarOpen: false,
 		editProfileOpen: false,
+
+		isLoading: false,
 
 		//message box
 		isEmpSuccess: false,
@@ -259,6 +261,7 @@ export default new Vuex.Store({
 					}
 				)
 				commit('estEntered', estEntered.data)
+				state.isLoading = false
 			} catch (err) {
 				return err
 			}
@@ -355,6 +358,7 @@ export default new Vuex.Store({
 				)
 
 				commit('travelHistory', travelHistory.data)
+				state.isLoading = false
 			} catch (err) {
 				return err.response
 			}
@@ -416,10 +420,10 @@ export default new Vuex.Store({
 
 					commit('isProfileUpdated')
 					dispatch('getProfile')
+					state.isLoading = false
 				}
 			} catch (error) {
 				commit('formError', error.response.data.message)
-				console.log(error.response.data.message)
 			}
 		},
 

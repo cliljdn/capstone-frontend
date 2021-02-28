@@ -173,6 +173,8 @@
 		<div class="is-flex is-justify-content-center">
 			<button
 				@click="patchProfile(payload)"
+				:disabled="$store.state.isLoading"
+				:class="{ 'is-loading': $store.state.isLoading }"
 				class="is-pulled-right button is-success"
 			>
 				Update
@@ -275,6 +277,7 @@ export default {
 		},
 
 		patchProfile(params) {
+			const { state } = this.$store
 			const result = Object.keys(this.payload.profile).map(
 				(key) => this.auth[key]
 			)
@@ -284,6 +287,7 @@ export default {
 			)
 
 			if (!checkIfChange) {
+				state.isLoading = true
 				this.$store.dispatch('updateProfile', params)
 			} else {
 				this.formError = 'Profile Info is up to date'

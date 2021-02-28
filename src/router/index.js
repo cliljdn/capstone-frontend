@@ -114,7 +114,7 @@ const routes = [
 
 	//for driver
 	{
-		path: '/driver/auth/dashboard',
+		path: '/driver/auth/dashboard/',
 		// name: 'listPassengers',
 		component: view('users-view'),
 
