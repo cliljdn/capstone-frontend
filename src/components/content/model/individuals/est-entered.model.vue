@@ -14,6 +14,22 @@ export default {
 			return estEntered
 		},
 
+		printEst() {
+			const listEst = []
+			const { estEntered } = this.$store.state.individual
+
+			for (const est of estEntered) {
+				listEst.push({
+					name: est.name,
+					street: est.street,
+					time_entered: est.time_entered,
+					date_entered: new Date(est.date_entered).toDateString(),
+				})
+			}
+
+			return listEst
+		},
+
 		pages() {
 			const { estPages } = this.$store.state.individual
 			const pages = []
@@ -117,7 +133,7 @@ export default {
 
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
-				body: this.estList,
+				body: this.printEst,
 				columns: [
 					{ header: 'Establishment Name', dataKey: 'name' },
 					{ header: 'Address Street', dataKey: 'street' },
@@ -152,9 +168,6 @@ export default {
 			this.currentPage = 0
 
 			this.$store.dispatch('estEntered', this.payload)
-			if (this.estEntered.length > 0) {
-				this.payloadErrors.search = ''
-			}
 		}, 300),
 
 		sortList() {

@@ -18,6 +18,21 @@ export default {
 			return travelHistory
 		},
 
+		printLog() {
+			const listData = []
+			const { travelHistory } = this.$store.state.individual
+
+			for (const log of travelHistory) {
+				listData.push({
+					destination: log.destination,
+					time_boarded: log.time_boarded,
+					date_boarded: new Date(log.date_boarded).toDateString(),
+				})
+			}
+
+			return listData
+		},
+
 		pages() {
 			const { tvlPages } = this.$store.state.individual
 			const pages = []
@@ -120,7 +135,7 @@ export default {
 
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
-				body: this.travelHistory,
+				body: this.printLog,
 				columns: [
 					{ header: 'Destination', dataKey: 'destination' },
 					{ header: 'Time Boarded', dataKey: 'time_boarded' },
