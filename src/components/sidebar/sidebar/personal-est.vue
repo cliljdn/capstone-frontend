@@ -70,13 +70,14 @@
 
 		<div class="columns">
 			<div class="column">
-				<p class="mb-2">Telephone Number :</p>
+				<p class="mb-2">Contact Number :</p>
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
 							:disabled="disableInputs"
 							@click="clearError('telephone_number')"
 							@blur="rebirthComputedValue('telephone_number')"
+							@keypress="isNumber"
 							v-model="payload.profile.telephone_number"
 							class="input"
 							type="text"
@@ -177,6 +178,25 @@ export default {
 				reader.onload = () => resolve(reader.result)
 				reader.onerror = (error) => reject(error)
 			})
+		},
+
+		isNumber: function(evt) {
+			if (this.payload.profile.telephone_number.length > 11) {
+				evt.preventDefault()
+			}
+
+			evt = evt ? evt : window.event
+			var charCode = evt.which ? evt.which : evt.keyCode
+
+			if (
+				charCode > 31 &&
+				(charCode < 48 || charCode > 57) &&
+				charCode !== 46
+			) {
+				evt.preventDefault()
+			} else {
+				return true
+			}
 		},
 
 		async onFileChange(e) {

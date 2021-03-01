@@ -39,7 +39,7 @@
 							class="input"
 							type="text"
 							:disabled="disableInputs"
-							placeholder="Firstname"
+							placeholder="Enter Firstname"
 						/>
 						<span class="icon is-small is-left">
 							<i class="fas fa-address-card"></i>
@@ -58,7 +58,7 @@
 							class="input"
 							type="text"
 							:disabled="disableInputs"
-							placeholder="Middle name"
+							placeholder="Enter Middlename"
 						/>
 						<span class="icon is-small is-left">
 							<i class="fas fa-address-card"></i>
@@ -77,7 +77,7 @@
 							class="input"
 							type="text"
 							:disabled="disableInputs"
-							placeholder="Lastname"
+							placeholder="Enter Lastname"
 						/>
 						<span class="icon is-small is-left">
 							<i class="fas fa-address-card"></i>
@@ -100,7 +100,7 @@
 							class="input"
 							type="text"
 							:disabled="disableInputs"
-							placeholder="Contact #"
+							placeholder="Enter Contact #"
 						/>
 						<span class="icon is-small is-left">
 							<i class="fas fa-phone"></i>
@@ -122,7 +122,7 @@
 							class="input"
 							type="text"
 							:disabled="disableInputs"
-							placeholder="Contact #"
+							placeholder="Enter Address"
 						/>
 						<span class="icon is-small is-left">
 							<i class="fas fa-home"></i>
@@ -142,10 +142,10 @@
 							class="input"
 							type="text"
 							:disabled="disableInputs"
-							placeholder="Contact #"
+							placeholder="Enter Barangay"
 						/>
 						<span class="icon is-small is-left">
-							<i class="fas fa-address-card"></i>
+							<i class="fas fa-balance-scale"></i>
 						</span>
 					</p>
 				</div>

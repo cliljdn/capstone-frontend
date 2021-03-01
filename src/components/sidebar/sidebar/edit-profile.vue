@@ -20,26 +20,28 @@
 						<ul>
 							<li
 								class="personal-divider"
-								:class="{ 'is-active': showPersonalInfo }"
+								:class="{ 'active-button': showPersonalInfo }"
 							>
 								<a @click="showPersonal">Personal Information</a>
 							</li>
 
-							<li :class="{ 'is-active': showAccountInfo }">
+							<li :class="{ 'active-button': showAccountInfo }">
 								<a @click="showAccount">Account information</a>
 							</li>
 						</ul>
 					</div>
 
-					<transition name="slide">
-						<div class="" v-if="showPersonalInfo">
+					<div class="" v-if="showPersonalInfo">
+						<transition name="slide">
 							<personal-info />
-						</div>
+						</transition>
+					</div>
 
-						<div class="" v-if="showAccountInfo">
+					<div class="" v-if="showAccountInfo">
+						<transition name="slide">
 							<account-info />
-						</div>
-					</transition>
+						</transition>
+					</div>
 				</div>
 			</main>
 		</div>

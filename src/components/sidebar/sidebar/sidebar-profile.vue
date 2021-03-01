@@ -92,9 +92,13 @@
 				<vehicle-info v-if="stateVar.accType === 'Driver'" />
 			</div>
 
-			<footer class="card-footer">
-				<a @click="logout" class="card-footer-item">Sign Out</a>
-				<a @click="openAbout" class="card-footer-item">About</a>
+			<footer class="card-footer is-bold">
+				<a @click="logout" class="card-footer-item"
+					><strong>Sign Out</strong></a
+				>
+				<a @click="openAbout" class="card-footer-item"
+					><strong>About</strong></a
+				>
 			</footer>
 		</div>
 		<transition name="slide">

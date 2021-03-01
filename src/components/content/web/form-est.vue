@@ -54,7 +54,7 @@
 									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
-									<i class="fas fa-user"></i>
+									<i class="fas fa-building"></i>
 								</span>
 							</p>
 							<span class="mt-1 has-text-danger">{{ formError.name }}</span>
@@ -101,7 +101,7 @@
 									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
-									<i class="fas fa-user"></i>
+									<i class="fas fa-road"></i>
 								</span>
 							</p>
 							<span class="mt-1 has-text-danger">{{ formError.street }}</span>

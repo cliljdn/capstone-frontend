@@ -67,7 +67,7 @@
 
 			.button-sidebar:hover {
 				font-weight: bold;
-				color: $primary;
+				color: black;
 				background-color: hsl(171, 100%, 41%);
 			}
 
@@ -79,6 +79,18 @@
 
 		.card-footer {
 			margin-top: 0 !important;
+
+			strong {
+				color: $primary !important;
+			}
+
+			a:hover {
+				background-color: hsl(171, 100%, 41%);
+
+				strong {
+					color: black !important;
+				}
+			}
 		}
 	}
 }

@@ -1,16 +1,5 @@
 @import '../../../assets/sass/mixins.scss';
 
-.slide-enter-active,
-.slide-leave-active {
-	transition: width 0.2s ease;
-}
-
-.slide-enter,
-.slide-leave-to {
-	transform: translateX(100%);
-	transition: all 50ms ease-in 0s;
-}
-
 .sidebar-edit {
 	min-height: 120vh;
 	border-left: 1px solid $primary;
@@ -20,6 +9,18 @@
 	flex-direction: column;
 	right: 0 !important;
 	overflow: hidden !important;
+
+	.slide-enter-active,
+	.slide-leave-active {
+		transition: width 0.3s ease;
+	}
+
+	.slide-enter,
+	.slide-leave-to {
+		transform: translateY(100%);
+		transition: all 120ms ease-in 0s;
+	}
+
 	.edit-container {
 		.edit-header {
 			font-size: 20px !important;
@@ -37,11 +38,15 @@
 			.personal-divider {
 				border-right: 1px solid $primary;
 			}
+
+			li a {
+				font-weight: bold !important;
+			}
 		}
 	}
 
-	.is-active {
-		color: blue;
+	.active-button a {
+		color: hsl(171, 100%, 41%) !important;
 	}
 }
 
