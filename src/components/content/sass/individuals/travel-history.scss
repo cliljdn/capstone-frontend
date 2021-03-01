@@ -1,4 +1,5 @@
 @import '../../../../assets/sass/mixins.scss';
+
 .travel-container {
 	width: auto;
 	.columns-error {
@@ -7,18 +8,18 @@
 		font-weight: bold;
 	}
 
-	.slide-enter-active,
-	.slide-leave-active {
-		transition: transform 0.3s ease;
-	}
-
-	.slide-enter,
-	.slide-leave-to {
-		transform: translateX(100%);
-		transition: all 120ms ease-in 0s;
-	}
-
 	.travel-columns {
+		.slide-enter-active,
+		.slide-leave-active {
+			transition: transform 0.3s ease;
+		}
+
+		.slide-enter,
+		.slide-leave-to {
+			transform: translateX(100%);
+			transition: all 120ms ease-in 0s;
+		}
+
 		.card:hover {
 			-webkit-box-shadow: 3px 3px 5px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
 			-moz-box-shadow: 3px 3px 5px 6px #ccc; /* Firefox 3.5 - 3.6 */

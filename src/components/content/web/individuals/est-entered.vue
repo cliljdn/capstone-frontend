@@ -4,7 +4,7 @@
 			<div class="column">
 				<aside class="menu">
 					<p class="menu-label">
-						List of Establishment Entered
+						Establishment Entered
 					</p>
 
 					<article class="panel">

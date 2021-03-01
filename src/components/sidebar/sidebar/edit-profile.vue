@@ -35,9 +35,7 @@
 						<div class="" v-if="showPersonalInfo">
 							<personal-info />
 						</div>
-					</transition>
 
-					<transition name="slide">
 						<div class="" v-if="showAccountInfo">
 							<account-info />
 						</div>

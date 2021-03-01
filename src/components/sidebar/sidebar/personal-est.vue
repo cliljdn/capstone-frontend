@@ -9,6 +9,7 @@
 							@change="onFileChange"
 							type="file"
 							style="display:none"
+							:disabled="disableInputs"
 						/>
 						<img
 							@click="$refs.file.click(), (profileError.image = '')"
@@ -31,6 +32,7 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
+							:disabled="disableInputs"
 							@click="clearError('name')"
 							@blur="rebirthComputedValue('name')"
 							v-model="payload.profile.name"
@@ -50,6 +52,7 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
+							:disabled="disableInputs"
 							@click="clearError('est_owner')"
 							@blur="rebirthComputedValue('est_owner')"
 							v-model="payload.profile.est_owner"
@@ -71,6 +74,7 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
+							:disabled="disableInputs"
 							@click="clearError('telephone_number')"
 							@blur="rebirthComputedValue('telephone_number')"
 							v-model="payload.profile.telephone_number"
@@ -92,6 +96,7 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
+							:disabled="disableInputs"
 							@click="clearError('street')"
 							@blur="rebirthComputedValue('street')"
 							v-model="payload.profile.street"
@@ -132,6 +137,11 @@ export default {
 		profile() {
 			const { userProfile } = this.$store.state
 			return userProfile
+		},
+
+		disableInputs() {
+			const { state } = this.$store
+			return state.isLoading
 		},
 	},
 

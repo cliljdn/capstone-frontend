@@ -44,7 +44,7 @@ html {
 
 .slide-enter,
 .slide-leave-to {
-	transform: translateY(100%);
+	transform: translateY(50%);
 	transition: all 120ms ease-in 0s;
 }
 

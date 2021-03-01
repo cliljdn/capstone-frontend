@@ -25,6 +25,7 @@
 										class="input dropdown is-active is-primary is-medium"
 										type="email"
 										placeholder="Email"
+										:disabled="disableInputs"
 									/>
 
 									<span class="icon is-small is-left">
@@ -45,6 +46,7 @@
 										class="input is-primary is-medium"
 										type="password"
 										placeholder="Password"
+										:disabled="disableInputs"
 									/>
 
 									<span class="icon is-small is-left">
@@ -62,6 +64,8 @@
 							<button
 								type="submit"
 								class="button is-success is-medium is-center mt-3"
+								:class="{ 'is-loading': disableInputs }"
+								:disabled="disableInputs"
 							>
 								Login
 							</button>

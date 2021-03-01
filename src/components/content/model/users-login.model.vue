@@ -3,6 +3,13 @@
 import form from '../validations/registerValidations'
 
 export default {
+	computed: {
+		disableInputs() {
+			const { state } = this.$store
+			return state.isLoading
+		},
+	},
+
 	data() {
 		return {
 			body: {
@@ -26,6 +33,7 @@ export default {
 
 			try {
 				let isValid = await validateLogin.validate(this.body, this.yupOptions)
+				state.isLoading = true
 
 				if (isValid) {
 					let res = await this.$axios.post(
@@ -45,9 +53,11 @@ export default {
 						this.$store.dispatch('setCookie', auth)
 						this.$store.dispatch('isAuth', true)
 						this.isUserAuth(auth.accType)
+						state.isLoading = false
 					}
 				}
 			} catch (err) {
+				state.isLoading = false
 				if (err.response !== undefined) {
 					if (
 						err.response.data.message.includes('Password') ||

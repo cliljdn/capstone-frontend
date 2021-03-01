@@ -3,6 +3,14 @@ import registerIsValid from '../validations/registerValidations'
 import PopModal from '../../msgmodal/pop-modal'
 export default {
 	components: { 'pop-modal': PopModal },
+
+	computed: {
+		isLoading() {
+			const { state } = this.$store
+			return state.isLoading
+		},
+	},
+
 	data() {
 		return {
 			// input fields
@@ -51,6 +59,7 @@ export default {
 					this.values,
 					this.yupOptions
 				)
+				state.isLoading = true
 
 				if (!this.isAuth) {
 					return false
@@ -67,11 +76,12 @@ export default {
 						this.values.password = ''
 						this.values.accountType = 'SELECT'
 						state.accountsMsg.isRegistered = true
+						state.isLoading = false
 						return commit('showPopOut')
 					}
 				}
 			} catch (err) {
-				console.log(err.response)
+				state.isLoading = false
 				if (err.response !== undefined) {
 					this.errors.email = err.response.data.message
 				} else {

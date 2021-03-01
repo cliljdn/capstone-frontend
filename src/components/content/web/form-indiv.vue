@@ -36,6 +36,7 @@
 												class="file-input"
 												type="file"
 												name="resume"
+												:disabled="isLoading"
 											/>
 											<span class="file-cta">
 												<span class="file-icon">
@@ -68,8 +69,9 @@
 									@input="validateProfile('firstName')"
 									@blur="validateProfile('firstName')"
 									class="input"
-									type="email"
-									placeholder="Email"
+									type="text"
+									placeholder="Enter Firstname"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
 									<i class="fas fa-user"></i>
@@ -91,7 +93,8 @@
 									@blur="validateProfile('lastName')"
 									class="input"
 									type="text"
-									placeholder="Lastname"
+									placeholder="Enter Lastname"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
 									<i class="fas fa-user"></i>
@@ -114,7 +117,8 @@
 									v-model="profileBody.middleName"
 									class="input"
 									type="text"
-									placeholder="Middlename"
+									placeholder="Enter Middlename"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
 									<i class="fas fa-user"></i>
@@ -141,6 +145,7 @@
 									type="text"
 									maxlength="11"
 									placeholder="Contact #"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
 									<i class="fas fa-telephone"></i>
@@ -186,7 +191,8 @@
 									v-model="address.lotNumber"
 									class="input"
 									type="text"
-									placeholder="House Lot #"
+									placeholder="House Lot Number"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
 									<i class="fas fa-house"></i>
@@ -207,11 +213,12 @@
 									@blur="validateAddress('barangay')"
 									v-model="address.barangay"
 									class="input"
-									type="input"
-									placeholder="Barangay Input"
+									type="text"
+									placeholder="Enter Barangay Name"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
-									<i class="fas fa-birthday"></i>
+									<i class="fas fa-balance-scale"></i>
 								</span>
 							</p>
 							<span class="mt-1 has-text-danger">{{
@@ -232,10 +239,11 @@
 									v-model="address.city"
 									class="input"
 									type="text"
-									placeholder="City"
+									placeholder="Enter City"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
-									<i class="fas fa-house"></i>
+									<i class="fas fa-university"></i>
 								</span>
 							</p>
 							<span class="mt-1 has-text-danger">{{ addressError.city }}</span>
@@ -246,6 +254,8 @@
 			<button
 				@click="createProfile"
 				class="button is-success is-pulled-right is-medium is-center mt-3"
+				:class="{ 'is-loading': isLoading }"
+				:disabled="isLoading"
 			>
 				Create Profile
 			</button>

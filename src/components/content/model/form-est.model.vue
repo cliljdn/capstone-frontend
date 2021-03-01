@@ -2,6 +2,13 @@
 import qs from 'querystring'
 import yup from '../validations/fillup-validations'
 export default {
+	computed: {
+		isLoading() {
+			const { state } = this.$store
+			return state.isLoading
+		},
+	},
+
 	data() {
 		return {
 			payload: {
@@ -40,6 +47,8 @@ export default {
 					this.yupOptions
 				)
 
+				state.isLoading = true
+
 				if (isFormValid) {
 					const res = await this.$axios.post(
 						`${state.baseURL}/accounts/create/profile`,
@@ -56,13 +65,22 @@ export default {
 						state.accountsMsg.isRegistered = false
 						state.accountsMsg.isProfileCreated = true
 						this.$store.dispatch('removeCookie')
+
+						state.isLoading = false
 						return commit('showPopOut')
 					}
 				} else {
 					return
 				}
-			} catch (error) {
-				console.log(error.response)
+			} catch (err) {
+				state.isLoading = false
+				if (!err.response) {
+					return err.response
+				} else {
+					err.inner.forEach((error) => {
+						this.formError[error.path] = error.message
+					})
+				}
 			}
 		},
 

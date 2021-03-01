@@ -6,16 +6,16 @@
 				<div class="column column-main is-5 is-hidden-mobile">
 					<div class="card has-equal-height">
 						<div class="card-content">
-							<p class="title mt-5 is-flex is-justify-content-center">
-								Scan-Olongapo
-							</p>
-							<div class="content">
-								Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at
-								eros. Donec id elit non mi porta gravida at eget metus. Cum
-								sociis natoque penatibus et magnis dis parturient montes,
-								nascetur ridiculus mus. Cras mattis consectetur purus sit amet
-								fermentum.
-							</div>
+							<section class="hero is-fullheight">
+								<div class="hero-body">
+									<div class="">
+										<p class="title">
+											General Purpose Monitoring for Olongapo City
+										</p>
+										<p class="subtitle"></p>
+									</div>
+								</div>
+							</section>
 						</div>
 					</div>
 				</div>

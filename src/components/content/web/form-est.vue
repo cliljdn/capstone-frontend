@@ -18,6 +18,7 @@
 									class="file-input"
 									type="file"
 									name="resume"
+									:disabled="isLoading"
 								/>
 								<img
 									@click="$refs.file.click(), (profileError.image = '')"
@@ -48,8 +49,9 @@
 									@blur="validateForm('name')"
 									v-model="payload.name"
 									class="input"
-									type="email"
-									placeholder="Enter Est name here"
+									type="text"
+									placeholder="Enter Establishment Name"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
 									<i class="fas fa-user"></i>
@@ -71,7 +73,8 @@
 									v-model="payload.est_owner"
 									class="input"
 									type="text"
-									placeholder="Lastname"
+									placeholder="Enter Lastname"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
 									<i class="fas fa-user"></i>
@@ -95,6 +98,7 @@
 									class="input"
 									type="text"
 									placeholder="Enter Street Address"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
 									<i class="fas fa-user"></i>
@@ -119,6 +123,7 @@
 									type="text"
 									maxlength="11"
 									placeholder="Contact #"
+									:disabled="isLoading"
 								/>
 								<span class="icon is-small is-left">
 									<i class="fas fa-telephone"></i>
@@ -136,6 +141,8 @@
 				<button
 					@click="createProfile"
 					class="button is-success is-medium is-center mt-3"
+					:class="{ 'is-loading': isLoading }"
+					:disabled="isLoading"
 				>
 					Create Profile
 				</button>

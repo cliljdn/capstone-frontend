@@ -9,6 +9,13 @@ export default {
 		FlatPickr: VueFlatpickr,
 	},
 
+	computed: {
+		isLoading() {
+			const { state } = this.$store
+			return state.isLoading
+		},
+	},
+
 	data() {
 		return {
 			profileBody: {
@@ -71,6 +78,7 @@ export default {
 					this.address,
 					this.yupOptions
 				)
+				state.isLoading = true
 
 				if (validateProfile && validateAddress) {
 					const res = await this.$axios.post(
@@ -97,11 +105,12 @@ export default {
 						state.accountsMsg.isRegistered = false
 						state.accountsMsg.isProfileCreated = true
 						this.$store.dispatch('removeCookie')
+						state.isLoading = false
 						return commit('showPopOut')
 					}
 				}
 			} catch (err) {
-				console.log(err.response.message, 'error to')
+				state.isLoading = false
 				if (!err.response) {
 					return err.response
 				} else {

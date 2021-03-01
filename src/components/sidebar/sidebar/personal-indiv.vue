@@ -9,6 +9,7 @@
 							@change="onFileChange"
 							type="file"
 							style="display:none"
+							:disabled="disableInputs"
 						/>
 						<img
 							@click="$refs.file.click(), (profileError.image = '')"
@@ -37,6 +38,7 @@
 							v-model="payload.profile.firstname"
 							class="input"
 							type="text"
+							:disabled="disableInputs"
 							placeholder="Firstname"
 						/>
 						<span class="icon is-small is-left">
@@ -55,6 +57,7 @@
 							v-model="payload.profile.middlename"
 							class="input"
 							type="text"
+							:disabled="disableInputs"
 							placeholder="Middle name"
 						/>
 						<span class="icon is-small is-left">
@@ -73,6 +76,7 @@
 							v-model="payload.profile.lastname"
 							class="input"
 							type="text"
+							:disabled="disableInputs"
 							placeholder="Lastname"
 						/>
 						<span class="icon is-small is-left">
@@ -95,6 +99,7 @@
 							v-model="payload.profile.contactnumber"
 							class="input"
 							type="text"
+							:disabled="disableInputs"
 							placeholder="Contact #"
 						/>
 						<span class="icon is-small is-left">
@@ -116,6 +121,7 @@
 							v-model="payload.address.house_lot_number"
 							class="input"
 							type="text"
+							:disabled="disableInputs"
 							placeholder="Contact #"
 						/>
 						<span class="icon is-small is-left">
@@ -135,6 +141,7 @@
 							v-model="payload.address.barangay"
 							class="input"
 							type="text"
+							:disabled="disableInputs"
 							placeholder="Contact #"
 						/>
 						<span class="icon is-small is-left">
@@ -154,6 +161,7 @@
 							v-model="payload.address.city"
 							class="input"
 							type="text"
+							:disabled="disableInputs"
 							placeholder="Enter City"
 						/>
 						<span class="icon is-small is-left">
@@ -189,6 +197,11 @@ export default {
 		auth() {
 			const { userProfile } = this.$store.state
 			return userProfile
+		},
+
+		disableInputs() {
+			const { state } = this.$store
+			return state.isLoading
 		},
 	},
 
@@ -278,15 +291,23 @@ export default {
 
 		patchProfile(params) {
 			const { state } = this.$store
-			const result = Object.keys(this.payload.profile).map(
+			const profileResult = Object.keys(this.payload.profile).map(
 				(key) => this.auth[key]
 			)
 
-			const checkIfChange = Object.values(this.payload.profile).every((v) =>
-				result.includes(v)
+			const addressResult = Object.keys(this.payload.address).map(
+				(key) => this.auth[key]
 			)
 
-			if (!checkIfChange) {
+			const isProfileChange = Object.values(this.payload.profile).every((v) =>
+				profileResult.includes(v)
+			)
+
+			const isAddressChange = Object.values(this.payload.address).every((v) =>
+				addressResult.includes(v)
+			)
+
+			if (!isProfileChange || !isAddressChange) {
 				state.isLoading = true
 				this.$store.dispatch('updateProfile', params)
 			} else {

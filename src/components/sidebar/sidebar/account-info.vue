@@ -14,6 +14,7 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
+							:disabled="disableInputs"
 							v-model="payload.account.email"
 							@click="clearErrors('email')"
 							@blur="updateValue()"
@@ -47,6 +48,7 @@
 				<div class="field">
 					<p class="control has-icons-left has-icons-right">
 						<input
+							:disabled="disableInputs"
 							v-model="payload.account.password"
 							@click="clearErrors('password')"
 							@input="validate('password')"
@@ -85,7 +87,7 @@
 				<span class="m-3 has-text-danger"> {{ payloadErrors.confirm }}</span>
 			</div>
 
-			<div class="column is-12 is-flex is-justify-content-center">
+			<div class="column is-marginless is-12 is-flex is-justify-content-center">
 				<span class="m-3 has-text-danger" v-if="payloadErrors.all">
 					{{ payloadErrors.all }}</span
 				>
@@ -113,6 +115,11 @@ export default {
 			const { userProfile } = this.$store.state
 
 			return userProfile
+		},
+
+		disableInputs() {
+			const { state } = this.$store
+			return state.isLoading
 		},
 	},
 
