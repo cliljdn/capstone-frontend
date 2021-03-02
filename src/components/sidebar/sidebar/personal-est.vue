@@ -229,7 +229,7 @@ export default {
 		},
 
 		sendDispatch() {
-			const { state } = this.$$store
+			const { state } = this.$store
 			const result = Object.keys(this.payload.profile).map(
 				(key) => this.profile[key]
 			)
