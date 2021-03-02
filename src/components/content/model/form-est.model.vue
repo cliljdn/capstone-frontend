@@ -16,7 +16,7 @@ export default {
 				street: '',
 				telephone_number: '',
 				est_owner: '',
-				image: null,
+				image: '',
 			},
 
 			formError: {
@@ -74,12 +74,15 @@ export default {
 				}
 			} catch (err) {
 				state.isLoading = false
-				if (!err.response) {
-					return err.response
-				} else {
+
+				if (err.inner.length > 0) {
 					err.inner.forEach((error) => {
 						this.formError[error.path] = error.message
 					})
+				}
+
+				if (!err.response) {
+					return err.response
 				}
 			}
 		},
@@ -88,7 +91,7 @@ export default {
 			return new Promise((resolve, reject) => {
 				const reader = new FileReader()
 				reader.readAsDataURL(file)
-				reader.onload = () => resolve(reader.result)
+				reader.onload = () => resolve(reader.result.split(',')[1])
 				reader.onerror = (error) => reject(error)
 			})
 		},
@@ -131,6 +134,7 @@ export default {
 			}
 
 			this.payload.image = await this.encodeBase64(file)
+			console.log(this.payload.image)
 			this.imgRef = URL.createObjectURL(file)
 		},
 

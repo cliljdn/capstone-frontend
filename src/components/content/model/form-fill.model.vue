@@ -28,7 +28,7 @@ export default {
 				lastName: '',
 				middleName: '',
 				contact: '',
-				image: '',
+				image: null,
 				birthday: null,
 			},
 

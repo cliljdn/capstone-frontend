@@ -14,7 +14,9 @@
 						<img
 							@click="$refs.file.click(), (profileError.image = '')"
 							class="is-rounded profile-photo"
-							:src="imgRef"
+							:src="
+								!imgRef ? 'data:image/jpeg;base64,' + profile.image : imgRef
+							"
 							alt="image-edit"
 						/>
 					</div>
@@ -266,8 +268,6 @@ export default {
 
 		if (!this.profile.image) {
 			this.imgRef = this.defaultImg
-		} else {
-			this.imgRef = this.profile.image
 		}
 	},
 }
