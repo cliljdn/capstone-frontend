@@ -63,11 +63,12 @@
 
 			.button-sidebar {
 				border: 1px solid hsl(171, 100%, 41%);
+				color: $primary !important;
 			}
 
 			.button-sidebar:hover {
 				font-weight: bold;
-				color: black;
+				color: black !important;
 				background-color: hsl(171, 100%, 41%);
 			}
 

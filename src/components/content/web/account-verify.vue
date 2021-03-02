@@ -4,8 +4,8 @@
 			<div class="hero-body">
 				<div class="container">
 					<h1 class="title">
-						your E-mail {{ accountInfo ? accountInfo.email : '' }} is Ready for
-						Verification
+						Account E-mail {{ accountInfo ? accountInfo.email : '' }} is Ready
+						for Verification
 					</h1>
 					<h2 class="subtitle">
 						Click the button to proceed in

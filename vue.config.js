@@ -9,7 +9,8 @@ module.exports = {
 		})
 	},
 	devServer: {
-		proxy: 'https://capstone.scanolongapo-api.com/api/v1',
+		// proxy: 'https://capstone.scanolongapo-api.com/api/v1',
+		proxy: 'http://192.168.1.11:6060/api/v1',
 	},
 	// runtimeCompiler: true,
 }

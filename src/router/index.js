@@ -62,6 +62,11 @@ const routes = [
 			{
 				path: '/profile/create',
 				name: 'create-profile',
+				beforeEnter(to, from, next) {
+					if (store.state.userProfile.isActive === 1) {
+						next({ name: 'usersLogin' })
+					}
+				},
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/form-fillup'

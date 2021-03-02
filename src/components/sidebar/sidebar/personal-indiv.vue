@@ -14,7 +14,11 @@
 						<img
 							@click="$refs.file.click(), (profileError.image = '')"
 							class="is-rounded profile-photo"
-							:src="!imgRef ? 'https://i.imgur.com/bCOd9N0.jpg' : imgRef"
+							:src="
+								!imgRef
+									? 'https://i.imgur.com/bCOd9N0.jpg'
+									: 'data:image/jpeg;base64,' + imgRef
+							"
 							alt="Image"
 						/>
 					</div>

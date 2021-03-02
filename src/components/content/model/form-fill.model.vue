@@ -14,6 +14,11 @@ export default {
 			const { state } = this.$store
 			return state.isLoading
 		},
+
+		credentials() {
+			const { userProfile } = this.$store.state
+			return userProfile
+		},
 	},
 
 	data() {
@@ -61,14 +66,14 @@ export default {
 			return new Promise((resolve, reject) => {
 				const reader = new FileReader()
 				reader.readAsDataURL(file)
-				reader.onload = () => resolve(reader.result)
+				reader.onload = () => resolve(reader.result.split(',')[1])
 				reader.onerror = (error) => reject(error)
 			})
 		},
 
 		createProfile: async function() {
 			let { formValidate, addressValidate } = form,
-				{ state, commit } = this.$store
+				{ state, commit, dispatch } = this.$store
 			try {
 				let validateProfile = await formValidate.validate(
 					this.profileBody,
@@ -102,15 +107,17 @@ export default {
 					)
 
 					if (resAddress.status === 201 && res.status === 201) {
+						dispatch('verifyAccount')
 						state.accountsMsg.isRegistered = false
 						state.accountsMsg.isProfileCreated = true
-						this.$store.dispatch('removeCookie')
 						state.isLoading = false
+						this.$store.dispatch('removeCookie')
 						return commit('showPopOut')
 					}
 				}
 			} catch (err) {
 				state.isLoading = false
+				console.log(err.response)
 				if (!err.response) {
 					return err.response
 				} else {
@@ -149,7 +156,7 @@ export default {
 				return
 			}
 
-			if (file.size > 1024 * 1024) {
+			if (file.size > 600 * 600) {
 				e.preventDefault()
 				this.profileError.image = 'Image must be less than 1mb'
 				return

@@ -12,46 +12,28 @@
 					<div class="media media-image">
 						<div class="media-left">
 							<figure class="image is-128x128">
-								<img
-									v-if="imgRef"
-									class="is-rounded"
-									:src="imgRef"
-									alt="Placeholder image"
+								<input
+									ref="file"
+									@change="onFileChange"
+									type="file"
+									style="display:none"
+									:disabled="isLoading"
+									@click="profileError.image = ''"
 								/>
 								<img
-									v-if="!profileBody.image"
 									class="is-rounded"
-									src="https://i.imgur.com/bCOd9N0.jpg"
+									:src="imgRef ? imgRef : 'https://i.imgur.com/bCOd9N0.jpg'"
 									alt="Placeholder image"
+									@click="$refs.file.click()"
 								/>
 							</figure>
 
 							<div class="columns">
-								<div class="media-content m-2">
-									<div class="file has-name">
-										<label class="file-label">
-											<input
-												@change="onFileChange"
-												@click="profileError.image = ''"
-												class="file-input"
-												type="file"
-												name="resume"
-												:disabled="isLoading"
-											/>
-											<span class="file-cta">
-												<span class="file-icon">
-													<i class="fas fa-upload"></i>
-												</span>
-												<span class="file-label">
-													Choose a file…
-												</span>
-											</span>
-										</label>
-									</div>
+								<div class="column is-12 is-flex is-justify-content-center">
+									<span class="has-text-danger block mt-3">{{
+										profileError.image
+									}}</span>
 								</div>
-								<span class="has-text-danger block mt-3">{{
-									profileError.image
-								}}</span>
 							</div>
 						</div>
 					</div>
@@ -253,7 +235,7 @@
 			</form>
 			<button
 				@click="createProfile"
-				class="button is-success is-pulled-right is-medium is-center mt-3"
+				class="button is-success  is-medium mt-3"
 				:class="{ 'is-loading': isLoading }"
 				:disabled="isLoading"
 			>

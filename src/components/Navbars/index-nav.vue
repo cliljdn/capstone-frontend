@@ -27,9 +27,13 @@
 					:class="{ 'is-active': isActive }"
 				>
 					<div class="navbar-end">
-						<a type="submit" @click="downloadApp" class="navbar-item"
-							>Download Our App</a
+						<button
+							@click="downloadApp"
+							class="button "
+							:class="{ 'is-loading': $store.state.isLoading }"
 						>
+							Download Our App
+						</button>
 					</div>
 				</div>
 			</div>

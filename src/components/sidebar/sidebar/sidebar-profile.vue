@@ -45,7 +45,7 @@
 									@click="toggleEditForm"
 									class="button button-sidebar is-rounded"
 								>
-									Edit Profile
+									<strong>Edit Profile</strong>
 								</button>
 							</div>
 						</div>

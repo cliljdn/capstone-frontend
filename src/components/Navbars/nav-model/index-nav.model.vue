@@ -11,6 +11,7 @@ export default {
 			let { state } = this.$store
 
 			try {
+				state.isLoading = true
 				this.$axios
 					.get(`${state.baseURL}/download/scanolongapo/scanolongapo.apk`, {
 						responseType: 'blob',
@@ -22,9 +23,10 @@ export default {
 						link.setAttribute('download', 'scanolongapo.apk')
 						document.body.appendChild(link)
 						link.click()
+						state.isLoading = false
 					})
 			} catch (err) {
-				console.log(err.response)
+				return err
 			}
 		},
 	},

@@ -1,6 +1,19 @@
 <template>
 	<div class="content">
-		<div class="columns is-multiline">
+		<div
+			class="columns is-multiline"
+			v-if="
+				!authProfile.plate_number &&
+					!authProfile.body_number &&
+					!authProfile.vehicle_route
+			"
+		>
+			<div class="column is-full is-flex is-justify-content-center">
+				<h2 class="mt-2 has-text-success">No Active Vehicle</h2>
+			</div>
+		</div>
+
+		<div class="columns is-multiline" v-else>
 			<div class="column is-full">
 				<div class="icon-text mb-1 level-left level-item">
 					<span class="icon has-text-primary">

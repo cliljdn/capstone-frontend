@@ -16,7 +16,7 @@
 						</span>
 					</div>
 
-					<div class="tabs edit-tabs is-centered mb-2">
+					<div class="tabs edit-tabs is-centered">
 						<ul>
 							<li
 								class="personal-divider"
