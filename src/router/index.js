@@ -53,6 +53,7 @@ const routes = [
 			{
 				path: '',
 				name: 'accounts-create-profile',
+
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/account-verify.vue'
@@ -62,11 +63,7 @@ const routes = [
 			{
 				path: '/profile/create',
 				name: 'create-profile',
-				beforeEnter(to, from, next) {
-					if (store.state.userProfile.isActive === 1) {
-						next({ name: 'usersLogin' })
-					}
-				},
+
 				component: () =>
 					import(
 						/* webpackChunkName: "components" */ '../components/content/web/form-fillup'
@@ -89,7 +86,7 @@ const routes = [
 						/* webpackChunkName: "components" */ '../components/content/web/individuals/travel-history'
 					),
 				name: 'travelHistory',
-				async beforeEnter(to, from, next) {
+				beforeEnter(to, from, next) {
 					if (store.state.accType === 'Individual' && store.state.isAuth) {
 						next()
 					} else {
@@ -149,58 +146,58 @@ const routes = [
 				},
 			},
 
-			{
-				path: 'vehicles',
-				//name: 'listVehicles',
-				component: () =>
-					import(
-						/* webpackChunkName: "components" */ '../components/content/web/drivers/list-vehicles'
-					),
+			// {
+			// 	path: 'vehicles',
+			// 	//name: 'listVehicles',
+			// 	component: () =>
+			// 		import(
+			// 			/* webpackChunkName: "components" */ '../components/content/web/drivers/list-vehicles'
+			// 		),
 
-				beforeEnter(to, from, next) {
-					if (store.state.accType !== 'Driver' && !store.state.isAuth) {
-						next({ name: 'usersLogin' })
-					} else {
-						next()
-					}
-				},
+			// 	beforeEnter(to, from, next) {
+			// 		if (store.state.accType !== 'Driver' && !store.state.isAuth) {
+			// 			next({ name: 'usersLogin' })
+			// 		} else {
+			// 			next()
+			// 		}
+			// 	},
 
-				children: [
-					{
-						path: '',
-						name: 'activeVehicles',
-						component: () =>
-							import(
-								/* webpackChunkName: "components" */ '../components/content/web/drivers/active-vehicles'
-							),
+			// 	children: [
+			// 		{
+			// 			path: '',
+			// 			name: 'activeVehicles',
+			// 			component: () =>
+			// 				import(
+			// 					/* webpackChunkName: "components" */ '../components/content/web/drivers/active-vehicles'
+			// 				),
 
-						beforeEnter(to, from, next) {
-							if (store.state.accType !== 'Driver' && !store.state.isAuth) {
-								next({ name: 'usersLogin' })
-							} else {
-								next()
-							}
-						},
-					},
+			// 			beforeEnter(to, from, next) {
+			// 				if (store.state.accType !== 'Driver' && !store.state.isAuth) {
+			// 					next({ name: 'usersLogin' })
+			// 				} else {
+			// 					next()
+			// 				}
+			// 			},
+			// 		},
 
-					{
-						path: 'inactive',
-						name: 'inactiveVehicles',
-						component: () =>
-							import(
-								/* webpackChunkName: "components" */ '../components/content/web/drivers/inactive-vehicles'
-							),
+			// 		{
+			// 			path: 'inactive',
+			// 			name: 'inactiveVehicles',
+			// 			component: () =>
+			// 				import(
+			// 					/* webpackChunkName: "components" */ '../components/content/web/drivers/inactive-vehicles'
+			// 				),
 
-						beforeEnter(to, from, next) {
-							if (store.state.accType !== 'Driver' && !store.state.isAuth) {
-								next({ name: 'usersLogin' })
-							} else {
-								next()
-							}
-						},
-					},
-				],
-			},
+			// 			beforeEnter(to, from, next) {
+			// 				if (store.state.accType !== 'Driver' && !store.state.isAuth) {
+			// 					next({ name: 'usersLogin' })
+			// 				} else {
+			// 					next()
+			// 				}
+			// 			},
+			// 		},
+			// 	],
+			// },
 		],
 	},
 

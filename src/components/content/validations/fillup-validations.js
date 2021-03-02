@@ -29,9 +29,7 @@ export default {
 			.trim()
 			.min(11, 'Contact number must a 11 characters length')
 			.required('Contact Field is required'),
-	}),
 
-	addressValidate: yup.object().shape({
 		lotNumber: yup
 			.string()
 			.trim()

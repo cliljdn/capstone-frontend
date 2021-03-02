@@ -21,9 +21,6 @@ export default {
 
 	mounted() {
 		this.$store.dispatch('getAccount', this.$route.params.token)
-		if (this.accountInfo.isActive === 1) {
-			this.$router.push({ name: 'usersLogin' })
-		}
 	},
 }
 </script>

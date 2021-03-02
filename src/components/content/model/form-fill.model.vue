@@ -72,20 +72,17 @@ export default {
 		},
 
 		createProfile: async function() {
-			let { formValidate, addressValidate } = form,
+			let { formValidate } = form,
 				{ state, commit, dispatch } = this.$store
 			try {
 				let validateProfile = await formValidate.validate(
-					this.profileBody,
+					{ ...this.profileBody, ...this.address },
 					this.yupOptions
 				)
-				let validateAddress = await addressValidate.validate(
-					this.address,
-					this.yupOptions
-				)
+
 				state.isLoading = true
 
-				if (validateProfile && validateAddress) {
+				if (validateProfile) {
 					const res = await this.$axios.post(
 						`${state.proxyURL}/accounts/create/profile`,
 						qs.stringify(this.profileBody),
@@ -117,11 +114,10 @@ export default {
 				}
 			} catch (err) {
 				state.isLoading = false
-				console.log(err.response)
-				if (!err.response) {
-					return err.response
-				} else {
+
+				if (err.inner.length > 0) {
 					err.inner.forEach((error) => {
+						console.log(error.path)
 						if (error.path in this.addressError) {
 							this.addressError[error.path] = error.message
 						}
@@ -129,6 +125,10 @@ export default {
 							this.profileError[error.path] = error.message
 						}
 					})
+				}
+
+				if (!err.response) {
+					return err.response
 				}
 			}
 		},
@@ -187,9 +187,9 @@ export default {
 		},
 
 		validateAddress: async function(field) {
-			let { addressValidate } = form
+			let { formValidate } = form
 			try {
-				await addressValidate.validateAt(field, this.address, this.yupOptions)
+				await formValidate.validateAt(field, this.address, this.yupOptions)
 				this.addressError[field] = ''
 			} catch (err) {
 				err.inner.forEach((error) => {
@@ -197,6 +197,12 @@ export default {
 				})
 			}
 		},
+	},
+
+	mounted() {
+		if (this.credentials.isActive === 1) {
+			this.$router.push({ name: 'usersLogin' })
+		}
 	},
 }
 </script>
