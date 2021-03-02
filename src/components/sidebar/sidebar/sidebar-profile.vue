@@ -24,7 +24,7 @@
 										class="is-rounded"
 										:src="
 											authProfile.image
-												? authProfile.image
+												? 'data:image/jpeg;base64,' + authProfile.image
 												: 'https://i.imgur.com/bCOd9N0.jpg'
 										"
 										alt="Placeholder image"
