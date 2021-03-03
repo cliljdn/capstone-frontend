@@ -192,7 +192,13 @@
 												<td>
 													{{ indiv.emp_name }}
 												</td>
-												<td>{{ indiv.date_entered }}</td>
+												<td>
+													{{
+														new Date(indiv.date_entered)
+															.toISOString()
+															.split('T')[0]
+													}}
+												</td>
 												<td>{{ indiv.time_entered }}</td>
 											</tr>
 										</tbody>
@@ -255,7 +261,9 @@
 													</span>
 
 													<span class="ml-1 user-info">{{
-														indiv.date_entered
+														new Date(indiv.date_entered)
+															.toISOString()
+															.split('T')[0]
 													}}</span>
 												</p>
 

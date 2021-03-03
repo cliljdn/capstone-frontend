@@ -11,6 +11,8 @@ export default {
 	computed: {
 		estList() {
 			const { estEntered } = this.$store.state.individual
+
+			console.log(estEntered)
 			return estEntered
 		},
 
@@ -165,7 +167,6 @@ export default {
 		searchList: _debounce(function() {
 			const { state } = this.$store
 			state.isLoading = true
-			this.currentPage = 0
 
 			this.$store.dispatch('estEntered', this.payload)
 		}, 300),

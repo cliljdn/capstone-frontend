@@ -55,6 +55,7 @@
 											v-model="payload.endDate"
 											class="input is-primary  is-rounded"
 											placeholder="Filter Date"
+											:disabled="!payload.startDate"
 										/>
 										<span class="icon is-small is-left">
 											<i class="fas fa-calendar"></i>
@@ -93,6 +94,7 @@
 											class="input is-primary is-rounded"
 											placeholder="Select End Time"
 											:config="timeConfig"
+											:disabled="!payload.start"
 										/>
 										<span class="icon is-small is-left">
 											<i class="fas fa-clock"></i>
@@ -190,7 +192,13 @@
 											>
 												<td>{{ est.name }}</td>
 												<td>{{ est.street }}</td>
-												<td>{{ new Date(est.date_entered).toDateString() }}</td>
+												<td>
+													{{
+														new Date(est.date_entered)
+															.toISOString()
+															.split('T')[0]
+													}}
+												</td>
 												<td>{{ est.time_entered }}</td>
 											</tr>
 										</tbody>
@@ -219,7 +227,11 @@
 												<div class="media-left">
 													<figure class="image is-96x96">
 														<img
-															:src="!est.image ? defImage : est.image"
+															:src="
+																!est.image
+																	? defImage
+																	: 'data:image/png;base64,' + est.image
+															"
 															alt="Placeholder image"
 														/>
 													</figure>
@@ -251,7 +263,9 @@
 													</span>
 
 													<span class="ml-1 user-info">{{
-														new Date(est.date_entered).toDateString()
+														new Date(est.date_entered)
+															.toISOString()
+															.split('T')[0]
 													}}</span>
 												</p>
 

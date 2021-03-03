@@ -60,7 +60,9 @@
 							</span>
 
 							<span class="ml-1 user-info">{{
-								info ? info.date_entered : ''
+								info
+									? new Date(info.date_entered).toISOString().split('T')[0]
+									: ''
 							}}</span>
 						</div>
 

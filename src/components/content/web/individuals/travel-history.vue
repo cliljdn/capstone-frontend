@@ -192,7 +192,11 @@
 											>
 												<td>{{ log.destination }}</td>
 												<td>
-													{{ new Date(log.date_boarded).toDateString() }}
+													{{
+														new Date(log.date_boarded)
+															.toISOString()
+															.split('T')[0]
+													}}
 												</td>
 												<td>{{ log.time_boarded }}</td>
 											</tr>
@@ -250,7 +254,9 @@
 													</span>
 
 													<span class="ml-1 user-info">{{
-														new Date(list.date_boarded).toDateString()
+														new Date(list.date_boarded)
+															.toISOString()
+															.split('T')[0]
 													}}</span>
 												</p>
 

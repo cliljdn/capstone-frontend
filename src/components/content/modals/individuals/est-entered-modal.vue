@@ -36,7 +36,9 @@
 							<span class="ml-1 user-info">
 								{{
 									companions
-										? new Date(companions[0].date_entered).toDateString()
+										? new Date(companions[0].date_entered)
+												.toISOString()
+												.split('T')[0]
 										: ''
 								}}
 							</span>

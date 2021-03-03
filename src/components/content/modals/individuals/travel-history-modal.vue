@@ -36,7 +36,9 @@
 							<span class="ml-1 user-info">
 								{{
 									travelInfo
-										? new Date(travelInfo[0].date_boarded).toDateString()
+										? new Date(travelInfo[0].date_boarded)
+												.toISOString()
+												.split('T')[0]
 										: ''
 								}}
 							</span>
