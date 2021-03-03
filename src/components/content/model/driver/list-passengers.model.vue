@@ -18,6 +18,21 @@ export default {
 			return passengers
 		},
 
+		printPassengers() {
+			const { passengers } = this.$store.state.driver
+			const list = []
+			for (const pass of passengers) {
+				list.push({
+					plate_number: pass.plate_number,
+					destination: pass.destination,
+					vehicle_route: pass.vehicle_route,
+					time_boarded: pass.time_boarded,
+					date_boarded: new Date(pass.date_boarded).toISOString().split('T')[0],
+				})
+			}
+			return list
+		},
+
 		pages() {
 			const { pages } = this.$store.state.driver
 			const pageTotal = []
@@ -118,7 +133,7 @@ export default {
 
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
-				body: this.passengers,
+				body: this.printPassengers,
 				columns: [
 					{ header: 'Plate Number', dataKey: 'plate_number' },
 					{ header: 'Vechicle Route', dataKey: 'vehicle_route' },
@@ -169,7 +184,6 @@ export default {
 
 		switchPanelTrue() {
 			this.payload.page = 0
-			console.log(this.payload)
 			this.$store.dispatch('passengers', this.payload)
 			this.isPanelActive = true
 		},

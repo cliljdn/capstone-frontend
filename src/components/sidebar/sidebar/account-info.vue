@@ -197,7 +197,6 @@ export default {
 			this.payloadErrors['email'] = ''
 			this.payloadErrors.all = ''
 			if (!this.payload.account.email) {
-				console.log('haahah')
 				this.payload.account.email = this.profile.email
 			}
 		},

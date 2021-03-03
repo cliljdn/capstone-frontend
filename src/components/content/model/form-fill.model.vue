@@ -117,7 +117,6 @@ export default {
 
 				if (err.inner.length > 0) {
 					err.inner.forEach((error) => {
-						console.log(error.path)
 						if (error.path in this.addressError) {
 							this.addressError[error.path] = error.message
 						}

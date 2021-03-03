@@ -102,7 +102,6 @@ export default {
 				return true
 			} else {
 				this.payload.page++
-				console.log(this.payload.page)
 				this.$store.dispatch('travelHistory', this.payload)
 			}
 		},

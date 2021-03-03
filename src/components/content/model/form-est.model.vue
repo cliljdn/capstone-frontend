@@ -134,7 +134,6 @@ export default {
 			}
 
 			this.payload.image = await this.encodeBase64(file)
-			console.log(this.payload.image)
 			this.imgRef = URL.createObjectURL(file)
 		},
 

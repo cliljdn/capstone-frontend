@@ -12,7 +12,6 @@ export default {
 		estList() {
 			const { estEntered } = this.$store.state.individual
 
-			console.log(estEntered)
 			return estEntered
 		},
 
