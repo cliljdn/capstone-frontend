@@ -26,7 +26,7 @@ export default {
 				listData.push({
 					destination: log.destination,
 					time_boarded: log.time_boarded,
-					date_boarded: new Date(log.date_boarded).toDateString(),
+					date_boarded: new Date(log.date_boarded).toISOString().split('T')[0],
 				})
 			}
 

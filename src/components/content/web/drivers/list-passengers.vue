@@ -191,7 +191,13 @@
 												<td>{{ pass.plate_number }}</td>
 												<td>{{ pass.vehicle_route }}</td>
 												<td>{{ pass.destination }}</td>
-												<td>{{ pass.date_boarded }}</td>
+												<td>
+													{{
+														new Date(pass.date_boarded)
+															.toISOString()
+															.split('T')[0]
+													}}
+												</td>
 												<td>{{ pass.time_boarded }}</td>
 											</tr>
 										</tbody>
@@ -270,7 +276,9 @@
 													</span>
 
 													<span class="ml-1 user-info">{{
-														pass.date_boarded
+														new Date(pass.date_boarded)
+															.toISOString()
+															.split('T')[0]
 													}}</span>
 												</p>
 

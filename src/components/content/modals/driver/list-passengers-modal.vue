@@ -51,7 +51,13 @@
 							</span>
 
 							<span class="ml-1 user-info">
-								{{ companions ? companions[0].date_boarded : ' ' }}
+								{{
+									companions
+										? new Date(companions[0].date_boarded)
+												.toISOString()
+												.split('T')[0]
+										: ' '
+								}}
 							</span>
 						</div>
 

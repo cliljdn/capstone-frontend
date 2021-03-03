@@ -301,19 +301,12 @@
 									aria-label="pagination"
 								>
 									<a
-										:class="{
-											'button is-danger': payload.page < 1,
-										}"
 										:disabled="payload.page < 1"
 										@click="decrementPage()"
 										class="pagination-previous"
 										>Previous</a
 									>
 									<a
-										:class="{
-											'button is-danger':
-												payload.page === pages[pages.length - 1] - 1,
-										}"
 										:disabled="payload.page === pages[pages.length - 1] - 1"
 										@click="incrementPage()"
 										class="pagination-next"

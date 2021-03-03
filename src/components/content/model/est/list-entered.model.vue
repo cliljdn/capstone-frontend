@@ -30,6 +30,24 @@ export default {
 			return list
 		},
 
+		printIndivs() {
+			const { enteredIndividuals } = this.$store.state.est
+			const list = []
+
+			Object.values(enteredIndividuals).forEach((v) => {
+				list.push({
+					indiv_name: v.firstname + ' ' + v.lastname,
+					emp_name:
+						v.presentEmployee.firstname + ' ' + v.presentEmployee.lastname,
+					time_entered: v.time_entered,
+					date_entered: new Date(v.date_entered).toISOString().split('T')[0],
+					batch: v.batch,
+				})
+			})
+
+			return list
+		},
+
 		pages() {
 			const { enteredPages } = this.$store.state.est
 			const pages = []
@@ -152,7 +170,7 @@ export default {
 
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
-				body: this.indivs,
+				body: this.printIndivs,
 				columns: [
 					{ header: 'Individual Name', dataKey: 'indiv_name' },
 					{ header: 'Present Employee', dataKey: 'emp_name' },

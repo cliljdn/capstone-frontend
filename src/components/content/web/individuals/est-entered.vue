@@ -225,7 +225,7 @@
 										<div class="card-content">
 											<div class="media">
 												<div class="media-left">
-													<figure class="image is-96x96">
+													<figure class="image is-64x64">
 														<img
 															:src="
 																!est.image

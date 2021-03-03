@@ -227,7 +227,7 @@
 										<div class="card-content">
 											<div class="media">
 												<div class="media-left">
-													<figure class="image is-96x96">
+													<figure class="image is-64x64">
 														<img
 															src="https://i.imgur.com/re9h0lN.png"
 															alt="Placeholder image"

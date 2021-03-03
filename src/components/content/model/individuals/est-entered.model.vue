@@ -25,7 +25,7 @@ export default {
 					name: est.name,
 					street: est.street,
 					time_entered: est.time_entered,
-					date_entered: new Date(est.date_entered).toDateString(),
+					date_entered: new Date(est.date_entered).toISOString().split('T')[0],
 				})
 			}
 
