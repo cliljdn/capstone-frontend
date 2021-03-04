@@ -23,6 +23,7 @@ export default {
 						v.presentEmployee.firstname + ' ' + v.presentEmployee.lastname,
 					time_entered: v.time_entered,
 					date_entered: v.date_entered,
+					image: v.image,
 					batch: v.batch,
 				})
 			})
@@ -85,8 +86,8 @@ export default {
 
 			payload: {
 				page: '',
-				start: '',
-				end: '',
+				start: null,
+				end: null,
 				order: '',
 				startDate: null,
 				search: '',
@@ -102,7 +103,7 @@ export default {
 				noCalendar: true,
 				dateFormat: 'H:i',
 				time_24hr: true,
-				defaultDate: '00:00',
+				disableMobile: true,
 			},
 		}
 	},

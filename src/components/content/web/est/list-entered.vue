@@ -73,6 +73,7 @@
 									<p class="control has-icons-left">
 										<flat-pickr
 											v-model="payload.start"
+											@input="btwnRanges"
 											class="input is-primary is-rounded"
 											placeholder="Select Start Time"
 											:config="timeConfig"
@@ -225,7 +226,11 @@
 												<div class="media-left">
 													<figure class="image is-64x64">
 														<img
-															src="https://bulma.io/images/placeholders/96x96.png"
+															:src="
+																indiv.image
+																	? 'data:image/jpeg;base64,' + indiv.image
+																	: 'https://i.imgur.com/bCOd9N0.jpg'
+															"
 															alt="Placeholder image"
 														/>
 													</figure>

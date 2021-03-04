@@ -72,7 +72,6 @@ export default {
 				noCalendar: true,
 				dateFormat: 'H:i',
 				time_24hr: true,
-				defaultDate: '00:00',
 			},
 		}
 	},

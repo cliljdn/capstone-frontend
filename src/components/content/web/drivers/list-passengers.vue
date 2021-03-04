@@ -71,6 +71,7 @@
 								<div class="field between-time mt-3">
 									<p class="control has-icons-left">
 										<flat-pickr
+											@input="btwnRanges"
 											v-model="payload.start"
 											class="input is-primary is-rounded"
 											placeholder="Select Start Time"
@@ -82,6 +83,7 @@
 									</p>
 								</div>
 							</div>
+							{{ payload.start }}
 
 							<div class="column  is-one-fifth">
 								<span class="select-labels">End Time: </span>
@@ -100,6 +102,7 @@
 									</p>
 								</div>
 							</div>
+							{{ payload.end }}
 
 							<div class="column is-one-fifth">
 								<span class="select-labels">Sort List By: </span>

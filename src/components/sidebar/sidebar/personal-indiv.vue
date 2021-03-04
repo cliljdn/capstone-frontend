@@ -14,11 +14,7 @@
 						<img
 							@click="$refs.file.click(), (profileError.image = '')"
 							class="is-rounded profile-photo"
-							:src="
-								!imgRef
-									? 'https://i.imgur.com/bCOd9N0.jpg'
-									: 'data:image/jpeg;base64,' + imgRef
-							"
+							:src="!imgRef ? 'https://i.imgur.com/bCOd9N0.jpg' : imgRef"
 							alt="Image"
 						/>
 					</div>
@@ -242,7 +238,7 @@ export default {
 			return new Promise((resolve, reject) => {
 				const reader = new FileReader()
 				reader.readAsDataURL(file)
-				reader.onload = () => resolve(reader.result)
+				reader.onload = () => resolve(reader.result.split(',')[1])
 				reader.onerror = (error) => reject(error)
 			})
 		},
@@ -347,7 +343,9 @@ export default {
 	},
 
 	mounted() {
-		this.imgRef = this.auth.image ? this.auth.image : null
+		this.imgRef = this.auth.image
+			? 'data:image/jpeg;base64,' + this.auth.image
+			: null
 
 		Object.keys(this.payload.profile).forEach((k) => {
 			this.payload.profile[k] = this.auth[k]

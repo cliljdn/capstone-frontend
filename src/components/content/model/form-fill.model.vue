@@ -19,6 +19,15 @@ export default {
 			const { userProfile } = this.$store.state
 			return userProfile
 		},
+
+		autoComp() {
+			return this.barangaySuggest.filter((item) => {
+				return this.address.barangay
+					.toLowerCase()
+					.split(' ')
+					.every((v) => item.barangay.toLowerCase().includes(v))
+			})
+		},
 	},
 
 	data() {
@@ -33,6 +42,8 @@ export default {
 			},
 
 			imgRef: null,
+
+			showSuggest: false,
 
 			address: {
 				lotNumber: '',
@@ -58,6 +69,8 @@ export default {
 			yupOptions: { abortEarly: false, strict: false },
 
 			profileValidate: form,
+
+			barangaySuggest: [],
 		}
 	},
 
@@ -187,6 +200,16 @@ export default {
 
 		validateAddress: async function(field) {
 			let { formValidate } = form
+			if (!this.address.barangay) {
+				this.showSuggest = false
+			} else {
+				if (this.autoComp.length > 0) {
+					this.showSuggest = true
+				} else {
+					this.showSuggest = false
+				}
+			}
+
 			try {
 				await formValidate.validateAt(field, this.address, this.yupOptions)
 				this.addressError[field] = ''
@@ -196,12 +219,21 @@ export default {
 				})
 			}
 		},
+
+		getBarangay(field) {
+			this.address.barangay = field
+			this.showSuggest = false
+		},
 	},
 
-	mounted() {
+	async mounted() {
+		const { state } = this.$store
 		if (this.credentials.isActive === 1) {
 			this.$router.push({ name: 'usersLogin' })
 		}
+
+		const barangayData = await this.$axios.get(`${state.baseURL}/suggest`)
+		this.barangaySuggest = barangayData.data
 	},
 }
 </script>

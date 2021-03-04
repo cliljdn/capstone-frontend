@@ -203,6 +203,21 @@
 									<i class="fas fa-balance-scale"></i>
 								</span>
 							</p>
+
+							<div
+								v-if="showSuggest"
+								class="content has-background-white content-suggest"
+							>
+								<ul
+									@click="getBarangay(comp.barangay)"
+									type=""
+									v-for="(comp, index) in autoComp"
+									:key="index"
+								>
+									<li>{{ comp.barangay }}</li>
+								</ul>
+							</div>
+
 							<span class="mt-1 has-text-danger">{{
 								addressError.barangay
 							}}</span>

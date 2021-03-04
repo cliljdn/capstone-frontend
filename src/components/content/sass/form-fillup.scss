@@ -16,6 +16,17 @@
 			font-size: 28px;
 		}
 
+		.content-suggest {
+			top: 0 !important;
+			height: 70px !important;
+			z-index: 10 !important;
+			overflow-y: auto !important;
+		}
+
+		.content-suggest ul li:hover {
+			color: $primary !important;
+		}
+
 		.media-image {
 			padding: 0px !important;
 			margin: 0 !important;
@@ -39,7 +50,7 @@
 				border-bottom: 1px solid black;
 			}
 
-		img:hover {
+			img:hover {
 				border: 5px solid $primary !important;
 				cursor: pointer !important;
 				opacity: 40% !important;

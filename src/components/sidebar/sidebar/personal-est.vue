@@ -14,9 +14,7 @@
 						<img
 							@click="$refs.file.click(), (profileError.image = '')"
 							class="is-rounded profile-photo"
-							:src="
-								!imgRef ? 'data:image/jpeg;base64,' + profile.image : imgRef
-							"
+							:src="!imgRef ? defaultImg : imgRef"
 							alt="image-edit"
 						/>
 					</div>
@@ -177,7 +175,7 @@ export default {
 			return new Promise((resolve, reject) => {
 				const reader = new FileReader()
 				reader.readAsDataURL(file)
-				reader.onload = () => resolve(reader.result)
+				reader.onload = () => resolve(reader.result.split(',')[1])
 				reader.onerror = (error) => reject(error)
 			})
 		},
@@ -266,9 +264,9 @@ export default {
 			this.payload.profile[k] = this.profile[k]
 		})
 
-		if (!this.profile.image) {
-			this.imgRef = this.defaultImg
-		}
+		this.imgRef = this.profile.image
+			? 'data:image/jpeg;base64,' + this.profile.image
+			: this.imgRef
 	},
 }
 </script>
