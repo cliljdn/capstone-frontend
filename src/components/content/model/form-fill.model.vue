@@ -200,6 +200,7 @@ export default {
 
 		validateAddress: async function(field) {
 			let { formValidate } = form
+
 			if (!this.address.barangay) {
 				this.showSuggest = false
 			} else {

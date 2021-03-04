@@ -72,7 +72,7 @@
 				/>
 
 				<est-profile v-if="stateVar.accType === 'Establishment'" />
-
+				<!-- 
 				<div
 					class="columns columns-information"
 					v-if="stateVar.accType === 'Driver'"
@@ -89,7 +89,7 @@
 					</div>
 				</div>
 
-				<vehicle-info v-if="stateVar.accType === 'Driver'" />
+				<vehicle-info v-if="stateVar.accType === 'Driver'" /> -->
 			</div>
 
 			<footer class="card-footer is-bold">
