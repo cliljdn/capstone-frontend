@@ -32,7 +32,7 @@
 							class="button "
 							:class="{ 'is-loading': $store.state.isLoading }"
 						>
-							Download Our App
+							<strong>Download Our App</strong>
 						</button>
 					</div>
 				</div>

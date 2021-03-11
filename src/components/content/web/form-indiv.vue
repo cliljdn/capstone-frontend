@@ -251,14 +251,16 @@
 					</div>
 				</div>
 			</form>
-			<button
-				@click="createProfile"
-				class="button is-success  is-medium mt-3"
-				:class="{ 'is-loading': isLoading }"
-				:disabled="isLoading"
-			>
-				Create Profile
-			</button>
+			<div class="is-flex is-justify-content-center">
+				<button
+					@click="createProfile"
+					class="button is-success  is-medium mt-3"
+					:class="{ 'is-loading': isLoading }"
+					:disabled="isLoading"
+				>
+					Create Profile
+				</button>
+			</div>
 		</div>
 	</div>
 </template>

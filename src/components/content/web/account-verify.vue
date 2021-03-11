@@ -2,12 +2,12 @@
 	<div class="">
 		<section class="hero is-medium">
 			<div class="hero-body">
-				<div class="container">
-					<h1 class="title">
-						Account E-mail {{ accountInfo ? accountInfo.email : '' }} is Ready
+				<div class="container mt-6 is-justify-content-center">
+					<h1 class="title ">
+						Account e-mail {{ accountInfo ? accountInfo.email : '' }} is ready
 						for Verification
 					</h1>
-					<h2 class="subtitle">
+					<h2 class="subtitle is-justify-content-center">
 						Click the button to proceed in
 						{{ accountInfo ? accountInfo.accType : '' }} Profile Creation
 					</h2>
