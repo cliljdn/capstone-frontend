@@ -114,22 +114,48 @@ export default {
 
 			const { userProfile } = this.$store.state
 
-			const header = function() {
-				doc.setFontSize(12)
-				doc.setTextColor(40)
+			doc.page = 1
 
-				doc.getFont('normal')
-				//doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
-				doc.text(
-					`Passenger List Report \n Printed By: ${userProfile.firstname +
-						' ' +
-						userProfile.lastname} \n Date Printed: ${new Date().toDateString()}`,
-					doc.internal.pageSize.getWidth() / 2,
-					7,
-					{ align: 'center' }
-				)
+			function footer() {
+				doc.setFont('Times', 'italic')
+				doc.text(180, 290, 'page ' + doc.page) //print number bottom right
+				doc.page++
+				doc.text(90, 290, 'Driver Print Report')
 			}
 
+			const header = function() {
+				doc.setTextColor(40)
+
+				doc.setFont('Times', 'bold')
+				doc.setFontSize(18)
+				doc.text(
+					`List of Routes Report`,
+					doc.internal.pageSize.getWidth() / 2,
+					10,
+					{ align: 'center' }
+				)
+
+				doc.setFont('Times', 'italic')
+				doc.setFontSize(10)
+				doc.text(
+					`Printed By: ${userProfile.firstname + ' ' + userProfile.lastname}`,
+					doc.internal.pageSize.getWidth() / 4,
+					17,
+					{ align: 'right' }
+				)
+
+				doc.setFontSize(10)
+				doc.text(
+					`Date Printed: ${new Date().toISOString().split('T')[0]}`,
+					180,
+					17,
+					{
+						align: 'center',
+					}
+				)
+
+				footer()
+			}
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
 				body: this.printPassengers,

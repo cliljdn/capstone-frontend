@@ -3,7 +3,7 @@
 		<div class="modal-background" @click="closeModal"></div>
 		<div class="modal-card">
 			<header class="modal-card-head">
-				<p class="modal-card-title">Scan Olongapo Says:</p>
+				<p class="modal-card-title"><strong>Scan Olongapo Says:</strong></p>
 				<button @click="closeModal" class="delete" aria-label="close"></button>
 			</header>
 			<section class="modal-card-body">
@@ -61,6 +61,7 @@ export default {
 				this.$store.commit('toggleSideBar')
 			}
 
+			state.accountsMsg.isRegistered = false
 			state.accountsMsg.isProfileCreated = false
 			state.accountsMsg.isProfileUpdated = false
 			return commit('showPopOut')

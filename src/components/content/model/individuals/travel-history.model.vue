@@ -115,24 +115,30 @@ export default {
 
 			const { userProfile } = this.$store.state
 			doc.page = 1
+
 			function footer() {
-				doc.text(180, 285, 'page ' + doc.page) //print number bottom right
+				doc.setFont('Times', 'italic')
+				doc.text(180, 290, 'page ' + doc.page) //print number bottom right
 				doc.page++
+				doc.text(90, 290, 'Individual Print Report')
 			}
+			console.log(doc.getFontList())
 
 			const header = function() {
 				doc.setTextColor(40)
 
 				doc.getFont('Italic')
 
+				doc.setFont('Times', 'bold')
 				doc.setFontSize(18)
 				doc.text(
 					`Travel History Report`,
 					doc.internal.pageSize.getWidth() / 2,
-					7,
+					10,
 					{ align: 'center' }
 				)
 
+				doc.setFont('Times', 'italic')
 				doc.setFontSize(10)
 				doc.text(
 					`Printed By: ${userProfile.firstname + ' ' + userProfile.lastname}`,
@@ -141,6 +147,7 @@ export default {
 					{ align: 'right' }
 				)
 
+				doc.setFont('Times', 'italic')
 				doc.setFontSize(10)
 				doc.text(
 					`Date Printed: ${new Date().toISOString().split('T')[0]}`,
