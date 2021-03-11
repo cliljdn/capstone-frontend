@@ -191,7 +191,10 @@
 						<div class="field mt-2">
 							<p class="control has-icons-left">
 								<input
-									@input="validateAddress('barangay')"
+									@input="
+										validateAddress('barangay')
+										showBarangay()
+									"
 									@blur="validateAddress('barangay')"
 									v-model="address.barangay"
 									class="input"

@@ -75,7 +75,7 @@
 								<a class="ml-3">
 									{{ authUser.firstname ? authUser.firstname : authUser.name }}
 									{{ authUser.lastname }} <br />
-									<small class="is-flex is-justify-content-center">{{
+									<small class="is-flex is-italic  is-justify-content-center">{{
 										this.$store.state.accType
 									}}</small>
 								</a>

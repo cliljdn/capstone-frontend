@@ -25,7 +25,9 @@ export default new Vuex.Store({
 		accType: '',
 		// baseURL: 'https://capstone.scanolongapo-api.com/api/v1',
 		baseURL: 'http://192.168.1.11:6060/api/v1',
-		proxyURL: 'http://192.168.1.11:8080',
+		// proxyURL: 'http://capstone.scanolongapo.com',
+		// proxyURL: 'http://192.168.1.11:8080',
+
 		//dashboard
 		sideBarOpen: false,
 		editProfileOpen: false,

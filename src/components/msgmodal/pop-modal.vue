@@ -9,12 +9,12 @@
 			<section class="modal-card-body">
 				<div class="columns ">
 					<div class="column  has-text-justified">
-						<div class="" v-if="this.$store.state.accountsMsg.isRegistered">
+						<div class="" v-if="$store.state.accountsMsg.isRegistered">
 							<h1>Successfully Registered</h1>
 							<h1>We Sent a Verification Link to your E-mail address</h1>
 						</div>
 
-						<div class="" v-if="this.$store.state.accountsMsg.isProfileCreated">
+						<div class="" v-if="$store.state.accountsMsg.isProfileCreated">
 							<h1>Profile Created</h1>
 							<h1>
 								You can now Login to your account on the android Application

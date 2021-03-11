@@ -97,7 +97,7 @@ export default {
 
 				if (validateProfile) {
 					const res = await this.$axios.post(
-						`${state.proxyURL}/accounts/create/profile`,
+						`${state.baseURL}/accounts/create/profile`,
 						qs.stringify(this.profileBody),
 						{
 							headers: {
@@ -127,7 +127,6 @@ export default {
 				}
 			} catch (err) {
 				state.isLoading = false
-
 				if (err.inner.length > 0) {
 					err.inner.forEach((error) => {
 						if (error.path in this.addressError) {
@@ -201,16 +200,6 @@ export default {
 		validateAddress: async function(field) {
 			let { formValidate } = form
 
-			if (!this.address.barangay) {
-				this.showSuggest = false
-			} else {
-				if (this.autoComp.length > 0) {
-					this.showSuggest = true
-				} else {
-					this.showSuggest = false
-				}
-			}
-
 			try {
 				await formValidate.validateAt(field, this.address, this.yupOptions)
 				this.addressError[field] = ''
@@ -224,6 +213,18 @@ export default {
 		getBarangay(field) {
 			this.address.barangay = field
 			this.showSuggest = false
+		},
+
+		showBarangay() {
+			if (!this.address.barangay) {
+				this.showSuggest = false
+			} else {
+				if (this.autoComp.length > 0) {
+					this.showSuggest = true
+				} else {
+					this.showSuggest = false
+				}
+			}
 		},
 	},
 

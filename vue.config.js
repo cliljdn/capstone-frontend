@@ -8,21 +8,21 @@ module.exports = {
 		})
 	},
 
-	configureWebpack: {
-		performance: {
-			hints: false,
-		},
-		optimization: {
-			splitChunks: {
-				minSize: 10000,
-				maxSize: 250000,
-			},
-		},
-	},
+	// configureWebpack: {
+	// 	performance: {
+	// 		hints: false,
+	// 	},
+	// 	optimization: {
+	// 		splitChunks: {
+	// 			minSize: 10000,
+	// 			maxSize: 250000,
+	// 		},
+	// 	},
+	// },
 
-	devServer: {
-		proxy: 'https://capstone.scanolongapo-api.com/api/v1',
-		// proxy: 'http://192.168.1.11:6060/api/v1',
-	},
+	// devServer: {
+	// 	proxy: 'https://capstone.scanolongapo-api.com/api/v1',
+	// 	// proxy: 'http://192.168.1.11:6060/api/v1',
+	// },
 	// runtimeCompiler: true,
 }

@@ -114,21 +114,44 @@ export default {
 			const doc = new jsPdf()
 
 			const { userProfile } = this.$store.state
+			doc.page = 1
+			function footer() {
+				doc.text(180, 285, 'page ' + doc.page) //print number bottom right
+				doc.page++
+			}
 
 			const header = function() {
-				doc.setFontSize(12)
 				doc.setTextColor(40)
 
-				doc.getFont('normal')
-				//doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+				doc.getFont('Italic')
+
+				doc.setFontSize(18)
 				doc.text(
-					`Travel History Report \n Printed By: ${userProfile.firstname +
-						' ' +
-						userProfile.lastname} \n Date Printed: ${new Date().toDateString()}`,
+					`Travel History Report`,
 					doc.internal.pageSize.getWidth() / 2,
 					7,
 					{ align: 'center' }
 				)
+
+				doc.setFontSize(10)
+				doc.text(
+					`Printed By: ${userProfile.firstname + ' ' + userProfile.lastname}`,
+					doc.internal.pageSize.getWidth() / 4,
+					17,
+					{ align: 'right' }
+				)
+
+				doc.setFontSize(10)
+				doc.text(
+					`Date Printed: ${new Date().toISOString().split('T')[0]}`,
+					180,
+					17,
+					{
+						align: 'center',
+					}
+				)
+
+				footer()
 			}
 
 			doc.autoTable({

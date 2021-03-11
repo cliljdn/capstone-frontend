@@ -20,6 +20,12 @@ nav {
 		font-weight: bold;
 	}
 
+	.navbar-end small {
+		font-weight: bolder !important;
+		font-style: italic;
+		border-top: 1px solid black;
+	}
+
 	.text-underline {
 		border-bottom: 1px solid lightgreen;
 	}
