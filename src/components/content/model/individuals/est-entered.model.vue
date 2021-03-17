@@ -40,6 +40,12 @@ export default {
 			}
 			return pages
 		},
+
+		stateVar() {
+			const { state } = this.$store
+
+			return state
+		},
 	},
 
 	data() {
@@ -50,6 +56,7 @@ export default {
 				enableTime: true,
 				noCalendar: true,
 				dateFormat: 'H:i',
+				disableMobile: true,
 				time_24hr: true,
 			},
 
@@ -85,14 +92,17 @@ export default {
 				return true
 			}
 			this.payload.page--
+			this.stateVar.isLoading = true
 			this.$store.dispatch('estEntered', this.payload)
 		},
 
 		btwnRanges() {
+			this.stateVar.isLoading = true
 			this.$store.dispatch('estEntered', this.payload)
 		},
 
 		gotoPage(indexofArr) {
+			this.stateVar.isLoading = true
 			this.payload.page = indexofArr
 			this.$store.dispatch('estEntered', this.payload)
 		},
@@ -102,11 +112,13 @@ export default {
 				return true
 			} else {
 				this.payload.page++
+				this.stateVar.isLoading = true
 				this.$store.dispatch('estEntered', this.payload)
 			}
 		},
 
 		openModal(batch) {
+			this.stateVar.isLoading = true
 			this.$store.dispatch('estEnteredCompanions', batch)
 		},
 
@@ -173,6 +185,7 @@ export default {
 		},
 
 		resetDispatch() {
+			this.stateVar.isLoading = true
 			Object.keys(this.payload).forEach((k) => {
 				if (k === 'page' && this.isPanelActive) {
 					this.payload[k] = 0
@@ -202,23 +215,27 @@ export default {
 				this.payload.page = 0
 			}
 
+			this.stateVar.isLoading = true
 			this.$store.dispatch('estEntered', this.payload)
 		},
 
 		switchPanelFalse() {
 			this.payload.page = ''
 			this.isPanelActive = false
+			this.stateVar.isLoading = true
 			this.$store.dispatch('estEntered', this.payload)
 		},
 
 		switchPanelTrue() {
 			this.payload.page = 0
+			this.stateVar.isLoading = true
 			this.$store.dispatch('estEntered', this.payload)
 			this.isPanelActive = true
 		},
 	},
 
 	mounted() {
+		this.stateVar.isLoading = true
 		this.$store.dispatch('estEntered', this.payload)
 	},
 }

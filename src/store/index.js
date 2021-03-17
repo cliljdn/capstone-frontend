@@ -269,8 +269,11 @@ export default new Vuex.Store({
 						params: { ...payload },
 					}
 				)
-				commit('estEntered', estEntered.data)
-				state.isLoading = false
+
+				if (estEntered.status === 200) {
+					commit('estEntered', estEntered.data)
+					state.isLoading = false
+				}
 			} catch (err) {
 				return err
 			}
@@ -285,8 +288,11 @@ export default new Vuex.Store({
 					}
 				)
 
-				commit('estEnteredCompanions', companions.data)
-				commit('modalEntered')
+				if (companions.status === 200) {
+					commit('estEnteredCompanions', companions.data)
+					commit('modalEntered')
+					state.isLoading = false
+				}
 			} catch (err) {
 				return err.response
 			}

@@ -90,14 +90,22 @@ export default {
 				enableTime: true,
 				noCalendar: true,
 				dateFormat: 'H:i',
-				time_24hr: true,
 				disableMobile: true,
+				time_24hr: true,
 			},
 		}
 	},
 
 	methods: {
 		btwnRanges() {
+			if (
+				this.payload.startDate ||
+				this.payload.endDate ||
+				this.payload.start ||
+				this.payload.end
+			) {
+				this.$store.state.isLoading = true
+			}
 			this.$store.dispatch('enteredIndividuals', this.payload)
 		},
 
@@ -112,6 +120,7 @@ export default {
 		}, 300),
 
 		filterListDate(payload) {
+			this.$store.state.isLoading = true
 			this.$store.dispatch('enteredIndividuals', payload)
 		},
 
@@ -201,6 +210,7 @@ export default {
 		},
 
 		resetDispatch() {
+			this.$store.state.isLoading = true
 			Object.keys(this.payload).forEach((el) => {
 				if (el.page && !this.isPanelActive) {
 					this.payload[el] = ''
@@ -220,6 +230,7 @@ export default {
 		}, 300),
 
 		sortList() {
+			this.$store.state.isLoading = true
 			this.$store.dispatch('enteredIndividuals', this.payload)
 		},
 
@@ -237,6 +248,7 @@ export default {
 	},
 
 	mounted() {
+		this.$store.state.isLoading = true
 		this.$store.dispatch('enteredIndividuals', this.payload)
 	},
 }

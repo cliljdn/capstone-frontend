@@ -228,6 +228,7 @@ export default {
 	},
 
 	mounted() {
+		this.stateVar.isLoading = true
 		this.$store.dispatch('travelHistory', this.payload)
 	},
 }
