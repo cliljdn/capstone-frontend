@@ -69,7 +69,7 @@ export default {
 			this.$store.dispatch('passengers', this.payload)
 		},
 
-		decrementPage() {
+		decrementPage: _debounce(function() {
 			if (this.payload.page < 1) {
 				return true
 			} else {
@@ -77,15 +77,15 @@ export default {
 				this.$store.state.isLoading = true
 				this.$store.dispatch('passengers', this.payload)
 			}
-		},
+		}, 300),
 
-		gotoPage(params) {
+		gotoPage: _debounce(function(params) {
 			this.payload.page = params
 			this.$store.state.isLoading = true
 			this.$store.dispatch('passengers', this.payload)
-		},
+		}, 300),
 
-		incrementPage() {
+		incrementPage: _debounce(function() {
 			if (this.payload.page === this.pages[this.pages.length - 1] - 1) {
 				return true
 			} else {
@@ -93,7 +93,7 @@ export default {
 				this.$store.state.isLoading = true
 				this.$store.dispatch('passengers', this.payload)
 			}
-		},
+		}, 300),
 
 		openModal(batch) {
 			this.$store.state.isLoading = true

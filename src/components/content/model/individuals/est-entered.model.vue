@@ -87,27 +87,27 @@ export default {
 	},
 
 	methods: {
-		decrementPage() {
+		decrementPage: _debounce(function() {
 			if (this.payload.page < 1) {
 				return true
 			}
 			this.payload.page--
 			this.stateVar.isLoading = true
 			this.$store.dispatch('estEntered', this.payload)
-		},
+		}, 300),
 
 		btwnRanges() {
 			this.stateVar.isLoading = true
 			this.$store.dispatch('estEntered', this.payload)
 		},
 
-		gotoPage(indexofArr) {
+		gotoPage: _debounce(function(indexofArr) {
 			this.stateVar.isLoading = true
 			this.payload.page = indexofArr
 			this.$store.dispatch('estEntered', this.payload)
-		},
+		}, 300),
 
-		incrementPage() {
+		incrementPage: _debounce(function() {
 			if (this.payload.page === this.pages[this.pages.length - 1] - 1) {
 				return true
 			} else {
@@ -115,7 +115,7 @@ export default {
 				this.stateVar.isLoading = true
 				this.$store.dispatch('estEntered', this.payload)
 			}
-		},
+		}, 300),
 
 		openModal(batch) {
 			this.stateVar.isLoading = true
