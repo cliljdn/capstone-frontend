@@ -1,6 +1,17 @@
 <template>
 	<div class="container  travel-container">
-		<div class="columns travel-columns">
+		<div
+			class="columns travel-columns m-6"
+			v-if="Object.keys($store.state.userProfile).length <= 0"
+		>
+			<div class="column is-flex is-justify-content-center">
+				<figure class="image is-128x128 is-vcentered m-6">
+					<img src="https://i.imgur.com/zCToWR2.gif" />
+				</figure>
+			</div>
+		</div>
+
+		<div v-else class="columns travel-columns">
 			<div class="column">
 				<aside class="menu">
 					<p class="menu-label">
@@ -170,7 +181,7 @@
 						<transition name="slide">
 							<!-- table view -->
 							<main class="travel-log" v-if="!isPanelActive">
-								<div class="table-container">
+								<div class="table-container" v-if="!$store.state.isLoading">
 									<table
 										id="my-table"
 										class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
@@ -206,9 +217,21 @@
 										</tbody>
 									</table>
 								</div>
+
 								<div
 									class="columns columns-error"
-									v-if="passengers.length === 0"
+									v-if="$store.state.isLoading"
+								>
+									<div class="column is-flex is-justify-content-center">
+										<figure class="image is-96x96 is-vcentered m-2">
+											<img src="https://i.imgur.com/zCToWR2.gif" />
+										</figure>
+									</div>
+								</div>
+
+								<div
+									class="columns columns-error"
+									v-if="passengers.length === 0 && !$store.state.isLoading"
 								>
 									<div class="column is-flex is-justify-content-center">
 										<span class="has-text-danger">{{ formError.search }}</span>
@@ -224,7 +247,11 @@
 									v-for="pass in passengers"
 									:key="pass.batch"
 								>
-									<div class="card" @click="openModal(pass.batch)">
+									<div
+										class="card"
+										v-if="!$store.state.isLoading"
+										@click="openModal(pass.batch)"
+									>
 										<div class="card-content">
 											<div class="media">
 												<div class="media-left">
@@ -303,7 +330,16 @@
 								</div>
 
 								<div
-									v-if="passengers.length === 0"
+									v-if="$store.state.isLoading"
+									class="column columns-error is-flex is-justify-content-center"
+								>
+									<figure class="image is-96x96 is-vcentered m-2">
+										<img src="https://i.imgur.com/zCToWR2.gif" />
+									</figure>
+								</div>
+
+								<div
+									v-if="passengers.length === 0 && !$store.state.isLoading"
 									class="column columns-error is-flex is-justify-content-center"
 								>
 									<span class="has-text-danger">{{ formError.search }}</span>
@@ -312,7 +348,10 @@
 						</transition>
 
 						<div class="columns" v-if="isPanelActive">
-							<div class="column is-12 is-flex is-justify-content-center">
+							<div
+								v-if="!$store.state.isLoading"
+								class="column is-12 is-flex is-justify-content-center"
+							>
 								<nav
 									class="pagination is-centered"
 									role="navigation"

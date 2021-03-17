@@ -18,24 +18,6 @@ export default {
 			return enteredIndividuals
 		},
 
-		printIndivs() {
-			const { enteredIndividuals } = this.$store.state.est
-			const list = []
-
-			Object.values(enteredIndividuals).forEach((v) => {
-				list.push({
-					indiv_name: v.firstname + ' ' + v.lastname,
-					emp_name:
-						v.presentEmployee.firstname + ' ' + v.presentEmployee.lastname,
-					time_entered: v.time_entered,
-					date_entered: new Date(v.date_entered).toISOString().split('T')[0],
-					batch: v.batch,
-				})
-			})
-
-			return list
-		},
-
 		pages() {
 			const { enteredPages } = this.$store.state.est
 			const pages = []
@@ -149,6 +131,19 @@ export default {
 			if (this.indivs.length === 0) {
 				return true
 			}
+			const list = []
+
+			Object.values(this.indivs).forEach((v) => {
+				list.push({
+					indiv_name: v.firstname + ' ' + v.lastname,
+					emp_name:
+						v.presentEmployee.firstname + ' ' + v.presentEmployee.lastname,
+					time_entered: v.time_entered,
+					date_entered: new Date(v.date_entered).toISOString().split('T')[0],
+					batch: v.batch,
+				})
+			})
+
 			const doc = new jsPdf()
 			const { userProfile } = this.$store.state
 			doc.page = 1
@@ -196,7 +191,7 @@ export default {
 
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
-				body: this.printIndivs,
+				body: list,
 				columns: [
 					{ header: 'Individual Name', dataKey: 'indiv_name' },
 					{ header: 'Present Employee', dataKey: 'emp_name' },
@@ -237,11 +232,13 @@ export default {
 		switchPanelFalse() {
 			this.payload.page = ''
 			this.isPanelActive = false
+			this.$store.state.isLoading = true
 			this.$store.dispatch('enteredIndividuals', this.payload)
 		},
 
 		switchPanelTrue() {
 			this.payload.page = 0
+			this.$store.state.isLoading = true
 			this.$store.dispatch('enteredIndividuals', this.payload)
 			this.isPanelActive = true
 		},

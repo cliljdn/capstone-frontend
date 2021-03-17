@@ -18,21 +18,6 @@ export default {
 			return passengers
 		},
 
-		printPassengers() {
-			const { passengers } = this.$store.state.driver
-			const list = []
-			for (const pass of passengers) {
-				list.push({
-					plate_number: pass.plate_number,
-					destination: pass.destination,
-					vehicle_route: pass.vehicle_route,
-					time_boarded: pass.time_boarded,
-					date_boarded: new Date(pass.date_boarded).toISOString().split('T')[0],
-				})
-			}
-			return list
-		},
-
 		pages() {
 			const { pages } = this.$store.state.driver
 			const pageTotal = []
@@ -78,6 +63,9 @@ export default {
 
 	methods: {
 		btwnRanges() {
+			if (this.payload.startDate || this.payload.endDate) {
+				this.$store.state.isLoading = true
+			}
 			this.$store.dispatch('passengers', this.payload)
 		},
 
@@ -86,12 +74,14 @@ export default {
 				return true
 			} else {
 				this.payload.page--
+				this.$store.state.isLoading = true
 				this.$store.dispatch('passengers', this.payload)
 			}
 		},
 
 		gotoPage(params) {
 			this.payload.page = params
+			this.$store.state.isLoading = true
 			this.$store.dispatch('passengers', this.payload)
 		},
 
@@ -100,22 +90,33 @@ export default {
 				return true
 			} else {
 				this.payload.page++
-
+				this.$store.state.isLoading = true
 				this.$store.dispatch('passengers', this.payload)
 			}
 		},
 
 		openModal(batch) {
+			this.$store.state.isLoading = true
 			return this.$store.dispatch('passengersInfo', batch)
 		},
 
 		printList() {
 			const doc = new jsPdf()
-
 			const { userProfile } = this.$store.state
 
-			doc.page = 1
+			const list = []
+			for (const pass of this.passengers) {
+				list.push({
+					plate_number: pass.plate_number,
+					destination: pass.destination,
+					vehicle_route: pass.vehicle_route,
+					time_boarded: pass.time_boarded,
+					date_boarded: new Date(pass.date_boarded).toISOString().split('T')[0],
+				})
+			}
 
+			doc.page = 1
+			console.log(list)
 			function footer() {
 				doc.setFont('Times', 'italic')
 				doc.text(180, 290, 'page ' + doc.page) //print number bottom right
@@ -158,7 +159,7 @@ export default {
 			}
 			doc.autoTable({
 				columnStyles: { halign: 'center' }, // European countries centered
-				body: this.printPassengers,
+				body: list,
 				columns: [
 					{ header: 'Plate Number', dataKey: 'plate_number' },
 					{ header: 'Vechicle Route', dataKey: 'vehicle_route' },
@@ -178,14 +179,17 @@ export default {
 			} else {
 				this.payload.page = 0
 			}
+			this.$store.state.isLoading = true
 			this.$store.dispatch('passengers', this.payload)
 		}, 300),
 
 		sortList() {
+			this.$store.state.isLoading = true
 			this.$store.dispatch('passengers', this.payload)
 		},
 
 		resetDispatch() {
+			this.$store.state.isLoading = true
 			Object.keys(this.payload).forEach((k) => {
 				if (k === 'page' && this.isPanelActive) {
 					this.payload[k] = 0
@@ -202,6 +206,7 @@ export default {
 		},
 
 		switchPanelFalse() {
+			this.$store.state.isLoading = true
 			this.payload.page = ''
 			this.isPanelActive = false
 			this.$store.dispatch('passengers', this.payload)
@@ -209,12 +214,14 @@ export default {
 
 		switchPanelTrue() {
 			this.payload.page = 0
-			this.$store.dispatch('passengers', this.payload)
+			this.$store.state.isLoading = true
 			this.isPanelActive = true
+			this.$store.dispatch('passengers', this.payload)
 		},
 	},
 
 	mounted() {
+		this.$store.state.isLoading = true
 		this.$store.dispatch('passengers', this.payload)
 	},
 }
