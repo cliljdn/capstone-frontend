@@ -3,6 +3,8 @@ export default {
 	data() {
 		return {
 			isActive: false,
+
+			loadBtn: false,
 		}
 	},
 
@@ -12,6 +14,7 @@ export default {
 
 			try {
 				state.isLoading = true
+				this.loadBtn = true
 				this.$axios
 					.get(`${state.baseURL}/download/scanolongapo/scanolongapo.apk`, {
 						responseType: 'blob',
@@ -24,6 +27,7 @@ export default {
 						document.body.appendChild(link)
 						link.click()
 						state.isLoading = false
+						this.loadBtn = false
 					})
 			} catch (err) {
 				return err

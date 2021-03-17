@@ -64,8 +64,8 @@
 							<button
 								type="submit"
 								class="button is-success is-medium is-center mt-3"
-								:class="{ 'is-loading': disableInputs }"
-								:disabled="disableInputs"
+								:class="{ 'is-loading': disableInputs && loadBtn }"
+								:disabled="disableInputs && loadBtn"
 							>
 								Login
 							</button>

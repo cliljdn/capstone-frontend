@@ -22,6 +22,7 @@ export default {
 				password: '',
 			},
 
+			loadBtn: false,
 			yupOptions: { abortEarly: false, strict: false },
 		}
 	},
@@ -35,11 +36,12 @@ export default {
 				let isValid = await validateLogin.validate(this.body, this.yupOptions)
 
 				if (isValid) {
+					state.isLoading = true
+					this.loadBtn = true
 					let res = await this.$axios.post(
 						`${state.baseURL}/accounts/login`,
 						this.body
 					)
-					state.isLoading = true
 
 					if (res.status === 201) {
 						state.TOKEN_NAME = res.data.name
@@ -54,6 +56,7 @@ export default {
 						this.$store.dispatch('isAuth', true)
 						this.isUserAuth(auth.accType)
 						state.isLoading = false
+						this.loadBtn = false
 					}
 				}
 			} catch (err) {

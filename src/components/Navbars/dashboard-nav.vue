@@ -65,7 +65,10 @@
 						</div>
 					</div>
 
-					<div class="navbar-end">
+					<div
+						class="navbar-end"
+						v-if="Object.keys($store.state.userProfile).length > 0"
+					>
 						<div class="" @click="toggleSideBar">
 							<div class="icon-text navbar-item">
 								<span class="icon has-text-success">

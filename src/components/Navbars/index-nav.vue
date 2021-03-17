@@ -30,7 +30,7 @@
 						<button
 							@click="downloadApp"
 							class="button "
-							:class="{ 'is-loading': $store.state.isLoading }"
+							:class="{ 'is-loading': $store.state.isLoading && loadBtn }"
 						>
 							<strong>Download Our App</strong>
 						</button>
