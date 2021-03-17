@@ -41,6 +41,11 @@ export default {
 			}
 			return pages
 		},
+
+		stateVar() {
+			const { state } = this.$store
+			return state
+		},
 	},
 
 	data() {
@@ -74,6 +79,7 @@ export default {
 	},
 	methods: {
 		btwnRanges() {
+			this.stateVar.isLoading = true
 			if (!this.isPanelActive) {
 				this.payload.page = ''
 			} else {
@@ -83,31 +89,35 @@ export default {
 			this.$store.dispatch('travelHistory', this.payload)
 		},
 
-		decrementPage() {
+		decrementPage: _debounce(function() {
 			if (this.payload.page < 1) {
 				return true
 			}
-			this.payload.page--
-			this.$store.dispatch('travelHistory', this.payload)
-		},
 
-		gotoPage(index) {
+			this.payload.page--
+			this.stateVar.isLoading = true
+			this.$store.dispatch('travelHistory', this.payload)
+		}, 300),
+
+		gotoPage: _debounce(function(index) {
+			this.stateVar.isLoading = true
 			this.payload.page = index
 			this.$store.dispatch('travelHistory', this.payload)
-		},
+		}, 300),
 
-		incrementPage() {
+		incrementPage: _debounce(function() {
 			if (this.payload.page === this.pages[this.pages.length - 1] - 1) {
 				return true
 			} else {
+				this.stateVar.isLoading = true
 				this.payload.page++
 				this.$store.dispatch('travelHistory', this.payload)
 			}
-		},
+		}, 300),
 
 		openModal(batch) {
+			this.stateVar.isLoading = true
 			this.$store.dispatch('tvlCompanionInfo', batch)
-			this.$store.commit('modalTravel')
 		},
 
 		printInfo() {
@@ -175,6 +185,7 @@ export default {
 		},
 
 		resetDropdowns() {
+			this.stateVar.isLoading = true
 			Object.keys(this.payload).forEach((k) => {
 				if (k === 'page' && this.isPanelActive) {
 					this.payload[k] = 0
@@ -204,11 +215,13 @@ export default {
 		switchPanelFalse() {
 			this.payload.page = ''
 			this.isPanelActive = false
+			this.stateVar.isLoading = true
 			this.$store.dispatch('travelHistory', this.payload)
 		},
 
 		switchPanelTrue() {
 			this.payload.page = 0
+			this.stateVar.isLoading = true
 			this.$store.dispatch('travelHistory', this.payload)
 			this.isPanelActive = true
 		},

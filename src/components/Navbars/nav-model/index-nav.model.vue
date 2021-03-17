@@ -22,15 +22,21 @@ export default {
 					.then((res) => {
 						const url = window.URL.createObjectURL(new Blob([res.data]))
 						const link = document.createElement('a')
-						link.href = url
 						link.setAttribute('download', 'scanolongapo.apk')
+						link.href = url
 						document.body.appendChild(link)
 						link.click()
+						URL.revokeObjectURL(link.href)
 						state.isLoading = false
 						this.loadBtn = false
 					})
 			} catch (err) {
-				return err
+				if (err) {
+					state.isLoading = false
+					this.loadBtn = false
+
+					return err
+				}
 			}
 		},
 	},

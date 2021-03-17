@@ -232,8 +232,6 @@ export default new Vuex.Store({
 					}
 				)
 
-				console.log(responseData.data)
-
 				if (responseData.status === 200) {
 					commit('enteredIndividuals', responseData.data)
 					state.isLoading = false
@@ -368,8 +366,10 @@ export default new Vuex.Store({
 					}
 				)
 
-				commit('travelHistory', travelHistory.data)
-				state.isLoading = false
+				if (travelHistory.status === 200) {
+					commit('travelHistory', travelHistory.data)
+					state.isLoading = false
+				}
 			} catch (err) {
 				return err.response
 			}
@@ -383,7 +383,11 @@ export default new Vuex.Store({
 				}
 			)
 
-			commit('tvlCompanionInfo', travelHistory.data)
+			if (travelHistory.status === 200) {
+				commit('tvlCompanionInfo', travelHistory.data)
+				commit('modalTravel')
+				state.isLoading = false
+			}
 		},
 
 		removeCookie({ commit }) {
