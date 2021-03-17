@@ -122,7 +122,6 @@ export default {
 				doc.page++
 				doc.text(90, 290, 'Individual Print Report')
 			}
-			console.log(doc.getFontList())
 
 			const header = function() {
 				doc.setTextColor(40)

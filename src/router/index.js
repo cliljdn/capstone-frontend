@@ -145,59 +145,6 @@ const routes = [
 					}
 				},
 			},
-
-			// {
-			// 	path: 'vehicles',
-			// 	//name: 'listVehicles',
-			// 	component: () =>
-			// 		import(
-			// 			/* webpackChunkName: "components" */ '../components/content/web/drivers/list-vehicles'
-			// 		),
-
-			// 	beforeEnter(to, from, next) {
-			// 		if (store.state.accType !== 'Driver' && !store.state.isAuth) {
-			// 			next({ name: 'usersLogin' })
-			// 		} else {
-			// 			next()
-			// 		}
-			// 	},
-
-			// 	children: [
-			// 		{
-			// 			path: '',
-			// 			name: 'activeVehicles',
-			// 			component: () =>
-			// 				import(
-			// 					/* webpackChunkName: "components" */ '../components/content/web/drivers/active-vehicles'
-			// 				),
-
-			// 			beforeEnter(to, from, next) {
-			// 				if (store.state.accType !== 'Driver' && !store.state.isAuth) {
-			// 					next({ name: 'usersLogin' })
-			// 				} else {
-			// 					next()
-			// 				}
-			// 			},
-			// 		},
-
-			// 		{
-			// 			path: 'inactive',
-			// 			name: 'inactiveVehicles',
-			// 			component: () =>
-			// 				import(
-			// 					/* webpackChunkName: "components" */ '../components/content/web/drivers/inactive-vehicles'
-			// 				),
-
-			// 			beforeEnter(to, from, next) {
-			// 				if (store.state.accType !== 'Driver' && !store.state.isAuth) {
-			// 					next({ name: 'usersLogin' })
-			// 				} else {
-			// 					next()
-			// 				}
-			// 			},
-			// 		},
-			// 	],
-			// },
 		],
 	},
 
@@ -296,8 +243,8 @@ const routes = [
  */
 
 function view(name) {
-	return function(resolve) {
-		require(['../views/' + name + '.vue'], resolve)
+	return (resolve) => {
+		resolve(require(['../views/' + name + '.vue']))
 	}
 }
 
