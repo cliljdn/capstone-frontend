@@ -27,19 +27,19 @@ export default {
 	},
 
 	methods: {
-		btnLogin: async function() {
+		async btnLogin() {
 			let { validateLogin } = form,
 				{ state } = this.$store
 
 			try {
 				let isValid = await validateLogin.validate(this.body, this.yupOptions)
-				state.isLoading = true
 
 				if (isValid) {
 					let res = await this.$axios.post(
 						`${state.baseURL}/accounts/login`,
 						this.body
 					)
+					state.isLoading = true
 
 					if (res.status === 201) {
 						state.TOKEN_NAME = res.data.name

@@ -232,7 +232,11 @@ export default new Vuex.Store({
 					}
 				)
 
-				commit('enteredIndividuals', responseData.data)
+				console.log(responseData.status)
+				if (responseData.status === 200) {
+					commit('enteredIndividuals', responseData.data)
+					state.isLoading = false
+				}
 			} catch (err) {
 				return err
 			}
@@ -443,7 +447,7 @@ export default new Vuex.Store({
 
 	plugins: [
 		createPersistedState({
-			paths: ['ACCESS_TOKEN', 'TOKEN_NAME', 'isAuth', 'accType', 'userProfile'],
+			paths: ['ACCESS_TOKEN', 'TOKEN_NAME', 'isAuth', 'accType'],
 		}),
 	],
 })

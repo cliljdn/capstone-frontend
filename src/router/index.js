@@ -244,7 +244,7 @@ const routes = [
 
 function view(name) {
 	return (resolve) => {
-		resolve(require(['../views/' + name + '.vue']))
+		require(['../views/' + name + '.vue'], resolve)
 	}
 }
 

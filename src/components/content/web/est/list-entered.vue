@@ -1,6 +1,17 @@
 <template>
 	<div class="container  travel-container">
-		<div class="columns travel-columns">
+		<div
+			class="columns travel-columns m-6"
+			v-if="Object.keys($store.state.userProfile).length <= 0"
+		>
+			<div class="column is-flex is-justify-content-center">
+				<figure class="image is-128x128 is-vcentered m-6">
+					<img src="https://i.imgur.com/zCToWR2.gif" />
+				</figure>
+			</div>
+		</div>
+
+		<div v-else class="columns travel-columns">
 			<div class="column">
 				<aside class="menu">
 					<p class="menu-label">
@@ -183,15 +194,15 @@
 												<th>Time Entered</th>
 											</tr>
 										</thead>
-										<tbody>
+										<tbody v-if="!$store.isLoading">
 											<tr
 												@click="openModal(indiv.batch)"
 												v-for="indiv in indivs"
 												:key="indiv.batch"
 											>
-												<td>{{ indiv.indiv_name }}</td>
+												<td>{{ indiv.firstname }}</td>
 												<td>
-													{{ indiv.emp_name }}
+													{{ indiv.presentEmployee.firstname }}
 												</td>
 												<td>
 													{{
@@ -205,7 +216,22 @@
 										</tbody>
 									</table>
 								</div>
-								<div class="columns columns-error" v-if="indivs.length === 0">
+
+								<div
+									class="columns columns-error"
+									v-if="$store.state.isLoading"
+								>
+									<div class="column is-flex is-justify-content-center">
+										<figure class="image is-96x96 is-vcentered m-3">
+											<img src="https://i.imgur.com/zCToWR2.gif" />
+										</figure>
+									</div>
+								</div>
+
+								<div
+									class="columns columns-error"
+									v-if="indivs.length === 0 && !$store.state.isLoading"
+								>
 									<div class="column is-flex is-justify-content-center">
 										<span class="has-text-danger">{{ formError.search }}</span>
 									</div>
@@ -220,7 +246,11 @@
 									v-for="indiv in indivs"
 									:key="indiv.batch"
 								>
-									<div class="card" @click="openModal(indiv.batch)">
+									<div
+										class="card"
+										v-if="!$store.state.isLoading"
+										@click="openModal(indiv.batch)"
+									>
 										<div class="card-content">
 											<div class="media">
 												<div class="media-left">
@@ -237,7 +267,7 @@
 												</div>
 												<div class="media-content">
 													<p class="title is-4 menu-label">
-														{{ indiv.indiv_name }}
+														{{ indiv.firstname }}
 													</p>
 													<small class="subtitle is-6"></small>
 												</div>
@@ -253,7 +283,7 @@
 													</span>
 
 													<span class="ml-1 user-info">{{
-														indiv.emp_name
+														indiv.presentEmployee.firstname
 													}}</span>
 												</p>
 
@@ -290,7 +320,16 @@
 								</div>
 
 								<div
-									v-if="indivs.length === 0"
+									v-if="$store.state.isLoading"
+									class="column columns-error is-flex is-justify-content-center"
+								>
+									<figure class="image is-96x96 is-vcentered m-3">
+										<img src="https://i.imgur.com/zCToWR2.gif" />
+									</figure>
+								</div>
+
+								<div
+									v-if="indivs.length === 0 && !$store.state.isLoading"
 									class="column columns-error is-flex is-justify-content-center"
 								>
 									<span class="has-text-danger">{{ formError.search }}</span>
@@ -381,6 +420,7 @@
 				</aside>
 			</div>
 		</div>
+
 		<list-entered-modal />
 	</div>
 </template>

@@ -14,21 +14,8 @@ export default {
 	computed: {
 		indivs() {
 			const { enteredIndividuals } = this.$store.state.est
-			const list = []
 
-			Object.values(enteredIndividuals).forEach((v) => {
-				list.push({
-					indiv_name: v.firstname + ' ' + v.lastname,
-					emp_name:
-						v.presentEmployee.firstname + ' ' + v.presentEmployee.lastname,
-					time_entered: v.time_entered,
-					date_entered: v.date_entered,
-					image: v.image,
-					batch: v.batch,
-				})
-			})
-
-			return list
+			return enteredIndividuals
 		},
 
 		printIndivs() {
@@ -63,6 +50,7 @@ export default {
 
 	data() {
 		return {
+			listOfIndiv: [],
 			betweenTime: true,
 			byDetails: false,
 			monthValues: [
@@ -224,6 +212,7 @@ export default {
 		},
 
 		searchList: _debounce(function() {
+			this.$store.state.isLoading = true
 			this.$store.dispatch('enteredIndividuals', this.payload)
 		}, 300),
 

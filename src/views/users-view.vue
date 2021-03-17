@@ -1,6 +1,7 @@
 <template>
 	<div class="main-view">
 		<dashboard-nav />
+
 		<transition name="slide">
 			<router-view />
 		</transition>
@@ -22,7 +23,6 @@ export default {
 
 	mounted() {
 		this.$store.dispatch('getProfile')
-		this.$store.dispatch('travelHistory')
 
 		if (!this.$store.getters.isLoggedIn) {
 			this.$store.dispatch('removeCookie')
