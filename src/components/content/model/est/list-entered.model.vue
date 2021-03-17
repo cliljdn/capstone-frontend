@@ -101,35 +101,38 @@ export default {
 			this.$store.dispatch('enteredIndividuals', this.payload)
 		},
 
-		decrementPage() {
+		decrementPage: _debounce(function() {
 			if (this.payload.page < 1) {
 				return true
 			} else {
+				this.$store.state.isLoading = true
 				this.payload.page--
 				this.$store.dispatch('enteredIndividuals', this.payload)
 			}
-		},
+		}, 300),
 
 		filterListDate(payload) {
 			this.$store.dispatch('enteredIndividuals', payload)
 		},
 
-		gotoPage(params) {
+		gotoPage: _debounce(function(params) {
+			this.$store.state.isLoading = true
 			this.payload.page = params
-			this.$store.dispatch('passengers', this.payload)
-		},
+			this.$store.dispatch('enteredIndividuals', this.payload)
+		}, 300),
 
-		incrementPage() {
+		incrementPage: _debounce(function() {
 			if (this.payload.page === this.pages[this.pages.length - 1] - 1) {
 				return true
 			} else {
 				this.payload.page++
-
+				this.$store.state.isLoading = true
 				this.$store.dispatch('enteredIndividuals', this.payload)
 			}
-		},
+		}, 300),
 
 		openModal(batch) {
+			this.$store.state.isLoading = true
 			return this.$store.dispatch('enteredIndivCompanions', batch)
 		},
 

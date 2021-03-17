@@ -180,7 +180,7 @@
 						<transition name="slide">
 							<!-- table view -->
 							<main class="travel-log" v-if="!isPanelActive">
-								<div class="table-container">
+								<div class="table-container" v-if="!$store.state.isLoading">
 									<table
 										id="my-table"
 										class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
@@ -194,7 +194,7 @@
 												<th>Time Entered</th>
 											</tr>
 										</thead>
-										<tbody v-if="!$store.isLoading">
+										<tbody>
 											<tr
 												@click="openModal(indiv.batch)"
 												v-for="indiv in indivs"
@@ -222,7 +222,7 @@
 									v-if="$store.state.isLoading"
 								>
 									<div class="column is-flex is-justify-content-center">
-										<figure class="image is-96x96 is-vcentered m-3">
+										<figure class="image is-96x96 is-vcentered m-2">
 											<img src="https://i.imgur.com/zCToWR2.gif" />
 										</figure>
 									</div>
@@ -323,7 +323,7 @@
 									v-if="$store.state.isLoading"
 									class="column columns-error is-flex is-justify-content-center"
 								>
-									<figure class="image is-96x96 is-vcentered m-3">
+									<figure class="image is-96x96 is-vcentered m-2">
 										<img src="https://i.imgur.com/zCToWR2.gif" />
 									</figure>
 								</div>
@@ -338,7 +338,10 @@
 						</transition>
 
 						<div class="columns" v-if="isPanelActive">
-							<div class="column is-12 is-flex is-justify-content-center">
+							<div
+								v-if="!$store.state.isLoading"
+								class="column is-12 is-flex is-justify-content-center"
+							>
 								<nav
 									class="pagination is-centered"
 									role="navigation"

@@ -232,7 +232,8 @@ export default new Vuex.Store({
 					}
 				)
 
-				console.log(responseData.status)
+				console.log(responseData.data)
+
 				if (responseData.status === 200) {
 					commit('enteredIndividuals', responseData.data)
 					state.isLoading = false
@@ -250,8 +251,12 @@ export default new Vuex.Store({
 						headers: { Authorization: this.getters.isLoggedIn },
 					}
 				)
-				commit('enteredIndivCompanions', responseData.data)
-				commit('modalListEntered')
+
+				if (responseData.status === 200) {
+					commit('enteredIndivCompanions', responseData.data)
+					commit('modalListEntered')
+					state.isLoading = false
+				}
 			} catch (err) {
 				return err
 			}

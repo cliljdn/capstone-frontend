@@ -116,19 +116,6 @@
 								{{ employee ? employee.contactnumber : 'No contact provided' }}
 							</span>
 						</div>
-
-						<!-- <div class="icon-text mb-2 level-left level-item">
-							<span class="icon has-text-info">
-								<i class="fas fa-envelope-open-text"></i>
-							</span>
-							<strong class="ml-1 tvl-info">
-								Address:
-							</strong>
-
-							<span class="ml-1 user-info">
-								{{ employee ? employee.house_lot_number : ' ' }}
-							</span>
-						</div> -->
 					</div>
 				</div>
 
@@ -146,7 +133,13 @@
 				</div>
 
 				<div class="columns companion-information">
-					<div class="column">
+					<div class="column" v-if="$store.state.isLoading">
+						<figure class="image is-96x96 is-vcentered m-3">
+							<img src="https://i.imgur.com/zCToWR2.gif" />
+						</figure>
+					</div>
+
+					<div class="column" v-else>
 						<div
 							:class="{
 								'remove-shadow ':
