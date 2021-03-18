@@ -94,7 +94,6 @@
 									</p>
 								</div>
 							</div>
-							{{ payload.start }}
 
 							<div class="column  is-one-fifth">
 								<span class="select-labels">End Time: </span>
@@ -113,7 +112,6 @@
 									</p>
 								</div>
 							</div>
-							{{ payload.end }}
 
 							<div class="column is-one-fifth">
 								<span class="select-labels">Sort List By: </span>
