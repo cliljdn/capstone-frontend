@@ -116,7 +116,6 @@ export default {
 			}
 
 			doc.page = 1
-			console.log(list)
 			function footer() {
 				doc.setFont('Times', 'italic')
 				doc.text(180, 290, 'page ' + doc.page) //print number bottom right

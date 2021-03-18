@@ -305,7 +305,7 @@
 								</div>
 
 								<div
-									v-if="$store.state.isLoading"
+									v-if="$store.state.isLoading && isPanelActive"
 									class="column columns-error is-flex is-justify-content-center"
 								>
 									<figure class="image is-96x96 is-vcentered m-2">
