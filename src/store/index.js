@@ -203,7 +203,10 @@ export default new Vuex.Store({
 		},
 
 		removeCookie(state) {
-			Cookies.remove(state.TOKEN_NAME, { path: '/', domain: 'localhost' })
+			Cookies.remove(state.TOKEN_NAME, {
+				path: '/',
+				domain: 'localhost',
+			})
 		},
 
 		resetState(state) {
@@ -212,6 +215,7 @@ export default new Vuex.Store({
 			Object.keys(initial).forEach((key) => {
 				state[key] = initial[key]
 			})
+
 			localStorage.removeItem('vuex')
 		},
 	},
@@ -233,8 +237,8 @@ export default new Vuex.Store({
 				)
 
 				if (responseData.status === 200) {
-					commit('enteredIndividuals', responseData.data)
 					state.isLoading = false
+					commit('enteredIndividuals', responseData.data)
 				}
 			} catch (err) {
 				return err
@@ -269,7 +273,7 @@ export default new Vuex.Store({
 						params: { ...payload },
 					}
 				)
-
+				console.log(estEntered.data)
 				if (estEntered.status === 200) {
 					commit('estEntered', estEntered.data)
 					state.isLoading = false

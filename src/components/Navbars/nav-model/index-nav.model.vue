@@ -27,6 +27,7 @@ export default {
 						document.body.appendChild(link)
 						link.click()
 						URL.revokeObjectURL(link.href)
+
 						state.isLoading = false
 						this.loadBtn = false
 					})

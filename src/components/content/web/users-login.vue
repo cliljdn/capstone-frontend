@@ -25,7 +25,7 @@
 										class="input dropdown is-active is-primary is-medium"
 										type="email"
 										placeholder="Email"
-										:disabled="disableInputs"
+										:disabled="disableInputs && loadBtn"
 									/>
 
 									<span class="icon is-small is-left">
@@ -46,7 +46,7 @@
 										class="input is-primary is-medium"
 										type="password"
 										placeholder="Password"
-										:disabled="disableInputs"
+										:disabled="disableInputs && loadBtn"
 									/>
 
 									<span class="icon is-small is-left">
