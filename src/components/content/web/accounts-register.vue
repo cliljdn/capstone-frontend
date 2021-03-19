@@ -24,7 +24,7 @@
 										type="email"
 										placeholder="Email"
 										required
-										:disabled="isLoading"
+										:disabled="isLoading && btnLoad"
 									/>
 									<span class="icon is-small is-left">
 										<i class="fas fa-envelope"></i>
@@ -47,7 +47,7 @@
 										minlength="8"
 										maxlength="12"
 										required
-										:disabled="isLoading"
+										:disabled="isLoading && btnLoad"
 									/>
 									<span class="icon is-small is-left">
 										<i class="fas fa-key"></i>
@@ -68,7 +68,7 @@
 										type="password"
 										placeholder="Confirm Password"
 										required
-										:disabled="values.password === '' || isLoading"
+										:disabled="values.password === '' || (isLoading && btnLoad)"
 									/>
 									<span class="icon is-small is-left">
 										<i class="fas fa-lock"></i>
@@ -85,7 +85,7 @@
 										@click="errors.accountType = ''"
 										@blur="validate('accountType')"
 										@change="validate('accountType')"
-										:disabled="isLoading"
+										:disabled="isLoading && btnLoad"
 									>
 										<option value="" selected>SELECT</option>
 										<option value="Individual">Individual</option>
@@ -104,7 +104,7 @@
 							@click="registerBtn"
 							class="button is-success is-pulled-left is-medium  mt-5"
 							:class="{ 'is-loading': isLoading }"
-							:disabled="isLoading"
+							:disabled="isLoading && btnLoad"
 						>
 							Register
 						</button>

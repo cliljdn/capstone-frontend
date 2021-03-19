@@ -205,7 +205,7 @@ export default new Vuex.Store({
 		removeCookie(state) {
 			Cookies.remove(state.TOKEN_NAME, {
 				path: '/',
-				domain: 'localhost',
+				domain: 'scanolongapo.com',
 			})
 		},
 
@@ -273,7 +273,7 @@ export default new Vuex.Store({
 						params: { ...payload },
 					}
 				)
-				console.log(estEntered.data)
+
 				if (estEntered.status === 200) {
 					commit('estEntered', estEntered.data)
 					state.isLoading = false

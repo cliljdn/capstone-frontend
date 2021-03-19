@@ -13,6 +13,7 @@ export default {
 
 	data() {
 		return {
+			btnLoad: false,
 			// input fields
 			values: {
 				email: '',
@@ -60,7 +61,7 @@ export default {
 					this.yupOptions
 				)
 				state.isLoading = true
-
+				this.btnLoad = true
 				if (!this.isAuth) {
 					return false
 				} else {
@@ -77,6 +78,7 @@ export default {
 						this.values.accountType = 'SELECT'
 						state.accountsMsg.isRegistered = true
 						state.isLoading = false
+						this.btnLoad = false
 						return commit('showPopOut')
 					}
 				}

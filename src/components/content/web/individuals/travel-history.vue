@@ -25,6 +25,9 @@
 
 							<div class="column is-12 p-3 has-text-justified-mobile">
 								<button
+									:disabled="
+										travelHistory.length === 0 || $store.state.isLoading
+									"
 									@click="printInfo"
 									class="button is-pulled-right is-small is-marginless ml-2 reset-button is-ghost"
 								>

@@ -25,7 +25,7 @@
 
 							<div class="column is-12 has-text-justified-mobile">
 								<button
-									:disabled="indivs.length === 0"
+									:disabled="indivs.length === 0 || $store.state.isLoading"
 									@click="printInfo"
 									class="button is-pulled-right is-small is-marginless ml-2 reset-button is-ghost"
 								>

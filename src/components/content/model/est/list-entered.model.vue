@@ -14,6 +14,9 @@ export default {
 	computed: {
 		indivs() {
 			const { enteredIndividuals } = this.$store.state.est
+			for (const indiv of enteredIndividuals) {
+				delete indiv.scannedIndiv
+			}
 
 			return enteredIndividuals
 		},
